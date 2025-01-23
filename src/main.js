@@ -2,8 +2,8 @@
 const contentful = require('contentful');
 
 const client = contentful.createClient({
-  space: 'your_space_id',  // Replace with your Space ID
-  accessToken: 'your_access_token'  // Replace with your Content Delivery API Access Token
+    space: 'ntvh3j97dkce', // Replace with your Space ID
+    accessToken: 'UC-xnFZuPk2OsBKWYLdZ8H6kwocji0aL37B5OvtH8HM' // Replace with your Access Token
 });
 
 // Fetch Food Ranking entries from Contentful
