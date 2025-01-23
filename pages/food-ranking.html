@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Ranking - Cambodia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .food-item {
+            margin-bottom: 20px;
+        }
+        .food-item img {
+            width: 200px;
+            height: auto;
+        }
+        .ranking {
+            font-weight: bold;
+            color: #d9534f;
+        }
+    </style>
+</head>
+<body>
+    <h1>Top Food Rankings in Cambodia</h1>
+    <div id="food-list"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/contentful@9.0.0/dist/contentful.browser.min.js"></script>
+    <script>
+        // Initialize Contentful client
+        const client = contentful.createClient({
+            space: 'ntvh3j97dkce', // Replace with your Space ID
+            accessToken: 'UC-xnFZuPk2OsBKWYLdZ8H6kwocji0aL37B5OvtH8HM' // Replace with your Access Token
+        });
+
+        // Fetch Food Ranking data
+        client.getEntries({ content_type: 'foodRanking' })
+            .then((response) => {
+                const foodListContainer = document.getElementById('food-list');
+                response.items.forEach((item) => {
+                    const foodItem = document.createElement('div');
+                    foodItem.classList.add('food-item');
+
+                    foodItem.innerHTML = `
+                        <h2 class="ranking">Rank ${item.fields.ranking}: ${item.fields.title}</h2>
+                        <img src="${item.fields.image.fields.file.url}" alt="${item.fields.title}" />
+                        <p>${item.fields.description}</p>
+                    `;
+
+                    foodListContainer.appendChild(foodItem);
+                });
+            })
+            .catch((error) => {
+                console.error('Error fetching data:', error);
+            });
+    </script>
+</body>
+</html>
