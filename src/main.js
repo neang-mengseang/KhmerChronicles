@@ -8,23 +8,29 @@ const client = contentful.createClient({
 
 // Fetch Food Ranking entries from Contentful
 client.getEntries({
-  content_type: 'foodRanking',  // Replace with the content type ID you created in Contentful
-})
-.then((response) => {
-  const foodRankingContainer = document.getElementById('food-ranking');
-
-  response.items.forEach(item => {
-    const foodItemElement = document.createElement('div');
-    foodItemElement.classList.add('food-item');
-
-    foodItemElement.innerHTML = `
-      <h2>${item.fields.title}</h2>
-      <p>${item.fields.description}</p>
-    `;
-
-    foodRankingContainer.appendChild(foodItemElement);
+    content_type: 'foodRanking',  // This is the content type ID you defined
+  })
+  .then((response) => {
+    const foodRankingContainer = document.getElementById('food-ranking');
+  
+    // Loop through the entries and display them
+    response.items.forEach(item => {
+      const foodItemElement = document.createElement('div');
+      foodItemElement.classList.add('food-item');
+  
+      // Get the image URL (if available)
+      const imageUrl = item.fields.image ? item.fields.image.fields.file.url : '';
+  
+      foodItemElement.innerHTML = `
+        <h2>${item.fields.title}</h2>
+        <p>Ranking: ${item.fields.ranking}</p>
+        ${imageUrl ? `<img src="https:${imageUrl}" alt="${item.fields.title}" />` : ''}
+        <p>${item.fields.description}</p>
+      `;
+  
+      foodRankingContainer.appendChild(foodItemElement);
+    });
+  })
+  .catch((error) => {
+    console.error('Error fetching data from Contentful:', error);
   });
-})
-.catch((error) => {
-  console.error('Error fetching data from Contentful:', error);
-});
