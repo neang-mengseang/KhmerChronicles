@@ -1,5 +1,3 @@
-// Initialize Contentful client
-const contentful = require('contentful');
 
 const client = contentful.createClient({
     space: 'ntvh3j97dkce', // Replace with your Space ID
