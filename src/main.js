@@ -9,7 +9,15 @@ client.getEntries({
     content_type: 'foodRanking',  // This is the content type ID you defined
   })
   .then((response) => {
+    console.log('Data fetched:', response.items);  // Add this line to check if data is fetched
+  
     const foodRankingContainer = document.getElementById('food-ranking');
+  
+    // Check if there are any items
+    if (response.items.length === 0) {
+      foodRankingContainer.innerHTML = '<p>No food ranking data found.</p>';
+      return;
+    }
   
     // Loop through the entries and display them
     response.items.forEach(item => {
