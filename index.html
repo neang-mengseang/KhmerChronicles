@@ -3,20 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/src/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
-    <title>Document</title>
+    <title>Cambodia Travel & Cuisine News</title>
+    <link rel="stylesheet" href="/src/styles/style.css">
 </head>
 <body>
     <header>
-        <h1>Food Ranking in Cambodia</h1>
-      </header>
-    
-      <section id="food-ranking">
-        <!-- Food ranking content will be injected here by JavaScript -->
-      </section>
-    
-      <script src="https://cdn.contentful.com/js/contentful.browser.min.js"></script>
-      <script src="/src/main.js"></script>
+        <h1>KhmerChronicles</h1>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li class="explore"><a href="#">Explore</a>
+                    <ul class="dropdown">
+                        <li class="dropdown-section">
+                            <h3>Cuisines</h3>
+                            <a href="/src/pages/food-ranking/index.html">Food Ranking</a>
+                            <a href="food-articles.html">Food Articles</a>
+                        </li>
+                        <li class="dropdown-section">
+                            <h3>Travel</h3>
+                            <a href="top-pick.html">Top-Pick</a>
+                            <a href="travel-articles.html">Travel Articles</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="hero">
+            <h1>Welcome to Cambodia's Premier Travel & Cuisine News</h1>
+            <p>Discover the best food and travel destinations in Cambodia.</p>
+        </div>
+    </header>
+
+    <section id="explore">
+        <h2>Explore Our Sections</h2>
+        <div class="section-cards">
+            <div class="card">
+                <h3>Food Ranking</h3>
+                <p>Find the top food rankings in Cambodia!</p>
+                <a href="food-ranking.html">Explore</a>
+            </div>
+            <div class="card">
+                <h3>Food Articles</h3>
+                <p>Read about the latest food trends and recipes.</p>
+                <a href="food-articles.html">Explore</a>
+            </div>
+            <div class="card">
+                <h3>Travel Articles</h3>
+                <p>Plan your next trip with our travel guides and articles.</p>
+                <a href="travel-articles.html">Explore</a>
+            </div>
+            <div class="card">
+                <h3>Top-Pick</h3>
+                <p>Our top picks for travel destinations in Cambodia.</p>
+                <a href="top-pick.html">Explore</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>We provide the latest insights into Cambodia's food and travel scene. Stay tuned for exciting updates!</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Cambodia Travel & Cuisine News</p>
+        <p><a href="contact.html">Contact Us</a></p>
+    </footer>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
