@@ -1,11 +1,13 @@
 {
   "dependencies": {
-    "contentful": "^11.4.4"
+    "@tailwindcss/cli": "^4.0.0",
+    "@tailwindcss/vite": "^4.0.0",
+    "contentful": "^11.4.4",
+    "tailwindcss": "^4.0.0"
   },
   "name": "sf-test",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
