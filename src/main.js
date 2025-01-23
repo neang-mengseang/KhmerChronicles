@@ -1,15 +1,15 @@
 console.log("Javascriping [ Main.js ] is running...");
 const client = contentful.createClient({
-    space: 'ntvh3j97dkce', // Replace with your Space ID
-    accessToken: 'UC-xnFZuPk2OsBKWYLdZ8H6kwocji0aL37B5OvtH8HM' // Replace with your Access Token
+    space: 'ntvh3j97dkce',
+    accessToken: 'UC-xnFZuPk2OsBKWYLdZ8H6kwocji0aL37B5OvtH8HM' 
 });
 
-// Fetch Food Ranking entries from Contentful
+// Fetch Food Ranking entries from 
 client.getEntries({
-    content_type: 'foodRanking',  // This is the content type ID you defined
+    content_type: 'foodRanking',  
   })
   .then((response) => {
-    console.log('Data fetched:', response.items);  // Add this line to check if data is fetched
+    console.log('Data fetched:', response.items); 
   
     const foodRankingContainer = document.getElementById('food-ranking');
   
@@ -19,12 +19,10 @@ client.getEntries({
       return;
     }
   
-    // Loop through the entries and display them
     response.items.forEach(item => {
       const foodItemElement = document.createElement('div');
       foodItemElement.classList.add('food-item');
   
-      // Get the image URL (if available)
       const imageUrl = item.fields.image ? item.fields.image.fields.file.url : '';
   
       foodItemElement.innerHTML = `
