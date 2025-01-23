@@ -1,4 +1,4 @@
-
+console.log("Javascriping [ Main.js ] is running...");
 const client = contentful.createClient({
     space: 'ntvh3j97dkce', // Replace with your Space ID
     accessToken: 'UC-xnFZuPk2OsBKWYLdZ8H6kwocji0aL37B5OvtH8HM' // Replace with your Access Token
