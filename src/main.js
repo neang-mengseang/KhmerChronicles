@@ -13,7 +13,6 @@ client.getEntries({
 .then((response) => {
   const foodRankingContainer = document.getElementById('food-ranking');
 
-  // Loop through the entries and display them
   response.items.forEach(item => {
     const foodItemElement = document.createElement('div');
     foodItemElement.classList.add('food-item');
