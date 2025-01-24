@@ -2,14 +2,18 @@ const contentful = require('contentful');
 const fs = require('fs');
 const path = require('path');
 
+const NetlifyAPI = require('netlify');
+const token = new NetlifyAPI(process.env.NETLIFY_ACCESS_TOKEN);
+
 // Set up Contentful client
 const client = contentful.createClient({
     space: 'ntvh3j97dkce', // Replace with your Space ID
-    accessToken: 'UC-xnFZuPk2OsBKWYLdZ8H6kwocji0aL37B5OvtH8HM' // Replace with your Access Token
+    accessToken: token // Replace with your Access Token
 });
 
 exports.handler = async (event, context) => {
   try {
+    console.log(accessToken);
     // Fetch the content from Contentful
     const foodItems = await client.getEntries({
       content_type: 'foodRanking'
@@ -63,3 +67,5 @@ exports.handler = async (event, context) => {
     };
   }
 };
+
+
