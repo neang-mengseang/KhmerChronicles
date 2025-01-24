@@ -11,7 +11,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "build": "start"
+    "build": ""
   },
   
   "keywords": [],
