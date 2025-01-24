@@ -34,11 +34,11 @@
     transition: animation 0.3s ease-in-out;
     flex: 1;
     justify-content: center;
-    overflow: hidden;
   }
   
   .nav-list {
     display: flex;
+    position: relative;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -83,7 +83,7 @@
   .explore .dropdown {
     display: none;
     position: absolute;
-    top: 100%;
+    top: 120%;
     left: 50%;
     transform: translate(-50%, 0%);
     background-color: #333;
@@ -97,6 +97,7 @@
   
   .explore:hover .dropdown {
     display: flex;
+    animation: slide_down 500ms ease;
   }
   
   .dropdown-section {
@@ -258,7 +259,7 @@
   
     .nav.show {
       display: flex; 
-      animation: move-left 500ms;
+      animation: slide_down 500ms;
     }
 
     
@@ -269,7 +270,7 @@
 
 
   
-  @keyframes move-left{
+  @keyframes slide_down{
     0% {
       max-height: 0px;
     }
