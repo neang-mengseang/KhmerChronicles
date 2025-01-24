@@ -8,7 +8,6 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    position: sticky;
     top: 0;
     z-index: 10;
     border-bottom: 1px solid rgb(38, 130, 192);
@@ -32,9 +31,10 @@
   /* Navigation Bar */
   .nav {
     display: flex;
-    transition: all 0.3s ease-in-out;
+    transition: animation 0.3s ease-in-out;
     flex: 1;
     justify-content: center;
+    overflow: hidden;
   }
   
   .nav-list {
@@ -185,7 +185,10 @@
 .auth-container{
   margin: 0;
   margin-left: 12px;
+  display: flex;
 }
+
+
 
 .btn{
   background-color: transparent;
@@ -202,6 +205,10 @@
   
   /* Media Query for Mobile Devices */
   @media (max-width: 768px) {
+    .auth-container{
+      display: none;
+    }
+
     .hamburger-menu {
       display: block;  /* Show the hamburger on smaller screens */
     }
@@ -250,20 +257,24 @@
     }
   
     .nav.show {
-      display: flex;  /* Show the navigation when the menu is toggled */
+      display: flex; 
+      animation: move-left 500ms;
     }
+
+    
 
     .nav-item.explore{display: none;}
   }
   
-  /* Media Query for larger screens */
-  @media (min-width: 768px) {
-    .hamburger-menu {
-      display: none;  /* Hide the hamburger on larger screens */
-    }
+
+
   
-    .nav {
-      display: flex;  /* Show the navigation bar in flex for larger screens */
+  @keyframes move-left{
+    0% {
+      max-height: 0px;
+    }
+
+    100% {
+      max-height: 500px;
     }
   }
-  

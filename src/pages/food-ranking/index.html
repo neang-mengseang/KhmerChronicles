@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Ranking - Cambodia</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="/src/styles/footer.css">
+    <link rel="stylesheet" href="/src/styles/header.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <link rel="stylesheet" href="/src/styles/header.css">
     <header class="header">
         <div class="logo">
           <a href="/" class="logo-link">Khmer Chronicles</a>
@@ -16,10 +16,10 @@
         <div class="hamburger-menu" onclick="toggleMenu()">☰</div>
         <nav class="nav">
           <ul class="nav-list">
-            <li class="nav-item cur-page"><a href="/" class="nav-link first-nav">Home</a></li>
+            <li class="nav-item "><a href="/" class="nav-link first-nav">Home</a></li>
             <li class="nav-item"><a href="/src/pages/news/index.html" class="nav-link">News</a></li>
 
-            <li class="nav-item explore">
+            <li class="nav-item explore cur-page">
               <a href="#" class="nav-link">Explore</a>
               <div class="dropdown">
                 <div class="dropdown-section">
@@ -52,12 +52,19 @@
                 </div>
             </li>
 
-            <li class="nav-item"><a href="/src/pages/about-us/index.html" class="nav-link">About</a></li>
+            <li class="nav-item "><a href="/src/pages/about-us/index.html" class="nav-link">About</a></li>
             <li class="nav-item"><a href="/src/pages/contact/index.html" class="nav-link">Contact</a></li>
           </ul>
-
         </nav>
-      </header>
+        <div class="auth-container">
+          <button class="btn register">
+            Register
+          </button>
+          <button class="btn login">
+            Login
+          </button>
+        </div>
+    </header>
     <h1 class="main-title">Top Food Rankings in Cambodia</h1>
     <section id="food-ranking" class="food-grid"></section>
 

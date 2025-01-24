@@ -66,6 +66,23 @@
         </div>
     </header>
     <main>
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+</head>
+<body>
+  <h2>Admin Dashboard</h2>
+  <div id="content-list"></div>
+  <button onclick="netlifyIdentity.logout()">Logout</button>
+
+  <form id="edit-form">
+    <input type="hidden" id="entry-id">
+    <input type="text" id="entry-title" placeholder="Title">
+    <button type="submit">Update</button>
+  </form>
 
     </main>
       <footer class="footer">
@@ -117,6 +134,8 @@
             </div>
             <p class="copy-right-text">&copy; 2023 Khmer Chronicles - All Rights Reserved</p>
       </footer>
+      <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+      <script src="/src/pages/dashboard/script.js"></script>
       <script src="https://kit.fontawesome.com/731249cdaa.js" crossorigin="anonymous"></script>
       <script src="/src/scripts/header.js"></script>
 </body>
