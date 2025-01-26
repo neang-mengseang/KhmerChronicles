@@ -24,7 +24,7 @@ console.error("Error fetching content:", error);
 
 function displayFoodRankings(items) {
 const foodSection = document.getElementById("food-ranking");
-foodSection.innerHTML = ""; // Clear existing content
+foodSection.innerHTML = "";
 
 items.forEach((item) => {
 const foodItem = document.createElement("div");

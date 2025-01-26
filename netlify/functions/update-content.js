@@ -16,7 +16,7 @@ exports.handler = async (event) => {
     const environment = await space.getEnvironment(process.env.CONTENTFUL_ENVIRONMENT);
     const entry = await environment.getEntry(id);
 
-    entry.fields.title['en-US'] = title;  // Update the title
+    entry.fields.title['en-US'] = title;
     await entry.update();
     await entry.publish();
 
