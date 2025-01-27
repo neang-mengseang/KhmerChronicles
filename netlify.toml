@@ -1,6 +1,13 @@
 [build]
   command = "npm run build"
-  functionsDirectory = "netlify/functions"
+  publish = "."
 
-[dev]
-command = "npm start"
+[functions]
+  directory = "netlify/functions"
+
+[[redirects]]
+  from = "/foodarticles/:entryID"
+  to = "/.netlify/functions/foodArticle?entryID=:entryID"
+  status = 200
+  force = true
+

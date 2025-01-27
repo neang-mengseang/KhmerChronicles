@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <link href="img/favicon.ico" rel="icon">
     <title>Khmer Chronicles | Record Of Life</title>
     <link rel="stylesheet" href="/src/styles/style.css">
@@ -56,21 +57,17 @@
           </ul>
         </nav>
         <div class="auth-container">
-          <button class="btn register">
-            Register
-          </button>
-          <a href="/src/pages/dashboard/index.html">
-            <button class="btn login">
-              Login
-            </button>
-          </a>
-
+          <button class="btn register" style="display:none;">Register</button>
+          <button class="btn login" style="display:none;">Login</button>
+          <button class="btn logout" style="display:none;">Logout</button>
         </div>
+        
+        
         <div class="hamburger-menu" onclick="toggleMenu()">☰</div>
       </header>
       
     <main>
-
+      <a href="/src/pages/dashboard/index.html">Dashboard</a>
     </main>
 
 
@@ -127,16 +124,9 @@
     </footer>
     <script src="https://kit.fontawesome.com/731249cdaa.js" crossorigin="anonymous"></script>
     <script src="/src/scripts/header.js"></script>
-    <script src="/src/scripts/script.js"></script>
+    <script src="/src/components/auth.js"></script>
 
     <script>
-      netlifyIdentity.on('login', (user) => {
-        if (user && user.app_metadata.roles) {
-            alert(`Welcome ${user.email}, Your role: ${user.app_metadata.roles[0]}`);
-        } else {
-            alert('No role assigned!');
-        }
-    });
     </script>
 </body>
 </html>

@@ -50,3 +50,4 @@ foodSection.appendChild(foodItem);
 }
 
 fetchFoodRankings();
+
