@@ -6,6 +6,7 @@ const fs = require('fs');
 const spaceID = 'ntvh3j97dkce';
 const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
 
+
 exports.handler = async function(event, context) {
   const { entryID } = event.queryStringParameters;  // Extract entryID from query parameters
 
@@ -27,7 +28,11 @@ exports.handler = async function(event, context) {
     if (!data.fields) {
       return {
         statusCode: 404,
-        body: JSON.stringify({ error: 'Article not found' }),
+        body: JSON.stringify({ 
+          functions: "Yes",
+          contentID: `${spaceID} Can not be found`,
+          error: 'Article not found'
+         }),
       };
     }
 
