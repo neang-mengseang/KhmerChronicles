@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 
 const spaceID = 'ntvh3j97dkce';
-const accessToken = 'UC-xnFZuPk2OsBKWYLdZ8H6kwocji0aL37B5OvtH8HM';
+const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
 
 exports.handler = async function(event, context) {
   const { entryID } = event.queryStringParameters;  // Extract entryID from query parameters
