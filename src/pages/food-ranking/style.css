@@ -1,0 +1,70 @@
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.main-title{
+    padding-left: 24px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.ranking {
+    font-weight: bold;
+    color: #d9534f;
+}
+
+.food-grid{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.food-item{
+    box-shadow: 0px 6px 24px 6px rgba(0, 0, 0, 0.534);
+    border-radius: 6px;
+    position: relative;
+    transition: transform 300ms ease;
+    margin-bottom: 20px;
+    margin: 34px;
+    cursor: pointer;
+    width: 420px;
+}
+
+.food-item:hover{
+    transform: scale(1.01);
+}
+
+.food-item:hover .food-item img{transform: scale(1.05);}
+
+.ranking-badge{
+    position: absolute;
+    top: -24px;
+    left: -6px;
+    background-color: rgb(38, 130, 192);
+    color: white;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    border-radius: 50%;
+    box-shadow: -6px 6px 6px 1px rgba(27, 26, 26, 0.671);
+}
+
+.food-item img{
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.food-item h2{
+    margin: 0;
+    padding: 12px;
+    text-align: center;
+}
+
+.card-content{
+    padding: 12px 24px;
+}
+
+

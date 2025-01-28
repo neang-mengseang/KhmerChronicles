@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= article.title %></title> <!-- Use article.title -->
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<h1><%= article.title %></h1> <!-- Use article.title -->
+<p><%= article.author %></p>
+<p><%= article.dateCreate %></p>
+<p><%= article.introduction %></p>
+<!-- You can loop over article.content if necessary -->
+<div>
+  <%= article.content %> <!-- Render content -->
+</div>
+
+</body>
+</html>

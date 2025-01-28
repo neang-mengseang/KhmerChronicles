@@ -1,0 +1,28 @@
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    max-width: 100%;
+    overflow-x: hidden;
+
+  }
+  
+  main{
+    flex: 1;
+  }
+
+  ul, ol, li, a{
+    text-decoration: none;
+    color: inherit;
+    list-style-type: none;
+  }
+  

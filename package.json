@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "contentful": "^11.4.4",
+    "contentful-management": "^11.43.2",
+    "ejs": "^3.1.10",
+    "netlify": "^13.3.2",
+    "netlify-identity-widget": "^1.9.2",
+    "node-fetch": "^2.7.0"
+  },
+  "name": "sf-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": ""
+  },
+  
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+  
+}
