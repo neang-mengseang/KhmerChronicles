@@ -1,9 +1,12 @@
+const menu = document.querySelector('.hamburger-menu');
+
 function toggleMenu() {
     const nav = document.querySelector('.nav');
     nav.classList.toggle('show');
-    
     // Add event listener to close menu when clicking outside
     document.addEventListener('click', closeMenuOutside);
+
+    menu.classList.toggle('change');
 }
 
 function closeMenuOutside(event) {
@@ -14,6 +17,7 @@ function closeMenuOutside(event) {
     if (!nav.contains(event.target) && !hamburger.contains(event.target)) {
         nav.classList.remove('show'); // Close the menu
         document.removeEventListener('click', closeMenuOutside); // Remove event listener after closing
+        menu.classList.toggle('change');
     }
 }
 
@@ -26,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
     acc.forEach(function (btn) {
       btn.addEventListener("click", function () {
         var panel = this.nextElementSibling;
-  
+        this.classList.toggle('change');
         // Close all panels except the clicked one
         document.querySelectorAll('.accordion-panel').forEach(function (item) {
           if (item !== panel) {

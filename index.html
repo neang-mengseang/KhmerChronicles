@@ -43,7 +43,7 @@
               </div>
             </li>
             <li class="nav-accordion">
-                <button class="accordion-btn">Explore</button>
+                <button class="accordion-btn" onclick="toggleChange">Explore</button>
                 <div class="accordion-panel">
                     <a href="/src/pages/food-ranking/index.html" class="nav-link">Food Ranking</a>
                     <a href="/src/pages/food-articles/index.html" class="nav-link">Food Articles</a>
@@ -63,11 +63,67 @@
         </div>
         
         
-        <div class="hamburger-menu" onclick="toggleMenu()">☰</div>
+        <div class="hamburger-menu" onclick="toggleMenu()">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
       </header>
       
     <main>
-      <a href="/src/pages/dashboard/index.html">Dashboard</a>
+      <div class="hero">
+        <img src="/src/assets/img/angkor-wat-cambodia.png">
+        <div>
+            <h1>Explore the Best of Cambodia</h1>
+            <p>From Cuisine to Travel Destinations</p>
+            <button>Explore Now</button>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="main-content">
+            <div class="article-section">
+                <h2>Trending Food Articles</h2>
+                <div class="article-card">
+                    <img src="https://via.placeholder.com/100" alt="Thumbnail">
+                    <div>
+                        <h3>Food Article Title 1</h3>
+                        <p>Short description of the food article...</p>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <img src="https://via.placeholder.com/100" alt="Thumbnail">
+                    <div>
+                        <h3>Food Article Title 2</h3>
+                        <p>Short description of the food article...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="article-section">
+                <h2>Trending Travel Articles</h2>
+                <div class="article-card">
+                    <img src="https://via.placeholder.com/100" alt="Thumbnail">
+                    <div>
+                        <h3>Travel Article Title 1</h3>
+                        <p>Short description of the travel article...</p>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <img src="https://via.placeholder.com/100" alt="Thumbnail">
+                    <div>
+                        <h3>Travel Article Title 2</h3>
+                        <p>Short description of the travel article...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="aside">
+            <h2>Trending Now</h2>
+            <p>General trending content will go here...</p>
+        </div>
+    </div>
+    
+    
     </main>
 
 
@@ -125,8 +181,5 @@
     <script src="https://kit.fontawesome.com/731249cdaa.js" crossorigin="anonymous"></script>
     <script src="/src/scripts/header.js"></script>
     <script src="/src/components/auth.js"></script>
-
-    <script>
-    </script>
 </body>
 </html>

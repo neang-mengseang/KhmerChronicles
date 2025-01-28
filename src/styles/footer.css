@@ -8,8 +8,8 @@
 }
 
 .footer {
-  position: absolute;
   width: 100%;
+  margin: 0;
   bottom: 0;
   background: #2c2c2c;
 }
@@ -91,7 +91,7 @@
 .copy-right-text{
   color: white;
   text-align: center;
-  margin-bottom: 12px;
+  padding-bottom: 12px;
 }
 
 @media (max-width: 768px) {
