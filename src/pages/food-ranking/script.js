@@ -1,6 +1,9 @@
+
 const SPACE_ID = 'ntvh3j97dkce';
 const ACCESS_TOKEN = 'UC-xnFZuPk2OsBKWYLdZ8H6kwocji0aL37B5OvtH8HM';
 const CONTENT_TYPE_ID = 'foodRanking';
+
+
 
 async function fetchFoodRankings() {
 try {

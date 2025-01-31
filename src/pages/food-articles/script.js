@@ -9,13 +9,17 @@ fetch(`https://cdn.contentful.com/spaces/${spaceID}/entries?access_token=${acces
       const articleList = document.getElementById('article-list');
       data.items.forEach(item => {
         // Use the item's sys.id to get the entryID
-        let slug = item.fields.slug || item.fields.title.toLowerCase().replace(/\s+/g, '-'); // Use title if no slug
-        const entryID = item.sys.id;  // Correctly access entry ID from the item
-        
-        // Create the article list item and link
+        let slug = item.fields.slug || item.fields.title
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9\s-]/g, '')  // Remove special characters
+        .replace(/\s+/g, '-')          // Replace spaces with hyphens
+        .replace(/^-+|-+$/g, '');      // Remove leading/trailing hyphens
+
+        console.log(`Slug: ${slug}`);
         const articleItem = document.createElement('li');
         const articleLink = document.createElement('a');
-        articleLink.href = `/.netlify/functions/foodArticle?slug=${slug}&entryID=${entryID}`;
+        articleLink.href = `/food-article/${slug}`;
         articleLink.textContent = item.fields.title;
         
         articleItem.appendChild(articleLink);

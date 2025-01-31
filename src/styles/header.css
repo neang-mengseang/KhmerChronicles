@@ -215,8 +215,21 @@
   display: flex;
 }
 
+#userInfo{
+  width: 30px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  cursor: pointer;
 
+}
 
+#userInfo img{
+  object-fit: cover;
+  width: 40px;
+  height: 40px;
+}
 .btn{
   background-color: transparent;
   border: none;
@@ -229,6 +242,113 @@
   border-radius: 12px;
   color: white;
 }
+
+
+/* Close button styles */
+.closeMenuBtn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 30px;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Menu open/close transition */
+.slide-menu {
+  position: fixed;
+  top: 0;
+  right: -250px; /* Hidden offscreen by default */
+  width: 250px;
+  height: 100%;
+  background-color: #cac8d1;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease;
+}
+.slide-menu.open {
+  right: 0; /* Slide menu into view */
+  box-shadow: 1px 12px 12px 3px black;
+}
+
+
+/* Menu Content */
+.menu-content {
+}
+
+#userDetail{
+  width: 100%;
+  background-color: rgb(214, 213, 213);
+  text-align: center;
+  padding: 12px;
+}
+
+/* User Profile Image Inside Menu */
+#userDetail img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 20px;
+}
+
+#userDetail #userName{
+  color: black;
+  font-size: 1.5rem;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.menu-content ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.menu-content ul li {
+  border-bottom: 1px solid var(--aqua-blue);
+}
+
+.menu-content ul li a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+  padding: 18px 24px;
+  transition: 200ms ease;
+}
+
+.menu-content ul li a:hover{
+  font-weight: bold;
+  color: var(--aqua-blue);
+}
+
+.menu-content .menuLogout{
+  color: rgb(0, 0, 0);
+  border: none;
+  width: 100%;
+  padding: 16px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 400ms ease;
+  position: absolute;
+  bottom: 20px;
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-self: center;;
+}
+
+.menu-content .menuLogout img{
+  margin-left: 12px;
+  width: 24px;
+  height: 100%;
+  top: 0;
+}
+
+.menu-content .menuLogout:hover{
+  color: red;
+}
+
   
   /* Media Query for Mobile Devices */
   @media (max-width: 768px) {
@@ -309,3 +429,5 @@
       max-height: 500px;
     }
   }
+
+  

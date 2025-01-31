@@ -7,9 +7,3 @@
   included_files = [
     "src/views/*"
   ]
-
-[[redirects]]
-  from = "/foodarticles/:entryID"
-  to = "/.netlify/functions/foodArticle?entryID=:entryID"
-  status = 200
-  force = true

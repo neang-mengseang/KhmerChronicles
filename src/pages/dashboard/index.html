@@ -4,25 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <title>KhmerChronicles - Contact</title>
+    <link href="img/favicon.ico" rel="icon" />
+    <title>Khmer Chronicles | Record Of Life</title>
+    <link rel="stylesheet" href="/src/styles/style.css" />
+    <link rel="stylesheet" href="/src/styles/footer.css" />
+    <link rel="stylesheet" href="/src/styles/header.css" />
   </head>
   <body>
-    <link rel="stylesheet" href="/src/styles/header.css" />
-    <link rel="stylesheet" href="/src/styles/footer.css" />
-    <link rel="stylesheet" href="/src/styles/style.css" />
     <header class="header">
       <div class="logo">
         <a href="/" class="logo-link">Khmer Chronicles</a>
       </div>
-      <div class="hamburger-menu" onclick="toggleMenu()">☰</div>
       <nav class="nav">
         <ul class="nav-list">
-          <li class="nav-item">
-            <a href="/" class="nav-link first-nav">Home</a>
-          </li>
-          <li class="nav-item">
-            <a href="/src/pages/news/index.html" class="nav-link">News</a>
-          </li>
+          <li class="nav-item"><a href="/" class="nav-link first-nav">Home</a></li>
+          <li class="nav-item"><a href="/news" class="nav-link">News</a></li>
 
           <li class="nav-item explore">
             <a href="#" class="nav-link">Explore</a>
@@ -30,122 +26,90 @@
               <div class="dropdown-section">
                 <h4>Cuisines</h4>
                 <ul>
-                  <li>
-                    <a href="/src/pages/food-ranking/index.html"
-                      >Food Ranking</a
-                    >
-                  </li>
-                  <li>
-                    <a href="/src/pages/food-articles/index.html"
-                      >Food Articles</a
-                    >
-                  </li>
-                  <li>
-                    <a href="/src/pages/cuisines-gallery/index.html"
-                      >Cuisines Gallery</a
-                    >
-                  </li>
+                  <li><a href="/food-ranking/">Food Ranking</a></li>
+                  <li><a href="/food-articles">Food Articles</a></li>
+                  <li><a href="/cuisines-gallery">Cuisines Gallery</a></li>
+
                 </ul>
               </div>
               <div class="dropdown-section">
                 <h4>Travel</h4>
                 <ul>
-                  <li><a href="/src/pages/top-pick/index.html">Top-Pick</a></li>
-                  <li>
-                    <a href="/src/pages/travel-articles/index.html"
-                      >Travel Articles</a
-                    >
-                  </li>
-                  <li>
-                    <a href="/src/pages/travel-gallery/index.html"
-                      >Travel Gallery</a
-                    >
-                  </li>
+                  <li><a href="/top-pick">Top-Pick</a></li>
+                  <li><a href="/travel-articles">Travel Articles</a></li>
+                  <li><a href="/travel-gallery">Travel Gallery</a></li>
                 </ul>
               </div>
+              
             </div>
           </li>
           <li class="nav-accordion">
-            <button class="accordion-btn">Explore</button>
-            <div class="accordion-panel">
-              <a href="/src/pages/food-ranking/index.html" class="nav-link"
-                >Food Ranking</a
-              >
-              <a href="/src/pages/food-articles/index.html" class="nav-link"
-                >Food Articles</a
-              >
-              <a href="/top-pick" class="nav-link">Top-Pick</a>
-              <a href="/travel-articles" class="nav-link">Travel Articles</a>
-            </div>
+              <button class="accordion-btn" onclick="toggleChange">Explore</button>
+              <div class="accordion-panel">
+                  <a href="/food-ranking" class="nav-link">Food Ranking</a>
+                  <a href="/food-articles" class="nav-link">Food Articles</a>
+                  <a href="/top-pick" class="nav-link">Top-Pick</a>
+                  <a href="/travel-articles" class="nav-link">Travel Articles</a>
+              </div>
           </li>
 
-          <li class="nav-item">
-            <a href="/src/pages/about-us/index.html" class="nav-link">About</a>
-          </li>
-          <li class="nav-item cur-page">
-            <a href="/src/pages/contact/index.html" class="nav-link">Contact</a>
-          </li>
+          <li class="nav-item"><a href="/about-us" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
         </ul>
       </nav>
       <div class="auth-container">
-        <button class="btn register" style="display: none">Register</button>
-        <button class="btn login" style="display: none">Login</button>
-        <button class="btn logout" style="display: none">Logout</button>
+
+      </div>
+      
+      
+      <div class="hamburger-menu" onclick="toggleMenu()">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
       </div>
     </header>
+
     <main>
       <h2>Admin Dashboard</h2>
-      <div id="content-list"></div>
-      <button onclick="netlifyIdentity.logout()">Logout</button>
+      <form id="content-form">
+        <label>Select Content Type:</label>
+        <select id="contentType" onchange="loadFields()">
+          <option value="">Select...</option>
+          <option value="foodRanking">Food Ranking</option>
+          <option value="travelArticle">Travel Article</option>
+          <option value="newsArticle">News Article</option>
+        </select>
 
-      <form id="edit-form">
-        <input type="hidden" id="entry-id" />
-        <input type="text" id="entry-title" placeholder="Title" />
-        <button type="submit">Update</button>
+        <div id="form-fields"></div>
+
+        <button type="submit">Create Content</button>
       </form>
     </main>
+
     <footer class="footer">
       <div class="footer-row">
         <div class="footer-col">
           <h4>Info</h4>
           <ul class="links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Explore</a></li>
-            <li><a href="#">Gallery</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about-us">About Us</a></li>
+            <li><a href="/contact">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Cuisines</h4>
           <ul class="links">
-            <li>
-              <a href="/src/pages/food-ranking/index.html">Food Ranking</a>
-            </li>
-            <li>
-              <a href="/src/pages/food-articles/index.html">Food Articles</a>
-            </li>
-            <li>
-              <a href="/src/pages/cuisines-gallery/index.html"
-                >Cuisines Gallery</a
-              >
-            </li>
+            <li><a href="/food-ranking">Food Ranking</a></li>
+            <li><a href="/food-articles">Food Articles</a></li>
+            <li><a href="/cuisines-gallery">Cuisines Gallery</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Travel</h4>
           <ul class="links">
-            <li>
-              <a href="/src/pages/top-pick/index.html">Top Destination</a>
-            </li>
-            <li>
-              <a href="/src/pages/travel-articles/index.html"
-                >Travel Articles</a
-              >
-            </li>
-            <li>
-              <a href="/src/pages/travel-gallery/index.html">Travel Gallery</a>
-            </li>
+            <li><a href="/top-pick">Top Destination</a></li>
+            <li><a href="/travel-articles">Travel Articles</a></li>
+            <li><a href="/travel-gallery">Travel Gallery</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -170,12 +134,11 @@
         &copy; 2023 Khmer Chronicles - All Rights Reserved
       </p>
     </footer>
-    <script src="/src/pages/dashboard/script.js"></script>
-    <script src="/src/components/auth.js"></script>
     <script
       src="https://kit.fontawesome.com/731249cdaa.js"
       crossorigin="anonymous"
     ></script>
     <script src="/src/scripts/header.js"></script>
+    <script src="/src/components/auth.js"></script>
   </body>
 </html>

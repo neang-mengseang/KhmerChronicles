@@ -9,6 +9,7 @@ body {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 main{
@@ -22,7 +23,7 @@ main{
 }
 .hero {
   position: relative;
-  height: 400px;
+  height: 200px;
   background: url('https://via.placeholder.com/1500x400') no-repeat center center/cover;
   color: white;
   display: flex;
