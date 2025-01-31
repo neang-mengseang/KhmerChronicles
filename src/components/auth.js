@@ -6,6 +6,7 @@ const storedUserId = localStorage.getItem("userId");
 if (storedUserId) {
   // Fetch user profile if logged in
   fetchUserProfile(storedUserId);
+  console.log("User ID Detected, Checking for user");
 }
 
 // Select the existing auth-container
@@ -17,7 +18,7 @@ function createAuthElements() {
   loginBtn.id = "loginBtn";
   loginBtn.classList.add("btn", "login");
   loginBtn.textContent = "Login";
-  loginBtn.style.display = "none";
+  loginBtn.style.display = "inline-block";
 
   const userInfo = document.createElement("div");
   userInfo.id = "userInfo";
