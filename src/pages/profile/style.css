@@ -1,11 +1,40 @@
-body {
-  font-family: Arial, sans-serif;
+
+:root{
+  --aqua-blue: rgb(38, 130, 192);
+}
+
+main{
+  position: relative;
+}
+
+.edit_btn_container{
+  position: relative;
+  width: 100%;
+  height: 60px;
   display: flex;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
-  height: 100vh;
-  background-color: #f4f4f4;
-  margin: 0;
+  padding: 24px 32px;
+}
+.edit_profile_btn{
+  background-color: var(--aqua-blue);
+  color: white;
+  border: none;
+  padding: 12px;
+  width: fit-content;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 150ms ease;
+  right: 12px;
+  top: 12px;
+}
+
+.edit_profile_btn:hover{
+  transform: scale(1.05);
+}
+
+.edit_profile_btn:active{
+  transform: scale(1.02);
 }
 
 .profile-container {
@@ -24,7 +53,7 @@ body {
   width: 300px;
 }
 
-.profile-card img {
+.card img {
   width: 100px;
   height: 100px;
   border-radius: 50%;

@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "axios": "^1.7.9",
+    "busboy": "^1.6.0",
     "contentful": "^11.4.4",
     "contentful-management": "^11.43.2",
     "ejs": "^3.1.10",

@@ -24,39 +24,28 @@ exports.handler = async (event) => {
       content_type: "user",
       "fields.id": userData.id
     });
-
+    
     if (entries.items.length > 0) {
       console.log("✅ User already exists:", entries.items[0].fields.username["en-US"]);
       return {
         statusCode: 200,
         body: JSON.stringify({
+          exists: true,
           message: "User already exists",
           user: entries.items[0].fields
         })
       };
     }
 
-    // ✅ Create new user if not found
-    const entry = await environment.createEntry("user", {
-      fields: {
-        username: { "en-US": userData.username },
-        id: { "en-US": userData.id },
-        email: { "en-US": userData.email },
-        userImage: { "en-US": {} },  // Empty object for image placeholder
-        posted: { "en-US": [] } // Empty array for posts
-      }
-    });
-
-    await entry.publish();
-    console.log("✅ New user created:", entry.sys.id);
-
+    // Return false if user doesn't exist
+    console.log("❌ User does not exist");
     return {
-      statusCode: 201,
+      statusCode: 200,
       body: JSON.stringify({
-        message: "User created",
-        user: entry.fields
+        exists: false
       })
     };
+    
 
   } catch (error) {
     console.error("❌ Error in backend:", error.message);
