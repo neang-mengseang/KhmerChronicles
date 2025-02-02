@@ -5,6 +5,8 @@ const user = localStorage.getItem("user");
 const storedUserId = localStorage.getItem("userId");
 if (user) {
   fetchUserProfile(storedUserId);
+}else{
+  netlifyIdentity.logout();
 }
 
 // Select the existing auth-container
