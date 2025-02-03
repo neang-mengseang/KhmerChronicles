@@ -41,7 +41,7 @@ exports.handler = async function (event, context) {
                         } 
                     },     
         bio: { "en-US": bio || "" },
-        role: { "en-US": role || "content_creator" }, // Default role
+        role: { "en-US": "content_creator" }, // Default role
       },
     });
 
