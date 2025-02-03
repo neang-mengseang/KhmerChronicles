@@ -6,7 +6,7 @@ const axios = require('axios');
 
 // Main handler function for creating a user
 exports.handler = async function (event, context) {
-  console.log("==> Handler started");
+  console.log("==> { Create Function } Handler started");
 
   const client = contentful.createClient({
     accessToken: process.env.CONTENTFUL_CMA_TOKEN, // Your Contentful Management API key
@@ -36,13 +36,12 @@ exports.handler = async function (event, context) {
                             "sys": { 
                                 "type": "Link", 
                                 "linkType": "Asset", 
-                                "id": "2gikX6WEDv2eUHOMihRwF9"
+                                "id": "1gmJBSmn7yFJtNN9datKGQ"
                             } 
                         } 
                     },     
         bio: { "en-US": bio || "" },
-        role: { "en-US": role || "content creator" }, // Default role
-        posted: {"en-US": null}
+        role: { "en-US": role || "content_creator" }, // Default role
       },
     });
 

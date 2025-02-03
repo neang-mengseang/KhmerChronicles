@@ -1,6 +1,53 @@
 // Initialize Netlify Identity
 netlifyIdentity.init();
 
+
+
+const notifications = document.querySelector(".notifications");
+
+const toastDetails = {
+    timer: 5000,
+    success: {
+        icon: "fa-circle-check",
+        text: "Success: Operation completed successfully."
+    },
+    error: {
+        icon: "fa-circle-xmark",
+        text: "Error: Something went wrong. Please try again."
+    }
+};
+
+const removeToast = (toast) => {
+    toast.classList.add("hide");
+    if (toast.timeoutId) clearTimeout(toast.timeoutId);
+    setTimeout(() => toast.remove(), 500);
+};
+
+const createToast = (id) => {
+    const { icon, text } = toastDetails[id];
+    const toast = document.createElement("li");
+    toast.className = `toast ${id}`;
+    toast.innerHTML = `
+        <div class="column">
+            <i class="fa-solid ${icon}"></i>
+            <span>${text}</span>
+        </div>
+        <i class="fa-solid fa-xmark" onclick="removeToast(this.parentElement)"></i>`;
+    
+    notifications.appendChild(toast);
+    toast.timeoutId = setTimeout(() => removeToast(toast), toastDetails.timer);
+};
+
+const badge = {
+  admin: {
+    icon: "fa-solid fa-code",
+    text: "Administrator"
+  },
+  content_creator: {
+    icon: "fa-solid fa-pen-nib",
+    text: "Content Creator"
+  }
+}
 // Set default image URL
 const defaultImageUrl = '/src/assets/img/user.svg';
 
@@ -30,22 +77,47 @@ async function fetchUserData() {
         profile_picture: data.user.profile_picture || defaultImageUrl,
       };
 
+      const badge = {
+        admin: {
+          icon: "fa-solid fa-code",
+          text: "Administrator",
+          class: "admin"
+        },
+        content_creator: {
+          icon: "fa-solid fa-pen-nib",
+          text: "Content Creator",
+          class: "content-creator"
+        }
+      };
+      
+      const userRole = data.user.role || "guest";
+      const roleBadge = badge[userRole] ? `
+        <div class="badge ${badge[userRole].class}">
+          <i class="${badge[userRole].icon}"></i>
+          <span>${badge[userRole].text}</span>
+        </div>
+      ` : `
+        <div class="badge">
+          <span>Guest</span>
+        </div>
+      `;
+      
       profile_card.innerHTML = `
         <div class="card" id="main">
-          <img id="user-image" src="${originalData.profile_picture}" alt="User Image">
-          <div class="badge admin">
-            <span id="role">${data.user.role || "guest"}</span>
-          </div>
-          <div id="id_container">
-            <span id="id">${data.user.id || "N/A"}</span>
-          </div>
-          <p id="username">${originalData.username}</p>
-          <p id="email">${data.user.email || "N/A"}</p>
-          <div>
+          <section class="left">
+            <div id="img_container">
+              <img id="user-image" src="${originalData.profile_picture}" alt="User Image">
+            </div>
+            <p id="username">${originalData.username}</p>
+            ${roleBadge}  
+          </section>
+          <section class="right">
+            <span id="id"><i class="fa-regular fa-address-card"> ID: </i> ${data.user.id || "N/A"}</span>
+            <p id="email"><i class="fa-solid fa-envelope"></i> Email: ${data.user.email || "N/A"}</p>
             <span id="bio">${originalData.bio}</span>
-          </div>
+          </section>
           <div id="btn_container">
-            <button id="edit-btn" onclick="editProfileFields()">Edit Profile</button>
+            <button id="edit-btn" class="btn edit" onclick="editProfileFields()"><i class="fa-solid fa-pen-to-square"></i></i>Edit Profile</button>
           </div>
           <div id="image-container"></div>
         </div>
@@ -71,8 +143,8 @@ function editProfileFields() {
 
   const btnContainer = document.getElementById('btn_container');
   btnContainer.innerHTML = `
-    <button onclick='saveProfile()'>Save</button>
-    <button onclick='location.reload()'>Cancel</button>
+    <button class="btn save" onclick='saveProfile()'>Save</button>
+    <button class="btn cancel" onclick='fetchUserData()'>Cancel</button>
   `;
 }
 
@@ -163,14 +235,14 @@ async function saveProfile() {
 
       const responseData = await response.json();
       if (responseData.success) {
-        alert('Profile updated successfully!');
+        createToast("success");
         await fetchUserData(); // Refresh user data after update
       } else {
         alert('Error updating profile: ' + responseData.error);
       }
     } catch (error) {
       console.error('Error updating profile:', error);
-      alert('Error updating profile');
+      createToast("error");
     }
   }
 }

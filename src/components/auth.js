@@ -139,8 +139,7 @@ netlifyIdentity.on("login", async function (user) {
       document.getElementById("profilePicture").src = profileImageUrl;
       document.getElementById("profilePictureInMenu").src = profileImageUrl;
       console.log("profileImageUrl");
-      document.getElementById("userName").textContent =
-        userFromContentful.username;
+      document.getElementById("userName").textContent = userFromContentful.username;
       location.reload();
     } else {
       // If the user doesn't exist, create a new entry in Contentful
@@ -150,9 +149,10 @@ netlifyIdentity.on("login", async function (user) {
 
       // Update profile UI with new data
       document.getElementById("profilePicture").src = createResult.userImage;
-      document.getElementById("profilePictureInMenu").src =
-        createResult.userImage;
+      document.getElementById("profilePictureInMenu").src = createResult.userImage;
       document.getElementById("userName").textContent = createResult.username;
+
+      location.reload();
     }
   } catch (error) {
     console.error("❌ Error checking user in Contentful:", error);
@@ -168,7 +168,6 @@ netlifyIdentity.on("logout", () => {
   document.getElementById("loginBtn").style.display = "inline-block";
   document.getElementById("userInfo").style.display = "none";
   document.getElementById("userMenu").classList.remove("open"); // Close the menu on logout
-  location.reload();
 });
 
 // Define the registerUser function that will be called when the user signs up
@@ -203,6 +202,7 @@ const registerUser = async (user) => {
 
     if (response.ok) {
       console.log("User created successfully in Contentful:", result);
+      location.reload();
       // You can handle UI updates here if necessary, like redirecting the user
     } else {
       console.error("Failed to create user in Contentful:", result.message);
@@ -230,7 +230,7 @@ async function fetchUserProfile(userId) {
 
     document.getElementById("loginBtn").style.display = "none";
     document.getElementById("userInfo").style.display = "block";
-    document.getElementById("profilePicture").src = defaultImageUrl;
+    document.getElementById("profilePicture").src = profileImageUrl ||  defaultImageUrl;
 
     document.getElementById("profilePictureInMenu").src =
       profileImageUrl || defaultImageUrl;
