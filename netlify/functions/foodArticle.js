@@ -26,7 +26,7 @@ exports.handler = async function(event, context) {
   console.log('Extracted slug:', slug);
 
   // Construct Contentful API URL for fetching articles
-  const url = `https://cdn.contentful.com/spaces/${spaceID}/entries?access_token=${accessToken}&content_type=foodarticle&include=1`;
+  const url = `https://cdn.contentful.com/spaces/${spaceID}/entries?access_token=${accessToken}&content_type=foodArticle&include=1`;
 
   // Define templatePath above to avoid access before initialization error
   const templatePath = 'src/views/article-template.ejs';

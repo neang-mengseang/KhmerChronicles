@@ -24,7 +24,7 @@ function createAuthElements() {
   userInfo.id = "userInfo";
   userInfo.style.display = "none"; // Hidden initially
   userInfo.innerHTML = ` 
-    <a href="javascript:void(0);" id="userProfileLink">
+    <a id="userProfileLink">
       <img id="profilePicture" alt="Profile Picture" />
     </a>
   `;
