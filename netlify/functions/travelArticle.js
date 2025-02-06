@@ -16,6 +16,7 @@ function generateSlug(title) {
 }
 
 exports.handler = async function(event, context) {
+  console.log('Event:', event); // Logs the full event object for inspection
   const { slug } = event.queryStringParameters;
   console.log(`Fetching article with slug: ${slug}`);
 
