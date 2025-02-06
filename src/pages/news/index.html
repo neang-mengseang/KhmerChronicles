@@ -68,11 +68,21 @@
         <div class="bar3"></div>
     </div>
   </header>
+  <main>
+    <div class="filters">
+      <input type="text" id="search-query" placeholder="Search news...">
+      <select id="filter-category">
+        <option value="all">All Categories</option>
+        <option value="food">Food</option>
+        <option value="travel">Travel</option>
+        <option value="news">News</option>
+      </select>
+    </div>
 
-    <main>
-
-    </main>
-
+    <section id="news-container">
+      <!-- News articles will be dynamically inserted here -->
+    </section>
+  </main>
 
     <footer class="footer">
       <div class="footer-row">
@@ -123,6 +133,7 @@
         </div>
         <p class="copy-right-text">&copy; 2023 Khmer Chronicles - All Rights Reserved</p>
   </footer>
+  <script src="/src/pages/news/script.js"></script>
   <script src="https://kit.fontawesome.com/731249cdaa.js" crossorigin="anonymous"></script>
   <script src="/src/scripts/header.js"></script>
   <script src="/src/components/auth.js"></script>

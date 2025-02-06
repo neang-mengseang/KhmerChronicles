@@ -9,131 +9,44 @@
     <link rel="stylesheet" href="/src/styles/style.css" />
     <link rel="stylesheet" href="/src/styles/footer.css" />
     <link rel="stylesheet" href="/src/styles/header.css" />
+    <link rel="stylesheet" href="/src/pages/dashboard/style.css">
   </head>
   <body>
-    <header class="header">
-      <div class="logo">
-        <a href="/" class="logo-link">Khmer Chronicles</a>
-      </div>
-      <nav class="nav">
-        <ul class="nav-list">
-          <li class="nav-item"><a href="/" class="nav-link first-nav">Home</a></li>
-          <li class="nav-item"><a href="/news" class="nav-link">News</a></li>
 
-          <li class="nav-item explore">
-            <a href="#" class="nav-link">Explore</a>
-            <div class="dropdown">
-              <div class="dropdown-section">
-                <h4>Cuisines</h4>
-                <ul>
-                  <li><a href="/food-ranking/">Food Ranking</a></li>
-                  <li><a href="/food-articles">Food Articles</a></li>
-                  <li><a href="/cuisines-gallery">Cuisines Gallery</a></li>
-
-                </ul>
-              </div>
-              <div class="dropdown-section">
-                <h4>Travel</h4>
-                <ul>
-                  <li><a href="/top-pick">Top-Pick</a></li>
-                  <li><a href="/travel-articles">Travel Articles</a></li>
-                  <li><a href="/travel-gallery">Travel Gallery</a></li>
-                </ul>
-              </div>
-              
-            </div>
-          </li>
-          <li class="nav-accordion">
-              <button class="accordion-btn" onclick="toggleChange">Explore</button>
-              <div class="accordion-panel">
-                  <a href="/food-ranking" class="nav-link">Food Ranking</a>
-                  <a href="/food-articles" class="nav-link">Food Articles</a>
-                  <a href="/top-pick" class="nav-link">Top-Pick</a>
-                  <a href="/travel-articles" class="nav-link">Travel Articles</a>
-              </div>
-          </li>
-
-          <li class="nav-item"><a href="/about-us" class="nav-link">About</a></li>
-          <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="auth-container">
-
-      </div>
-      
-      
-      <div class="hamburger-menu" onclick="toggleMenu()">
-          <div class="bar1"></div>
-          <div class="bar2"></div>
-          <div class="bar3"></div>
-      </div>
+    <header>
+      <div class="auth-container"></div>
     </header>
 
     <main>
-      <h2>Admin Dashboard</h2>
-      <form id="content-form">
-        <label>Select Content Type:</label>
-        <select id="contentType" onchange="loadFields()">
-          <option value="">Select...</option>
-          <option value="foodRanking">Food Ranking</option>
-          <option value="travelArticle">Travel Article</option>
-          <option value="newsArticle">News Article</option>
-        </select>
-
-        <div id="form-fields"></div>
-
-        <button type="submit">Create Content</button>
-      </form>
+      <div class="sidebar">
+        <ul>
+            <li onclick="openTab('dashboard')">Dashboard</li>
+            <li onclick="openTab('foodRanking')">Food Ranking</li>
+            <li onclick="openTab('foodArticles')">Food Articles</li>
+            <li onclick="openTab('foodGallery')">Food Gallery</li>
+            <li onclick="openTab('topPick')">Top-Pick</li>
+            <li onclick="openTab('travelArticles')">Travel Articles</li>
+            <li onclick="openTab('travelGallery')">Travel Gallery</li>
+        </ul>
+    </div>
+    <div class="content">
+        <div id="dashboard" class="tab active">Dashboard Page Content</div>
+        <div id="foodRanking" class="tab">Food Ranking Content</div>
+        <div id="foodArticles" class="tab">Food Articles Content</div>
+        <div id="foodGallery" class="tab">Food Gallery Content</div>
+        <div id="topPick" class="tab">Top-Pick Content</div>
+        <div id="travelArticles" class="tab">Travel Articles Content</div>
+        <div id="travelGallery" class="tab">Travel Gallery Content</div>
+    </div>
     </main>
 
-    <footer class="footer">
-      <div class="footer-row">
-        <div class="footer-col">
-          <h4>Info</h4>
-          <ul class="links">
-            <li><a href="/">Home</a></li>
-            <li><a href="/about-us">About Us</a></li>
-            <li><a href="/contact">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Cuisines</h4>
-          <ul class="links">
-            <li><a href="/food-ranking">Food Ranking</a></li>
-            <li><a href="/food-articles">Food Articles</a></li>
-            <li><a href="/cuisines-gallery">Cuisines Gallery</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Travel</h4>
-          <ul class="links">
-            <li><a href="/top-pick">Top Destination</a></li>
-            <li><a href="/travel-articles">Travel Articles</a></li>
-            <li><a href="/travel-gallery">Travel Gallery</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Newsletter</h4>
-          <p>
-            Subscribe to our newsletter for a weekly dose of news, updates,
-            helpful tips, and exclusive offers.
-          </p>
-          <form action="#">
-            <input type="text" placeholder="Your email" required />
-            <button type="submit">SUBSCRIBE</button>
-          </form>
-          <div class="icons">
-            <i class="fa-brands fa-facebook-f"></i>
-            <i class="fa-brands fa-twitter"></i>
-            <i class="fa-brands fa-linkedin"></i>
-            <i class="fa-brands fa-github"></i>
-          </div>
-        </div>
-      </div>
-      <p class="copy-right-text">
-        &copy; 2023 Khmer Chronicles - All Rights Reserved
-      </p>
-    </footer>
+    <script>
+        function openTab(tabId) {
+            let tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
     <script
       src="https://kit.fontawesome.com/731249cdaa.js"
       crossorigin="anonymous"

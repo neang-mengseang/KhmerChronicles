@@ -7,3 +7,20 @@
   included_files = [
     "src/views/*"
   ]
+
+[[redirects]]
+  from = "/travel-articles/:slug"
+  to = "/.netlify/functions/travelArticle?slug=:slug"
+  status = 200
+
+[[redirects]]
+  from = "/food-article/:slug"
+  to = "/.netlify/functions/foodArticle?slug=:slug"
+  status = 200
+
+
+[[redirects]]
+  from = "/profile/:username"
+  to = "/.netlify/functions/profile?username=:username"
+  status = 200
+  force = true

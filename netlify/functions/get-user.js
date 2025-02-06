@@ -31,12 +31,12 @@ exports.handler = async function(event, context) {
     // Check if any entries were found
     if (entries.items.length > 0) {
       const user = entries.items[0]; // Assuming the first item matches the userId
-      console.log(`==> User Found: ${user.fields.username}`);
-      console.log(`==> User ID: ${user.fields.id}`);
+      //console.log(`==> User Found: ${user.fields.username}`);
+      //console.log(`==> User ID: ${user.fields.id}`);
      // Update the profile picture field access
      const profileImageUrl = user.fields.userImage?.fields?.file?.url;
      //console.log(`==> Profile Picture Detected: ${profileImageUrl}`);
-    //console.log(user.fields);
+     //console.log(user.fields);
       return {
         statusCode: 200,
         body: JSON.stringify({

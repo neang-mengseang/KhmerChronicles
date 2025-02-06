@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/src/styles/style.css" />
     <link rel="stylesheet" href="/src/styles/footer.css" />
     <link rel="stylesheet" href="/src/styles/header.css" />
-    <link rel="stylesheet" href="/src/pages/profile/style.css" />
+    <link rel="stylesheet" href="/src/styles/profile.css" />
     <link rel="stylesheet" href="/src/styles/notification.css">
   </head>
   <body>
@@ -19,7 +19,7 @@
       </div>
       <nav class="nav">
         <ul class="nav-list">
-          <li class="nav-item cur-page">
+          <li class="nav-item">
             <a href="/" class="nav-link first-nav">Home</a>
           </li>
           <li class="nav-item"><a href="/news" class="nav-link">News</a></li>
@@ -75,29 +75,33 @@
     </header>
 
     <main>
-      <ul class="notifications"></ul>
       <div id="profile_container">
-          <div class="card">
-              <section class="left">
-                  <div id="img_container">
-                      <img id="user-image" src="/src/assets/img/user.svg" alt="User Image">
-                      <input type="file" id="image-upload" accept="image/*">
-                  </div>
-                  <p id="username">Username</p>
-                  <div class="badge"><span>Guest</span></div>
-              </section>
-              <section class="right">
-                  <p id="id"><i class="fa-regular fa-address-card"></i> ID: N/A</p>
-                  <p id="email"><i class="fa-solid fa-envelope"></i> Email: N/A</p>
-                  <span id="bio">No bio available</span>
-              </section>
-              <div id="btn_container">
-                  <button id="edit-btn" class="btn edit"><i class="fa-solid fa-pen-to-square"></i> Edit Profile</button>
-              </div>
-              <div id="image-container"></div>
-          </div>
-      </div>
-
+        <div class="card">
+            <section class="left">
+                <div id="img_container">
+                    <img id="user-image" src="<%= profileImgUrl %>" alt="User Image">
+                </div>
+            </section>
+            <section class="right">
+              <p id="username"><%= username %></p>
+              <% let userRole; %>
+              <% if (role === 'admin') { %>
+                <% userRole = 'Administrator'; %>
+              <% } else if (role === 'content_creator') { %>
+                <% userRole = 'Content Creator'; %>
+              <% } else { %>
+                <% userRole = 'Guest'; %>
+              <% } %>
+                           
+              <div class="badge <%= role %>"><span><%= userRole %></span></div>
+                <p id="id"><i class="fa-regular fa-address-card"></i> ID: <%= id %></p>
+                <p id="email"><i class="fa-solid fa-envelope"></i> Email: <%= email %></p>
+                <span id="bio"><%= bio %></span>
+                <button class="contact">Contact Me</button>
+            </section>
+            <div id="image-container"></div>
+        </div>
+    </div>
     </main>
 
     <footer class="footer">
@@ -133,7 +137,6 @@
             helpful tips, and exclusive offers.
           </p>
           <form action="#">
-            <input type="text" placeholder="Your email" required />
             <button type="submit">SUBSCRIBE</button>
           </form>
           <div class="icons">
@@ -152,7 +155,6 @@
       src="https://kit.fontawesome.com/731249cdaa.js"
       crossorigin="anonymous"
     ></script>
-    <script  src="/src/pages/profile/script.js"></script>
     <script src="/src/scripts/header.js"></script>
     <script  src="/src/components/auth.js"></script>
   </body>

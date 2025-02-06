@@ -1,0 +1,82 @@
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(228, 227, 227);
+    padding: 12px;
+}
+main .card{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 24px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 12px;
+    box-shadow:  20px 20px 60px #bebebe,
+    -20px -20px 60px #ffffff;
+}
+
+main .author{
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+main .author .authorImg{
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+main .author p{
+    font-size: 18px;
+    font-weight: bold;
+} 
+
+main .date{
+    margin-bottom: 12px;
+}
+
+main .article-intro{
+    font-size: 18px;
+}
+
+main .article-content{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 1rem;    
+    text-indent: 2em; /* Indent the first line of each paragraph */
+}
+
+main .article-content a {
+    color: #0066cc; /* Link color */
+    text-decoration: none; /* Remove underline */
+}
+
+main  .article-content a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+main .article-content ul,
+main .article-content ol{
+    padding-left: 32px;
+}
+
+main .article-content ul li p,
+main .article-content ol li p{
+    text-indent: 0;
+}
+
+
+
+
+@media (max-width: 1080px) {
+    main .card{
+        width: 100%;
+    }
+}

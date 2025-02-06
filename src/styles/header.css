@@ -5,7 +5,6 @@
 
 .header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     height: 70px;
     padding: 12px;
@@ -213,7 +212,11 @@
   margin: 0;
   margin-right: 24px;
   display: flex;
+  width: 90px;
+  justify-content: right;
 }
+
+#userMenu{z-index: 11;}
 
 #userProfileLink #profilePicture{
   border-radius: 50%;
@@ -229,7 +232,6 @@
   justify-content: center;
   align-self: center;
   cursor: pointer;
-
 }
 
 #userInfo img{
@@ -365,26 +367,33 @@
     .header{
       position: static;
     }
+
+    .logo{ flex: 1;}
+    
+    .logo .logo-link{font-size: 24px;}
+
     .auth-container{
-      display: none;
+      display: block;
+      margin-right:  32px;
+      width: 40px;
     }
 
     .hamburger-menu {
       display: inline-block;  /* Show the hamburger on smaller screens */
     }
-  
+
     .nav {
       display: none;  /* Hide the navigation by default */
       width: 100%;
       background-color: #333;
       position: absolute;
-      top: 77px;
+      top: 65px;
       left: 0;
-      z-index: 1;
+      z-index: 10;
       color: white;
       box-shadow: 0px 6px 12px 6px rgba(0, 0, 0, 0.473);
     }
-    
+
     .nav-accordion{display: block;}
 
     .nav-list {

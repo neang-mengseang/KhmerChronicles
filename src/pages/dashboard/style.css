@@ -1,0 +1,42 @@
+header{
+    background-color: red;
+}
+header .auth-container{
+    position: absolute;
+    right: 16px;
+    top: 16px;
+}
+main{
+    display: flex;
+}
+.sidebar {
+    width: 200px;
+    height: 100vh;
+    background: #333;
+    color: white;
+    padding-top: 20px;
+    position: fixed;
+}
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+.sidebar ul li {
+    padding: 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #444;
+}
+.sidebar ul li:hover {
+    background: #555;
+}
+.content {
+    flex: 1;
+    padding: 20px;
+    margin-left: 200px;
+}
+.tab {
+    display: none;
+}
+.active {
+    display: block;
+}

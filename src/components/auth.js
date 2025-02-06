@@ -1,13 +1,13 @@
 // Ensure Netlify Identity is initialized
-netlifyIdentity.init();
-defaultImageUrl = "/src/assets/img/user.svg";
+if (window.netlifyIdentity) {
+  window.netlifyIdentity.on("init", (user) => {
+    if (user) fetchUserProfile(user.id);
+  });
+}
+
+const defaultImageUrl = "/src/assets/img/user.svg";
 const user = localStorage.getItem("user");
 const storedUserId = localStorage.getItem("userId");
-if (user) {
-  fetchUserProfile(storedUserId);
-}else{
-  netlifyIdentity.logout();
-}
 
 // Select the existing auth-container
 const authContainer = document.querySelector(".auth-container");
@@ -18,7 +18,7 @@ function createAuthElements() {
   loginBtn.id = "loginBtn";
   loginBtn.classList.add("btn", "login");
   loginBtn.textContent = "Login";
-  loginBtn.style.display = "inline-block";
+  loginBtn.style.display = "none";
 
   const userInfo = document.createElement("div");
   userInfo.id = "userInfo";
@@ -57,6 +57,10 @@ function createAuthElements() {
   authContainer.appendChild(userInfo);
   authContainer.appendChild(userMenu);
 
+  if (!localStorage.getItem("userId")) {
+    document.getElementById("loginBtn").style.display = "inline-block";
+  }
+  
   // Open/close user menu
   document.getElementById("userProfileLink").addEventListener("click", () => {
     userMenu.classList.toggle("open");
@@ -93,7 +97,7 @@ createAuthElements();
 
 // When the user logs in
 netlifyIdentity.on("login", async function (user) {
-  console.log("User logged in:", user);
+  // console.log("User logged in:", user);
   localStorage.setItem("userId", user.id); // Store user ID in localStorage
   localStorage.setItem("user", true); // Store user ID in localStorage
   document.getElementById("loginBtn").style.display = "none";
@@ -112,44 +116,48 @@ netlifyIdentity.on("login", async function (user) {
     userImage: defaultImageUrl, // Default profile picture
   };
 
-  console.log("User ID: " + userData.id);
-  console.log("User Name: " + userData.username);
-  console.log("✅ Checking user in Contentful...");
+  //console.log("User ID: " + userData.id);
+  //console.log("User Name: " + userData.username);
+  //console.log("✅ Checking user in Contentful...");
 
   // Check if user already exists in Contentful
   try {
+    /*
     const response = await fetch("/.netlify/functions/check-user", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData),
     });
+    */
+    const response = await fetch(`/.netlify/functions/get-user?id=${user.id}`);
 
     const result = await response.json();
 
-    console.log(`Result: ${result.exists}`);
+    //console.log(`Result: ${result.exists}`);
     if (result.exists === true) {
       // If the user exists in Contentful, fetch updated info
-      console.log("User exists, fetching updated info...");
+      //console.log("User exists, fetching updated info...");
       const userFromContentful = result.user; // Assuming backend sends updated user data
-      // Update profile UI with latest info
-      const profileImageUrl =
-        userFromContentful.profile_picture?.fields?.file?.url ||
-        defaultImageUrl;
-      console.log(profileImageUrl);
+      // Update profile UI with latest userInfo
+      const profileImageUrl = userFromContentful.profile_picture;
       document.getElementById("profilePicture").src = profileImageUrl;
       document.getElementById("profilePictureInMenu").src = profileImageUrl;
-      console.log("profileImageUrl");
-      document.getElementById("userName").textContent = userFromContentful.username;
-      location.reload();
+      //console.log("profileImageUrl");
+      document.getElementById("userName").textContent =
+        userFromContentful.username;
+
+      localStorage.setItem("userData", JSON.stringify(userFromContentful));
+      localStorage.setItem("userImg", profileImageUrl);
     } else {
       // If the user doesn't exist, create a new entry in Contentful
-      console.log("❌ Can not find user in the Database");
+      //console.log("❌ Can not find user in the Database");
       const createResult = await registerUser(user);
       localStorage.setItem("userData", JSON.stringify(createResult)); // Store newly created user data
 
       // Update profile UI with new data
       document.getElementById("profilePicture").src = createResult.userImage;
-      document.getElementById("profilePictureInMenu").src = createResult.userImage;
+      document.getElementById("profilePictureInMenu").src =
+        createResult.userImage;
       document.getElementById("userName").textContent = createResult.username;
 
       location.reload();
@@ -163,11 +171,14 @@ netlifyIdentity.on("login", async function (user) {
 netlifyIdentity.on("logout", () => {
   localStorage.removeItem("userId");
   localStorage.removeItem("user");
-  console.log("User logged out");
+  localStorage.removeItem("userImg");
+  //console.log("User logged out");
 
   document.getElementById("loginBtn").style.display = "inline-block";
   document.getElementById("userInfo").style.display = "none";
-  document.getElementById("userMenu").classList.remove("open"); // Close the menu on logout
+  document.getElementById("userMenu").classList.remove("open");
+
+  location.reload();
 });
 
 // Define the registerUser function that will be called when the user signs up
@@ -182,11 +193,11 @@ const registerUser = async (user) => {
     role: "content creator", // Default role for new users
   };
 
-  console.log("Registering User", userData);
+  //console.log("Registering User", userData);
 
-  console.log("🛠️ Creating New user account");
-  console.log("🛠️ User Data: ");
-  console.log(userData);
+  //console.log("🛠️ Creating New user account");
+  //console.log("🛠️ User Data: ");
+  //console.log(userData);
 
   // Send the data to the backend (create-user function)
   try {
@@ -201,7 +212,7 @@ const registerUser = async (user) => {
     const result = await response.json();
 
     if (response.ok) {
-      console.log("User created successfully in Contentful:", result);
+      //console.log("User created successfully in Contentful:", result);
       location.reload();
       // You can handle UI updates here if necessary, like redirecting the user
     } else {
@@ -220,22 +231,35 @@ netlifyIdentity.on("signup", async function (user) {
 
 async function fetchUserProfile(userId) {
   try {
+      //console.log("User Found");
+      const data = JSON.parse(localStorage.getItem("userData")) || {};
+      //console.log(`Local Storage: ${data}`);
+      document.getElementById("loginBtn").style.display = "none";
+      document.getElementById("userInfo").style.display = "inline-block";
+      document.getElementById("profilePicture").src =
+        data.profile_picture || defaultImageUrl;
+  
+      document.getElementById("profilePictureInMenu").src =
+      data.profile_picture || defaultImageUrl;
+      document.getElementById("userName").textContent =
+        data.username || "Anonymous";
+    /*
     const response = await fetch(`/.netlify/functions/get-user?id=${userId}`);
     if (!response.ok) throw new Error("Failed to fetch user profile.");
-
     const data = await response.json();
-    //console.log("✅ Retrieved user profile:", data);
+    console.log(`Fetched Data: ${JSON.stringify(data)}`);
     const profileImageUrl = data.user.profile_picture;
-    //  console.log(`Profile Url: ${profileImageUrl}`);
-
     document.getElementById("loginBtn").style.display = "none";
     document.getElementById("userInfo").style.display = "block";
-    document.getElementById("profilePicture").src = profileImageUrl ||  defaultImageUrl;
+    document.getElementById("profilePicture").src =
+      profileImageUrl || defaultImageUrl;
 
     document.getElementById("profilePictureInMenu").src =
       profileImageUrl || defaultImageUrl;
     document.getElementById("userName").textContent =
       data.user.username || "Anonymous";
+    */
+   
   } catch (error) {
     console.error("❌ Error fetching user profile:", error);
   }

@@ -103,7 +103,8 @@ main{
   justify-content: center;
   align-items: center;
   font-size: 0.9rem;
-  gap: 12px;
+  gap: 16px;
+  font-weight: bold;
 }
 
 .badge.admin{
