@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const { documentToHtmlString } = require('@contentful/rich-text-html-renderer'); // Import rich text renderer
+const { documentToHtmlString } = require('@contentful/rich-text-html-renderer');
 const ejs = require('ejs');
 const path = require('path');
 const fs = require('fs');
@@ -16,12 +16,20 @@ function generateSlug(title) {
 }
 
 exports.handler = async function(event, context) {
-  console.log('Event:', event);
-  const { slug } = event.queryStringParameters;
-  console.log('Incoming slug from query:', slug);
+  console.log('Event:', event); // Log the full event object for inspection
+
+  const { path } = event;
+  console.log('Incoming path:', path);
+
+  // Extract slug from the path (after `/travel-articles/`)
+  const slug = path.split('/').pop().split('?')[0]; // Handle query parameters
+  console.log('Extracted slug:', slug);
 
   // Construct Contentful API URL for fetching articles
   const url = `https://cdn.contentful.com/spaces/${spaceID}/entries?access_token=${accessToken}&content_type=travelArticles&include=1`;
+
+  // Define templatePath above to avoid access before initialization error
+  const templatePath = 'src/views/article-template.ejs';
 
   try {
     const response = await fetch(url);
@@ -30,16 +38,13 @@ exports.handler = async function(event, context) {
     }
 
     const data = await response.json();
-
-    const decodedSlug = decodeURIComponent(slug);
-
+    
     // Find the article that matches the slug
     const articleEntry = data.items.find(item => {
-      const generatedSlug = generateSlug(item.fields.title);
-      console.log(`Comparing: `);
-      console.log(`${generatedSlug}`);
-      console.log(`${decodedSlug}`);
-      return generatedSlug === slug;
+      const generatedSlug = generateSlug(item.fields.title).toLowerCase();
+      const targetSlug = slug.toLowerCase();
+      console.log(`Comparing generatedSlug: '${generatedSlug}' with slug: '${targetSlug}'`);
+      return generatedSlug === targetSlug;
     });
 
     if (!articleEntry) {
@@ -49,9 +54,8 @@ exports.handler = async function(event, context) {
       };
     }
 
-
+    // Extract article fields and render it
     const contentHtml = documentToHtmlString(articleEntry.fields.content);
-    // Extract article fields
     const articleData = {
       title: articleEntry.fields.title,
       authorId: articleEntry.fields.authorId || 'Unknown Author',
@@ -66,30 +70,23 @@ exports.handler = async function(event, context) {
     // Extract image if available
     if (articleEntry.fields.image && articleEntry.fields.image.sys) {
       const imageID = articleEntry.fields.image.sys.id;
-
-      // Look for the image asset in `includes.Asset`
       const imageAsset = data.includes?.Asset?.find(asset => asset.sys.id === imageID);
       if (imageAsset && imageAsset.fields.file.url) {
         articleData.imageUrl = `https:${imageAsset.fields.file.url}`;
       }
     }
 
+        // Extract image if available
     if (articleEntry.fields.authorImage && articleEntry.fields.authorImage.sys) {
-      const authorImgId = articleEntry.fields.authorImage.sys.id;
-
-      // Look for the image asset in `includes.Asset`
-      const authorImgAsset = data.includes?.Asset?.find(asset => asset.sys.id === authorImgId);
-      if (authorImgAsset && authorImgAsset.fields.file.url) {
-        articleData.authorImage = `https:${authorImgAsset.fields.file.url}`;
+      const authorImageID = articleEntry.fields.authorImage.sys.id;
+      const authorImageAsset = data.includes?.Asset?.find(asset => asset.sys.id === authorImageID);
+      if (authorImageAsset && authorImageAsset.fields.file.url) {
+        articleData.authorImage = `https:${authorImageAsset.fields.file.url}`;
       }
     }
-    
 
-    // Path to the EJS template
-    const templatePath = path.resolve(__dirname, '..', '..', 'src', 'views', 'article-template.ejs');
+    // Read template and render it
     const template = fs.readFileSync(templatePath, 'utf-8');
-
-    // Render the HTML with the article data
     const renderedHtml = ejs.render(template, { article: articleData });
 
     return {
