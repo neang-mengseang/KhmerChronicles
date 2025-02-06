@@ -16,9 +16,8 @@ function generateSlug(title) {
 }
 
 exports.handler = async function(event, context) {
-  console.log('Event:', event); // Logs the full event object for inspection
   const { slug } = event.queryStringParameters;
-  console.log(`Fetching article with slug: ${slug}`);
+  console.log('Incoming slug from query:', slug);
 
   // Construct Contentful API URL for fetching articles
   const url = `https://cdn.contentful.com/spaces/${spaceID}/entries?access_token=${accessToken}&content_type=travelArticles&include=1`;
@@ -30,13 +29,15 @@ exports.handler = async function(event, context) {
     }
 
     const data = await response.json();
-    
+
+    const decodedSlug = decodeURIComponent(slug);
+
     // Find the article that matches the slug
     const articleEntry = data.items.find(item => {
       const generatedSlug = generateSlug(item.fields.title);
       console.log(`Comparing: `);
       console.log(`${generatedSlug}`);
-      console.log(`${slug}`);
+      console.log(`${decodedSlug}`);
       return generatedSlug === slug;
     });
 
