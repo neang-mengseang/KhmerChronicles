@@ -16,6 +16,7 @@ function generateSlug(title) {
 }
 
 exports.handler = async function(event, context) {
+  console.log('Event:', event);
   const { slug } = event.queryStringParameters;
   console.log('Incoming slug from query:', slug);
 
