@@ -45,7 +45,8 @@ const getUserData = async (username) => {
 
 exports.handler = async (event, context) => {
   const { username } = event.queryStringParameters;
-
+  console.log(`Finding user ${username}`);
+  console.log("Username Required");
   if (!username) {
     return {
       statusCode: 400,
