@@ -24,4 +24,3 @@
   from = "/profile/:username"
   to = "/.netlify/functions/profile?username=:username"
   status = 200
-  force = true

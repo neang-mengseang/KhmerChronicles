@@ -45,7 +45,7 @@ const getUserData = async (username) => {
 
 exports.handler = async (event, context) => {
   const username = event.queryStringParameters?.username;
-
+  
   console.log(`Finding user : { ${username} }`);
   if (!username) {
     return {
