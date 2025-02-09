@@ -44,12 +44,9 @@ const getUserData = async (username) => {
 
 
 exports.handler = async (event, context) => {
-  console.log("Event:", event);
-  console.log("Context:", context);
-    
-  const username = event.queryStringParameters?.username; // Correct way to get username
-  console.log(`Finding user ${username}`);
+  const username = event.queryStringParameters?.username;
 
+  console.log(`Finding user : { ${username} }`);
   if (!username) {
     return {
       statusCode: 400,
@@ -59,7 +56,7 @@ exports.handler = async (event, context) => {
 
   // Fetch user data from Contentful
   const userData = await getUserData(username);
-
+  console.log(userData);
   if (!userData) {
     return {
       statusCode: 404,
@@ -67,9 +64,25 @@ exports.handler = async (event, context) => {
     };
   }
 
+  // Path to the EJS template
+    const filePath = path.resolve(__dirname, '..', '..', 'src', 'views', 'profile-template.ejs');
+  
+  // Render the EJS template with user data
+  const template = fs.readFileSync(filePath, 'utf-8');
+  const html = ejs.render(template, {
+    username: userData.username,
+    role: userData.role,  // Add role
+    id: userData.id,      // Add id
+    email: userData.email,
+    bio: userData.bio,
+    profileImgUrl: userData.profileImgUrl,
+  });
+
   return {
     statusCode: 200,
-    body: JSON.stringify(userData),
-    headers: { 'Content-Type': 'application/json' },
+    body: html,
+    headers: {
+      'Content-Type': 'text/html',
+    },
   };
 };
