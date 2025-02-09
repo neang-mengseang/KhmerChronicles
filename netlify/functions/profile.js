@@ -2,6 +2,7 @@ const ejs = require('ejs');
 const fs = require('fs');
 const path = require('path');
 const contentful = require('contentful');
+const { json } = require('stream/consumers');
 
 console.log("==> Function { profile.js } triggered!")
 
@@ -44,10 +45,9 @@ const getUserData = async (username) => {
 
 
 exports.handler = async (event, context) => {
-  const username = event.queryStringParameters?.username;
-  
+  const username = event.path.split('/').pop().split('?')[0];
   console.log(`Finding user : { ${username} }`);
-  if (!username) {
+  if (!username || username.trim() === "") {
     return {
       statusCode: 400,
       body: JSON.stringify({ error: 'Username is required' }),

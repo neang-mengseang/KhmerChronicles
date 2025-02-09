@@ -16,7 +16,6 @@ function generateSlug(title) {
 }
 
 exports.handler = async function(event, context) {
-  console.log('Event:', event); // Log the full event object for inspection
 
   const { path } = event;
   console.log('Incoming path:', path);
