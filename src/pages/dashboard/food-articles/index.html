@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Management Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; display: flex; margin: 0;}
+        #sidebar { width: 250px; background: #333; color: white; padding: 20px; height: 100vh; }
+        #sidebar button { display: block; background: none; color: white; border: none; padding: 10px; cursor: pointer; text-align: left; width: 100%; }
+        #sidebar button:hover { background: #444; }
+        #main { flex: 1; padding: 20px; }
+        .content-item { display: flex; align-items: center; background: #f8f8f8; margin: 10px 0; padding: 10px; border-radius: 5px; cursor: pointer; }
+        .content-item img { width: 50px; height: 50px; border-radius: 50%; margin-right: 10px; }
+        .hidden-details { display: none; padding-top: 10px; }
+        button { cursor: pointer; padding: 5px 10px; margin: 5px; }
+        #editContentSection { display: none; padding: 20px; background: #eee; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <div id="sidebar">
+        <h3>Content Types</h3>
+        <button onclick="changeContentType('foodarticle')">Food Articles</button>
+        <button onclick="changeContentType('travelarticle')">Travel Articles</button>
+        <button onclick="changeContentType('top-pick')">Top Picks</button>
+    </div>
+
+    <div id="main">
+        <h2 id="currentTypeTitle">Food Articles</h2>
+        <div id="contentList"></div>
+
+        <h3>Add New Content</h3>
+        <div id="addForm"></div>
+        <button id="addButton">Add</button>
+
+        <div id="editContentSection">
+            <h3>Edit Content</h3>
+            <div id="editForm"></div>
+            <button id="editButton">Save Changes</button>
+            <button onclick="cancelEdit()">Cancel</button>
+        </div>
+    </div>
+
+    <script src="/src/pages/dashboard/script.js"></script>
+
+</body>
+</html>

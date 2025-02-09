@@ -1,0 +1,72 @@
+/* Default dark theme */
+:root {
+    --background-1: #252627;
+    --background-2: #333;
+    --font-color-1: rgb(231, 225, 225);
+    --cyan: #119DA4;
+}
+
+/* Light theme */
+[data-theme="light"] {
+    --background-1: #f4f4f4;
+    --background-2: #e0e0e0;
+    --font-color-1: #333;
+    --cyan: #119DA4;
+}
+
+
+.dashboard {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+.stats {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.stat-card {
+    padding: 15px;
+    background-color: var(--background-2);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.stat-card h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.stat-card p {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+
+
+.recent-content {
+    margin-top: 20px;
+}
+
+.recent-content h2 {
+    font-size: 20px;
+}
+
+.dashboard ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.dashboard ul li {
+    background-color: #f4f4f4;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+}

@@ -14,3 +14,12 @@
 /contact/ /src/pages/contact/index.html 200;
 /dashboard/ /src/pages/dashboard/index.html 200;
 /profile/ /src/pages/profile/index.html 200;
+
+
+/dashboard/food-ranking /src/pages/dashboard/food-ranking/index.html 200;
+/dashboard/food-articles /src/pages/dashboard/food-articles/index.html 200;
+/dashboard/cuisines-gallery /src/pages/dashboard/cuisine-gallery/index.html 200;
+
+/dashboard/top-pick /src/pages/dashboard/top-pick/index.html 200;
+/dashboard/travel-articles /src/pages/dashboard/travel-articles/index.html 200;
+/dashboard/travel-gallery /src/pages/dashboard/travel-gallery/index.html 200;

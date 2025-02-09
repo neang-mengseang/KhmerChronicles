@@ -1,94 +1,30 @@
-window.onload = function() {
-  const user = JSON.parse(localStorage.getItem('user')); // Check if user is logged in
-};
+window.addEventListener('load', () => {
+    console.log(`Script.js is loading...`);
+    const themeToggle = document.getElementById('theme-toggle');
+    const savedTheme = localStorage.getItem('theme');
 
-
-const contentStructures = {
-  foodRanking: [
-    { name: "title", label: "Title", type: "text" },
-    { name: "ranking", label: "Ranking", type: "number" },
-    { name: "image", label: "Image", type: "file" },
-  ],
-  travelArticle: [
-    { name: "title", label: "Title", type: "text" },
-    { name: "author", label: "Author", type: "text" },
-    { name: "content", label: "Content", type: "textarea" },
-  ],
-  newsArticle: [
-    { name: "title", label: "Title", type: "text" },
-    { name: "date", label: "Date", type: "date" },
-    { name: "summary", label: "Summary", type: "textarea" },
-  ],
-};
-
-function loadFields() {
-  const selectedType = document.getElementById("contentType").value;
-  const formFieldsDiv = document.getElementById("form-fields");
-  formFieldsDiv.innerHTML = "";
-
-  if (selectedType && contentStructures[selectedType]) {
-    contentStructures[selectedType].forEach(field => {
-      let input;
-      if (field.type === "textarea") {
-        input = document.createElement("textarea");
-      } else {
-        input = document.createElement("input");
-        input.type = field.type;
-      }
-      input.name = field.name;
-      input.placeholder = field.label;
-      
-      const label = document.createElement("label");
-      label.innerText = field.label;
-      
-      formFieldsDiv.appendChild(label);
-      formFieldsDiv.appendChild(input);
-    });
-  }
-}
-
-document.getElementById("content-form").addEventListener("submit", async (event) => {
-  event.preventDefault();
-  
-  const selectedType = document.getElementById("contentType").value;
-  if (!selectedType) {
-    alert("Please select a content type");
-    return;
-  }
-
-  const formData = new FormData(event.target);
-  let fields = {};
-
-  for (const [key, value] of formData.entries()) {
-    if (key === "image") {
-      const file = value;
-      if (file.size > 0) {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = async () => {
-          fields[key] = {
-            title: file.name,
-            contentType: file.type,
-            fileName: file.name,
-            data: reader.result.split(",")[1],
-          };
-          await sendData(selectedType, fields);
-        };
-        return;
-      }
+    // Apply the saved theme on page load
+    if (savedTheme === 'dark') {
+        document.body.setAttribute("data-theme", "dark");
+        themeToggle.checked = true; // Reflect the saved dark theme state
     } else {
-      fields[key] = value;
+        document.body.setAttribute("data-theme", "light");
+        themeToggle.checked = false; // Reflect the saved light theme state
     }
-  }
-  await sendData(selectedType, fields);
+
+    themeToggle.addEventListener('change', toggleTheme);
 });
 
-async function sendData(contentType, fields) {
-  const response = await fetch("/.netlify/functions/createContent", {
-    method: "POST",
-    body: JSON.stringify({ contentType, fields }),
-  });
+function toggleTheme() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const isDarkTheme = themeToggle.checked;
 
-  const data = await response.json();
-  alert(data.message || "Error");
+    // Apply the theme based on checkbox state
+    if (isDarkTheme) {
+        document.body.setAttribute("data-theme", "dark");
+        localStorage.setItem('theme', 'dark'); // Save dark theme preference
+    } else {
+        document.body.setAttribute("data-theme", "light");
+        localStorage.setItem('theme', 'light'); // Save light theme preference
+    }
 }
