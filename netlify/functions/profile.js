@@ -15,38 +15,40 @@ const client = contentful.createClient({
 const getUserData = async (username) => {
   try {
     const response = await client.getEntries({
-      content_type: 'user', // The content type ID for users in Contentful
-      'fields.username': username, // Filter by username field
-      limit: 1, // Limit to 1 result
+      content_type: 'user',
+      'fields.username': username,
+      limit: 1,
     });
-    //console.log(response.items[0].fields);
-    if (response.items.length > 0) {
-      console.log("User Found!");
-      const user = response.items[0].fields;
-      // Safety check for profile image
-      const profileImgUrl = user.userImage?.fields?.file?.url || '';
-      return {
-        id: user.id,
-        username: user.username,
-        role: user.role || 'guest',
-        email: user.email,
-        bio: user.bio || 'No bio available.',
-        profileImgUrl: profileImgUrl, // Fallback if profile image is not available
-      };
+
+    if (response.items.length === 0) {
+      console.log(`No user found with username: ${username}`);
+      return null;
     }
 
-    console.log(`No user found with username: ${username}`);
-    return null; // No user found
+    const user = response.items[0].fields;
+    const profileImgUrl = user.userImage?.fields?.file?.url ? `https:${user.userImage.fields.file.url}` : '';
+
+    return {
+      id: response.items[0].sys.id, // Contentful stores ID in sys.id
+      username: user.username || 'Unknown',
+      role: user.role || 'guest',
+      email: user.email || 'No email provided',
+      bio: user.bio || 'No bio available.',
+      profileImgUrl: profileImgUrl,
+    };
   } catch (error) {
     console.error('Error fetching user from Contentful:', error);
     return null;
   }
 };
 
+
 exports.handler = async (event, context) => {
-  const { username } = event.queryStringParameters;
+  console.log('Event:', event); // Debugging log
+  
+  const username = event.queryStringParameters?.username; // Correct way to get username
   console.log(`Finding user ${username}`);
-  console.log("Username Required");
+
   if (!username) {
     return {
       statusCode: 400,
@@ -56,7 +58,7 @@ exports.handler = async (event, context) => {
 
   // Fetch user data from Contentful
   const userData = await getUserData(username);
-  console.log(userData);
+
   if (!userData) {
     return {
       statusCode: 404,
@@ -64,25 +66,9 @@ exports.handler = async (event, context) => {
     };
   }
 
-  // Path to the EJS template
-    const filePath = path.resolve(__dirname, '..', '..', 'src', 'views', 'profile-template.ejs');
-  
-  // Render the EJS template with user data
-  const template = fs.readFileSync(filePath, 'utf-8');
-  const html = ejs.render(template, {
-    username: userData.username,
-    role: userData.role,  // Add role
-    id: userData.id,      // Add id
-    email: userData.email,
-    bio: userData.bio,
-    profileImgUrl: userData.profileImgUrl,
-  });
-
   return {
     statusCode: 200,
-    body: html,
-    headers: {
-      'Content-Type': 'text/html',
-    },
+    body: JSON.stringify(userData),
+    headers: { 'Content-Type': 'application/json' },
   };
 };
