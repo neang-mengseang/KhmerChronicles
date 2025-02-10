@@ -3,6 +3,7 @@
     "@contentful/rich-text-html-renderer": "^17.0.0",
     "axios": "^1.7.9",
     "busboy": "^1.6.0",
+    "chart.js": "^4.4.7",
     "contentful": "^11.4.4",
     "contentful-management": "^11.43.2",
     "ejs": "^3.1.10",

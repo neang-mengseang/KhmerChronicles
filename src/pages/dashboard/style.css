@@ -46,10 +46,14 @@ main{
 
 header{
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
     align-items: center;
     gap: 12px;
-    padding: 12px;
+    padding: 12px 24px;
+}
+
+header .right{
+  display: flex;
 }
 
 header img{

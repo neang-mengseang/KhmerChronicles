@@ -16,8 +16,10 @@
 
 
 .dashboard {
-    padding: 20px;
+    width: 100%;
     font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: space-between;
 }
 
 h1 {
@@ -25,28 +27,56 @@ h1 {
 }
 
 .stats {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    gap: 12px;
+    width: 50%;
+    display: grid;
+    justify-content: space-evenly;
+    grid-template-columns: 320px 320px;
+    grid-template-rows: 250px 250px;
 }
 
 .stat-card {
     padding: 15px;
     background-color: var(--background-2);
     border-radius: 8px;
+    display: flex;
+    flex-direction: column;
     text-align: center;
+    align-items: center;
+    justify-content: center;
 }
+
+.card{
+    box-sizing: border-box;
+    width: 300px;
+    height: 220px;
+    background: rgba(217, 217, 217, 0.58);
+    border: 1px solid white;
+    box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(6px);
+    border-radius: 17px;
+    cursor: pointer;
+    transition: all 0.5s;
+    user-select: none;
+    color: black;
+}
+
+.card:hover {
+    border: 1px solid var(--cyan);
+    transform: scale(1.05);
+  }
+  
+  .card:active {
+    transform: scale(0.95) rotateZ(1.7deg);
+  }
 
 .stat-card h3 {
     margin: 0;
     font-size: 18px;
+    color: #494949;
 }
 
-.stat-card p {
-    font-size: 24px;
-    margin-top: 10px;
+.stat-card .counter{
+    font-size: 3rem;
 }
 
 
@@ -69,4 +99,47 @@ h1 {
     margin: 5px 0;
     padding: 10px;
     border-radius: 5px;
+}
+
+.chart_container{
+    width: 600px;
+    height: auto;
+}
+
+#myChart {
+    width: 100%;
+    height: auto;
+    margin-right: 60px;
+}
+
+.content-counts {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.content-counts div {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+}
+.content-counts div p {
+    margin: 10px 0;
+    font-size: 1.1em;
+}
+.content-counts div span {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+@media (max-width: 1020px) {
+    .dashboard{
+        padding: 12px;
+        flex-direction: column;
+    }
+
+    .stat{
+        grid-template-columns: 320px;
+    }
 }

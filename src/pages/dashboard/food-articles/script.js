@@ -1,53 +1,56 @@
-let currentContentType = "foodArticle";  // Set the content type manually
-
-window.onload = () => loadContent(); // Load content on page load
-
-function loadContent() {
-    console.log(`Load Content is running...`);
-    fetch(`/.netlify/functions/fetchContent?contentType=${currentContentType}`)
-    .then(res => res.json())
-    .then(data => {
-        console.log("Fetched data:", data);  // Log the entire response to check its structure
-        
-        // Ensure that 'items' exists in the data
-        if (!data) {
-            console.error("Error: Missing or invalid 'items' in API response.");
-            return;
-        }
-
-        const contentList = document.getElementById("contentList");
-        contentList.innerHTML = "";  // Clear existing content
-        
-        // Proceed with the forEach loop
-        data.forEach(item => {
-            console.log(item);  // Log each item
-            const fields = item.fields;
-            const title = fields.title || "Untitled";
-            const date = fields.date || "Unknown Date";
-            const authorImage = fields.authorImage || "/src/assets/img/user.svg";
-            const authorName = fields.authorName || "Unknown Author";
-
-            const div = document.createElement("div");
-            div.classList.add("content-item");
-            div.innerHTML = `
-                <img src="${authorImage}" alt="Author">
-                <div>
-                    <strong>${title}</strong> <br>
-                    <small>${date} - ${authorName}</small>
-                    <div class="hidden-details">
-                        <pre>${JSON.stringify(fields, null, 2)}</pre>
-                        <button onclick="editContent('${item.id}')">Edit</button>
-                        <button onclick="deleteContent('${item.id}')">Delete</button>
-                    </div>
+async function fetchArticles(contentType) {
+    const response = await fetch('/.netlify/functions/fetch', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ type: contentType, get: "fetch" }), // Include id if requesting a specific article
+    });
+  
+    const data = await response.json();
+    return data;
+  }
+  
+  function generateSlug(title) {
+    return title.toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, '')   // Remove special characters
+      .replace(/\s+/g, '-')           // Replace spaces with hyphens
+      .replace(/^-+|-+$/g, '');       // Remove leading & trailing hyphens
+  } 
+  
+  async function loadArticles() {
+    document.addEventListener("DOMContentLoaded", () => {
+      fetchArticles("foodArticle")
+        .then((data) => {
+          if (data.exists) {
+            const container = document.getElementById("articles-container");
+            container.innerHTML = ""; // Clear previous content
+            data.articles.forEach((article) => {
+              const card = document.createElement("div");
+              card.classList.add("article-card");
+              const generatedSlug = generateSlug(article.title);
+              card.innerHTML = `
+                <img src="${article.image}" alt="${article.title}" class="article-image">
+                <div class="article-content">
+                  <h2 class="article-title">${article.title}</h2>
+                  <p class="article-author">By ${article.author.authorName} - ${article.dateCreate}</p>
+                  <p class="article-description">${article.introduction}</p>
+                  <a href="/food-articles/${generatedSlug}" class="read-more">Read More</a>
                 </div>
-            `;
-
-            div.addEventListener("click", () => {
-                div.querySelector(".hidden-details").style.display = "block";
+              `;
+  
+              container.appendChild(card);
             });
-
-            contentList.appendChild(div);
+          } else {
+            console.log("No articles found");
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching articles:", error);
         });
-    })
-    .catch(err => console.error("Error loading content:", err));
-}
+    });
+  }
+  
+  // Call function on page load
+  loadArticles();
+  

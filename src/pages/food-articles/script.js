@@ -1,31 +1,55 @@
-const contentType = 'foodArticle';
-const spaceID = 'ntvh3j97dkce';
-const accessToken = 'UC-xnFZuPk2OsBKWYLdZ8H6kwocji0aL37B5OvtH8HM';
+async function fetchArticles(contentType) {
+  const response = await fetch('/.netlify/functions/fetch', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ type: contentType, get: "fetch" }), // Include id if requesting a specific article
+  });
 
-// Fetch the articles from Contentful using their API
-fetch(`https://cdn.contentful.com/spaces/${spaceID}/entries?access_token=${accessToken}&content_type=${contentType}`)
-    .then(response => response.json())
-    .then(data => {
-      const articleList = document.getElementById('article-list');
-      data.items.forEach(item => {
-        // Use the item's sys.id to get the entryID
-        let slug = item.fields.slug || item.fields.title
-        .toLowerCase()
-        .trim()
-        .replace(/[^a-z0-9\s-]/g, '')  // Remove special characters
-        .replace(/\s+/g, '-')          // Replace spaces with hyphens
-        .replace(/^-+|-+$/g, '');      // Remove leading/trailing hyphens
+  const data = await response.json();
+  return data;
+}
 
-        console.log(`Slug: ${slug}`);
-        const articleItem = document.createElement('li');
-        const articleLink = document.createElement('a');
-        articleLink.href = `/food-article/${slug}`;
-        articleLink.textContent = item.fields.title;
-        
-        articleItem.appendChild(articleLink);
-        articleList.appendChild(articleItem);
+function generateSlug(title) {
+  return title.toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')   // Remove special characters
+    .replace(/\s+/g, '-')           // Replace spaces with hyphens
+    .replace(/^-+|-+$/g, '');       // Remove leading & trailing hyphens
+} 
+
+async function loadArticles() {
+  document.addEventListener("DOMContentLoaded", () => {
+    fetchArticles("foodArticle")
+      .then((data) => {
+        if (data.exists) {
+          const container = document.getElementById("articles-container");
+          container.innerHTML = ""; // Clear previous content
+          data.articles.forEach((article) => {
+            const card = document.createElement("div");
+            card.classList.add("article-card");
+            const generatedSlug = generateSlug(article.title);
+            card.innerHTML = `
+              <img src="${article.image}" alt="${article.title}" class="article-image">
+              <div class="article-content">
+                <h2 class="article-title">${article.title}</h2>
+                <p class="article-author">By ${article.author.authorName} - ${article.dateCreate}</p>
+                <p class="article-description">${article.introduction}</p>
+                <a href="/food-article/${generatedSlug}" class="read-more">Read More</a>
+              </div>
+            `;
+
+            container.appendChild(card);
+          });
+        } else {
+          console.log("No articles found");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching articles:", error);
       });
-    })
-    .catch(error => {
-      console.error('Error fetching data:', error);
-    });
+  });
+}
+
+// Call function on page load
+loadArticles();
