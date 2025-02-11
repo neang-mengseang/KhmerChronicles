@@ -12,6 +12,9 @@
 <body>
 
     <aside id="sidebar">
+      <button id="close-sidebar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
         <a href="/">
             <div class="logo-container">
                 <img src="/src/assets/img/kc-logo-1.png" alt="KhmerChronicle.png">
@@ -22,6 +25,9 @@
             <li>
                 <a class="active" href="/dashboard"><i class="fa-solid fa-gauge-high"></i>Dashboard</a>
             </li>
+            <li>
+              <a href="/dashboard"><i class="fa-solid fa-terminal"></i>Terminal</a>
+          </li>
             <li>
                 <a href="/dashboard/food-ranking"><i class="fa-solid fa-ranking-star"></i>Food Ranking</a>
             </li>
@@ -46,7 +52,12 @@
 
     <main>
         <header>
-          <h1 class="title">Dashboard</h1>
+          <div class="left">
+            <button id="burger-btn">            
+              <i class="fa-solid fa-bars"></i>
+            </button>
+            <h1 class="title">Dashboard</h1>
+          </div>
           <div class="right">
             <label id="theme-toggle-button">
               <input type="checkbox" id="theme-toggle">
@@ -114,20 +125,20 @@
         <div class="dashboard">
             <div class="stats">
                 <div class="stat-card card">
-                    <h3>Current Food Articles</h3>
-                    <span id="food-article-count"  class="counter">Loading...</span>
+                    <h3><i class="fa-solid fa-burger"></i>Number of Food Articles</h3>
+                    <span id="food-article-count"  class="counter">0</span>
                 </div>
                 <div class="stat-card card">
-                    <h3>Current Food Gallery</h3>
-                    <span id="cuisine-gallery-count" class="counter">Loading...</span>
+                    <h3><i class="fa-solid fa-seedling"></i>Current Food Gallery</h3>
+                    <span id="cuisine-gallery-count" class="counter">0</span>
                 </div>
                 <div class="stat-card card">
-                    <h3>Current Travel Articles</h3>
-                    <span id="travel-article-count"  class="counter">Loading...</span>
+                    <h3><i class="fa-solid fa-mountain-sun"></i>Current Travel Articles</h3>
+                    <span id="travel-article-count"  class="counter">0</span>
                 </div>
                 <div class="stat-card card">
-                    <h3>Current Travel Gallery</h3>
-                    <span id="travel-gallery-count"  class="counter">Loading...</span>
+                    <h3><i class="fa-solid fa-images"></i>Current Travel Gallery</h3>
+                    <span id="travel-gallery-count"  class="counter">0</span>
                 </div>
                 </div>
                 <div class="chart_container">

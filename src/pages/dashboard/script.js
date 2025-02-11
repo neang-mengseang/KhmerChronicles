@@ -13,6 +13,8 @@ window.addEventListener('load', () => {
     }
 
     themeToggle.addEventListener('change', toggleTheme);
+
+    showSidebar();
 });
 
 function toggleTheme() {
@@ -27,4 +29,18 @@ function toggleTheme() {
         document.body.setAttribute("data-theme", "light");
         localStorage.setItem('theme', 'light'); // Save light theme preference
     }
+}
+
+function showSidebar(){
+    const burger = document.getElementById('burger-btn');
+    const sidebar = document.getElementById('sidebar');
+    const closeSidebar = document.getElementById('close-sidebar');
+    burger.addEventListener('click', () => {
+        sidebar.classList.toggle('show');
+    })
+
+    closeSidebar.addEventListener('click', () => {
+        sidebar.classList.toggle('show');
+    })
+    
 }
