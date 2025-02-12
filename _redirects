@@ -24,4 +24,6 @@
 /dashboard/travel-articles /src/pages/dashboard/travel-articles/index.html 200;
 /dashboard/travel-gallery /src/pages/dashboard/travel-gallery/index.html 200;
 
+/dashboard/terminal /src/pages/dashboard/terminal/index.html 200;
+
 /login /src/pages/login/index.html 200;

@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://kit.fontawesome.com/731249cdaa.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/src/pages/dashboard/style.css">
-    <link rel="stylesheet" href="/src/pages/dashboard/dashboard.css">
+    <link rel="stylesheet" href="/src/pages/dashboard/terminal/style.css">
 </head>
 <body>
 
@@ -24,10 +24,10 @@
 
         <ul>
             <li>
-                <a class="active" href="/dashboard"><i class="fa-solid fa-gauge-high"></i>Dashboard</a>
+                <a href="/dashboard"><i class="fa-solid fa-gauge-high"></i>Dashboard</a>
             </li>
             <li>
-              <a href="/dashboard/terminal"><i class="fa-solid fa-terminal"></i>Terminal</a>
+              <a  class="active" href="/dashboard/terminal"><i class="fa-solid fa-terminal"></i>Terminal</a>
           </li>
             <li>
                 <a href="/dashboard/food-ranking"><i class="fa-solid fa-ranking-star"></i>Food Ranking</a>
@@ -57,7 +57,7 @@
             <button id="burger-btn">            
               <i class="fa-solid fa-bars"></i>
             </button>
-            <h1 class="title">Dashboard</h1>
+            <h1 class="title">Terminal</h1>
           </div>
           <div class="right">
             <label id="theme-toggle-button">
@@ -123,34 +123,16 @@
           </div>
         </header>
 
-        <div class="dashboard">
-            <div class="stats">
-                <div class="stat-card card">
-                    <h3><i class="fa-solid fa-burger"></i>Number of Food Articles</h3>
-                    <span id="food-article-count"  class="counter">0</span>
-                </div>
-                <div class="stat-card card">
-                    <h3><i class="fa-solid fa-seedling"></i>Current Food Gallery</h3>
-                    <span id="cuisine-gallery-count" class="counter">0</span>
-                </div>
-                <div class="stat-card card">
-                    <h3><i class="fa-solid fa-mountain-sun"></i>Current Travel Articles</h3>
-                    <span id="travel-article-count"  class="counter">0</span>
-                </div>
-                <div class="stat-card card">
-                    <h3><i class="fa-solid fa-images"></i>Current Travel Gallery</h3>
-                    <span id="travel-gallery-count"  class="counter">0</span>
-                </div>
-                </div>
-                <div class="chart_container">
-                  <canvas id="myChart"></canvas>
-                </div>
-        </div>
+        <div class="main-content">
+          <button id="sync-content">Sync Content</button>
+  <p id="sync-status"></p>
+  <div id="sync-logs"></div>
 
+        </div>
       </main>
     
     <script src="/src/pages/dashboard/auth.js"></script>
-    <script src="/src/pages/dashboard/dashboard.js"></script>
+    <script src="/src/pages/dashboard/terminal/script.js"></script>
     <script src="https://kit.fontawesome.com/731249cdaa.js" crossorigin="anonymous"></script>
     <script src="/src/pages/dashboard/script.js" ></script>
 </body>
