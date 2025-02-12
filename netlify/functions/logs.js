@@ -14,7 +14,6 @@ exports.handler = async (event, context) => {
     }
 
     const data = fs.readFileSync(logFilePath, 'utf8');
-
     // Return the logs as JSON
     return {
       statusCode: 200,
