@@ -13,7 +13,7 @@ exports.handler = async (event, context) => {
   const webhookData = JSON.parse(event.body);
   console.log('Webhook received:', JSON.stringify(webhookData, null, 2));
 
-  // Log the event (content creation or update)
+  // Create the log entry
   const logEntry = {
     event: webhookData.sys.type, // Event type (e.g., "Entry created", "Entry updated")
     contentType: webhookData.fields?.contentType || 'Unknown', // Content type of the entry
@@ -22,16 +22,33 @@ exports.handler = async (event, context) => {
     details: webhookData.fields, // Fields that were sent
   };
 
-  // Format the log entry as a string
-  const logString = `[${logEntry.timestamp}] Event: ${logEntry.event}, Content Type: ${logEntry.contentType}, Entry ID: ${logEntry.entryId}, Details: ${JSON.stringify(logEntry.details)}\n`;
+  // Path to the JSON file where the logs will be stored
+  const logFilePath = path.join(__dirname, '..', 'logs.json');
 
-  // Write the log entry to a file (can also store it in a database)
-  const logFilePath = path.join(__dirname, '..', 'audit_log.txt');
-  fs.appendFileSync(logFilePath, logString);
+  try {
+    // Read the existing logs
+    let existingLogs = [];
+    if (fs.existsSync(logFilePath)) {
+      const data = fs.readFileSync(logFilePath, 'utf8');
+      existingLogs = JSON.parse(data);
+    }
 
-  // Respond to Contentful to acknowledge the webhook
-  return {
-    statusCode: 200,
-    body: JSON.stringify({ message: 'Webhook received and logged' }),
-  };
+    // Add the new log entry
+    existingLogs.push(logEntry);
+
+    // Write the updated logs back to the file
+    fs.writeFileSync(logFilePath, JSON.stringify(existingLogs, null, 2));
+
+    // Respond to Contentful to acknowledge the webhook
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ message: 'Webhook received and logged' }),
+    };
+  } catch (err) {
+    console.error('Error writing to log file:', err);
+    return {
+      statusCode: 500,
+      body: 'Error saving log entry.',
+    };
+  }
 };

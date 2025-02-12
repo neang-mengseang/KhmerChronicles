@@ -2,18 +2,25 @@ const fs = require('fs');
 const path = require('path');
 
 exports.handler = async (event, context) => {
-  const logFilePath = path.join(__dirname, '..', 'audit_log.txt');
+  const logFilePath = path.join(__dirname, '..', 'logs.json');
 
   try {
     // Read the log file content
+    if (!fs.existsSync(logFilePath)) {
+      return {
+        statusCode: 404,
+        body: 'Log file not found.',
+      };
+    }
+
     const data = fs.readFileSync(logFilePath, 'utf8');
 
-    // Return the log file as a plain text response
+    // Return the logs as JSON
     return {
       statusCode: 200,
-      body: `<pre>${data}</pre>`,
+      body: data,
       headers: {
-        'Content-Type': 'text/html',
+        'Content-Type': 'application/json',
       },
     };
   } catch (err) {
