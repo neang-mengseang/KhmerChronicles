@@ -23,7 +23,7 @@ exports.handler = async (event, context) => {
   };
 
   // Path to the JSON file where the logs will be stored
-  const logFilePath = path.join(__dirname, '..', 'logs.json');
+  const logFilePath = path.join(__dirname, 'data', 'logs.json');
 
   try {
     // Read the existing logs

@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 exports.handler = async (event, context) => {
-  const logFilePath = path.join(__dirname, '..', 'logs.json');
+    const logFilePath = path.join(__dirname, 'data', 'logs.json');
 
   try {
     // Read the log file content
