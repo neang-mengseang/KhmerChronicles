@@ -11,7 +11,8 @@
     "netlify": "^13.3.2",
     "netlify-cli": "^18.0.3",
     "netlify-identity-widget": "^1.9.2",
-    "node-fetch": "^2.7.0"
+    "node-fetch": "^2.7.0",
+    "socket.io": "^4.8.1"
   },
   "name": "sf-test",
   "version": "1.0.0",
