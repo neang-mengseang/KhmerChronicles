@@ -82,22 +82,26 @@ exports.handler = async (event) => {
       }
     });
 
-    console.log("Updated Entry: ", entry);
+        console.log("🔍 Updating entry...");
+        const updatedEntry = await entry.update();
+        console.log("🔍 Checking entry version before publishing:", updatedEntry.sys.version);
+        console.log("✅ Entry updated successfully!", updatedEntry);
+    
+        if (!updatedEntry) {
+            throw new Error("❌ Updated entry is undefined!");
+        }
+    
+        console.log("🔍 Publishing entry...");
+        await updatedEntry.publish();
+        console.log("✅ Entry published successfully!");
 
-    // Update and publish the entry
-    const updatedEntry = await entry.update();
-    console.log("✅ Entry updated successfully!");
-
-    // Optionally publish the entry (if needed)
-    await updatedEntry.publish();
-    console.log("✅ Entry published successfully!");
 
     return {
       statusCode: 200,
       body: JSON.stringify({ message: "Entry updated and published successfully" }),
     };
   } catch (error) {
-    //console.error("Error details:", JSON.stringify(error, null, 1)); // Log the entire error object
+    console.error("Error details:", error); // Log the entire error object
     return { statusCode: 500, body: `Error: ${error.message}` };
   }
 };

@@ -108,11 +108,14 @@ window.addEventListener("load", async () => {
   
   // Function to update content in Contentful
   async function updateFoodRanking(entryId, newTitle, newDesc, uploadedImage) {
-    let updates = {
-      title: newTitle || "",
-      description: newDesc || "",
+    let updateData = {
+      entryId: entryId,
+      updates: {
+        title: newTitle || "",
+        description: newDesc || "",
+      },
     };
-  
+    
     if (uploadedImage) {
       const maxSize = 5 * 1024 * 1024; // Max size: 5MB
       if (uploadedImage.size > maxSize) {
@@ -124,38 +127,30 @@ window.addEventListener("load", async () => {
       reader.onloadend = async () => {
         const base64String = reader.result.split(',')[1]; // Extract base64 string
   
-        updates.image = {
+        updateData.updates.image = {
           title: uploadedImage.name,
           contentType: uploadedImage.type,
           fileName: uploadedImage.name,
           data: base64String,
         };
   
-        const updateData = {
-          entryId: entryId,
-          updates: updates,
-        };
-  
-        const response = await fetch(`/.netlify/functions/updateContent`, {
-          method: "POST",
-          body: JSON.stringify(updateData),
-        });
-  
-        return true;
+
+
       };
       reader.readAsDataURL(uploadedImage); // Start reading the image file
-    } else {
-      const updateData = {
-        entryId: entryId,
-        updates: updates,
-      };
-  
+    } 
+
+    try{
       const response = await fetch(`/.netlify/functions/updateContent`, {
         method: "POST",
         body: JSON.stringify(updateData),
       });
   
-      return true;
+      if(response.ok){
+        return true;
+      }else{return false}
+    }catch (error){
+      console.log(error)
     }
   }
   
