@@ -64,7 +64,7 @@ exports.handler = async (event, context) => {
     };
   }
 
-  // Path to the EJS template
+  // path to the EJS template
     const filePath = path.resolve(__dirname, '..', '..', 'src', 'views', 'profile-template.ejs');
   
   // Render the EJS template with user data
