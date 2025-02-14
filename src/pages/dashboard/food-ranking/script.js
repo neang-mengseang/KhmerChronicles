@@ -51,8 +51,12 @@ window.addEventListener("load", async () => {
     }
   }
 
-  refreshBtn.addEventListener("click", () => {
-    fetchContents();
+  refreshBtn.addEventListener("click", async () => {
+    spinner.style.display = "block";
+    table.style.display = "none";
+    setTimeout(() => {
+      fetchContents();
+    }, 2000);
   });
 
   fetchContents();
