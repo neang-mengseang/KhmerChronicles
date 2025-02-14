@@ -95,7 +95,7 @@ window.addEventListener("load", async () => {
       const uploadedImage = document.getElementById('fileInput').files[0];
       
       const success = await updateFoodRanking(item.sys.id, newTitle, newDesc, uploadedImage); // Pass the uploaded image
-  
+      console.log(success);
       if (success) {
         document.body.removeChild(modal); // Close the modal on success
       } else {
@@ -135,22 +135,33 @@ window.addEventListener("load", async () => {
         };
   
 
-
+        try{
+          const response = await fetch(`/.netlify/functions/updateContent`, {
+            method: "POST",
+            body: JSON.stringify(updateData),
+          });
+      
+          if(response.ok){
+            return true;
+          }else{return false}
+        }catch (error){
+          console.log(error)
+        }
       };
       reader.readAsDataURL(uploadedImage); // Start reading the image file
-    } 
-
-    try{
-      const response = await fetch(`/.netlify/functions/updateContent`, {
-        method: "POST",
-        body: JSON.stringify(updateData),
-      });
-  
-      if(response.ok){
-        return true;
-      }else{return false}
-    }catch (error){
-      console.log(error)
+    }else{
+      try{
+        const response = await fetch(`/.netlify/functions/updateContent`, {
+          method: "POST",
+          body: JSON.stringify(updateData),
+        });
+    
+        if(response.ok){
+          return true;
+        }else{return false}
+      }catch (error){
+        console.log(error)
+      }
     }
   }
   

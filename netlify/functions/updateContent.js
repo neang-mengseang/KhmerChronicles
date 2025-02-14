@@ -35,6 +35,7 @@ exports.handler = async (event) => {
 
     // If an image is included, handle the asset upload
     if (updates.image) {
+      console.log("🔹 Image Detected! ")
       try {
         // Create asset from file
         const uploadedAsset = await environment.createAssetFromFiles({
@@ -56,7 +57,7 @@ exports.handler = async (event) => {
         const publishedAsset = await uploadedAsset.processForAllLocales();
         const processedAsset = await environment.getAsset(publishedAsset.sys.id);
         await processedAsset.publish();
-        console.log("Upload Image successfully");
+        console.log("✅ Upload Asset successfully");
         // Update the entry with the new image asset link
         entry.fields.image = {
           "en-US": {
