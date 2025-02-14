@@ -2,6 +2,7 @@
 :root {
     --background-1: #252627;
     --background-2: #333;
+    --background-3: #1f1e1e;
     --font-color-1: rgb(231, 225, 225);
     --cyan: #119DA4;
     --aqua: rgb(2, 105, 105);
@@ -11,55 +12,127 @@
 [data-theme="light"] {
     --background-1: #f4f4f4;
     --background-2: #e0e0e0;
+    --background-3: #c5c4c4;
     --font-color-1: #333;
     --cyan: #119DA4;
     --aqua: rgb(2, 194, 194);
 }
 
-.container {
-    max-width: 96%;
-    margin: auto;
-    background: var(--background-1);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* Table Container */
+.table-container {
+  margin-left: 24px;
+  margin-right: 24px;
+  width: calc(100% - 48px);
+  overflow-x: auto;
+  background: var(--background-2);
+  border-radius: 12px;
 }
 
-h2 {
-    text-align: center;
+/* Modern Table */
+.modern-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+  background: white;
+  display: none;
 }
 
-.ranking-list {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
+/* Table Headers */
+.modern-table thead {
+  background: var(--cyan);
+  color: var(--font-color-1);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.modern-table th, 
+.modern-table td {
+  padding: 14px 20px;
+  text-align: left;
+}
+
+.modern-table tbody tr {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Stripe effect */
+.modern-table tbody tr {
+  background-color: var(--background-1);
+}
+
+/* Hover Effect */
+.modern-table tbody tr:hover {
+  background-color: var(--background-3);
+  transform: scale(1.01);
+}
+
+/* Refresh Button */
+.refresh-btn {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  transition: 0.3s;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.refresh-btn:hover {
+  background: #2980b9;
+  transform: scale(1.05);
+}
+
+.refresh-btn i {
+  font-size: 16px;
+}
+
+.modern-table .item_ranking{
+  width: 12px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Edit Button */
+.edit_btn {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+.edit_btn:hover {
+  background: #2980b9;
+  transform: scale(1.05);
 }
 
 
-.ranking_item_container {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    border-bottom: 1px solid var(--font-color-1);
+.edit_btn {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
 }
 
-.ranking_item_container .rank{
-    font-size: 2rem;
-    font-weight: bold;
+.edit_btn:hover {
+  background: #2980b9;
 }
 
-
-.ranking_item_container span{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    justify-self: center;
-    align-items: center;
-    gap: 24px;
-    font-size: 1.2rem;
-}
-
-.ranking_item_container .edit_btn{
+.edit_btn_container .edit_btn{
     background-color: transparent;
     border: none;
     font-size: 1.2rem;

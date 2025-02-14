@@ -1,52 +1,105 @@
 window.addEventListener("load", async () => {
-    const rankingList = document.getElementById("rankingList");
-    const data = await fetchContents();
-    data.sort((a, b) => a.fields.ranking - b.fields.ranking);
-  
-    if (data.length > 0) {
-      rankingList.innerHTML = ""; // Clear previous logs
-      data.forEach((item) => {
-        const list = document.createElement("li");
-        list.className = "rankingItem";
-        list.innerHTML = `
-          <div class="ranking_item_container">
-              <span>
-                  <div class="rank">${item.fields.ranking || "N/A"}</div>
-                  <p class="title">${item.fields.title || "Unknown Title"}</p>
-              </span>
-              <button class="edit_btn" data-id="${item.sys.id}">
-                  <i class="fa-regular fa-pen-to-square"></i>
-              </button>
-          </div>
-        `;
-        rankingList.appendChild(list);
-      });
-  
-      // Attach event listeners to edit buttons
-      document.querySelectorAll(".edit_btn").forEach((button) => {
-        button.addEventListener("click", (event) => {
-          const entryId = event.currentTarget.getAttribute("data-id");
-          const itemData = data.find((item) => item.sys.id === entryId);
-          openEditModal(itemData);
+  const spinner = document.getElementById("loadingSpinner");
+  const tableBody = document.getElementById("rankingTableBody");
+  const table = document.getElementById("table");
+  const refreshBtn = document.getElementById("refreshBtn");
+
+  async function fetchContents() {
+    spinner.style.display = "block";
+    table.style.display = "none";
+    tableBody.innerHTML = ""; // Clear existing data
+
+    try {
+      const contentTypes = "foodRanking";
+      const response = await fetch(
+        `/.netlify/functions/fetchContent?contentType=${contentTypes}`
+      );
+      const data = await response.json();
+      const rankings = data.foodRanking || [];
+
+      rankings.sort((a, b) => a.fields.ranking - b.fields.ranking);
+
+      if (rankings.length > 0) {
+        rankings.forEach((item) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td class="item_ranking">${item.fields.ranking || "N/A"}</td>
+            <td class="item_title">${item.fields.title || "Unknown Title"}</td>
+            <td class="item_version">${item.sys.revision || "N/A"}</td>
+            <td class="edit_btn_container">
+                <button class="edit_btn" data-id="${item.sys.id}">
+                    <i class="fa-regular fa-pen-to-square"></i> Edit
+                </button>
+            </td>
+          `;
+          tableBody.appendChild(row);
         });
-      });
+
+        document.querySelectorAll(".edit_btn").forEach((button) => {
+          button.addEventListener("click", (event) => {
+            const entryId = event.currentTarget.getAttribute("data-id");
+            const itemData = rankings.find((item) => item.sys.id === entryId);
+            openEditModal(itemData);
+          });
+        });
+      }
+    } catch (error) {
+      console.error("Error fetching content:", error);
+    } finally {
+      spinner.style.display = "none";
+      table.style.display = "table";
     }
-  });
-  
-  // Fetch contents from Contentful
-  function fetchContents() {
-    const contentTypes = "foodRanking";
-    return fetch(`/.netlify/functions/fetchContent?contentType=${contentTypes}`)
-      .then((res) => res.json())
-      .then((data) => data.foodRanking)
-      .catch((err) => console.error("Error fetching content:", err));
   }
-  
-  // Open the edit modal
-  function openEditModal(item) {
-    const modal = document.createElement("div");
-    modal.className = "edit-modal";
-    modal.innerHTML = `
+
+  refreshBtn.addEventListener("click", () => {
+    fetchContents();
+  });
+
+  fetchContents();
+});
+
+
+const notifications = document.querySelector(".notifications");
+
+const toastDetails = {
+    timer: 5000,
+    success: {
+        icon: "fa-circle-check",
+        text: "Success: Operation completed successfully."
+    },
+    error: {
+        icon: "fa-circle-xmark",
+        text: "Error: Something went wrong. Please try again."
+    }
+};
+
+const removeToast = (toast) => {
+    toast.classList.add("hide");
+    if (toast.timeoutId) clearTimeout(toast.timeoutId);
+    setTimeout(() => toast.remove(), 500);
+};
+
+const createToast = (id) => {
+    const { icon, text } = toastDetails[id];
+    const toast = document.createElement("li");
+    toast.className = `toast ${id}`;
+    toast.innerHTML = `
+        <div class="column">
+            <i class="fa-solid ${icon}"></i>
+            <span>${text}</span>
+        </div>
+        <i class="fa-solid fa-xmark" onclick="removeToast(this.parentElement)"></i>`;
+    
+    notifications.appendChild(toast);
+    toast.timeoutId = setTimeout(() => removeToast(toast), toastDetails.timer);
+};
+
+
+// Open the edit modal
+function openEditModal(item) {
+  const modal = document.createElement("div");
+  modal.className = "edit-modal";
+  modal.innerHTML = `
       <div class="modal-content">
           <h2>Edit Food Ranking</h2>
           
@@ -65,7 +118,9 @@ window.addEventListener("load", async () => {
               <i class="fa-regular fa-image"></i>
               <p>Drag & drop an image here or <span id="browse">browse</span></p>
               <input type="file" id="fileInput" hidden>
-              <img id="previewImage" src="${item.fields.image ? item.fields.image.url : ''}" alt="Preview" class="preview hidden">
+              <img id="previewImage" src="${
+                item.fields.image ? item.fields.image.url : ""
+              }" alt="Preview" class="preview hidden">
           </div>
   
           <div class="btnContainer">
@@ -74,139 +129,146 @@ window.addEventListener("load", async () => {
           </div>
       </div>
     `;
-  
-    document.body.appendChild(modal);
-  
-    dragNdrop(item); // Pass item to dragNdrop function
-  
-    // Close modal event
-    document.getElementById("closeEdit").addEventListener("click", () => {
-      document.body.removeChild(modal);
-    });
-  
-    // Save event
-    document.getElementById("saveEdit").addEventListener("click", async () => {
-      const saveButton = document.getElementById("saveEdit");
-      saveButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Saving...'; // Change text and show spinner
-      saveButton.disabled = true; // Disable the button to prevent multiple clicks
-  
-      const newTitle = document.getElementById("editTitle").value;
-      const newDesc = document.getElementById("editDesc").value;
-      const uploadedImage = document.getElementById('fileInput').files[0];
-      
-      const success = await updateFoodRanking(item.sys.id, newTitle, newDesc, uploadedImage); // Pass the uploaded image
-      console.log(success);
-      if (success) {
-        document.body.removeChild(modal); // Close the modal on success
-      } else {
-        saveButton.innerHTML = '<i class="fa-regular fa-floppy-disk"></i> Save'; // Reset the button text
-        saveButton.disabled = false; // Re-enable the button if update failed
-        alert("Update failed!"); // Show failure message
-      }
-    });
-  }
-  
-  // Function to update content in Contentful
-  async function updateFoodRanking(entryId, newTitle, newDesc, uploadedImage) {
-    let updateData = {
-      entryId: entryId,
-      updates: {
-        title: newTitle || "",
-        description: newDesc || "",
-      },
-    };
-    
-    if (uploadedImage) {
-      const maxSize = 5 * 1024 * 1024; // Max size: 5MB
-      if (uploadedImage.size > maxSize) {
-        alert(`File size exceeds the limit of ${maxSize / (1024 * 1024)} MB.`);
-        return false;
-      }
-  
+
+  document.body.appendChild(modal);
+
+  dragNdrop(item); // Pass item to dragNdrop function
+
+  // Close modal event
+  document.getElementById("closeEdit").addEventListener("click", () => {
+    document.body.removeChild(modal);
+  });
+
+  // Save event
+  document.getElementById("saveEdit").addEventListener("click", async () => {
+    const saveButton = document.getElementById("saveEdit");
+    saveButton.innerHTML =
+      '<i class="fa-solid fa-spinner fa-spin"></i> Saving...'; // Change text and show spinner
+    saveButton.disabled = true; // Disable the button to prevent multiple clicks
+
+    const newTitle = document.getElementById("editTitle").value;
+    const newDesc = document.getElementById("editDesc").value;
+    const uploadedImage = document.getElementById("fileInput").files[0];
+
+    const success = await updateFoodRanking(
+      item.sys.id,
+      newTitle,
+      newDesc,
+      uploadedImage
+    ); // Pass the uploaded image
+    if (success) {
+      document.body.removeChild(modal); // Close the modal on success
+      createToast("success");
+    } else {
+      saveButton.innerHTML = '<i class="fa-regular fa-floppy-disk"></i> Save'; // Reset the button text
+      saveButton.disabled = false; // Re-enable the button if update failed
+      alert("Update failed!"); // Show failure message
+      createToast("error");
+    }
+  });
+}
+
+// Function to update content in Contentful
+async function updateFoodRanking(entryId, newTitle, newDesc, uploadedImage) {
+  let updateData = {
+    entryId: entryId,
+    updates: {
+      title: newTitle || "",
+      description: newDesc || "",
+    },
+  };
+
+  if (uploadedImage) {
+    const maxSize = 5 * 1024 * 1024; // Max size: 5MB
+    if (uploadedImage.size > maxSize) {
+      alert(`File size exceeds the limit of ${maxSize / (1024 * 1024)} MB.`);
+      return false;
+    }
+
+    return new Promise((resolve) => {
       const reader = new FileReader();
       reader.onloadend = async () => {
-        const base64String = reader.result.split(',')[1]; // Extract base64 string
-  
+        const base64String = reader.result.split(",")[1]; // Extract base64 string
+
         updateData.updates.image = {
           title: uploadedImage.name,
           contentType: uploadedImage.type,
           fileName: uploadedImage.name,
           data: base64String,
         };
-  
 
-        try{
+        try {
           const response = await fetch(`/.netlify/functions/updateContent`, {
             method: "POST",
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(updateData),
           });
-      
-          if(response.ok){
-            return true;
-          }else{return false}
-        }catch (error){
-          console.log(error)
+
+          resolve(response.ok); // Return true if success, false otherwise
+        } catch (error) {
+          console.log(error);
+          resolve(false); // Ensure it resolves to false on error
         }
       };
       reader.readAsDataURL(uploadedImage); // Start reading the image file
-    }else{
-      try{
-        const response = await fetch(`/.netlify/functions/updateContent`, {
-          method: "POST",
-          body: JSON.stringify(updateData),
-        });
-    
-        if(response.ok){
-          return true;
-        }else{return false}
-      }catch (error){
-        console.log(error)
-      }
+    });
+  } else {
+    try {
+      const response = await fetch(`/.netlify/functions/updateContent`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updateData),
+      });
+
+      return response.ok; // Return true if successful
+    } catch (error) {
+      console.log(error);
+      return false;
     }
   }
-  
-  // Drag and drop functionality for the image upload
-  function dragNdrop(item) {
-    const dropArea = document.getElementById("dropArea");
-    const fileInput = document.getElementById("fileInput");
-    const previewImage = document.getElementById("previewImage");
-  
-    dropArea.addEventListener("click", () => fileInput.click());
-    
-    dropArea.addEventListener("dragover", (event) => {
-      event.preventDefault();
-      dropArea.classList.add("dragging");
-    });
-  
-    dropArea.addEventListener("dragleave", () => {
-      dropArea.classList.remove("dragging");
-    });
-  
-    dropArea.addEventListener("drop", (event) => {
-      event.preventDefault();
-      dropArea.classList.remove("dragging");
-      if (event.dataTransfer.files.length > 0) {
-        handleFile(event.dataTransfer.files[0]);
-      }
-    });
-  
-    fileInput.addEventListener("change", (event) => {
-      if (event.target.files.length > 0) {
-        handleFile(event.target.files[0]);
-      }
-    });
-  
-    function handleFile(file) {
-      if (file && file.type.startsWith("image/")) {
-        const reader = new FileReader();
-        reader.onload = () => {
-          previewImage.src = reader.result;
-          previewImage.classList.remove("hidden");
-        };
-        reader.readAsDataURL(file);
-      } else {
-        alert("Only image files are allowed!");
-      }
+}
+
+// Drag and drop functionality for the image upload
+function dragNdrop(item) {
+  const dropArea = document.getElementById("dropArea");
+  const fileInput = document.getElementById("fileInput");
+  const previewImage = document.getElementById("previewImage");
+
+  dropArea.addEventListener("click", () => fileInput.click());
+
+  dropArea.addEventListener("dragover", (event) => {
+    event.preventDefault();
+    dropArea.classList.add("dragging");
+  });
+
+  dropArea.addEventListener("dragleave", () => {
+    dropArea.classList.remove("dragging");
+  });
+
+  dropArea.addEventListener("drop", (event) => {
+    event.preventDefault();
+    dropArea.classList.remove("dragging");
+    if (event.dataTransfer.files.length > 0) {
+      handleFile(event.dataTransfer.files[0]);
+    }
+  });
+
+  fileInput.addEventListener("change", (event) => {
+    if (event.target.files.length > 0) {
+      handleFile(event.target.files[0]);
+    }
+  });
+
+  function handleFile(file) {
+    if (file && file.type.startsWith("image/")) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        previewImage.src = reader.result;
+        previewImage.classList.remove("hidden");
+      };
+      reader.readAsDataURL(file);
+    } else {
+      alert("Only image files are allowed!");
     }
   }
-  
+}

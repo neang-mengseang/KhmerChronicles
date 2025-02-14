@@ -6,7 +6,7 @@ exports.handler = async (event) => {
   }
 
   try {
-    console.log("🔹 Received update request:", event.body);
+    console.log("🔹 Received update request");
 
     const { entryId, updates } = JSON.parse(event.body);
 
