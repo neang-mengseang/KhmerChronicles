@@ -65,6 +65,7 @@
 
 /* Title input */
 #title {
+  color: var(--font-color-1);
   width: 100%;
   padding: 10px;
   font-size: 16px;
@@ -76,6 +77,7 @@
 
 /* Introduction textarea */
 #introduction {
+  color: var(--font-color-1);
   background-color: var(--background-2);
   width: 100%;
   padding: 10px;
@@ -90,6 +92,7 @@
 
 /* Editor container */
 #editor-container {
+  color: var(--font-color-1);
   background-color: var(--background-2);
   margin-bottom: 10px;
   padding: 10px;
@@ -115,6 +118,7 @@
   margin-bottom: 10px;
 }
 
+
 /* Submit button */
 button[type="submit"] {
   width: 100%;
@@ -125,10 +129,19 @@ button[type="submit"] {
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;
+  transition: all 300ms ease;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
 }
 
 button[type="submit"]:hover {
-  background-color: #45a049;
+  background-color: #357a38;
+  transform: scale(1.05);
+}
+
+button[type="submit"]:focus{
+  transform: scale(0.95);
 }
 
 

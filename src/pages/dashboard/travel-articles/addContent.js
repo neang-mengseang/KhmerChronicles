@@ -38,7 +38,7 @@ form.innerHTML = `
     <input type="file" id="featuredImage" accept="image/*"><br>
 
     </div>
-    <button type="submit">Submit</button>
+    <button id="submitBtn" type="submit"><i class="fa-solid fa-check"></i>Submit</button>
 `;
 
         formContainer.appendChild(form);
@@ -75,6 +75,13 @@ form.innerHTML = `
                 document.getElementById("message").textContent = "You must be logged in!";
                 return;
             }
+
+            const submitBtn = document.getElementById("submitBtn");
+            // Disable the submit button to prevent multiple submissions
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting...'; // Optional: Add a spinner and text
+
+
 
             const title = document.getElementById("title").value;
             const introduction = document.getElementById("introduction").value;
@@ -172,6 +179,10 @@ const toastDetails = {
     error: {
         icon: "fa-circle-xmark",
         text: "Error: Something went wrong. Please try again."
+    },
+    info: {
+        icon: "fa-solid fa-circle-info",
+        text: "Please input all value to submit."
     }
 };
 

@@ -43,7 +43,7 @@ exports.handler = async (event) => {
         : null,
     };
 
-    if (contentType === "foodArticle" || contentType === "travelArticle") {
+    if (contentType === "foodArticle" || contentType === "travelArticles") {
       entryFields.content = { "en-US": richTextContent };
       entryFields.introduction = { "en-US": introduction };
     } else if (contentType === "cuisineGallery") {

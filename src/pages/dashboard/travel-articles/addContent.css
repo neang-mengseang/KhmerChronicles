@@ -72,6 +72,8 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: var(--background-2);
+  color: var(--font-color-1);
+
 }
 
 /* Introduction textarea */
@@ -85,11 +87,13 @@
   border-radius: 4px;
   height: 100px;
   resize: vertical;
+  color: var(--font-color-1);
 }
 
 
 /* Editor container */
 #editor-container {
+  color: var(--font-color-1);
   background-color: var(--background-2);
   margin-bottom: 10px;
   padding: 10px;
@@ -109,7 +113,6 @@
   border: 1px solid var(--aqua);
 }
 
-
 /* File input */
 #featuredImage {
   margin-bottom: 10px;
@@ -125,10 +128,19 @@ button[type="submit"] {
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;
+  transition: all 300ms ease;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
 }
 
 button[type="submit"]:hover {
-  background-color: #45a049;
+  background-color: #357a38;
+  transform: scale(1.05);
+}
+
+button[type="submit"]:focus{
+  transform: scale(0.95);
 }
 
 
@@ -136,3 +148,4 @@ button[type="submit"]:hover {
 .ql-snow .ql-picker {
   stroke: var(--font-color-1) !important;
 }
+
