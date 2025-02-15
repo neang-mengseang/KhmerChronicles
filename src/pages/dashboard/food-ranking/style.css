@@ -206,15 +206,32 @@
   color: var(--font-color-1);
 }
 
+
 .modal-content #saveEdit{
   background-color: var(--aqua);
   border: none;
-}
-
-.modal-content #closeEdit{
+  transition: all 300ms ease;
+  display: flex;
+  align-items: center;
+  }
+  
+  .modal-content #saveEdit:hover{
+    background-color: rgb(25, 79, 228);
+    color: white;
+  }
+  
+  
+  .modal-content #closeEdit{
   background-color: transparent;
   border: 1px solid red;
-}
+  transition: background-color 300ms ease;
+  }
+  
+  .modal-content #closeEdit:hover{
+    background-color: red;
+    color: white;
+  }
+  
 
 /* Image Drag & Drop */
 .drop-area {

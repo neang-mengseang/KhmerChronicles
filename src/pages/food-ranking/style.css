@@ -13,9 +13,10 @@ body {
     color: #d9534f;
 }
 
-.food-grid{
+#food-ranking{
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .food-item{

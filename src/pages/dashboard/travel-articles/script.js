@@ -12,13 +12,13 @@ window.addEventListener("load", async () => {
     tableBody.innerHTML = ""; // Clear existing data
 
     try {
-      const contentTypes = "foodArticle";
+      const contentTypes = "travelArticles";
       const response = await fetch(
         `/.netlify/functions/fetchContent?contentType=${contentTypes}`
       );
       console.log("Fetching: ", contentTypes);
       const data = await response.json() || [];
-      const item = data.foodArticle;
+      const item = data.travelArticles;
       console.log(item);
       if (item.length > 0) {
         item.forEach((item) => {
