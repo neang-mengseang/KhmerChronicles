@@ -98,6 +98,7 @@ main{
 .article-card img {
   width: 100px;
   height: 100px;
+  object-fit: cover;
   border-radius: 5px;
 }
 .article-card h3 {
@@ -108,6 +109,28 @@ main{
   margin: 5px 0;
   font-size: 0.9rem;
   color: #555;
+}
+.article-section a{
+  text-decoration: none;
+}
+.article-section .readmore_btn{
+  width: 100%;
+   background-color: transparent;
+   color: var(--aqua-blue);
+   padding: 12px;
+   cursor: pointer;
+   border: 1px solid rgba(0, 0, 0, 0.486);
+   transition: background-color 300ms ease;
+   display: flex;
+   gap: 12px;
+   justify-content: center;
+   align-items: center;
+   text-decoration: none;
+}
+
+.article-section .readmore_btn:hover{
+  background-color: var(--aqua-blue);
+  color: white;
 }
 
 @media (max-width: 768px) {

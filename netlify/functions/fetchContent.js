@@ -26,7 +26,7 @@ exports.handler = async (event) => {
       if (!response.ok) throw new Error(`Failed to fetch content for type: ${type}`);
 
       const data = await response.json();
-
+      result.success = true;
       // Add the content to the result object under the respective type key
       result[type] = data.items.map(item => ({
         sys: item.sys,
