@@ -9,7 +9,7 @@
   ]
 
 [[redirects]]
-  from = "/travel-articles/:slug"
+  from = "/travel-article/:slug"
   to = "/.netlify/functions/travelArticle?slug=:slug"
   status = 200
 

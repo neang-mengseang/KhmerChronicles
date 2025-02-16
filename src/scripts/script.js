@@ -43,7 +43,7 @@ async function fetchContentCounts() {
     const travelCard2 = document.getElementById("tcard2");
 
    console.log(data);
-    async function createFoodCard(article) {
+    async function createFoodCard(article, contentType) {
       if (!article || !article.fields) return "<p>Article data missing.</p>";
   
       const title = article.fields.title || "Untitled Article";
@@ -52,36 +52,46 @@ async function fetchContentCounts() {
       const imgSrc = imageId ? await fetchImageUrl(imageId) : "https://via.placeholder.com/100";
   
       return `
-        <img src="${imgSrc}" alt="Article Image">
-        <div>
-          <h3>${title}</h3>
-          <p>${intro}</p>
-        </div>
+        <a href="${contentType}/${generateSlug(article.fields.title)}">
+            <img src="${imgSrc}" alt="Article Image">
+            <div>
+            <h3>${title}</h3>
+            <p>${intro}</p>
+            </div>
+        </a>
+
       `;
     }
   
     if (data.foodArticle.length > 0) {
-      foodCard1.innerHTML = await createFoodCard(data.foodArticle[0]);
+      foodCard1.innerHTML = await createFoodCard(data.foodArticle[0], "food-article");
     } else {
       foodCard1.innerHTML = "<p>No food articles available.</p>";
     }
   
     if (data.foodArticle.length > 1) {
-      foodCard2.innerHTML = await createFoodCard(data.foodArticle[1]);
+      foodCard2.innerHTML = await createFoodCard(data.foodArticle[1], "food-article");
     } else {
       foodCard2.innerHTML = "<p>No second food article available.</p>";
     }
 
     if (data.travelArticles.length > 0) {
-        travelCard1.innerHTML = await createFoodCard(data.travelArticles[0]);
+        travelCard1.innerHTML = await createFoodCard(data.travelArticles[0], "travel-article");
       } else {
         travelCard1.innerHTML = "<p>No second food article available.</p>";
       }
 
       if (data.travelArticles.length > 1) {
-        travelCard2.innerHTML = await createFoodCard(data.travelArticles[1]);
+        travelCard2.innerHTML = await createFoodCard(data.travelArticles[1], "travel-article");
       } else {
         travelCard2.innerHTML = "<p>No second food article available.</p>";
       }
   });
   
+
+  function generateSlug(title) {
+    return title.toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, '')   // Remove special characters
+      .replace(/\s+/g, '-')           // Replace spaces with hyphens
+      .replace(/^-+|-+$/g, '');       // Remove leading & trailing hyphens
+  } 

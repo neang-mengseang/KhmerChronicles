@@ -94,7 +94,14 @@ main{
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  transition: all 300ms ease;
 }
+
+.article-card:hover{
+  transform: scale(1.01);
+  border: 1px solid rgb(82, 81, 81);
+}
+
 .article-card img {
   width: 100px;
   height: 100px;
@@ -110,9 +117,14 @@ main{
   font-size: 0.9rem;
   color: #555;
 }
+
 .article-section a{
   text-decoration: none;
+  display: flex;
+  color: black;
+  gap: 12px;
 }
+
 .article-section .readmore_btn{
   width: 100%;
    background-color: transparent;
