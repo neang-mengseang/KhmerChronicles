@@ -31,7 +31,7 @@ window.addEventListener("load", async () => {
                 <button class="edit_btn" data-id="${item.sys.id}" disabled>
                     <i class="fa-regular fa-pen-to-square"></i> Edit
                 </button>
-                <button class="delete_btn" data-id="${item.sys.id}" disabled>
+                <button class="delete_btn" data-id="${item.sys.id}">
                     <i class="fa-regular fa-trash-can"></i> Delete
                 </button>
             </td>
@@ -224,4 +224,78 @@ function dragNdrop(item) {
       alert("Only image files are allowed!");
     }
   }
+}
+
+
+
+document.getElementById("table").addEventListener("click", async (event) => {
+  if (event.target.closest(".delete_btn")) {
+      const button = event.target.closest(".delete_btn");
+      const entryId = button.getAttribute("data-id");
+      const row = button.closest("tr"); // Get the row to remove after deletion
+
+      if (!entryId) return;
+
+      // Show the confirmation modal
+      showDeleteModal(entryId, row, button);
+  }
+});
+
+// Function to create and display the confirmation modal
+function showDeleteModal(entryId, row, button) {
+  // Create modal HTML
+  const modal = document.createElement("div");
+  modal.className = "delete-modal";
+  modal.innerHTML = `
+      <div class="modal-content">
+          <h2>Are you sure you want to delete this content?</h2>
+          <p>Content ID: ${entryId}</p>
+          <div class="modal-buttons">
+              <button id="confirmDelete" class="confirm">Yes, Delete</button>
+              <button id="cancelDelete" class="cancel">No, Cancel</button>
+          </div>
+      </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  // Handle delete confirmation
+  document.getElementById("confirmDelete").addEventListener("click", async () => {
+      button.disabled = true;
+      button.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Deleting...`;
+
+      try {
+          const response = await fetch("/.netlify/functions/deleteContent", {
+              method: "DELETE",
+              body: JSON.stringify({ entryId }),
+              headers: { "Content-Type": "application/json" },
+          });
+
+          const data = await response.json();
+          if (response.ok) {
+              button.innerHTML = `<i class="fa-regular fa-trash-can"></i> Deleted`;
+              button.style.background = "#ccc"; // Optional: Gray out button
+              createToast("success");
+              // ✅ Remove the deleted row from UI
+              setTimeout(() => {
+                  row.remove();
+              }, 500);
+          } else {
+              throw new Error(data.error || "Failed to delete content.");
+          }
+      } catch (error) {
+          console.error(error);
+          button.innerHTML = `<i class="fa-regular fa-trash-can"></i> Delete`;
+          button.disabled = false;
+
+          createToast("error");
+      } finally {
+          document.body.removeChild(modal);
+      }
+  });
+
+  // Handle cancel button
+  document.getElementById("cancelDelete").addEventListener("click", () => {
+      document.body.removeChild(modal);
+  });
 }

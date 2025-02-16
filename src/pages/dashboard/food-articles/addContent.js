@@ -2,7 +2,6 @@ window.addEventListener("load", async () => {
     const contentType = "foodArticle";
 
     document.getElementById("addBtn").addEventListener("click", function () {
-        console.log("➕ Add Button Clicked");
         if (document.getElementById("contentForm")) return; // Prevent duplicate forms
 
         const formContainer = document.getElementById("formContainer");
