@@ -35,15 +35,16 @@ function displayFoodRankings(items) {
     <div class="ranking-badge">
         <span>${item.fields.ranking}</span>
     </div>
-    <img src="https:${item.fields.image.fields.file.url}" alt="${
-      item.fields.title
-    }">
+
     <div class="card-content">
         <h2>${item.fields.title}</h2>
          
         <p>${item.fields.description || "No information provided!"}</p> 
 
     </div>
+        <img src="https:${item.fields.image.fields.file.url}" alt="${
+      item.fields.title
+    }">
 
 `;
 
