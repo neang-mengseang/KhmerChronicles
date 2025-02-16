@@ -42,10 +42,7 @@ function displayFoodRankings(items) {
         <h2>${item.fields.title}</h2>
          
         <p>${item.fields.description || "No information provided!"}</p> 
-        <a href="/foodranking/${item.fields.title
-          .toLowerCase()
-          .replace(/\s+/g, "-")}.html" class="view-btn">Read More</a> 
-        
+
     </div>
 
 `;
