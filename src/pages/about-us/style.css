@@ -1,344 +1,80 @@
 * {
-    font-family: Nunito, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
   
-  .responsive-container-block {
-    min-height: 75px;
-    height: fit-content;
-    width: 100%;
-    padding-top: 10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 0px;
-    margin-right: auto;
-    margin-bottom: 0px;
-    margin-left: auto;
-    justify-content: flex-start;
+  body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
   }
   
-  .text-blk {
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    margin-left: 0px;
-    padding-top: 10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    line-height: 25px;
+  header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
   }
   
-  .responsive-container-block.bigContainer {
-    padding-top: 10px;
-    padding-right: 30px;
-    padding-bottom: 10px;
-    padding-left: 30px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  header nav ul {
+    list-style: none;
+    padding: 0;
   }
   
-  .mainImg {
-    color: black;
-    width: 55%;
-    height: auto;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 5px 10px 7px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
+  header nav ul li {
+    display: inline;
+    margin: 0 15px;
   }
   
-  .text-blk.headingText {
-    font-size: 25px;
-    font-weight: 700;
-    line-height: 34px;
-    color: rgb(51, 51, 51);
-    padding-top: 0px;
-    padding-right: 10px;
-    padding-bottom: 0px;
-    padding-left: 10px;
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 10px;
-    margin-left: 0px;
+  header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
   }
   
-  .allText {
-    padding-top: 0px;
-    padding-right: 0px;
-    padding-bottom: 0px;
-    padding-left: 0px;
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    margin-left: 40px;
-    width: 40%;
-    margin: 0 0 0 0;
+  header nav ul li a:hover,
+  header nav ul li a.active {
+    color: #f9c74f;
   }
   
-  .text-blk.subHeadingText {
-    color: rgb(102, 102, 102);
-    font-size: 25px;
-    line-height: 34px;
-    font-weight: 700;
-    padding-top: 0px;
-    padding-right: 10px;
-    padding-bottom: 0px;
-    padding-left: 10px;
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 15px;
-    margin-left: 0px;
+  .about {
+    padding: 50px 20px;
+    background-color: white;
   }
   
-  .text-blk.description {
-    font-size: 25px;
-    line-height: 34px;
-    color: rgb(102, 102, 102);
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 50px;
-    margin-left: 0px;
-    padding-top: 0px;
-    padding-right: 10px;
-    padding-bottom: 0px;
-    padding-left: 10px;
+  .about .container {
+    max-width: 900px;
+    margin: 0 auto;
   }
   
-  main .explore {
-    font-size: 20px;
-    line-height: 28px;
-    color: rgb(255, 255, 255);
-    background-color: rgb(244, 152, 146);
-    padding-top: 10px;
-    padding-right: 50px;
-    padding-bottom: 10px;
-    padding-left: 50px;
-    border-top-width: 0px;
-    border-right-width: 0px;
-    border-bottom-width: 0px;
-    border-left-width: 0px;
-    border-top-style: outset;
-    border-right-style: outset;
-    border-bottom-style: outset;
-    border-left-style: outset;
-    border-top-color: rgb(244, 152, 146);
-    border-right-color: rgb(244, 152, 146);
-    border-bottom-color: rgb(244, 152, 146);
-    border-left-color: rgb(244, 152, 146);
-    border-image-source: initial;
-    border-image-slice: initial;
-    border-image-width: initial;
-    border-image-outset: initial;
-    border-image-repeat: initial;
-    cursor: pointer;
+  h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
   }
   
-  .explore:hover {
-    background-image: initial;
-    background-position-x: initial;
-    background-position-y: initial;
-    background-size: initial;
-    background-repeat-x: initial;
-    background-repeat-y: initial;
-    background-attachment: initial;
-    background-origin: initial;
-    background-clip: initial;
-    background-color: rgb(255, 235, 234);
-    color: rgb(244, 152, 146);
+  h2 {
+    font-size: 2em;
+    margin-top: 20px;
+    color: #333;
   }
   
-  .responsive-container-block.Container {
-    margin-top: 80px;
-    margin-right: auto;
-    margin-bottom: 50px;
-    margin-left: auto;
-    justify-content: center;
-    align-items: center;
-    max-width: 1320px;
-    padding-top: 10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
+  ul {
+    list-style-type: disc;
+    margin-left: 20px;
   }
   
-  .responsive-container-block.Container.bottomContainer {
-    margin-top: 100px;
-    margin-right: 0px;
-    margin-bottom: 50px;
-    margin-left: 0px;
-    flex-direction: row-reverse;
-    margin: 100px auto 50px auto;
+  ul li {
+    margin: 10px 0;
   }
   
-  .allText.aboveText {
-    margin: 0 0 0 40px;
+  footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 50px;
   }
   
-  .allText.bottomText {
-    margin: 0 40px 0 0;
-  }
-  
-  @media (max-width: 1024px) {
-    .responsive-container-block.Container {
-      max-width: 850px;
-    }
-  
-    .mainImg {
-      width: 55%;
-      height: auto;
-    }
-  
-    .text-blk.description {
-      font-size: 20px;
-    }
-  
-    .allText {
-      width: 40%;
-      margin-top: 0px;
-      margin-right: 0px;
-      margin-bottom: 0px;
-      margin-left: 20px;
-    }
-  
-    .responsive-container-block.bigContainer {
-      padding-top: 10px;
-      padding-right: 10px;
-      padding-bottom: 10px;
-      padding-left: 10px;
-    }
-  
-    .text-blk.subHeadingText {
-      font-size: 22px;
-    }
-  
-    .responsive-container-block.Container.bottomContainer {
-      margin: 80px auto 50px auto;
-    }
-  
-    .responsive-container-block.Container {
-      max-width: 830px;
-    }
-  
-    .allText.aboveText {
-      margin: 30px 0 0 40px;
-    }
-  
-    .allText.bottomText {
-      margin: 30px 40px 0 0;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .mainImg {
-      width: 90%;
-    }
-  
-    .allText {
-      width: 100%;
-      margin-top: 0px;
-      margin-right: 0px;
-      margin-bottom: 0px;
-      margin-left: 0px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding-top: 0px;
-      padding-right: 0px;
-      padding-bottom: 0px;
-      padding-left: 0px;
-    }
-  
-    .responsive-container-block.Container {
-      flex-direction: column;
-      height: auto;
-    }
-  
-    .text-blk.headingText {
-      text-align: center;
-    }
-  
-    .text-blk.subHeadingText {
-      text-align: center;
-      font-size: 25px;
-    }
-  
-    .text-blk.description {
-      text-align: center;
-      font-size: 25px;
-    }
-  
-    .allText {
-      margin-top: 40px;
-      margin-right: 0px;
-      margin-bottom: 0px;
-      margin-left: 0px;
-    }
-  
-    .allText.aboveText {
-      margin: 40px 0 0 0;
-    }
-  
-    .responsive-container-block.Container {
-      margin: 80px auto 50px auto;
-    }
-  
-    .responsive-container-block.Container.bottomContainer {
-      margin: 50px auto 50px auto;
-    }
-  
-    .allText.bottomText {
-      margin: 40px 0 0 0;
-    }
-  }
-  
-  @media (max-width: 500px) {
-    .responsive-container-block.Container {
-      padding-top: 10px;
-      padding-right: 0px;
-      padding-bottom: 10px;
-      padding-left: 0px;
-      width: 100%;
-      max-width: 100%;
-    }
-  
-    .mainImg {
-      width: 100%;
-    }
-  
-    .responsive-container-block.bigContainer {
-      padding-top: 10px;
-      padding-right: 25px;
-      padding-bottom: 10px;
-      padding-left: 25px;
-    }
-  
-    .text-blk.subHeadingText {
-      font-size: 25px;
-      padding-top: 0px;
-      padding-right: 0px;
-      padding-bottom: 0px;
-      padding-left: 0px;
-    }
-  
-    .text-blk.description {
-      font-size: 25px;
-      padding-top: 0px;
-      padding-right: 0px;
-      padding-bottom: 0px;
-      padding-left: 0px;
-    }
-  
-    .allText {
-      padding-top: 0px;
-      padding-right: 0px;
-      padding-bottom: 0px;
-      padding-left: 0px;
-      width: 100%;
-    }
-  }
