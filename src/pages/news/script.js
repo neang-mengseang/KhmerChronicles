@@ -1,55 +1,49 @@
-const API_KEY = "0a298266397a4879b101e6f93bac8d8b";  // Replace with your NewsAPI key
+const API_KEY = "0a298266397a4879b101e6f93bac8d8b"; // Replace with your NewsAPI key
 
 async function fetchNews() {
-    const sortBy = document.getElementById("sortByFilter").value; // Get sort by selection (e.g., popularity, relevancy, etc.)
+    const sortBy = document.getElementById("sortByFilter").value; // Get sort by selection
     const query = document.getElementById("searchInput").value; // Get search query
-
-
-
-    let url = `https://newsapi.org/v2/everything?language=en&apiKey=${API_KEY}`;
-
-
-        // Show loading spinner
-    document.getElementById("loadingSpinner").style.display = "block";
     const newsList = document.getElementById("newsList");
-    newsList.innerHTML = "";  // Clear previous news
+
+    // Show loading spinner and clear old results
+    document.getElementById("loadingSpinner").style.display = "block";
+    newsList.innerHTML = "";  
+
+    // Construct URL
+    let url = `https://newsapi.org/v2/everything?language=en&apiKey=${API_KEY}`;
     
-
-
-    // Append sortBy filter to URL if provided
     if (sortBy) {
         url += `&sortBy=${sortBy}`;
     }
 
-    // Append search query if there is input
     if (query) {
         url += `&q=${encodeURIComponent(query)}`;
-    }else{
-        url += `&q=cambodia`;
-
+    } else {
+        url += `&q=cambodia`; // Default to Cambodia news if no query
     }
 
-    console.log("Fetching URL:", url); // Log the constructed URL for debugging
+    console.log("Fetching URL:", url);
 
     try {
         const response = await fetch(url);
         const data = await response.json();
-        console.log("API Response:", data); // Log the full API response
+        console.log("API Response:", data);
 
         if (data.articles && data.articles.length > 0) {
             displayNews(data.articles);
         } else {
-            displayNoResults(); // Show message if no articles are found
+            displayNoResults();
         }
     } catch (error) {
         console.error("Error fetching news:", error);
+        displayNoResults(); // Ensure UI updates on error
+    } finally {
+        document.getElementById("loadingSpinner").style.display = "none"; // Hide spinner in all cases
     }
 }
 
 function displayNoResults() {
-    const newsList = document.getElementById("newsList");
-    document.getElementById("loadingSpinner").style.display = "none";
-    newsList.innerHTML = "<p>No news found. Please try a different search or filter.</p>";
+    document.getElementById("newsList").innerHTML = "<p>No news found. Please try a different search or filter.</p>";
 }
 
 function displayNews(articles) {
@@ -60,7 +54,7 @@ function displayNews(articles) {
         const newsItem = document.createElement("li");
         newsItem.classList.add("news-item");
 
-        const imageUrl = article.urlToImage || "https://via.placeholder.com/150";  // Fallback image
+        const imageUrl = article.urlToImage || "https://via.placeholder.com/150"; // Fallback image
         newsItem.innerHTML = `
             <img src="${imageUrl}" alt="News Image">
             <div>
@@ -71,15 +65,12 @@ function displayNews(articles) {
         `;
 
         newsList.appendChild(newsItem);
-        document.getElementById("loadingSpinner").style.display = "none"; 
     });
 }
 
-// Fetch news when the search button is clicked
+// Event Listeners
 document.getElementById("searchButton").addEventListener("click", fetchNews);
-
-// Optionally, trigger fetchNews when the user presses "Enter" in the search input
-document.getElementById("searchInput").addEventListener("keyup", function(event) {
+document.getElementById("searchInput").addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
         fetchNews();
     }
