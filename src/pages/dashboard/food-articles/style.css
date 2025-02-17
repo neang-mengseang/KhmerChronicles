@@ -42,10 +42,12 @@ display: none;
 
 /* Table Headers */
 .modern-table thead {
-background: var(--cyan);
-color: var(--font-color-1);
-text-transform: uppercase;
-font-weight: bold;
+  background: var(--cyan);
+  color: var(--font-color-1);
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+
 }
 
 .modern-table th, 
