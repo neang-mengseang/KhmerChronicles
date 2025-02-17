@@ -78,15 +78,18 @@ main{
 .main-content {
   flex: 3;
 }
+
 .aside {
   flex: 1;
   background-color: #f4f4f4;
   padding: 10px;
   border-radius: 5px;
 }
+
 .article-section {
   margin-bottom: 40px;
 }
+
 .article-card {
   display: flex;
   gap: 10px;

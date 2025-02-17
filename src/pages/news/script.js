@@ -48,6 +48,7 @@ async function fetchNews() {
 
 function displayNoResults() {
     const newsList = document.getElementById("newsList");
+    document.getElementById("loadingSpinner").style.display = "none";
     newsList.innerHTML = "<p>No news found. Please try a different search or filter.</p>";
 }
 
