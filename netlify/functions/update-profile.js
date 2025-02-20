@@ -103,53 +103,6 @@ exports.handler = async (event) => {
         return { statusCode: 500, body: JSON.stringify({ error: "Failed to update user profile" }) };
       }
 
-      // Fetch articles and galleries related to the user
-      const [travelArticles, foodArticles, cuisineGallery, travelGallery] = await Promise.all([
-        environment.getEntries({ content_type: "travelArticles", "fields.authorId": userId }),
-        environment.getEntries({ content_type: "foodArticle", "fields.authorId": userId }),
-        environment.getEntries({ content_type: "cuisineGallery", "fields.authorId": userId }),
-        environment.getEntries({ content_type: "travelGallery", "fields.authorId": userId }),
-      ]);
-
-      console.log(`Found ${travelArticles.items.length} travel articles to update`);
-      console.log(`Found ${foodArticles.items.length} food articles to update`);
-      console.log(`Found ${cuisineGallery.items.length} Cuisine Galleries to update`);
-      console.log(`Found ${travelGallery.items.length} Travel Galleries to update`);
-
-      // Helper function to update articles/galleries
-      const updateContent = async (contentItems, updatedUserImage, updatedUsername) => {
-        for (let i = 0; i < contentItems.length; i++) {
-          const content = contentItems[i];
-          try {
-            content.fields.authorName = { "en-US": updatedUsername || content.fields.authorName["en-US"] };
-            if (updatedUserImage) {
-              content.fields.authorImage = {
-                "en-US": { sys: { type: "Link", linkType: "Asset", id: updatedUserImage } },
-              };
-            }
-
-            const updatedContent = await content.update();
-            await updatedContent.publish();
-            console.log(`✅ Content with ID ${content.sys.id} updated successfully!`);
-          } catch (error) {
-            console.error(`❌ Failed to update content with ID ${content.sys.id}: ${error.message}`);
-          }
-
-          // Add delay to avoid rate limits
-          if (i % 5 === 0) {
-            console.log("Waiting 1000ms to avoid rate limit...");
-            await delay(1000);
-          }
-        }
-      };
-
-      // Update content in batches
-      await Promise.all([
-        updateContent(travelArticles.items, updatedUserImage, requestBody.fields.username),
-        updateContent(foodArticles.items, updatedUserImage, requestBody.fields.username),
-        updateContent(cuisineGallery.items, updatedUserImage, requestBody.fields.username),
-        updateContent(travelGallery.items, updatedUserImage, requestBody.fields.username),
-      ]);
 
       console.log("✅ All related articles (food and travel) attempted for update!");
 

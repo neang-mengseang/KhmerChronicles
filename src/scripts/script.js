@@ -20,7 +20,7 @@ async function fetchContentCounts() {
     try {
       const res = await fetch(`/.netlify/functions/fetchAsset?assetId=${assetId}`);
       const data = await res.json();
-  
+      console.log(data);
       return data.imageUrl || "https://via.placeholder.com/100";
     } catch (err) {
       console.error("Error fetching image:", err);
@@ -48,10 +48,10 @@ async function fetchContentCounts() {
   
       const title = article.fields.title || "Untitled Article";
       const intro = article.fields.introduction || "No description available.";
-      const authorName = article.fields.authorName || "Unknown Author";
+      const authorName = article.fields.author.name || "Unknown Author";
       const imageId = article.fields.image?.sys?.id; // Get image ID from the article
       //const imgSrc = imageId ? await fetchImageUrl(imageId) : "https://via.placeholder.com/100";
-  
+      
       return `
         <a href="${contentType}/${generateSlug(article.fields.title)}">
             <img src="${article.fields.image}" alt="${article.title}" class="article-image">

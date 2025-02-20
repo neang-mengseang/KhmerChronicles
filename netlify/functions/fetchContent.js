@@ -17,13 +17,15 @@ exports.handler = async (event) => {
 
     // Fetch content for each type
     const fetchPromises = contentTypes.map(async (type) => {
-      const response = await fetch(`${url}?content_type=${type}&include=2`, {
+      const response = await fetch(`${url}?content_type=${type}&include=3`, {
         headers: { Authorization: `Bearer ${accessToken}` },
       });
 
       if (!response.ok) throw new Error(`Failed to fetch content for type: ${type}`);
 
       const data = await response.json();
+
+      console.log("Data received:", JSON.stringify(data));
 
       // Extract assets (images) from the response
       const assetMap = {};
@@ -33,7 +35,27 @@ exports.handler = async (event) => {
         });
       }
 
-      // Map the entries and resolve image URLs
+      // Log all included entries to verify if 'user' entry exists
+
+      // Map authors from included entries (user entries)
+      const authorMap = {};
+      if (data.includes?.Entry) {
+        data.includes.Entry.forEach(entry => {
+          
+          // Only pick entries that are of type "user" (author entries)
+          if (entry.sys.contentType.sys.id === "user") {
+            authorMap[entry.sys.id] = {
+              id: entry.sys.id,
+              name: entry.fields.username,
+              role: entry.fields.role,
+              email: entry.fields.email,
+              image: entry.fields.userImage?.sys?.id ? assetMap[entry.fields.userImage.sys.id] : null,
+            };
+          }
+        });
+      }
+
+      // Map the entries and resolve image URLs and author references
       result[type] = data.items.map(item => {
         let fields = { ...item.fields };
 
@@ -42,8 +64,9 @@ exports.handler = async (event) => {
           fields.image = assetMap[fields.image.sys.id] || null;
         }
 
-        if (fields.authorImage?.sys?.id) {
-          fields.authorImage = assetMap[fields.authorImage.sys.id] || null;
+        // Resolve author reference to full details
+        if (fields.author?.sys?.id) {
+          fields.author = authorMap[fields.author.sys.id] || null;
         }
 
         return {
@@ -56,7 +79,6 @@ exports.handler = async (event) => {
     });
 
     await Promise.all(fetchPromises);
-    console.log(result);
     console.log("==> Data Returned Successfully");
     return { statusCode: 200, body: JSON.stringify(result) };
 

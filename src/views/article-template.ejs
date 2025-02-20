@@ -72,9 +72,9 @@
   <main>
     <div class="card">
       <h1><%= article.title %></h1>
-      <a class="author" href="/profile/<%= article.authorName.replace(/\s+/g, '-') %>">
-        <img class="authorImg" src="<%= article.authorImage %>">
-        <p><%= article.authorName %></p>
+      <a class="author" href="/profile/<%= article.author.name.replace(/\s+/g, '-') %>">
+        <img class="authorImg" src="<%= article.author.image %>">
+        <p><%= article.author.name %></p>
       </a>
       <p class="date">Date: <%= article.dateCreate %></p>
       <p class="article-intro"><%= article.introduction %></p>
