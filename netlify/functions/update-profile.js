@@ -1,7 +1,8 @@
-/*
 const contentful = require("contentful-management");
 const cma_token = process.env.CONTENTFUL_CMA_TOKEN;
 const spaceId = process.env.SPACE_ID;
+
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 exports.handler = async (event) => {
   console.log("==> Function triggered");
@@ -23,124 +24,6 @@ exports.handler = async (event) => {
     try {
       requestBody = JSON.parse(event.body);
       console.log("==> Requested Body Detected");
-    } catch (parseError) {
-      console.error("ERROR parsing request body:", parseError);
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ error: "Invalid request body" }),
-      };
-    }
-
-    let entry;
-    try {
-      entry = await environment.getEntry(requestBody.entry_id);
-      console.log(`==> Entry Found: ${entry.sys.id}`);
-    } catch (error) {
-      console.error("ERROR: Profile not found:", error);
-      return {
-        statusCode: 404,
-        body: JSON.stringify({ error: "Profile not found" }),
-      };
-    }
-
-    let updatedFields = {};
-
-    // ✅ Update username if provided
-    if (requestBody.fields.username) {
-      updatedFields.username = { "en-US": requestBody.fields.username };
-    }
-
-    // ✅ Update bio if provided
-    if (requestBody.fields.bio) {
-      updatedFields.bio = { "en-US": requestBody.fields.bio };
-    }
-
-    // ✅ Handle Profile Picture Update (Only if a new one is provided)
-    if (requestBody.fields.image) {
-      try {
-        console.log("==> Uploading new profile picture...");
-
-        const uploadedAsset = await environment.createAssetFromFiles({
-          fields: {
-            title: { "en-US": requestBody.fields.image.title || "Profile Picture" },
-            file: {
-              "en-US": {
-                contentType: requestBody.fields.image.contentType,
-                fileName: requestBody.fields.image.fileName,
-                file: Buffer.from(requestBody.fields.image.data, "base64"),
-              },
-            },
-          },
-        });
-
-        const publishedAsset = await uploadedAsset.processForAllLocales();
-        const processedAsset = await environment.getAsset(publishedAsset.sys.id);
-        await processedAsset.publish();
-
-        updatedFields.userImage = {
-          "en-US": {
-            sys: { type: "Link", linkType: "Asset", id: processedAsset.sys.id },
-          },
-        };
-      } catch (imageError) {
-        console.error("ERROR uploading profile picture:", imageError);
-        return {
-          statusCode: 500,
-          body: JSON.stringify({ error: "Error uploading profile picture: " + imageError.message }),
-        };
-      }
-    }
-
-    // ✅ Apply only if there are changes
-    if (Object.keys(updatedFields).length > 0) {
-      entry.fields = { ...entry.fields, ...updatedFields };
-      const updatedEntry = await entry.update();
-      await updatedEntry.publish();
-      return {
-        statusCode: 200,
-        body: JSON.stringify({ message: "Profile updated successfully!", entry: updatedEntry, success: true }),
-      };
-    }
-
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ message: "No updates were made.", success: false }),
-    };
-  } catch (error) {
-    console.error("ERROR in update-profile function:", error);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: error.message || error.toString() }),
-    };
-  }
-};
-*/
-
-const contentful = require("contentful-management");
-const cma_token = process.env.CONTENTFUL_CMA_TOKEN;
-const spaceId = process.env.SPACE_ID;
-
-exports.handler = async (event) => {
-  console.log("==> Function triggered");
-
-  try {
-    if (!spaceId || !cma_token) {
-      console.error("ERROR: Missing environment variables");
-      return {
-        statusCode: 500,
-        body: JSON.stringify({ error: "Missing environment variables" }),
-      };
-    }
-
-    const client = contentful.createClient({ accessToken: cma_token });
-    const space = await client.getSpace(spaceId);
-    const environment = await space.getEnvironment("master");
-
-    let requestBody;
-    try {
-      requestBody = JSON.parse(event.body);
-      console.log("==> Requested Body Detected");
-      console.log(`${JSON.stringify(requestBody)}`);
     } catch (parseError) {
       console.error("ERROR parsing request body:", parseError);
       return {
@@ -161,31 +44,25 @@ exports.handler = async (event) => {
       };
     }
 
-    const userId = userEntry.fields.id["en-US"]; // Get the user's field.id
+    const userId = userEntry.fields.id["en-US"];
     let updatedFields = {};
 
-    // ✅ Update username if provided
     if (requestBody.fields.username) {
       updatedFields.username = { "en-US": requestBody.fields.username };
     }
 
-    // ✅ Update bio if provided
     if (requestBody.fields.bio) {
       updatedFields.bio = { "en-US": requestBody.fields.bio };
     }
 
     let updatedUserImage = null;
 
-    // ✅ Handle Profile Picture Update (Only if a new one is provided)
     if (requestBody.fields.image) {
       try {
         console.log("==> Uploading new profile picture...");
-
         const uploadedAsset = await environment.createAssetFromFiles({
           fields: {
-            title: {
-              "en-US": requestBody.fields.image.title || "Profile Picture",
-            },
+            title: { "en-US": requestBody.fields.image.title || "Profile Picture" },
             file: {
               "en-US": {
                 contentType: requestBody.fields.image.contentType,
@@ -197,116 +74,84 @@ exports.handler = async (event) => {
         });
 
         const publishedAsset = await uploadedAsset.processForAllLocales();
-        const processedAsset = await environment.getAsset(
-          publishedAsset.sys.id
-        );
+        const processedAsset = await environment.getAsset(publishedAsset.sys.id);
         await processedAsset.publish();
 
         updatedFields.userImage = {
-          "en-US": {
-            sys: { type: "Link", linkType: "Asset", id: processedAsset.sys.id },
-          },
+          "en-US": { sys: { type: "Link", linkType: "Asset", id: processedAsset.sys.id } },
         };
 
-        updatedUserImage = processedAsset.sys.id; // Store image ID for article updates
+        updatedUserImage = processedAsset.sys.id;
       } catch (imageError) {
         console.error("ERROR uploading profile picture:", imageError);
         return {
           statusCode: 500,
-          body: JSON.stringify({
-            error: "Error uploading profile picture: " + imageError.message,
-          }),
+          body: JSON.stringify({ error: "Error uploading profile picture: " + imageError.message }),
         };
       }
     }
 
-    // ✅ Apply only if there are changes
+    // Update the user profile if changes were made
     if (Object.keys(updatedFields).length > 0) {
-      try{
+      try {
         userEntry.fields = { ...userEntry.fields, ...updatedFields };
         const updatedUserEntry = await userEntry.update();
         await updatedUserEntry.publish();
         console.log("✅ User profile updated successfully!");
-      }catch (error) {
-        console.log("❌ Fail to update user profile!")
-        return
+      } catch (error) {
+        console.error("❌ Failed to update user profile!", error);
+        return { statusCode: 500, body: JSON.stringify({ error: "Failed to update user profile" }) };
       }
 
-
-      // Get travel articles and food articles that reference the user
-      const travelArticlesPromise = environment.getEntries({
-        content_type: "travelArticles",
-        "fields.authorId": userId,
-      });
-
-      const foodArticlesPromise = environment.getEntries({
-        content_type: "foodArticle",
-        "fields.authorId": userId,
-      });
-
-      // Wait for both promises to resolve
-      const [travelArticles, foodArticles] = await Promise.all([
-        travelArticlesPromise,
-        foodArticlesPromise,
+      // Fetch articles and galleries related to the user
+      const [travelArticles, foodArticles, cuisineGallery, travelGallery] = await Promise.all([
+        environment.getEntries({ content_type: "travelArticles", "fields.authorId": userId }),
+        environment.getEntries({ content_type: "foodArticle", "fields.authorId": userId }),
+        environment.getEntries({ content_type: "cuisineGallery", "fields.authorId": userId }),
+        environment.getEntries({ content_type: "travelGallery", "fields.authorId": userId }),
       ]);
 
-      console.log(`==> Update ID: ${userId}`);
-      console.log(
-        `==> Found ${travelArticles.items.length} travel articles to update`
-      );
-      console.log(
-        `==> Found ${foodArticles.items.length} food articles to update`
-      );
+      console.log(`Found ${travelArticles.items.length} travel articles to update`);
+      console.log(`Found ${foodArticles.items.length} food articles to update`);
+      console.log(`Found ${cuisineGallery.items.length} Cuisine Galleries to update`);
+      console.log(`Found ${travelGallery.items.length} Travel Galleries to update`);
 
-      // Function to update an article
-      const updateArticle = async (
-        article,
-        updatedUserImage,
-        updatedUsername
-      ) => {
-        try {
-          article.fields.authorName = {
-            "en-US": updatedUsername || article.fields.authorName["en-US"],
-          };
+      // Helper function to update articles/galleries
+      const updateContent = async (contentItems, updatedUserImage, updatedUsername) => {
+        for (let i = 0; i < contentItems.length; i++) {
+          const content = contentItems[i];
+          try {
+            content.fields.authorName = { "en-US": updatedUsername || content.fields.authorName["en-US"] };
+            if (updatedUserImage) {
+              content.fields.authorImage = {
+                "en-US": { sys: { type: "Link", linkType: "Asset", id: updatedUserImage } },
+              };
+            }
 
-          if (updatedUserImage) {
-            article.fields.authorImage = {
-              "en-US": {
-                sys: { type: "Link", linkType: "Asset", id: updatedUserImage },
-              },
-            };
+            const updatedContent = await content.update();
+            await updatedContent.publish();
+            console.log(`✅ Content with ID ${content.sys.id} updated successfully!`);
+          } catch (error) {
+            console.error(`❌ Failed to update content with ID ${content.sys.id}: ${error.message}`);
           }
 
-          const updatedArticle = await article.update();
-          await updatedArticle.publish();
-          console.log(
-            `✅ Article with ID ${article.sys.id} updated successfully!`
-          );
-        } catch (error) {
-          console.error(
-            `❌ Failed to update article with ID ${article.sys.id}: ${error.message}`
-          );
+          // Add delay to avoid rate limits
+          if (i % 5 === 0) {
+            console.log("Waiting 1000ms to avoid rate limit...");
+            await delay(1000);
+          }
         }
       };
 
-      // Update both travel and food articles in parallel
-      const updateTravelArticlesPromise = travelArticles.items.map((article) =>
-        updateArticle(article, updatedUserImage, requestBody.fields.username)
-      );
-
-      const updateFoodArticlesPromise = foodArticles.items.map((article) =>
-        updateArticle(article, updatedUserImage, requestBody.fields.username)
-      );
-
-      // Wait for all updates to finish
+      // Update content in batches
       await Promise.all([
-        ...updateTravelArticlesPromise,
-        ...updateFoodArticlesPromise,
+        updateContent(travelArticles.items, updatedUserImage, requestBody.fields.username),
+        updateContent(foodArticles.items, updatedUserImage, requestBody.fields.username),
+        updateContent(cuisineGallery.items, updatedUserImage, requestBody.fields.username),
+        updateContent(travelGallery.items, updatedUserImage, requestBody.fields.username),
       ]);
 
-      console.log(
-        "✅ All related articles (food and travel) attempted for update!"
-      );
+      console.log("✅ All related articles (food and travel) attempted for update!");
 
       return {
         statusCode: 200,
@@ -319,10 +164,7 @@ exports.handler = async (event) => {
 
     return {
       statusCode: 200,
-      body: JSON.stringify({
-        message: "No updates were made.",
-        success: false,
-      }),
+      body: JSON.stringify({ message: "No updates were made.", success: false }),
     };
   } catch (error) {
     console.error("ERROR in update-profile function:", error);
