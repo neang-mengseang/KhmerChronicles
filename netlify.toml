@@ -24,3 +24,8 @@
   from = "/profile/:username"
   to = "/.netlify/functions/profile?username=:username"
   status = 200
+
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/.netlify/functions/generateSitemap"
+  status = 200
