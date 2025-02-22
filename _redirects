@@ -27,3 +27,5 @@
 /dashboard/terminal /src/pages/dashboard/terminal/index.html 200;
 
 /login /src/pages/login/index.html 200;
+
+/sitemap /.netlify/functions/generateSitemap 200;
