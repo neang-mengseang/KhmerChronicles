@@ -34,14 +34,21 @@ exports.handler = async (event) => {
     // Create entry fields
     let entryFields = {
       title: { "en-US": title },
-      authorId: { "en-US": userId },
-      authorName: { "en-US": username["en-US"] },
-      authorImage:  userImage,
+      author: { // ✅ Store as a reference to the Contentful author entry
+        "en-US": {
+          sys: {
+            type: "Link",
+            linkType: "Entry",
+            id: authorEntry.sys.id, // ✅ Use author entry's ID
+          },
+        },
+      },
       dateCreate: { "en-US": new Date().toISOString() },
       image: featuredImageId
         ? { "en-US": { sys: { id: featuredImageId, linkType: "Asset", type: "Link" } } }
         : null,
     };
+    
 
     if (contentType === "foodArticle" || contentType === "travelArticles") {
       entryFields.content = { "en-US": richTextContent };
@@ -77,7 +84,7 @@ exports.handler = async (event) => {
 
 // Function to fetch author data based on userId
 async function fetchAuthorByUserId(environment, userId) {
-  console.log("Fetching author by userId:", userId);
+  console.log("Author ID:", userId);
   
   try {
     const entries = await environment.getEntries({

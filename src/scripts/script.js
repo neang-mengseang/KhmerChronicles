@@ -41,8 +41,7 @@ async function fetchContentCounts() {
 
     const travelCard1 = document.getElementById("tcard1");
     const travelCard2 = document.getElementById("tcard2");
-
-   console.log(data);
+    
     async function createFoodCard(article, contentType) {
       if (!article || !article.fields) return "<p>Article data missing.</p>";
   

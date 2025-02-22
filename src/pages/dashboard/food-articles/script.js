@@ -22,10 +22,11 @@ window.addEventListener("load", async () => {
       console.log(item);
       if (item.length > 0) {
         item.forEach((item) => {
+          console.log(item);
           const row = document.createElement("tr");
           row.innerHTML = `
             <td class="item_title">${item.fields.title || "Unknown Title"}</td>
-            <td class="item_ranking"><a href="/profile/${item.fields.authorName}">${item.fields.authorName || "N/A"}</a></td>
+            <td class="item_author"><a href="/profile/${item.fields.author.name}">${item.fields.author.name || "N/A"}</a></td>
             <td class="item_version">${item.sys.revision || "N/A"}</td>
             <td class="edit_btn_container">
                 <button class="edit_btn" data-id="${item.sys.id}" disabled>

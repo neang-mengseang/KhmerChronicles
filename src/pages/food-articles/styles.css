@@ -3,6 +3,10 @@
 }
 
 
+body{
+  overflow-x: hidden;
+}
+
 .pageTitle{
   padding: 12px 24px;
   font-size: 2rem;
@@ -50,12 +54,13 @@
 
 .articles-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 20px;
     padding: 20px;
   }
   
   .article-card {
+    max-width: 100%;
     background: white;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);

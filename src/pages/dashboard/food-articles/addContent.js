@@ -68,24 +68,31 @@ form.innerHTML = `
         // Handle form submission
         form.addEventListener("submit", async function (event) {
             event.preventDefault();
-
+        
             const user = netlifyIdentity.currentUser();
             if (!user) {
                 document.getElementById("message").textContent = "You must be logged in!";
                 return;
             }
-            
+        
             const submitBtn = document.getElementById("submitBtn");
-                // Disable the submit button to prevent multiple submissions
+            // Disable the submit button to prevent multiple submissions
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting...'; // Optional: Add a spinner and text
-
-
+        
             const title = document.getElementById("title").value;
             const introduction = document.getElementById("introduction").value;
             const content = quill.getContents(); // Get Quill Delta content
             const featuredImageInput = document.getElementById("featuredImage");
-
+        
+            // Check if required fields are filled
+            if (!title || !introduction || !content || (featuredImageInput.files.length === 0)) {
+                createToast("info"); // Show info toast if validation fails
+                submitBtn.disabled = false; // Re-enable submit button
+                submitBtn.innerHTML = '<i class="fa-solid fa-check"></i> Submit'; // Reset submit button text
+                return; // Prevent submission if fields are missing
+            }
+        
             let featuredImageId = null;
             if (featuredImageInput.files.length > 0) {
                 try {
@@ -95,33 +102,34 @@ form.innerHTML = `
                     return;
                 }
             }
-
+        
             const formData = {
-                userId: user.id,
                 contentType: "foodArticle",
                 title,
                 introduction,
                 content,
                 featuredImageId,
+                author: { sys: { type: "Link", linkType: "Entry", id: user.id } }, // Reference to author entry
             };
-
+        
             try {
                 const response = await fetch("/.netlify/functions/addContent", {
                     method: "POST",
                     body: JSON.stringify(formData),
                 });
-
+        
                 const data = await response.json();
                 console.log(data);
                 formContainer.style.display = "none";
                 form.remove(); // Completely removes the form from the DOM
-                createToast("success");
+                createToast("success"); // Success toast
             } catch (error) {
                 formContainer.style.display = "none";
                 form.remove(); // Completely removes the form from the DOM
-                createToast("error");            
+                createToast("error"); // Error toast
             }
         });
+        
 
         async function uploadImage(file) {
             const reader = new FileReader();

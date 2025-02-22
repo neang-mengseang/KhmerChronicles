@@ -130,12 +130,24 @@ font-size: 16px;
   font-size: 16px;
   }
 
+.modern-table th:not(:first-child){
+  text-align: center;
+  color: white;
+}
 
+.modern-table .item_author{
+  width: 12px;
+  font-weight: bold;
+  text-align: center;
+}
 
-.modern-table .item_ranking{
-width: 12px;
-font-weight: bold;
-text-align: center;
+.modern-table .item_author:hover{
+  background-color: var(--aqua);
+  text-decoration: var(--aqua) underline;
+}
+
+.modern-table .item_version{
+  text-align: center;
 }
 
 /* Edit Button */

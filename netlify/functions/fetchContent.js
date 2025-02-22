@@ -25,8 +25,6 @@ exports.handler = async (event) => {
 
       const data = await response.json();
 
-      console.log("Data received:", JSON.stringify(data));
-
       // Extract assets (images) from the response
       const assetMap = {};
       if (data.includes?.Asset) {
