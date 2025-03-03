@@ -34,10 +34,10 @@ function closeModal() {
 
 async function loadArticles() {
   document.addEventListener("DOMContentLoaded", async () => {
-    const data = await fetchArticles("cuisineGallery");
+    const data = await fetchArticles("travelGallery");
 
     if (data.success) {
-      allArticles = data.cuisineGallery; // Store all fetched articles
+      allArticles = data.travelGallery; // Store all fetched articles
       displayArticles(allArticles); // Initially display all articles
     } else {
       console.log("No articles found");
