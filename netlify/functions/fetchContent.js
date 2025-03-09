@@ -7,14 +7,14 @@ exports.handler = async (event) => {
 
   try {
     const { contentType } = event.queryStringParameters;
-
+    console.log(`==> Fetching Content Type: ${contentType}`)
+    
     if (!contentType) {
       return { statusCode: 400, body: JSON.stringify({ error: "Missing content type" }) };
     }
 
     const contentTypes = contentType.split(",").map(type => type.trim());
     let result = {};
-
     // Fetch content for each type
     const fetchPromises = contentTypes.map(async (type) => {
       const response = await fetch(`${url}?content_type=${type}&include=3`, {
@@ -24,7 +24,7 @@ exports.handler = async (event) => {
       if (!response.ok) throw new Error(`Failed to fetch content for type: ${type}`);
 
       const data = await response.json();
-
+      console.log(`==> { ${data.items.length} } Items Detected!`);
       // Extract assets (images) from the response
       const assetMap = {};
       if (data.includes?.Asset) {
@@ -32,8 +32,6 @@ exports.handler = async (event) => {
           assetMap[asset.sys.id] = `https:${asset.fields.file.url}`;
         });
       }
-
-      // Log all included entries to verify if 'user' entry exists
 
       // Map authors from included entries (user entries)
       const authorMap = {};
@@ -77,6 +75,7 @@ exports.handler = async (event) => {
     });
 
     await Promise.all(fetchPromises);
+    console.log(result);
     console.log("==> Data Returned Successfully");
     return { statusCode: 200, body: JSON.stringify(result) };
 
