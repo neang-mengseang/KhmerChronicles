@@ -10,107 +10,10 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 main{
   flex: 1;
 }
 
-.search-bar {
-  padding: 5px;
-  border: none;
-  border-radius: 5px;
-}
-.hero {
-  position: relative;
-  height: 200px;
-  background: url('https://via.placeholder.com/1500x400') no-repeat center center/cover;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
-}
-
-.hero img{
-  z-index: 1;
-  position: absolute;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  opacity: 70%;
-}
-.hero div{
-  z-index: 2;
-  background-color: rgba(7, 7, 7, 0.336);
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.hero h1 {
-  font-size: 2.5rem;
-  margin: 0;
-}
-.hero button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  background-color: #3e5dbb;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 200ms ease;
-}
-.hero button:hover {
-  background-color: #293c75;
-}
-.content {
-  display: flex;
-  padding: 20px;
-  gap: 20px;
-}
-.main-content {
-  flex: 3;
-}
-.aside {
-  flex: 1;
-  background-color: #f4f4f4;
-  padding: 10px;
-  border-radius: 5px;
-}
-.article-section {
-  margin-bottom: 40px;
-}
-.article-card {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-.article-card img {
-  width: 100px;
-  height: 100px;
-  border-radius: 5px;
-}
-.article-card h3 {
-  margin: 0;
-  font-size: 1.2rem;
-}
-.article-card p {
-  margin: 5px 0;
-  font-size: 0.9rem;
-  color: #555;
-}
-
-@media (max-width: 768px) {
-  .hero{
-    height: 280px;
-  }
-}

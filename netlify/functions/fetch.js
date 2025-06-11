@@ -45,7 +45,6 @@ exports.handler = async function (event, context) {
         body: JSON.stringify({ exists: false }),
       };
     }
-
     return {
       statusCode: 200,
       body: JSON.stringify({

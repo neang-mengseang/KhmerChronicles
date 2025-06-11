@@ -9,7 +9,7 @@
   ]
 
 [[redirects]]
-  from = "/travel-articles/:slug"
+  from = "/travel-article/:slug"
   to = "/.netlify/functions/travelArticle?slug=:slug"
   status = 200
 
@@ -23,4 +23,9 @@
 [[redirects]]
   from = "/profile/:username"
   to = "/.netlify/functions/profile?username=:username"
+  status = 200
+
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/.netlify/functions/generateSitemap"
   status = 200

@@ -1,5 +1,7 @@
 window.addEventListener('load', () => {
-    console.log(`Script.js is loading...`);
+    console.log(`==> [ Debug log ]: Script.js is loading...`);
+
+
     const themeToggle = document.getElementById('theme-toggle');
     const savedTheme = localStorage.getItem('theme');
 

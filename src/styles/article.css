@@ -12,8 +12,6 @@ main .card{
     padding: 24px;
     background-color: rgb(255, 255, 255);
     border-radius: 12px;
-    box-shadow:  20px 20px 60px #bebebe,
-    -20px -20px 60px #ffffff;
 }
 
 main .author{
@@ -23,6 +21,7 @@ main .author{
     gap: 12px;
     cursor: pointer;
 }
+
 main .author .authorImg{
     width: 24px;
     height: 24px;

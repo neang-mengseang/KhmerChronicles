@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <link href="img/favicon.ico" rel="icon">
+    <link rel="icon" type="image/x-icon" href="/src/assets/img/kc-icon.png">
     <title>Khmer Chronicles | Record Of Life</title>
     <link rel="stylesheet" href="/src/styles/style.css">
     <link rel="stylesheet" href="/src/styles/footer.css" />
     <link rel="stylesheet" href="/src/styles/header.css">
+    <link rel="stylesheet" href="/src/pages/news/style.css">
 </head>
 <body>
   <header class="header">
@@ -69,19 +70,25 @@
     </div>
   </header>
   <main>
-    <div class="filters">
-      <input type="text" id="search-query" placeholder="Search news...">
-      <select id="filter-category">
-        <option value="all">All Categories</option>
-        <option value="food">Food</option>
-        <option value="travel">Travel</option>
-        <option value="news">News</option>
+    <div class="container">
+      <h1>News Webpage</h1>
+      <h4>Search News</h4>
+      <div class="filter-bar">
+        <select id="sortByFilter">
+          <option value="relevancy">Relevancy</option>
+          <option value="popularity">Popularity</option>
+          <option value="publishedAt">Published At</option>
       </select>
-    </div>
-
-    <section id="news-container">
-      <!-- News articles will be dynamically inserted here -->
-    </section>
+          <input type="text" id="searchInput" placeholder="Search news...">
+          <button id="searchButton" onclick="fetchNews()">Search</button>
+      </div>
+      <div id="loadingSpinner" style="display:none;">
+        <div class="spinner"></div>
+      </div>
+      <ul class="news-list" id="newsList">
+      </ul>
+  </div>
+  </div>
   </main>
 
     <footer class="footer">

@@ -1,0 +1,162 @@
+/* General Styling */
+main {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f8f8;
+}
+
+/* Hero Section */
+.hero {
+  background: url('img/hero-bg.jpg') no-repeat center center/cover;
+  color: rgb(82, 82, 82);
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+}
+
+main .hero img{
+    width: 30%;
+}
+
+
+/* Section General Styling */
+section {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* Section Content Layout */
+.section-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 30px;
+  text-align: left;
+}
+
+.section-content img {
+  width: 45%;
+  border-radius: 10px;
+  height: 100%;
+}
+
+.section-content ul {
+  width: 50%;
+  list-style: none;
+}
+
+.section-content li {
+  background: url('img/bullet-icon.png') no-repeat left center;
+  background-size: 20px;
+  padding-left: 30px;
+  font-size: 1.1rem;
+  margin: 10px 0;
+}
+
+/* News Section */
+.news-section {
+  background: #ffffff;
+}
+
+/* Food Section */
+.food-section {
+  background: #f4e4d4;
+}
+
+/* Travel Section */
+.travel-section {
+  background: #d4eaf4
+}
+
+/* Button Styling */
+main .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f9c74f;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+  
+  main  .btn:hover {
+    background-color: #f79c42;
+  }
+  
+
+  /* Responsive Design */
+@media (max-width: 768px) {
+    .section-content {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .section-content img,
+    .section-content ul {
+      width: 100%;
+    }
+  }
+  
+
+  /* Team Member Modal */
+.team-member-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding-top: 60px;
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+  }
+  
+  .modal-content img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+  }
+  
+  .close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    right: 25px;
+    top: 0;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  

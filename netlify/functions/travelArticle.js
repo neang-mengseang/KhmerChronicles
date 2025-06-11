@@ -1,34 +1,33 @@
-const fetch = require('node-fetch');
-const { documentToHtmlString } = require('@contentful/rich-text-html-renderer');
-const ejs = require('ejs');
-const path = require('path');
-const fs = require('fs');
+const fetch = require("node-fetch");
+const { documentToHtmlString } = require("@contentful/rich-text-html-renderer");
+const ejs = require("ejs");
+const fs = require("fs");
 
 const spaceID = process.env.SPACE_ID;
 const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
 
 // Function to generate slug
 function generateSlug(title) {
-  return title.toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, '')   // Remove special characters
-    .replace(/\s+/g, '-')           // Replace spaces with hyphens
-    .replace(/^-+|-+$/g, '');       // Remove leading & trailing hyphens
+  return title
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "") // Remove accents
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "") // Remove special characters
+    .replace(/\s+/g, "-") // Replace spaces with hyphens
+    .replace(/^-+|-+$/g, ""); // Remove leading & trailing hyphens
 }
 
-exports.handler = async function(event, context) {
+exports.handler = async function (event) {
 
   const { path } = event;
-  console.log('Incoming path:', path);
+  console.log("Incoming path:", path);
 
-  // Extract slug from the path (after `/travel-articles/`)
-  const slug = path.split('/').pop().split('?')[0]; // Handle query parameters
-  console.log('Extracted slug:', slug);
+  const slug = path.split("/").pop().split("?")[0]; // Extract slug
+  console.log("Extracted slug:", slug);
 
-  // Construct Contentful API URL for fetching articles
-  const url = `https://cdn.contentful.com/spaces/${spaceID}/entries?access_token=${accessToken}&content_type=travelArticles&include=1`;
+  const url = `https://cdn.contentful.com/spaces/${spaceID}/entries?access_token=${accessToken}&content_type=travelArticles&include=3`;
 
-  // Define templatePath above to avoid access before initialization error
-  const templatePath = 'src/views/article-template.ejs';
+  const templatePath = "src/views/article-template.ejs";
 
   try {
     const response = await fetch(url);
@@ -39,65 +38,64 @@ exports.handler = async function(event, context) {
     const data = await response.json();
     
     // Find the article that matches the slug
-    const articleEntry = data.items.find(item => {
-      const generatedSlug = generateSlug(item.fields.title).toLowerCase();
-      const targetSlug = slug.toLowerCase();
-      console.log(`Comparing generatedSlug: '${generatedSlug}' with slug: '${targetSlug}'`);
-      return generatedSlug === targetSlug;
-    });
+    const articleEntry = data.items.find((item) => generateSlug(item.fields.title) === slug);
 
     if (!articleEntry) {
-      return {
-        statusCode: 404,
-        body: JSON.stringify({ error: 'Article not found' }),
-      };
+      return { statusCode: 404, body: JSON.stringify({ error: "Article not found" }) };
     }
 
-    // Extract article fields and render it
+    console.log("Included Entries:", JSON.stringify(data.includes?.Entry, null, 2));
+
+    // ✅ Fix: Initialize assetMap before using it
+    const assetMap = {};
+    if (data.includes?.Asset) {
+      data.includes.Asset.forEach((asset) => {
+        assetMap[asset.sys.id] = `https:${asset.fields.file.url}`;
+      });
+    }
+
+    // Extract authors from included entries
+    let authorData = {
+      id: "unknown",
+      name: "Unknown Author",
+      image: "/src/assets/img/user.svg",
+    };
+
+    if (articleEntry.fields.author?.sys?.id) {
+      const authorEntry = data.includes?.Entry?.find((entry) => entry.sys.id === articleEntry.fields.author.sys.id);
+      if (authorEntry) {
+        authorData = {
+          id: authorEntry.sys.id,
+          name: authorEntry.fields.username || "Unknown Author",
+          image: authorEntry.fields.userImage?.sys?.id ? assetMap[authorEntry.fields.userImage.sys.id] : "/src/assets/img/user.svg",
+        };
+      }
+    }
+
     const contentHtml = documentToHtmlString(articleEntry.fields.content);
     const articleData = {
       title: articleEntry.fields.title,
-      authorId: articleEntry.fields.authorId || 'Unknown Author',
-      authorName: articleEntry.fields.authorName || 'Unknown Author',
-      authorImage: "/src/assets/img/user.svg",
-      dateCreate: articleEntry.fields.dateCreate || 'Unknown Date',
-      introduction: articleEntry.fields.introduction || 'No introduction available.',
+      author: authorData,
+      dateCreate: articleEntry.fields.dateCreate || "Unknown Date",
+      introduction: articleEntry.fields.introduction || "No introduction available.",
       content: contentHtml,
-      imageUrl: null,  // Default to null
+      imageUrl: articleEntry.fields.image?.sys?.id ? assetMap[articleEntry.fields.image.sys.id] : null,
     };
 
-    // Extract image if available
-    if (articleEntry.fields.image && articleEntry.fields.image.sys) {
-      const imageID = articleEntry.fields.image.sys.id;
-      const imageAsset = data.includes?.Asset?.find(asset => asset.sys.id === imageID);
-      if (imageAsset && imageAsset.fields.file.url) {
-        articleData.imageUrl = `https:${imageAsset.fields.file.url}`;
-      }
-    }
-
-        // Extract image if available
-    if (articleEntry.fields.authorImage && articleEntry.fields.authorImage.sys) {
-      const authorImageID = articleEntry.fields.authorImage.sys.id;
-      const authorImageAsset = data.includes?.Asset?.find(asset => asset.sys.id === authorImageID);
-      if (authorImageAsset && authorImageAsset.fields.file.url) {
-        articleData.authorImage = `https:${authorImageAsset.fields.file.url}`;
-      }
-    }
-
     // Read template and render it
-    const template = fs.readFileSync(templatePath, 'utf-8');
+    const template = fs.readFileSync(templatePath, "utf-8");
     const renderedHtml = ejs.render(template, { article: articleData });
 
     return {
       statusCode: 200,
-      headers: { 'Content-Type': 'text/html' },
+      headers: { "Content-Type": "text/html" },
       body: renderedHtml,
     };
   } catch (error) {
-    console.error('Error fetching article:', error);
+    console.error("Error fetching article:", error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Internal Server Error' }),
+      body: JSON.stringify({ error: "Internal Server Error" }),
     };
   }
 };

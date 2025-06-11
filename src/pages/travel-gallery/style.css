@@ -1,0 +1,202 @@
+:root {
+    --aqua-blue: rgb(38, 130, 192);
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  
+  main {
+    flex: 1;
+    box-sizing: border-box;
+    padding: 12px 24px;
+  }
+  
+  .pageTitle {
+    font-size: 2rem;
+  }
+  
+  .filterContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    gap: 12px;
+  }
+  
+  .searchContainer {
+    position: relative;
+    flex: 1;
+  }
+  
+  #searchInput {
+    width: 100%;
+    padding: 12px;
+    border-radius: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.404);
+  }
+  
+  #submitBtn {
+    padding: 12px 0px;
+    background-color: transparent;
+    border: none;
+    border-radius: 6px;
+    position: absolute;
+    right: 24px;
+    cursor: pointer;
+  }
+  
+  #filter {
+    padding: 12px;
+    background-color: transparent;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  .gallery-container {
+    width: 100%;
+    column-count: 3;
+    column-gap: 16px;
+    margin-top: 12px;
+    overflow: hidden;
+  }
+  
+  .img-card {
+    display: inline-block;  
+    padding: 0;
+    margin: 0;
+    margin-bottom: 16px;
+    break-inside: avoid;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .image {
+    width: 100%; /* Makes the image fill the width of the container */
+    height: auto; /* Maintain aspect ratio */
+    cursor: pointer;
+    object-fit: cover;
+  }
+
+  .img-card .imgTitle{
+    opacity: 0;
+    position: absolute;
+    font-size: 2rem;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.548);
+    padding: 12px;
+    transition: opacity 300ms ease;
+    box-sizing: border-box;
+    color: white;
+  }
+  
+  /* Hover effect */
+  .img-card:hover {
+    transform: scale(1.02);
+  }
+  
+  .img-card:hover .imgTitle{
+    opacity: 1;
+  }
+  /* Media Queries for Responsiveness */
+  
+  /* For large screens like laptops and desktops */
+  @media (min-width: 1024px) {
+    .gallery-container {
+      column-count: 3; /* Show 4 columns on large screens */
+    }
+  
+    .image {
+      object-fit: cover;
+    }
+  }
+  
+  /* For medium screens like tablets */
+  @media (max-width: 1024px) {
+    .gallery-container {
+      column-count: 2; /* Show 2 columns on tablets */
+    }
+  
+    .image {
+      max-width: 300px; /* Maximum image width for tablets */
+    }
+  }
+  
+  /* For small screens like phones */
+  @media (max-width: 600px) {
+    .gallery-container {
+      column-count: 2; /* Show 1 column on phones */
+    }
+  
+    .image {
+      max-width: 100%; /* Full-width image on mobile */
+      object-fit: contain; /* Prevent image from being cropped */
+    }
+  }
+  
+  /* Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  .modal #modal-image {
+    width: 100%;
+    object-fit: contain; /* Ensure image fits in modal without cropping */
+  }
+  
+  .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+  }
+  
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  #author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  #author #author-image {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 50%;
+  }
+  
+  #author p {
+    font-weight: bold;
+  }
+  

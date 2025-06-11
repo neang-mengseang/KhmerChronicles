@@ -1,35 +1,28 @@
-const axios = require("axios");
+const fetch = require("node-fetch");
 
-exports.handler = async function(event, context) {
-  // API key for World News API zzzzz(replace with your actual key)
-  const apiKey = process.env.WORLD_NEWS_TOKEN;
-  const url = "https://worldnewsapi.com/api/v1/news"; // World News API endpoint
+exports.handler = async function (event) {
+    const API_KEY = "0a298266397a4879b101e6f93bac8d8b"; // Replace with your actual API key
+    const { q, sortBy } = event.queryStringParameters;
 
-  // Get query parameters from the event (for filtering)
-  const { country = "kh", category = "general", page = 1 } = event.queryStringParameters;
+    let url = `https://newsapi.org/v2/everything?language=en&apiKey=${API_KEY}&sortBy=${sortBy || "relevancy"}`;
 
-  try {
-    // Make the request to the external API
-    const response = await axios.get(url, {
-      params: {
-        country: country,
-        category: category,
-        page: page,
-        apiKey: apiKey,
-      },
-    });
-    console.log( JSON.stringify(response.data));
-    // Return the fetched data as a response
-    return {
-      statusCode: 200,
-      body: JSON.stringify(response.data),
-    };
-  } catch (error) {
-    console.error(error);
+    if (q) {
+        url += `&q=${encodeURIComponent(q)}`;
+    } else {
+        url += `&q=cambodia`;  // Default search term
+    }
 
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: "Failed to fetch news" }),
-    };
-  }
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        return {
+            statusCode: 200,
+            body: JSON.stringify(data),
+        };
+    } catch (error) {
+        return {
+            statusCode: 500,
+            body: JSON.stringify({ error: "Failed to fetch news" }),
+        };
+    }
 };

@@ -1,0 +1,151 @@
+
+/* Default dark theme */
+:root {
+    --background-1: #252627;
+    --background-2: #333;
+    --background-3: #1f1e1e;
+    --font-color-1: rgb(231, 225, 225);
+    --cyan: #119DA4;
+    --aqua: rgb(2, 105, 105);
+  }
+  
+  /* Light theme */
+  [data-theme="light"] {
+    --background-1: #f4f4f4;
+    --background-2: #e0e0e0;
+    --background-3: #c5c4c4;
+    --font-color-1: #333;
+    --cyan: #1cb3bb;
+    --aqua: rgb(2, 194, 194);
+  }
+
+ /* Container for the content editor */
+#formContainer {
+
+  background-color: rgba(68, 68, 68, 0.548);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 16;
+}
+
+#contentForm{
+  background-color: var(--background-3);
+  width: 700px;
+  border-radius: 12px;
+  box-sizing: border-box;
+  position: relative;
+  padding: 32px 24px;
+}
+
+
+/* Close button */
+#contentForm .close-btn {
+  position: absolute;
+  top: 32px;
+  right: 24px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: var(--font-color-1);
+  cursor: pointer;
+}
+
+#contentForm h3{
+  margin: 0;
+  margin-bottom: 12px;
+}
+
+/* Title input */
+#title {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: var(--background-2);
+  color: var(--font-color-1);
+
+}
+
+/* Introduction textarea */
+#introduction {
+  background-color: var(--background-2);
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 100px;
+  resize: vertical;
+  color: var(--font-color-1);
+}
+
+
+/* Editor container */
+#editor-container {
+  color: var(--font-color-1);
+  background-color: var(--background-2);
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#contentForm input,
+#contentForm textarea{
+  box-sizing: border-box;
+  transition: border 400ms ease;
+}
+
+#contentForm input:focus,
+#contentForm textarea:focus{
+  outline: none;
+  border: 1px solid var(--aqua);
+}
+
+/* File input */
+#featuredImage {
+  margin-bottom: 10px;
+}
+
+/* Submit button */
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 300ms ease;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+button[type="submit"]:hover {
+  background-color: #357a38;
+  transform: scale(1.05);
+}
+
+button[type="submit"]:focus{
+  transform: scale(0.95);
+}
+
+
+.ql-stroke,
+.ql-snow .ql-picker {
+  stroke: var(--font-color-1) !important;
+}
+

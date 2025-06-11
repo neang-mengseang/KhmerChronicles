@@ -17,7 +17,7 @@
 body {
   font-family: Arial, sans-serif;
   display: flex;
-  background-color: var(--background-1);
+  background-color: var(--background-2);
   color: var(--font-color-1);
   margin: 0;
   padding: 0;
@@ -173,7 +173,7 @@ main{
 
 #sidebar {
   width: 300px;
-  background-color: var(--background-2);
+  background-color: var(--background-1);
   color: white;
   height: 100vh;
   margin: 0;

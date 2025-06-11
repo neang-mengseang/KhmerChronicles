@@ -6,7 +6,6 @@ function fetchContentCounts() {
     return fetch(`/.netlify/functions/fetchContent?contentType=${contentTypes}`)
         .then(res => res.json())
         .then(data => {
-            console.log(data); // Log data for debugging
             return data; // Return data to use later
         })
         .catch(err => {
@@ -30,9 +29,7 @@ function display(fa, cg, ta, tg) {
 
 // Wait for the page to load and then fetch and display the data
 window.addEventListener('load', async () => {
-    console.log("Dashboard.js is loading...");
 
-    console.log("Authentication in progress...");
 
     // Fetch content counts
     let data = await fetchContentCounts();

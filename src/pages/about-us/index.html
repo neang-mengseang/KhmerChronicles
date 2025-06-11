@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <link href="img/favicon.ico" rel="icon">
+    <link rel="icon" type="image/x-icon" href="/src/assets/img/kc-icon.png">
     <title>Khmer Chronicles | Record Of Life</title>
-    <link rel="stylesheet" href="/src/styles/style.css">
     <link rel="stylesheet" href="/src/styles/footer.css" />
     <link rel="stylesheet" href="/src/styles/header.css">
+    <link rel="stylesheet" href="/src/pages/about-us/style.css">
 </head>
 <body>
   <header class="header">
@@ -69,11 +69,75 @@
     </div>
   </header>
       
-      
-    <main>
-  
-    </main>
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <img src="/src/assets/img/kc-logo-1.png">
 
+      <div class="hero-content">
+        <h1>Welcome to Khmer Chronicles</h1>
+        <p>Your gateway to Khmer news, food, and travel.</p>
+      </div>
+
+    </section>
+  
+    <!-- News Section -->
+    <section class="news-section">
+      <div class="container">
+        <h2>📰 General News</h2>
+        <p>Stay informed with the latest news from around the world, including Cambodia. Our content is updated in real-time via NewsAPI, providing you with trustworthy news coverage across various topics.</p>
+        <div class="section-content">
+          <img src="/src/assets/img/news.jpg" alt="News">
+          <ul>
+            <li>Breaking news from around the world</li>
+            <li>Politics, economy, and culture updates</li>
+            <li>Reliable sources from trusted media</li>
+            <li><a class="btn news" href="/news">Visit News Section</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Food Section -->
+    <section class="food-section">
+      <div class="container">
+        <h2>🍜 Food & Cuisine</h2>
+        <p>Explore Cambodia’s rich food culture, from top dishes to in-depth culinary insights.</p>
+        <div class="section-content">
+          <ul>
+            <li>Top-ranked Khmer dishes</li>
+            <li>Traditional and modern recipes</li>
+            <li>Cuisine gallery featuring street food and fine dining</li>
+            <li><a class="btn food" href="/food-articles">Visit Food Section</a></li>
+          </ul>
+          <img src="/src/assets/img/food.jpg" alt="Food">
+
+        </div>
+      </div>
+    </section>
+  
+    <!-- Travel Section -->
+    <section class="travel-section">
+      <div class="container">
+        <h2>✈️ Travel Destinations</h2>
+        <p>Find the best travel spots, from ancient temples to hidden gems across Cambodia.</p>
+        <div class="section-content">
+          <img src="/src/assets/img/travel.jpg" alt="Travel">
+          <ul>
+            <li>Top travel picks and recommendations</li>
+            <li>Detailed travel articles and guides</li>
+            <li>Stunning travel gallery of Cambodia’s landscapes</li>
+            <li><a class="btn travel" href="/travel-articles">Visit Food Section</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="team-section">
+
+    </section>
+  </main>
+  
 
 
     <footer class="footer">
@@ -123,6 +187,7 @@
         </div>
         <p class="copy-right-text">&copy; 2023 Khmer Chronicles - All Rights Reserved</p>
   </footer>
+  <script src="/src/pages/about-us/script.js"></script>
   <script src="https://kit.fontawesome.com/731249cdaa.js" crossorigin="anonymous"></script>
   <script src="/src/scripts/header.js"></script>
   <script src="/src/components/auth.js"></script>

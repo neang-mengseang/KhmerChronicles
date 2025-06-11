@@ -1,56 +1,52 @@
-
-const SPACE_ID = 'ntvh3j97dkce';
-const ACCESS_TOKEN = 'UC-xnFZuPk2OsBKWYLdZ8H6kwocji0aL37B5OvtH8HM';
-const CONTENT_TYPE_ID = 'foodRanking';
-
-
-
 async function fetchFoodRankings() {
-try {
-const client = contentful.createClient({
-    space: SPACE_ID,
-    accessToken: ACCESS_TOKEN
-});
+  try {
+    const contentType = "foodRanking";
+    const res = await fetch(
+      `/.netlify/functions/fetchContent?contentType=${contentType}`
+    );
 
-const entries = await client.getEntries({ content_type: CONTENT_TYPE_ID });
+    const entries = await res.json();  // Make sure to parse the JSON response
+    console.log(entries.foodRanking);
 
-// Sort the food items by 'ranking' field in ascending order
-const sortedItems = entries.items.sort((a, b) => {
-    return a.fields.ranking - b.fields.ranking;
-});
+    // Sort the food items by 'ranking' field in ascending order
+    const sortedItems = entries.foodRanking.sort((a, b) => {
+      return a.fields.ranking - b.fields.ranking;
+    });
 
-displayFoodRankings(sortedItems);
-} catch (error) {
-console.error("Error fetching content:", error);
-}
+    displayFoodRankings(sortedItems);
+  } catch (error) {
+    console.error("Error fetching content:", error);
+  }
 }
 
 function displayFoodRankings(items) {
-const foodSection = document.getElementById("food-ranking");
-foodSection.innerHTML = "";
+  const foodSection = document.getElementById("food-ranking");
+  foodSection.innerHTML = "";
 
-items.forEach((item) => {
-const foodItem = document.createElement("div");
-foodItem.classList.add("food-item");
+  items.forEach((item) => {
+    console.log(item);
+    const foodItem = document.createElement("div");
+    foodItem.classList.add("food-item");
 
-foodItem.innerHTML = `
+    foodItem.innerHTML = `
     <div class="ranking-badge">
         <span>${item.fields.ranking}</span>
     </div>
-    <img src="https:${item.fields.image.fields.file.url}" alt="${item.fields.title}">
+
     <div class="card-content">
         <h2>${item.fields.title}</h2>
-         <!--
-        <p>${item.fields.description}</p> 
-        <a href="/foodranking/${item.fields.title.toLowerCase().replace(/\s+/g, '-')}.html" class="view-btn">Read More</a> 
-        -->
+         
+        <p>${item.fields.description || "No information provided!"}</p> 
+
     </div>
+        <img src="${item.fields.image}" alt="${
+      item.fields.title
+    }">
 
 `;
 
-foodSection.appendChild(foodItem);
-});
+    foodSection.appendChild(foodItem);
+  });
 }
 
 fetchFoodRankings();
-

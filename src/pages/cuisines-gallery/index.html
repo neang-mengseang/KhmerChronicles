@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <link href="img/favicon.ico" rel="icon">
+    <link rel="icon" type="image/x-icon" href="/src/assets/img/kc-icon.png">
     <title>Khmer Chronicles | Record Of Life</title>
-    <link rel="stylesheet" href="/src/styles/style.css">
+    <link rel="stylesheet" href="/src/pages/cuisines-gallery/style.css">
     <link rel="stylesheet" href="/src/styles/footer.css" />
     <link rel="stylesheet" href="/src/styles/header.css">
 </head>
@@ -70,8 +70,33 @@
       </header>
       
     <main>
-  
-    </main>
+      <h2 class="pageTitle">Cuisine Galleries</h2>
+      <div class="filterContainer">
+        <div class="searchContainer">
+          <input type="text" id="searchInput">
+          <button id="submitBtn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        <button id="filter" type="button"><i class="fa-solid fa-sliders"></i></button>
+      </div>
+      
+      <div id="gallery" class="gallery-container"></div>
+      <div id="notFound"><i class="fa-solid fa-magnifying-glass"></i>No results found</div>
+      <!-- Modal -->
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <img id="modal-image" src="" alt="">
+          <div class="modal-text">
+            <h2 id="modal-title"></h2>
+            <a id="author">
+              <img id="author-image">
+              <p id="author-username"></p>
+            </a>
+            <p id="modal-description"></p>
+          </div>
+        </div>
+      </div>
+  </main>
 
 
 
@@ -122,6 +147,7 @@
         </div>
         <p class="copy-right-text">&copy; 2023 Khmer Chronicles - All Rights Reserved</p>
   </footer>
+  <script src="/src/pages/cuisines-gallery/script.js"></script>
   <script src="https://kit.fontawesome.com/731249cdaa.js" crossorigin="anonymous"></script>
   <script src="/src/scripts/header.js"></script>
   <script src="/src/components/auth.js"></script>

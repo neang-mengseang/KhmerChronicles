@@ -29,14 +29,17 @@ h1 {
 .stats {
     width: 50%;
     display: grid;
-    justify-content: space-evenly;
-    grid-template-columns: 300px 300px;
+    padding: 24px;
+    text-align: center;
+    border-right: 1px solid var(--cyan);
+    grid-template-columns: 40% 40%;
     grid-template-rows: 185px 250px;
+    column-gap: 12px;
+    row-gap: 24px;
 }
 
 .stat-card {
     padding: 24px;
-    background-color: var(--background-2);
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -47,7 +50,7 @@ h1 {
 
 .card{
     box-sizing: border-box;
-    width: fit-content;
+    width: 100%;
     height: fit-content;
     background: rgba(217, 217, 217, 0.58);
     border: 1px solid white;
@@ -148,6 +151,7 @@ h1 {
         gap: 12px;
         align-items: center;
         justify-content: center;
+        border: none;
     }
 
     .card{
@@ -156,5 +160,6 @@ h1 {
 
     .chart_container{
         width: 100%;
+        text-align: center;
     }
 }

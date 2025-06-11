@@ -7,37 +7,75 @@ exports.handler = async (event) => {
 
   try {
     const { contentType } = event.queryStringParameters;
-
+    console.log(`==> Fetching Content Type: ${contentType}`)
+    
     if (!contentType) {
       return { statusCode: 400, body: JSON.stringify({ error: "Missing content type" }) };
     }
 
     const contentTypes = contentType.split(",").map(type => type.trim());
-
-    // Initialize an empty object to store the results
     let result = {};
-
-    // Fetch content for each content type and group by the type
+    // Fetch content for each type
     const fetchPromises = contentTypes.map(async (type) => {
-      const response = await fetch(`${url}?content_type=${type}`, {
+      const response = await fetch(`${url}?content_type=${type}&include=3`, {
         headers: { Authorization: `Bearer ${accessToken}` },
       });
 
       if (!response.ok) throw new Error(`Failed to fetch content for type: ${type}`);
 
       const data = await response.json();
+      console.log(`==> { ${data.items.length} } Items Detected!`);
+      // Extract assets (images) from the response
+      const assetMap = {};
+      if (data.includes?.Asset) {
+        data.includes.Asset.forEach(asset => {
+          assetMap[asset.sys.id] = `https:${asset.fields.file.url}`;
+        });
+      }
 
-      // Add the content to the result object under the respective type key
-      result[type] = data.items.map(item => ({
-        sys: item.sys,
-        fields: item.fields,
-      }));
+      // Map authors from included entries (user entries)
+      const authorMap = {};
+      if (data.includes?.Entry) {
+        data.includes.Entry.forEach(entry => {
+          
+          // Only pick entries that are of type "user" (author entries)
+          if (entry.sys.contentType.sys.id === "user") {
+            authorMap[entry.sys.id] = {
+              id: entry.sys.id,
+              name: entry.fields.username,
+              role: entry.fields.role,
+              email: entry.fields.email,
+              image: entry.fields.userImage?.sys?.id ? assetMap[entry.fields.userImage.sys.id] : null,
+            };
+          }
+        });
+      }
+
+      // Map the entries and resolve image URLs and author references
+      result[type] = data.items.map(item => {
+        let fields = { ...item.fields };
+
+        // Resolve image fields
+        if (fields.image?.sys?.id) {
+          fields.image = assetMap[fields.image.sys.id] || null;
+        }
+
+        // Resolve author reference to full details
+        if (fields.author?.sys?.id) {
+          fields.author = authorMap[fields.author.sys.id] || null;
+        }
+
+        return {
+          sys: item.sys,
+          fields,
+        };
+      });
+
+      result.success = true;
     });
 
-    // Wait for all the fetch requests to complete
     await Promise.all(fetchPromises);
-
-    // Return the custom JSON structure
+    console.log(result);
     console.log("==> Data Returned Successfully");
     return { statusCode: 200, body: JSON.stringify(result) };
 

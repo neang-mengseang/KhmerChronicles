@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Content Management Dashboard</title>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://kit.fontawesome.com/731249cdaa.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/src/pages/dashboard/style.css">
@@ -26,7 +27,7 @@
                 <a class="active" href="/dashboard"><i class="fa-solid fa-gauge-high"></i>Dashboard</a>
             </li>
             <li>
-              <a href="/dashboard"><i class="fa-solid fa-terminal"></i>Terminal</a>
+              <a href="/dashboard/terminal"><i class="fa-solid fa-terminal"></i>Terminal</a>
           </li>
             <li>
                 <a href="/dashboard/food-ranking"><i class="fa-solid fa-ranking-star"></i>Food Ranking</a>
@@ -145,9 +146,12 @@
                   <canvas id="myChart"></canvas>
                 </div>
         </div>
-
+        <div class="user-list">
+          
+        </div>
       </main>
     
+    <script src="/src/pages/dashboard/auth.js"></script>
     <script src="/src/pages/dashboard/dashboard.js"></script>
     <script src="https://kit.fontawesome.com/731249cdaa.js" crossorigin="anonymous"></script>
     <script src="/src/pages/dashboard/script.js" ></script>
