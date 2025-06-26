@@ -1,4 +1,4 @@
-![kc-logo-2](https://khmerchronicles.netlify.app/)
+[![kc-logo-2](https://github.com/user-attachments/assets/0f6fffe4-d5ed-4174-b7d9-9a64da5c76c3)](https://khmerchronicles.netlify.app)
 
 ---
 
