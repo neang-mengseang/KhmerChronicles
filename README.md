@@ -58,27 +58,19 @@ A dynamic content-driven web platform for curated news, food culture, and travel
 * Slug-based URLs (`/food-article/:slug`, `/travel-article/:slug`)
 * Rich text rendering via **Contentful Rich Text API**
 * Metadata display: author, publication date, images
-
----
-
-### 📢 Social & Community Integration
-
-* Facebook Ads for outreach
-* "Love Zone" Facebook community page
-* Dedicated music channel for cultural lifestyle content
-
+  
 ---
 
 ## 🔧 Tech Stack
 
-| Layer        | Technology                    |
-| ------------ | ----------------------------- |
-| **Frontend** | HTML, CSS, Vanilla JavaScript |
-| **CMS**      | Contentful                    |
-| **Backend**  | Netlify Serverless Functions  |
-| **Auth**     | Netlify Identity              |
-| **Hosting**  | Netlify                       |
-| **APIs**     | NewsAPI (for live news)       |
+| Layer        | Technology                             |
+| ------------ | -------------------------------------- |
+| **Frontend** | HTML, CSS, Vanilla JavaScript, Node JS |
+| **CMS**      | Contentful                             |
+| **Backend**  | Netlify Serverless Functions           |
+| **Auth**     | Netlify Identity                       |
+| **Hosting**  | Netlify                                |
+| **APIs**     | NewsAPI (for live news)                |
 
 ---
 
