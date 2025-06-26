@@ -46,10 +46,10 @@ A dynamic content-driven web platform for curated news, food culture, and travel
 > 🔐 Secured by **Netlify Identity** + CMS Auth
 > 🧠 Managed via **Contentful** (Headless CMS)
 
-✔ Add new food & travel articles
-✔ Edit article content, images, and metadata
-✔ Delete articles (unpublish + remove from Contentful)
-✔ Upload images, preview, and render immediately
+* ✔ Add new food & travel articles
+* ✔ Edit article content, images, and metadata
+* ✔ Delete articles (unpublish + remove from Contentful)
+* ✔ Upload images, preview, and render immediately
 
 ---
 
