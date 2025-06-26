@@ -1,72 +1,106 @@
-Khmer Chronicles 🌏🇰🇭
+---
 
-Khmer Chronicles is a modern web platform that delivers curated news, food guides, and travel insights, tailored for users interested in Khmer culture and global affairs. Built with HTML, CSS, and vanilla JavaScript, it integrates Contentful for content management and Netlify Identity for authentication.
+# **Khmer Chronicles** 🌏🇰🇭
 
-🌟 Features
+A dynamic content-driven web platform for curated news, food culture, and travel insights — built to showcase Khmer identity in a global context.
 
-  
-  1. General News Section 📰
+[🌐 **Live Demo**](https://khmerchronicles.netlify.app)
 
-    ✔ Fetches real-time global news using NewsAPI
-    ✔ Search functionality for finding articles
-    ✔ Country filters (e.g., Khmer, US, China, etc.)
-    ✔ Displays news headlines, images, and sources
-  
-  3. Food Section 🍜
-     
-    ✔ Food Ranking – Lists top-rated Khmer and global dishes
-    ✔ Food Articles – Detailed guides and reviews of traditional & modern dishes
-    ✔ Cuisine Gallery – A Pinterest-style layout showcasing food images
-    ✔ Modal View – Clicking an image opens a detailed food description
-  
-  4. Travel Section 🌍
-     
-    ✔ Top Picks – Featured travel destinations
-    ✔ Travel Articles – Guides & experiences for travelers
-    ✔ Travel Gallery – A Pinterest-style layout for stunning travel images
-    
-5. User Dashboard 🛠
-```
-✔ Content creators can add, edit, and delete food & travel articles
-✔ Uses Contentful CMS to manage articles dynamically
-✔ Netlify Identity authentication ensures secure access
-```
-  7. Dynamic Article Pages 📝
-```
-✔ Uses slug-based dynamic routing to fetch & display articles
-✔ Supports rich text formatting using Contentful’s Rich Text API
-✔ Includes author information, publication date, and images
- ``` 
-  8. Social Media & Engagement 📢
-```
-✔ Integrated with Facebook Ads for traffic growth
-✔ "Love Zone" Facebook page for community interaction & fun content
-✔ Separate music channel to complement the platform
-```
-🔧 Tech Stack
-  - Frontend: HTML, CSS, Vanilla JavaScript.
-  - Backend: Netlify Serverless Functions.
-  - Content Management: Contentful.
-  - Authentication: Netlify Identity.
-  - Hosting: Netlify.
-  - API Integration: NewsAPI.
-    
-🚀 Live Demo & Future Plans
+---
 
-🌐 Live Site: [(Khmer Chronicles)](https://khmerchronicles.netlify.app/)
+## 🧠 About
 
-📌 Future Updates:
+**Khmer Chronicles** combines a sleek frontend with a real-time content management system (CMS) and admin dashboard. It features a fully functional CRUD interface for managing food and travel articles, integrates news APIs for live updates, and is optimized for performance, engagement, and future scalability.
 
-- `User profiles with saved articles`
-- `Comment system for discussions`
-- `Dark mode for improved UI experience`
-- `E-commerce section for Khmer souvenirs`
-  
-📢 Contribute & Support
+---
 
-🚀 This project is continuously evolving! If you’d like to contribute, feel free to fork, submit PRs, or suggest features.
+## 🌟 Key Features
 
-🔗 Follow Khmer Chronicles on social media (Add links to your Facebook pages & music channel).
+### 📰 Global News Section
 
-📧 For inquiries, reach out via mengseanggamming@gmail.com.
+* Live global news via **NewsAPI**
+* Search and filter by country (Cambodia, US, China, etc.)
+* Dynamic headline rendering with source and image previews
+
+---
+
+### 🍜 Food Explorer
+
+* **Top Dishes**: Khmer and international food rankings
+* **In-depth Food Articles**: Traditions, flavors, and reviews
+* **Gallery Mode**: Responsive image-based layout
+* **Modal View**: Expand images with detailed info
+
+---
+
+### 🌍 Travel Hub
+
+* Curated destination highlights
+* Khmer & global travel blogs and guides
+* Visual gallery with article linking
+
+---
+
+### 🛠 Admin Dashboard (Fully Functional)
+
+> 🔐 Secured by **Netlify Identity** + CMS Auth
+> 🧠 Managed via **Contentful** (Headless CMS)
+
+✔ Add new food & travel articles
+✔ Edit article content, images, and metadata
+✔ Delete articles (unpublish + remove from Contentful)
+✔ Upload images, preview, and render immediately
+
+---
+
+### 📝 Dynamic Article Pages
+
+* Slug-based URLs (`/food-article/:slug`, `/travel-article/:slug`)
+* Rich text rendering via **Contentful Rich Text API**
+* Metadata display: author, publication date, images
+
+---
+
+### 📢 Social & Community Integration
+
+* Facebook Ads for outreach
+* "Love Zone" Facebook community page
+* Dedicated music channel for cultural lifestyle content
+
+---
+
+## 🔧 Tech Stack
+
+| Layer        | Technology                    |
+| ------------ | ----------------------------- |
+| **Frontend** | HTML, CSS, Vanilla JavaScript |
+| **CMS**      | Contentful                    |
+| **Backend**  | Netlify Serverless Functions  |
+| **Auth**     | Netlify Identity              |
+| **Hosting**  | Netlify                       |
+| **APIs**     | NewsAPI (for live news)       |
+
+---
+
+## 🚀 Roadmap
+
+Coming soon:
+
+* ✅ User profiles with saved articles
+* ✅ Comment & discussion system
+* ✅ Dark mode support
+* ✅ E-commerce section (Khmer products & souvenirs)
+* ✅ Newsletter system (using Supabase + Serverless)
+
+---
+
+## 🤝 Contribute
+
+This project is actively maintained. Contributions are welcome:
+
+* 🔧 Fork this repo & submit Pull Requests
+* 🐛 Report issues
+* 💡 Suggest improvements or new features
+* 📧 Email: **[mengseanggamming@gmail.com](mailto:mengseanggamming@gmail.com)**
+
 
