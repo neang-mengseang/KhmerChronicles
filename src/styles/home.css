@@ -120,7 +120,7 @@
   .article-section .readmore_btn{
     width: 100%;
      background-color: transparent;
-     color: var(--aqua-blue);
+     color: black;
      padding: 12px;
      cursor: pointer;
      border: 1px solid rgba(0, 0, 0, 0.486);
@@ -130,11 +130,15 @@
      justify-content: center;
      align-items: center;
      text-decoration: none;
+     font-weight: bold;
+     border-radius: 12px;
+     transition: transform 300ms ease;
   }
   
   .article-section .readmore_btn:hover{
     background-color: var(--aqua-blue);
     color: white;
+    transform: scale(1.01);
   }
   
   .card_img{

@@ -30,10 +30,10 @@ window.addEventListener("load", async () => {
             <td class="item_version">${item.sys.revision || "N/A"}</td>
             <td class="edit_btn_container">
                 <button class="edit_btn" data-id="${item.sys.id}" disabled>
-                    <i class="fa-regular fa-pen-to-square"></i> Edit
+                    <i class="fa-regular fa-pen-to-square"></i> 
                 </button>
                 <button class="delete_btn" data-id="${item.sys.id}">
-                    <i class="fa-regular fa-trash-can"></i> Delete
+                    <i class="fa-regular fa-trash-can"></i> 
                 </button>
             </td>
           `;
@@ -263,10 +263,10 @@ function showDeleteModal(entryId, row, button) {
   document.getElementById("confirmDelete").addEventListener("click", async () => {
       button.disabled = true;
       button.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Deleting...`;
-
+      console.log("🚨 Deleting entryId:", entryId); // Add this before fetch
       try {
           const response = await fetch("/.netlify/functions/deleteContent", {
-              method: "DELETE",
+              method: "POST",
               body: JSON.stringify({ entryId }),
               headers: { "Content-Type": "application/json" },
           });
