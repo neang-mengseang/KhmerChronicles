@@ -76,13 +76,73 @@ A dynamic content-driven web platform for curated news, food culture, and travel
 
 ## 🚀 Roadmap
 
-Coming soon:
+### ✅ Completed Features
 
-* ✅ User profiles with saved articles
-* ✅ Comment & discussion system
-* ✅ Dark mode support
-* ✅ E-commerce section (Khmer products & souvenirs)
-* ✅ Newsletter system (using Supabase + Serverless)
+- ✍️ **CRUD Operations for Articles**  
+  - Add, edit, delete, and unpublish articles via dashboard  
+  - Integrated with Contentful for real-time content updates
+
+- 🔐 **User Authentication**  
+  - Secure login/logout with Netlify Identity  
+  - Access control for content creators only
+
+- 🧑‍💼 **User Profiles**  
+  - Personalized dashboard and saved articles
+
+- 📰 **Live Global News Feed**  
+  - NewsAPI integration with country filter and search support
+
+- 🖼️ **Dynamic Article Pages**  
+  - Slug-based routing, rich-text support, author metadata, images
+
+---
+
+### 🔄 Planned Upcoming Features
+
+- 💬 **Comment & Discussion System**  
+  - Engage readers with article-based discussions
+
+- 🌙 **Dark Mode Support**  
+  - Improve UI/UX for low-light environments
+
+- 🛍️ **E-commerce Section**  
+  - Marketplace for Khmer souvenirs and cultural products
+
+- 📧 **Newsletter System**  
+  - Email sign-up and daily/weekly digests using Supabase + Serverless
+
+---
+
+### 🔌 Upcoming API Integrations
+
+- 🌦️ **Weather Widget** *(OpenWeatherMap)*  
+  - Real-time weather for Phnom Penh, Siem Reap, and more  
+  - Useful for travel planning context
+
+- 🗺️ **Interactive Maps** *(Google Maps API)*  
+  - Embed maps in travel and food articles  
+  - Show locations of landmarks or restaurants
+
+- 🌍 **Geo-location Detection** *(GeoNames/IP-API)*  
+  - Suggest location-based articles dynamically
+
+- 🎥 **YouTube Integration** *(YouTube Data API)*  
+  - Display latest videos from Khmer music or travel channels
+
+- 🔔 **Push Notifications** *(Firebase or OneSignal)*  
+  - Notify users about content updates and site news
+
+- 💱 **Currency Exchange Rates** *(Fixer / exchangerate.host)*  
+  - Show KHR ↔ USD rates in travel articles
+
+- 🌐 **Language Toggle** *(LibreTranslate or Google Translate API)*  
+  - Allow users to switch between Khmer and English content
+
+- 🖼️ **Stock Image Fallback** *(Unsplash API)*  
+  - Automatically add relevant visuals if article lacks image
+
+- 💬 **Disqus or Custom Commenting System**  
+  - Embedded comment threads per article
 
 ---
 
