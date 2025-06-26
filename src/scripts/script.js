@@ -8,6 +8,7 @@ async function fetchContentCounts() {
       if (!data || !data.success) {
         throw new Error("Invalid response structure");
       }
+      console.log(data);
       
       return data;
     } catch (err) {
@@ -31,10 +32,15 @@ async function fetchContentCounts() {
   window.addEventListener("load", async () => {
     const data = await fetchContentCounts();
   
-    if (!data.success || !Array.isArray(data.foodArticle)) {
-      console.error("Invalid data structure received:", data);
-      return;
-    }
+  if (
+    !data.success ||
+    !Array.isArray(data.foodArticle) ||
+    !Array.isArray(data.travelArticles)
+  ) {
+    console.error("Invalid data structure received:", data);
+    return;
+  }
+
   
     const foodCard1 = document.getElementById("fcard1");
     const foodCard2 = document.getElementById("fcard2");
@@ -44,7 +50,7 @@ async function fetchContentCounts() {
     
     async function createFoodCard(article, contentType) {
       if (!article || !article.fields) return "<p>Article data missing.</p>";
-  
+      
       const title = article.fields.title || "Untitled Article";
       const intro = article.fields.introduction || "No description available.";
       const authorName = article.fields.author.name || "Unknown Author";
