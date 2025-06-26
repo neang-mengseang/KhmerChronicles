@@ -99,6 +99,9 @@ A dynamic content-driven web platform for curated news, food culture, and travel
 
 ### 🔄 Planned Upcoming Features
 
+- ⚛️ **React Migration**  
+  - Rebuild frontend using React for better scalability and maintainability
+
 - 💬 **Comment & Discussion System**  
   - Engage readers with article-based discussions
 
