@@ -1,3 +1,4 @@
+![image](https://github.com/user-attachments/assets/d82b8e6d-977e-4929-846a-ae8fbd83534d)
 ---
 
 # **Khmer Chronicles** 🌏🇰🇭
