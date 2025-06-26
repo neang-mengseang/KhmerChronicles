@@ -1,4 +1,5 @@
-![image](https://github.com/user-attachments/assets/d82b8e6d-977e-4929-846a-ae8fbd83534d)
+![kc-logo-2](https://github.com/user-attachments/assets/0f6fffe4-d5ed-4174-b7d9-9a64da5c76c3)
+
 ---
 
 # **Khmer Chronicles** 🌏🇰🇭
