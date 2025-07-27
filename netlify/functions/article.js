@@ -28,6 +28,8 @@ exports.handler = async function (event) {
   const { type, slug } = event.queryStringParameters || {};
   console.log("Incoming type:", type);
   console.log("Incoming slug:", slug);
+  console.log("event:", JSON.stringify(event, null, 2));
+
   if (!type || !slug) {
     return { statusCode: 400, body: "Missing type or slug" };
   }
