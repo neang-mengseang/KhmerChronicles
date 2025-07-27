@@ -32,11 +32,10 @@ console.log("==> Function { article.js } triggered!");
     let type = event.queryStringParameters?.type;
     let slug = event.queryStringParameters?.slug;
 
-    // Fallback if queryStringParameters are empty (i.e. from pretty URL redirect)
     if (!type || !slug) {
-    const pathParts = event.path.split("/").filter(Boolean); // removes empty segments
-    type = pathParts[0] === "food-article" ? "foodArticle" : "travelArticle";
-    slug = pathParts.slice(1).join("/");
+        const pathParts = event.path.split("/").filter(Boolean); // removes empty segments
+        type = pathParts[0] === "food-article" ? "foodArticle" : "travelArticles";
+        slug = pathParts.slice(1).join("/");
     }
 
     console.log("Resolved Type:", type);
@@ -51,6 +50,7 @@ console.log("==> Function { article.js } triggered!");
 
   try {
     const res = await fetch(contentfulURL);
+    console.log("Fetching from Contentful URL:", contentfulURL);
     if (!res.ok) throw new Error("Failed to fetch articles");
 
     const data = await res.json();

@@ -29,6 +29,6 @@
 
 [[redirects]]
   from = "/travel-article/*"
-  to = "/.netlify/functions/article?type=travelArticle&slug=:splat"
+  to = "/.netlify/functions/article?type=travelArticles&slug=:splat"
   status = 200
   force = true
