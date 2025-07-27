@@ -46,7 +46,6 @@ function createAuthElements() {
       </ul>
       <button class='menuLogout' id="logoutBtn">
         <span>
-          <img src='/src/assets/img/logout.svg'>
           Logout
         </span>
       </button>
