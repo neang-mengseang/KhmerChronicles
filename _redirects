@@ -2,12 +2,12 @@
 
 
 /top-pick/ /src/pages/top-pick/index.html 200;
-/travel-articles/ /src/pages/travel-articles/index.html 200;
+/travel-article/:slug  /.netlify/functions/article?type=travelArticles&slug=:slug  200
 
 /travel-gallery/ /src/pages/travel-gallery/index.html 200;
 
 /food-ranking/ /src/pages/food-ranking/index.html 200;
-/food-articles/ /src/pages/food-articles/index.html 200;
+/food-article/:slug  /.netlify/functions/article?type=foodArticle&slug=:slug  200
 /cuisines-gallery/ /src/pages/cuisines-gallery/index.html 200;
 
 /about-us/ /src/pages/about-us/index.html 200;
@@ -29,3 +29,4 @@
 /login /src/pages/login/index.html 200;
 
 /sitemap /.netlify/functions/generateSitemap 200;
+

@@ -26,7 +26,8 @@ exports.handler = async function (event) {
     marked = (await import("marked")).marked;
   }
   const { type, slug } = event.queryStringParameters || {};
-
+  console.log("Incoming type:", type);
+  console.log("Incoming slug:", slug);
   if (!type || !slug) {
     return { statusCode: 400, body: "Missing type or slug" };
   }
