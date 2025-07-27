@@ -24,10 +24,8 @@
   from = "/travel-article/:slug"
   to = "/.netlify/functions/article?type=travelArticle&slug=:slug"
   status = 200
-  force = true
 
 [[redirects]]
   from = "/food-article/:slug"
   to = "/.netlify/functions/article?type=foodArticle&slug=:slug"
   status = 200
-  force = true
