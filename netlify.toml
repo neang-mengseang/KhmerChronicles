@@ -9,12 +9,12 @@
   ]
 
 
-
 [[redirects]]
   from = "/user/*"
   to = "/.netlify/functions/profile?username=:splat"
-  query = { username = ":username"}
   status = 200
+  force = true
+
 
 [[redirects]]
   from = "/sitemap.xml"
