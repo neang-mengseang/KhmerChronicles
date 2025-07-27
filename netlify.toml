@@ -13,6 +13,7 @@
 [[redirects]]
   from = "/user/:username"
   to = "/.netlify/functions/profile?username=:username"
+  query = { username = ":username"}
   status = 200
 
 [[redirects]]
@@ -21,11 +22,13 @@
   status = 200
 
 [[redirects]]
-  from = "/travel-article/:slug"
-  to = "/.netlify/functions/article?type=travelArticle&slug=:slug"
+  from = "/food-article/:slug"
+  to = "/.netlify/functions/article"
+  query = { type = "foodArticle", slug = ":slug" }
   status = 200
 
 [[redirects]]
-  from = "/food-article/:slug"
-  to = "/.netlify/functions/article?type=foodArticle&slug=:slug"
+  from = "/travel-article/:slug"
+  to = "/.netlify/functions/article"
+  query = { type = "travelArticle", slug = ":slug" }
   status = 200
