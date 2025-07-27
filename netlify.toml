@@ -11,8 +11,8 @@
 
 
 [[redirects]]
-  from = "/user/:username"
-  to = "/.netlify/functions/profile?username=:username"
+  from = "/user/*"
+  to = "/.netlify/functions/profile?username=:splat"
   query = { username = ":username"}
   status = 200
 
