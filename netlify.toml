@@ -22,13 +22,11 @@
   status = 200
 
 [[redirects]]
-  from = "/food-article/:slug"
-  to = "/.netlify/functions/article"
-  query = { type = "foodArticle", slug = ":slug" }
+  from = "/food-article/*"
+  to = "/.netlify/functions/article?type=foodArticle&slug=:splat"
   status = 200
 
 [[redirects]]
-  from = "/travel-article/:slug"
-  to = "/.netlify/functions/article"
-  query = { type = "travelArticle", slug = ":slug" }
+  from = "/travel-article/*"
+  to = "/.netlify/functions/article?type=travelArticle&slug=:splat"
   status = 200
