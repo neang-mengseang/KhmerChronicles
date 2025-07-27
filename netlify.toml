@@ -20,17 +20,3 @@
   to = "/.netlify/functions/generateSitemap"
   status = 200
 
-[[redirects]]
-  from = "/top-pick/:slug"
-  to = "/.netlify/functions/pg-toppick?slug=:slug"
-  status = 200
-
-[[redirects]]
-  from = "/food-article/:slug"
-  to = "/.netlify/functions/article?type=foodArticle&slug=:slug"
-  status = 200
-
-[[redirects]]
-  from = "/travel-article/:slug"
-  to = "/.netlify/functions/article?type=travelArticles&slug=:slug"
-  status = 200
