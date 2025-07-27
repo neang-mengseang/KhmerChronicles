@@ -1,0 +1,252 @@
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f9f9f9;
+  color: #333;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+header {
+  margin-bottom: 20px;
+  border-bottom: 2px solid #005f73;
+  padding-bottom: 10px;
+}
+
+#back-button {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 8px;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+#back-button svg {
+  width: 24px;
+  height: 24px;
+  fill: #333;
+  transition: fill 0.3s ease;
+}
+
+#back-button:hover {
+  color: #007bff;
+}
+
+#back-button:hover svg {
+  fill: #007bff;
+}
+
+.share-badges {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.share-btn {
+  background: none;
+  border: none;
+  padding: 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.share-btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.share-btn svg.icon {
+  width: 24px;
+  height: 24px;
+  fill: #444;
+  transition: fill 0.3s ease;
+}
+
+
+
+.share-btn.facebook .icon {
+  fill: #1877f2; /* Facebook Blue */
+}
+
+.share-btn.twitter .icon {
+  fill: #1da1f2; /* Twitter Blue */
+}
+
+.share-btn.telegram .icon {
+  fill: #0088cc; /* Telegram Blue */
+}
+
+.share-btn.linkedin .icon {
+  fill: #0077b5; /* LinkedIn Blue */
+}
+
+.share-btn.copy .icon {
+  fill: #555; /* Neutral for copy */
+}
+
+.share-btn:hover .icon {
+  filter: brightness(1.2);
+}
+
+
+#main-image {
+  display: block;
+  width: 100%;
+  max-height: 450px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+}
+
+.divider {
+  height: 1px;
+  background-color: #ddd;
+  margin: 20px 0;
+  border-radius: 1px;
+}
+
+#description {
+  font-size: 1.1rem;
+  color: #444;
+  white-space: normal;
+  line-height: 1.6;
+}
+
+/* Paragraphs */
+#description p {
+  margin-bottom: 1em;
+}
+
+/* Headings */
+#description h1,
+#description h2,
+#description h3,
+#description h4 {
+  color: #005f73;
+  margin: 1.5em 0 0.5em;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+#description h1 {
+  font-size: 2rem;
+}
+
+#description h2 {
+  font-size: 1.75rem;
+}
+
+#description h3 {
+  font-size: 1.5rem;
+}
+
+#description h4 {
+  font-size: 1.25rem;
+}
+
+/* Lists */
+#description ul,
+#description ol {
+  padding-left: 1.5em;
+  margin-bottom: 1em;
+}
+
+#description li {
+  margin-bottom: 0.5em;
+  color: #555;
+}
+
+/* Blockquotes */
+#description blockquote {
+  margin: 1em 0;
+  padding: 1em 1.5em;
+  border-left: 4px solid #005f73;
+  background-color: #e0f0f0;
+  color: #333;
+  font-style: italic;
+  border-radius: 4px;
+}
+
+/* Images */
+#description img {
+  max-width: 100%;
+  height: auto;
+  margin: 1em 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Links */
+#description a {
+  color: #0a9396;
+  text-decoration: underline;
+}
+
+#description a:hover,
+#description a:focus {
+  color: #005f73;
+  text-decoration: none;
+}
+
+/* Inline code */
+#description code {
+  background-color: #f5f5f5;
+  border-radius: 3px;
+  padding: 0.2em 0.4em;
+  font-family: Consolas, Monaco, monospace;
+  font-size: 0.95em;
+}
+
+/* Horizontal rules */
+#description hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 2em 0;
+  border-radius: 1px;
+}
+
+#map {
+  margin-top: 24px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+#map iframe {
+  width: 100%;
+  height: 300px;
+  border: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  #main-image {
+    max-height: 300px;
+  }
+}

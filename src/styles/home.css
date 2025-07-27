@@ -6,7 +6,7 @@
   }
   .hero {
     position: relative;
-    height: 200px;
+    height: 300px;
     background: url('https://via.placeholder.com/1500x400') no-repeat center center/cover;
     color: white;
     display: flex;

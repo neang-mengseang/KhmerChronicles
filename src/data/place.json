@@ -1,0 +1,43 @@
+{
+    "sys": {
+        "space": {
+            "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "ntvh3j97dkce"
+            }
+        },
+        "id": "7qoH34Zyrmzr7xZQVkuPdB",
+        "type": "Entry",
+        "createdAt": "2025-07-27T05:45:30.830Z",
+        "updatedAt": "2025-07-27T09:20:38.172Z",
+        "environment": {
+            "sys": {
+                "id": "master",
+                "type": "Link",
+                "linkType": "Environment"
+            }
+        },
+        "publishedVersion": 25,
+        "revision": 6,
+        "contentType": {
+            "sys": {
+                "type": "Link",
+                "linkType": "ContentType",
+                "id": "topPick"
+            }
+        },
+        "locale": "en-US"
+    },
+    "fields": {
+        "ranking": 2,
+        "title": "Tuol Sleng Genocide Museum",
+        "image": "https://images.ctfassets.net/ntvh3j97dkce/3HFKi0ICV0DEhlVxcfNIcO/11d8ed950ada8b6cee1f52d9d3ef7959/11958020455_dde0f72a1d_k-1.webp",
+        "description": "__Tuol Sleng Genocide Museum__\n\nThe __Tuol Sleng Genocide Museum__ (Khmer: សារមន្ទីរឧក្រិដ្ឋកម្មប្រល័យពូជសាសន៍ទួលស្លែង), commonly known as __Tuol Sleng__, which translates to _\"Hill of the Poisonous Trees\"_ or _\"Strychnine Hill,\"_ is located in Phnom Penh, Cambodia. It serves as a stark and solemn reminder of the brutal atrocities committed during the Cambodian genocide under the Khmer Rouge regime.\n\n### Historical Background\n\nOriginally established as a secondary school, the building was seized and repurposed by the Khmer Rouge in 1975 to become __Security Prison 21 (S-21)__, one of the most notorious centers of imprisonment, interrogation, torture, and execution during the regime’s rule from 1975 to 1979.\n\n### The Prison and Its Victims\n\n- Between 1976 and 1979, approximately __20,000__ men, women, and children were detained at Tuol Sleng.\n- Tuol Sleng was one of between 150 and 196 similar detention and execution centers operated by the Khmer Rouge secret police, known as the __Santebal__ (literally meaning _“keeper of peace”_).\n- Prisoners were often accused of opposing the regime or suspected of espionage, frequently on flimsy or fabricated evidence.\n- Detainees were subjected to brutal interrogations, forced confessions under torture, and many were later executed or sent to killing fields.\n\n### Aftermath and Justice\n\nIn __July 2010__, the __Extraordinary Chambers in the Courts of Cambodia (ECCC)__ convicted __Kang Kek Iew__, the prison’s chief, also known by his alias _Duch_, for crimes against humanity and grave breaches of the 1949 Geneva Conventions. Duch was sentenced to life imprisonment and died in 2020 while serving his sentence.\n\n![Tuol Sleng Genocide Museum](//images.ctfassets.net/ntvh3j97dkce/5mkVNumcqgei5e40nFhbdS/e9b4e35309105c11e56266a8a03ea334/IMG_0129-min.webp)\n\n### The Museum Today\n\nThe __Tuol Sleng Genocide Museum__ now functions as a memorial and educational site:\n\n- It preserves the prison’s original buildings, cells, and equipment used for torture.\n- Photographs and records of victims are displayed to honor their memory.\n- It educates visitors from around the world about the horrors of the Khmer Rouge era.\n- The museum plays a vital role in promoting awareness about human rights and the importance of preventing genocide.\n\nVisiting Tuol Sleng is a deeply moving experience that underscores the resilience of survivors and the importance of historical memory in healing a nation scarred by genocide.\n\n---\n\n*Remembering the past is essential to ensuring a more just and humane future.*\n",
+        "location": {
+            "lon": 104.917656,
+            "lat": 11.549342
+        },
+        "descriptionHtml": "<p><strong>Tuol Sleng Genocide Museum</strong></p>\n<p>The <strong>Tuol Sleng Genocide Museum</strong> (Khmer: សារមន្ទីរឧក្រិដ្ឋកម្មប្រល័យពូជសាសន៍ទួលស្លែង), commonly known as <strong>Tuol Sleng</strong>, which translates to <em>&quot;Hill of the Poisonous Trees&quot;</em> or <em>&quot;Strychnine Hill,&quot;</em> is located in Phnom Penh, Cambodia. It serves as a stark and solemn reminder of the brutal atrocities committed during the Cambodian genocide under the Khmer Rouge regime.</p>\n<h3>Historical Background</h3>\n<p>Originally established as a secondary school, the building was seized and repurposed by the Khmer Rouge in 1975 to become <strong>Security Prison 21 (S-21)</strong>, one of the most notorious centers of imprisonment, interrogation, torture, and execution during the regime’s rule from 1975 to 1979.</p>\n<h3>The Prison and Its Victims</h3>\n<ul>\n<li>Between 1976 and 1979, approximately <strong>20,000</strong> men, women, and children were detained at Tuol Sleng.</li>\n<li>Tuol Sleng was one of between 150 and 196 similar detention and execution centers operated by the Khmer Rouge secret police, known as the <strong>Santebal</strong> (literally meaning <em>“keeper of peace”</em>).</li>\n<li>Prisoners were often accused of opposing the regime or suspected of espionage, frequently on flimsy or fabricated evidence.</li>\n<li>Detainees were subjected to brutal interrogations, forced confessions under torture, and many were later executed or sent to killing fields.</li>\n</ul>\n<h3>Aftermath and Justice</h3>\n<p>In <strong>July 2010</strong>, the <strong>Extraordinary Chambers in the Courts of Cambodia (ECCC)</strong> convicted <strong>Kang Kek Iew</strong>, the prison’s chief, also known by his alias <em>Duch</em>, for crimes against humanity and grave breaches of the 1949 Geneva Conventions. Duch was sentenced to life imprisonment and died in 2020 while serving his sentence.</p>\n<p><img src=\"https://images.ctfassets.net/ntvh3j97dkce/5mkVNumcqgei5e40nFhbdS/e9b4e35309105c11e56266a8a03ea334/IMG_0129-min.webp\" alt=\"Tuol Sleng Genocide Museum\"></p>\n<h3>The Museum Today</h3>\n<p>The <strong>Tuol Sleng Genocide Museum</strong> now functions as a memorial and educational site:</p>\n<ul>\n<li>It preserves the prison’s original buildings, cells, and equipment used for torture.</li>\n<li>Photographs and records of victims are displayed to honor their memory.</li>\n<li>It educates visitors from around the world about the horrors of the Khmer Rouge era.</li>\n<li>The museum plays a vital role in promoting awareness about human rights and the importance of preventing genocide.</li>\n</ul>\n<p>Visiting Tuol Sleng is a deeply moving experience that underscores the resilience of survivors and the importance of historical memory in healing a nation scarred by genocide.</p>\n<hr>\n<p><em>Remembering the past is essential to ensuring a more just and humane future.</em></p>\n"
+    }
+}

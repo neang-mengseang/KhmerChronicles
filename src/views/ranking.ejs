@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+  <meta property="og:title" content="<%= fields.title %>" />
+  <meta property="og:description" content="<%= stripHtml(fields.description).substring(0, 150) %>" />
+  <meta property="og:image" content="<%= fields.image %>" />
+  <meta property="og:url" content="https://yourdomain.com/top-pick/<%= fields.slug %>" />
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="<%= fields.title %>" />
+  <meta name="twitter:description" content="<%= stripHtml(fields.description).substring(0, 150) %>" />
+  <meta name="twitter:image" content="<%= fields.image %>" />
+
+
+  <title><%= fields.title %></title>
+    <link rel="stylesheet" href="/styles/ranking.css" />
+    <link rel="stylesheet" href="/styles/common.css" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/src/views/ranking.css">
+
+
+</head>
+<body>
+  <header>
+    <button id="back-button" onclick="history.back()" aria-label="Go back">
+      <svg id="Capa_1" enable-background="new 0 0 486.65 486.65" height="512" viewBox="0 0 486.65 486.65" width="512" xmlns="http://www.w3.org/2000/svg"><g><g id="arrow-1-w_1_"><path d="m202.114 444.648c-8.01-.114-15.65-3.388-21.257-9.11l-171.875-171.572c-11.907-11.81-11.986-31.037-.176-42.945.058-.059.117-.118.176-.176l171.876-171.571c12.738-10.909 31.908-9.426 42.817 3.313 9.736 11.369 9.736 28.136 0 39.504l-150.315 150.315 151.833 150.315c11.774 11.844 11.774 30.973 0 42.817-6.045 6.184-14.439 9.498-23.079 9.11z"/><path d="m456.283 272.773h-425.133c-16.771 0-30.367-13.596-30.367-30.367s13.596-30.367 30.367-30.367h425.133c16.771 0 30.367 13.596 30.367 30.367s-13.596 30.367-30.367 30.367z"/></g></g></svg>
+       Back
+      </button>
+    <h1><%= fields.title %></h1>
+
+
+  </header>
+<div class="share-badges">
+  <!-- Facebook -->
+  <a class="share-btn facebook" href="https://www.facebook.com/sharer/sharer.php?u=<%= encodeURIComponent(currentUrl) %>" target="_blank" aria-label="Share on Facebook" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24" class="icon" fill="#1877F2" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M22.675 0H1.325C.593 0 0 .592 0 1.324v21.352C0 23.407.593 24 1.325 24h11.495v-9.294H9.69v-3.622h3.13V8.413c0-3.1 1.894-4.788 4.66-4.788 1.325 0 2.464.098 2.795.142v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.324-.593 1.324-1.324V1.324C24 .592 23.407 0 22.675 0z"/>
+    </svg>
+  </a>
+
+  <!-- Twitter -->
+  <a class="share-btn twitter" href="https://twitter.com/intent/tweet?url=<%= encodeURIComponent(currentUrl) %>&text=Check%20this%20out!" target="_blank" aria-label="Share on Twitter" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24" class="icon" fill="#1DA1F2" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M23.954 4.569c-.885.392-1.83.656-2.825.775 1.014-.608 1.794-1.574 2.163-2.723-.949.555-2.005.959-3.127 1.184-.897-.959-2.178-1.559-3.594-1.559-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616v.061c0 2.385 1.693 4.374 3.946 4.828-.734.199-1.52.232-2.224.084.623 1.956 2.444 3.377 4.6 3.417-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.394 4.768 2.209 7.557 2.209 9.142 0 14.307-7.721 13.995-14.646.961-.689 1.797-1.56 2.457-2.548l-.047-.02z"/>
+    </svg>
+  </a>
+
+  <!-- Telegram -->
+  <a class="share-btn telegram" href="https://t.me/share/url?url=<%= encodeURIComponent(currentUrl) %>&text=Check%20this%20out!" target="_blank" aria-label="Share on Telegram" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24" class="icon" fill="#0088cc" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M9.003 16.568l-.36 5.147c.513 0 .735-.22 1-.486l2.4-2.3 4.98 3.66c.913.502 1.56.24 1.8-.852l3.26-15.287c.31-1.447-.525-2.02-1.487-1.676L2.08 10.01c-1.402.54-1.38 1.323-.238 1.672l5.444 1.7 12.65-7.96c.596-.366 1.14-.164.69.23"/>
+    </svg>
+  </a>
+
+  <!-- LinkedIn -->
+  <a class="share-btn linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=<%= encodeURIComponent(currentUrl) %>" target="_blank" aria-label="Share on LinkedIn" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24" class="icon" fill="#0077B5" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M4.98 3.5C4.98 2.12 6.1 1 7.48 1s2.5 1.12 2.5 2.5S8.86 6 7.48 6 4.98 4.88 4.98 3.5zM3 8h5v13H3V8zm7.5 0h4.6v1.8h.06c.64-1.22 2.2-2.5 4.34-2.5 4.6 0 5.5 3 5.5 6.9V21h-5v-6.3c0-1.5-.03-3.4-2.1-3.4-2.1 0-2.4 1.6-2.4 3.3V21h-5V8z"/>
+    </svg>
+  </a>
+
+  <!-- Copy -->
+<button class="share-btn copy" onclick="copyLink(this)" aria-label="Copy link">
+  <svg viewBox="0 0 24 24" class="icon copy-icon" fill="#555" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <!-- Clipboard icon -->
+    <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+  </svg>
+</button>
+</div>
+
+
+
+  <% if(fields.image){ %>
+    <img id="main-image" src="<%= fields.image %>" alt="<%= fields.title %>" />
+  <% } %>
+
+  <div class="divider"></div>
+
+  <div id="description">
+    <%- fields.descriptionHtml %>
+  </div>
+
+  <% if(fields.location && fields.location.lat && fields.location.lon){ %>
+    <div id="map">
+      <iframe
+        src="https://maps.google.com/maps?q=<%= fields.location.lat %>,<%= fields.location.lon %>&z=15&output=embed"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  <% } %>
+</body>
+<script>
+function copyLink(button) {
+  // Copy URL to clipboard
+  const url = window.location.href;
+  navigator.clipboard.writeText(url).then(() => {
+    // Replace icon with checkmark
+    const svg = button.querySelector("svg");
+    svg.innerHTML = `
+      <path fill="#4BB543" d="M20.285 6.708l-11.39 11.39-5.07-5.07 1.414-1.414 3.656 3.657 9.976-9.976z"/>
+    `;
+    // Optionally change fill color
+    svg.setAttribute("fill", "#4BB543");
+
+    // Reset icon after 2 seconds
+    setTimeout(() => {
+      svg.innerHTML = `
+        <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+      `;
+      svg.setAttribute("fill", "#555");
+    }, 2000);
+  }).catch(err => {
+    alert("Failed to copy: " + err);
+  });
+}
+</script>
+</html>

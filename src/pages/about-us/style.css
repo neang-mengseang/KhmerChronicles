@@ -4,32 +4,78 @@ main {
   background-color: #f8f8f8;
 }
 
+img{
+  user-select: none;
+}
+
 /* Hero Section */
 .hero {
-  background: url('img/hero-bg.jpg') no-repeat center center/cover;
-  color: rgb(82, 82, 82);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  padding: 2rem;
   text-align: center;
-  padding: 100px 20px;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+              url('/src/assets/img/angkor-wat-cambodia.webp') no-repeat center center / cover;
+  color: #fff;
+  position: relative;
 }
 
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 10px;
+.hero-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  z-index: 2;
 }
 
-.hero p {
-  font-size: 1.2rem;
+.hero-logo {
+  width: 600px;
+  height: auto;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
-main .hero img{
-    width: 30%;
+.hero-content h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
 }
 
+.hero-content h1 span {
+  color: #ffd700;
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .hero-logo {
+    width: 90px;
+  }
+}
 
 /* Section General Styling */
 section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertically center */
+  align-items: center; /* horizontally center */
   padding: 50px 20px;
   text-align: center;
+  border-top: 1px solid #ddd;
+  min-height: 80vh;
 }
 
 .container {
@@ -49,13 +95,19 @@ section {
 
 .section-content img {
   width: 45%;
+  max-width: 100%;
   border-radius: 10px;
-  height: 100%;
+  height: auto;
 }
 
 .section-content ul {
   width: 50%;
   list-style: none;
+  padding: 16px 24px;
+  margin: 0;
+  font-size: 1.1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
 }
 
 .section-content li {
@@ -66,20 +118,6 @@ section {
   margin: 10px 0;
 }
 
-/* News Section */
-.news-section {
-  background: #ffffff;
-}
-
-/* Food Section */
-.food-section {
-  background: #f4e4d4;
-}
-
-/* Travel Section */
-.travel-section {
-  background: #d4eaf4
-}
 
 /* Button Styling */
 main .btn {
@@ -159,4 +197,67 @@ main .btn {
     text-decoration: none;
     cursor: pointer;
   }
-  
+  /* Team Section */
+.team-section {
+  background-color: #fff5e6;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.team-section h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.team-member {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.team-member img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #ccc;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.team-member img:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.member-info {
+  max-width: 600px;
+}
+
+.member-info h4 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #222;
+}
+
+.member-info p {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+  margin: 10px 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .team-member {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .member-info {
+    max-width: 100%;
+  }
+}

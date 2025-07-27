@@ -1,74 +1,241 @@
 body {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-.main-title{
-    padding-left: 24px;
-    margin-top: 24px;
-    margin-bottom: 24px;
+main{
+  padding: 0 24px;
 }
 
-.ranking {
-    font-weight: bold;
-    color: #d9534f;
+.main-title {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  text-align: left;
 }
 
-#food-ranking{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+main .intro{
+  margin-bottom: 24px;
+  font-size: 1.2rem;
+  color: #555;
 }
 
-.food-item{
-    box-shadow: 0px 6px 24px 6px rgba(0, 0, 0, 0.534);
-    border-radius: 6px;
-    position: relative;
-    transition: transform 300ms ease;
-    margin-bottom: 20px;
-    margin: 34px;
-    cursor: pointer;
-    width: 95%;
-    display: flex;
-    text-align: left;
-    justify-content: space-between;
+#ranking {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.food-item:hover{
-    transform: scale(1.01);
+.item {
+  display: flex;
+  width: 100%;
+  padding: 20px;
+  gap: 20px;
+  margin-bottom: 30px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  align-items: flex-start;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
 }
 
-.food-item:hover .food-item img{transform: scale(1.05);}
+.item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid #00aaff;
+}
 
-.ranking-badge{
-    position: absolute;
-    top: -24px;
-    left: -6px;
-    background-color: rgb(38, 130, 192);
-    color: white;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
+.item:hover .ranking-badge {
+  background-color: #ff5722;
+}
+
+.ranking-badge {
+  flex-shrink: 0;
+  background-color: #00aaff;
+  color: white;
+  font-weight: bold;
+  font-size: 1.8rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.item img {
+  width: 160px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.card-content {
+  flex-grow: 1;
+}
+
+.card-content h2 {
+  margin: 0 0 10px 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 4.8em;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  transition: max-height 0.3s ease;
+  color: #555;
+  font-size: 1rem;
+}
+
+#modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.9);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+}
+
+#modal.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+#modal .modal-card {
+  background: #fff;
+  max-width: 900px;
+  width: 90%;
+  padding: 0;
+  max-height: 90%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  position: relative;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+#modal-header{
+  width: 100%;
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Close button */
+#modal-close {
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #555555;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+#modal-close:hover {
+  color: #ff0c0c;
+}
+
+
+
+/* Title */
+#modal-title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: left;
+  color: #005f73;
+}
+
+
+#modal-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Image styling */
+#modal-image {
+  display: block;
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  margin: 0 auto 20px auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Divider line */
+.modal-divider {
+  height: 1px;
+  background-color: #ddd;
+  margin: 0 0 20px 0;
+  border-radius: 1px;
+}
+
+/* Description text */
+#modal-description {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #444;
+  white-space: pre-line; /* respects line breaks if any */
+}
+
+
+
+@media (max-width: 768px) {
+  .item {
+    flex-direction: column;
     align-items: center;
-    font-size: 2rem;
-    border-radius: 50%;
-    box-shadow: -6px 6px 6px 1px rgba(27, 26, 26, 0.671);
+  }
+
+  .item img {
+    width: 100%;
+    height: auto;
+  }
+
+  .ranking-badge {
+    position: static;
+    margin-bottom: 10px;
+  }
+
+  #modal {
+    padding: 0px;
+  }
+
+  #modal-title {
+    font-size: 1.5rem;
+  }
 }
-
-.food-item img{
-    width: 50%;
-    object-fit: cover;
-}
-
-.food-item h2{
-    margin: 0;
-    padding: 12px;
-    text-align: center;
-}
-
-.card-content{
-    padding: 12px 24px;
-    width: 50%;
-}
-
-

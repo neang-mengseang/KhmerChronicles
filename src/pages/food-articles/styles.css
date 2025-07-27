@@ -93,9 +93,46 @@ body{
     color: gray;
   }
   
-  .article-description {
-    font-size: 0.95em;
-    margin-top: 10px;
-    color: #444;
-  }
+.article-description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  font-size: 0.95em;
+  line-height: 1.6;
+  max-height: calc(1.6em * 3); /* 3 lines max */
+  color: #444;
+  margin-top: 10px;
+}
   
+.read_more_btn {
+  margin-top: 12px;
+  display: inline-block;
+  background-color: var(--aqua-blue);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 180, 216, 0.3);
+}
+
+.read_more_btn:hover,
+.read_more_btn:focus {
+  background-color: #009ecf; /* darker shade of aqua-blue */
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.read_more_btn:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 4px rgba(0, 180, 216, 0.4);
+}

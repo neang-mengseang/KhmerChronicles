@@ -29,3 +29,8 @@
   from = "/sitemap.xml"
   to = "/.netlify/functions/generateSitemap"
   status = 200
+
+[[redirects]]
+  from = "/top-pick/:slug"
+  to = "/.netlify/functions/pg-toppick?slug=:slug"
+  status = 200
