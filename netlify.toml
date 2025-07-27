@@ -8,20 +8,10 @@
     "src/views/*"
   ]
 
-[[redirects]]
-  from = "/travel-article/:slug"
-  to = "/.netlify/functions/travelArticle?slug=:slug"
-  status = 200
 
 
 [[redirects]]
-  from = "/food-article/:slug"
-  to = "/.netlify/functions/foodArticle?slug=:slug"
-  status = 200
-
-
-[[redirects]]
-  from = "/profile/:username"
+  from = "/user/:username"
   to = "/.netlify/functions/profile?username=:username"
   status = 200
 
@@ -33,4 +23,14 @@
 [[redirects]]
   from = "/top-pick/:slug"
   to = "/.netlify/functions/pg-toppick?slug=:slug"
+  status = 200
+
+[[redirects]]
+  from = "/food-article/:slug"
+  to = "/.netlify/functions/article?type=foodArticle&slug=:slug"
+  status = 200
+
+[[redirects]]
+  from = "/travel-article/:slug"
+  to = "/.netlify/functions/article?type=travelArticles&slug=:slug"
   status = 200

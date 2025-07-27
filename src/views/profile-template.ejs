@@ -1,17 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <link href="img/favicon.ico" rel="icon" />
-    <title>Khmer Chronicles | Record Of Life</title>
-    <link rel="stylesheet" href="/src/styles/style.css" />
-    <link rel="stylesheet" href="/src/styles/footer.css" />
-    <link rel="stylesheet" href="/src/styles/header.css" />
-    <link rel="stylesheet" href="/src/styles/profile.css" />
-    <link rel="stylesheet" href="/src/styles/notification.css">
-  </head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Essential Meta Tags -->
+  <meta name="title" content="Khmer Chronicles | Cambodian Food & Travel Blog" />
+  <meta name="description" content="Explore the rich culture of Cambodia through curated food guides, travel stories, and local insights. Khmer Chronicles is your digital gateway to authentic Khmer experiences." />
+  <meta name="keywords" content="Khmer Chronicles, Cambodia, food blog, travel blog, Khmer food, Cambodian culture, Southeast Asia travel, Phnom Penh, Siem Reap, Angkor Wat" />
+  <meta name="author" content="Khmer Chronicles Team" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://khmerchronicles.netlify.app/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://khmerchronicles.netlify.app/" />
+  <meta property="og:title" content="Khmer Chronicles | Record Of Life" />
+  <meta property="og:description" content="Dive into Cambodia’s rich heritage through food and travel articles, curated by locals." />
+  <meta property="og:image" content="https://khmerchronicles.netlify.app/img/og-banner.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://khmerchronicles.netlify.app/" />
+  <meta name="twitter:title" content="Khmer Chronicles | Record Of Life" />
+  <meta name="twitter:description" content="Discover food, travel and culture of Cambodia through Khmer Chronicles." />
+  <meta name="twitter:image" content="https://khmerchronicles.netlify.app/img/og-banner.jpg" />
+
+  <!-- Favicon -->
+  <link href="/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+  <!-- Page Title -->
+  <title>Khmer Chronicles | Cambodian Food & Travel Stories</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/src/styles/style.css" />
+  <link rel="stylesheet" href="/src/styles/footer.css" />
+  <link rel="stylesheet" href="/src/styles/header.css" />
+  <link rel="stylesheet" href="/src/styles/profile.css" />
+  <link rel="stylesheet" href="/src/styles/notification.css">
+
+  <!-- Identity -->
+  <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
   <body>
     <header class="header">
       <div class="logo">
@@ -22,7 +52,7 @@
           <li class="nav-item">
             <a href="/" class="nav-link first-nav">Home</a>
           </li>
-          <li class="nav-item"><a href="/news" class="nav-link">News</a></li>
+          <li class="nav-item"><a href="/news" class="nav-link" title="Read the latest Cambodian news">News</a></li>
 
           <li class="nav-item explore">
             <a href="#" class="nav-link">Explore</a>
@@ -74,12 +104,12 @@
       </div>
     </header>
 
-    <main>
+    <main aria-label="User profile page content">
       <div id="profile_container">
         <div class="card">
             <section class="left">
                 <div id="img_container">
-                    <img id="user-image" src="<%= profileImgUrl %>" alt="User Image">
+                <img id="user-image" src="<%= profileImgUrl %>" alt="User profile image of <%= username %>" />
                 </div>
             </section>
             <section class="right">
@@ -97,7 +127,7 @@
                 <p id="id"><i class="fa-regular fa-address-card"></i> ID: <%= id %></p>
                 <p id="email"><i class="fa-solid fa-envelope"></i> Email: <%= email %></p>
                 <span id="bio"><%= bio %></span>
-                <button class="contact">Contact Me</button>
+                <button class="contact" aria-label="Contact user">Contact Me</button>
             </section>
             <div id="image-container"></div>
         </div>
@@ -140,10 +170,10 @@
             <button type="submit">SUBSCRIBE</button>
           </form>
           <div class="icons">
-            <i class="fa-brands fa-facebook-f"></i>
-            <i class="fa-brands fa-twitter"></i>
-            <i class="fa-brands fa-linkedin"></i>
-            <i class="fa-brands fa-github"></i>
+           <i class="fa-brands fa-facebook-f" aria-label="Facebook"></i>
+            <i class="fa-brands fa-twitter" aria-label="Twitter"></i>
+            <i class="fa-brands fa-linkedin" aria-label="LinkedIn"></i>
+            <i class="fa-brands fa-github" aria-label="Github"></i>
           </div>
         </div>
       </div>
@@ -155,6 +185,18 @@
       src="https://kit.fontawesome.com/731249cdaa.js"
       crossorigin="anonymous"
     ></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "<%= username %>",
+      "url": "https://khmerchronicles.netlify.app/profile/<%= id %>",
+      "image": "<%= profileImgUrl %>",
+      "email": "<%= email %>",
+      "jobTitle": "<%= userRole %>",
+      "description": "<%= bio %>"
+    }
+    </script>
     <script src="/src/scripts/header.js"></script>
     <script  src="/src/components/auth.js"></script>
   </body>

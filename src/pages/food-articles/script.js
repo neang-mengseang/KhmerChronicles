@@ -30,7 +30,7 @@ async function loadArticles() {
               <img src="${article.fields.image}" alt="${article.fields.title}" class="article-image">
               <div class="article-content">
                 <h2 class="article-title">${article.fields.title}</h2>
-                <p class="article-author">By ${article.fields.author.name} - ${article.fields.dateCreate}</p>
+                <p class="article-author">By ${article.fields.author.fields.username} - ${article.fields.dateCreate}</p>
                 <p class="article-description">${article.fields.introduction}</p>
                 <a href="/food-article/${generatedSlug}" class="read_more_btn">Read More</a>
               </div>

@@ -134,7 +134,7 @@ exports.handler = async (event) => {
 
     return {
       statusCode: 200,
-      body: JSON.stringify(result),
+      body: JSON.stringify({ success: true, ...result }),
     };
   }  catch (error) {
   console.error("Serverless function error:", error);

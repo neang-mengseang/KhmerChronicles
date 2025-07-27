@@ -1,97 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <link href="img/favicon.ico" rel="icon">
+    <link href="img/favicon.ico" rel="icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather&family=Playfair+Display:wght@600&display=swap"
+      rel="stylesheet"
+    />
+
     <title>Khmer Chronicles | Record Of Life</title>
-    <link rel="stylesheet" href="/src/styles/article.css">
+    <link rel="stylesheet" href="/src/views/article.css" />
     <link rel="stylesheet" href="/src/styles/footer.css" />
-    <link rel="stylesheet" href="/src/styles/header.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/src/styles/header.css" />
+  </head>
+  <body>
     <header class="header">
-        <div class="logo">
-          <a href="/" class="logo-link">Khmer Chronicles</a>
-        </div>
-        <nav class="nav">
-          <ul class="nav-list">
-            <li class="nav-item"><a href="/" class="nav-link first-nav">Home</a></li>
-            <li class="nav-item"><a href="/src/pages/news/index.html" class="nav-link">News</a></li>
-
-            <li class="nav-item explore">
-              <a href="#" class="nav-link">Explore</a>
-              <div class="dropdown">
-                <div class="dropdown-section">
-                  <h4>Cuisines</h4>
-                  <ul>
-                    <li><a href="/src/pages/food-ranking/index.html">Food Ranking</a></li>
-                    <li><a href="/src/pages/food-articles/index.html">Food Articles</a></li>
-                    <li><a href="/src/pages/cuisines-gallery/index.html">Cuisines Gallery</a></li>
-
-                  </ul>
-                </div>
-                <div class="dropdown-section">
-                  <h4>Travel</h4>
-                  <ul>
-                    <li><a href="/src/pages/top-pick/index.html">Top-Pick</a></li>
-                    <li><a href="/src/pages/travel-articles/index.html">Travel Articles</a></li>
-                    <li><a href="/src/pages/travel-gallery/index.html">Travel Gallery</a></li>
-                  </ul>
-                </div>
-                
-              </div>
-            </li>
-            <li class="nav-accordion">
-                <button class="accordion-btn" onclick="toggleChange">Explore</button>
-                <div class="accordion-panel">
-                    <a href="/src/pages/food-ranking/index.html" class="nav-link">Food Ranking</a>
-                    <a href="/src/pages/food-articles/index.html" class="nav-link">Food Articles</a>
-                    <a href="/top-pick" class="nav-link">Top-Pick</a>
-                    <a href="/travel-articles" class="nav-link">Travel Articles</a>
-                </div>
-            </li>
-
-            <li class="nav-item"><a href="/src/pages/about-us/index.html" class="nav-link">About</a></li>
-            <li class="nav-item"><a href="/src/pages/contact/index.html" class="nav-link">Contact</a></li>
-          </ul>
-        </nav>
-        <div class="auth-container">
-
-        </div>
-        
-        
-        <div class="hamburger-menu" onclick="toggleMenu()">
-            <div class="bar1"></div>
-            <div class="bar2"></div>
-            <div class="bar3"></div>
-        </div>
-      </header>
-      
-  <main>
-    <div class="card">
-      <h1><%= article.title %></h1>
-      <a class="author" href="/profile/<%= article.author.name.replace(/\s+/g, '-') %>">
-        <img class="authorImg" src="<%= article.author.image %>">
-        <p><%= article.author.name %></p>
-      </a>
-      <p class="date">Date: <%= article.dateCreate %></p>
-      <p class="article-intro"><%= article.introduction %></p>
-      <% if (article.imageUrl) { %>
-        <img src="<%= article.imageUrl %>" alt="<%= article.title %>" />
-      <% } %>
-      <div class="article-content">
-        <%- article.content %> <!-- This renders the rich text content -->
-
+      <div class="logo">
+        <a href="/" class="logo-link">Khmer Chronicles</a>
       </div>
-    </div>
-  </main>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="/" class="nav-link first-nav">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="/src/pages/news/index.html" class="nav-link">News</a>
+          </li>
 
+          <li class="nav-item explore">
+            <a href="#" class="nav-link">Explore</a>
+            <div class="dropdown">
+              <div class="dropdown-section">
+                <h4>Cuisines</h4>
+                <ul>
+                  <li>
+                    <a href="/src/pages/food-ranking/index.html"
+                      >Food Ranking</a
+                    >
+                  </li>
+                  <li>
+                    <a href="/src/pages/food-articles/index.html"
+                      >Food Articles</a
+                    >
+                  </li>
+                  <li>
+                    <a href="/src/pages/cuisines-gallery/index.html"
+                      >Cuisines Gallery</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="dropdown-section">
+                <h4>Travel</h4>
+                <ul>
+                  <li><a href="/src/pages/top-pick/index.html">Top-Pick</a></li>
+                  <li>
+                    <a href="/src/pages/travel-articles/index.html"
+                      >Travel Articles</a
+                    >
+                  </li>
+                  <li>
+                    <a href="/src/pages/travel-gallery/index.html"
+                      >Travel Gallery</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="nav-accordion">
+            <button class="accordion-btn" onclick="toggleChange">
+              Explore
+            </button>
+            <div class="accordion-panel">
+              <a href="/src/pages/food-ranking/index.html" class="nav-link"
+                >Food Ranking</a
+              >
+              <a href="/src/pages/food-articles/index.html" class="nav-link"
+                >Food Articles</a
+              >
+              <a href="/top-pick" class="nav-link">Top-Pick</a>
+              <a href="/travel-articles" class="nav-link">Travel Articles</a>
+            </div>
+          </li>
 
-    
-  <footer class="footer">
-    <div class="footer-row">
+          <li class="nav-item">
+            <a href="/src/pages/about-us/index.html" class="nav-link">About</a>
+          </li>
+          <li class="nav-item">
+            <a href="/src/pages/contact/index.html" class="nav-link">Contact</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="auth-container"></div>
+
+      <div class="hamburger-menu" onclick="toggleMenu()">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
+    </header>
+
+    <main class="article-page">
+      <div class="bb_container">
+        <button onclick="history.back()" class="back_btn">
+          <svg id="Capa_1" enable-background="new 0 0 486.65 486.65" height="512" viewBox="0 0 486.65 486.65" width="512" xmlns="http://www.w3.org/2000/svg"><g><g id="arrow-1-w_1_"><path d="m202.114 444.648c-8.01-.114-15.65-3.388-21.257-9.11l-171.875-171.572c-11.907-11.81-11.986-31.037-.176-42.945.058-.059.117-.118.176-.176l171.876-171.571c12.738-10.909 31.908-9.426 42.817 3.313 9.736 11.369 9.736 28.136 0 39.504l-150.315 150.315 151.833 150.315c11.774 11.844 11.774 30.973 0 42.817-6.045 6.184-14.439 9.498-23.079 9.11z"/><path d="m456.283 272.773h-425.133c-16.771 0-30.367-13.596-30.367-30.367s13.596-30.367 30.367-30.367h425.133c16.771 0 30.367 13.596 30.367 30.367s-13.596 30.367-30.367 30.367z"/></g></g></svg>
+          Back
+        </button>
+      </div>
+      <img
+        src="<%= article.imageUrl %>"
+        alt="<%= article.title %>"
+        class="hero-img"
+      />
+      <h1><%= article.title %></h1>
+      <p class="intro"><%= article.introduction %></p>
+      <div class="article-meta-block">
+        <a class="meta" href="/user/<%= article.author.name %>">
+          <img src="<%= article.author.image %>" alt="author" />
+          <span><%= article.author.name %></span>
+        </a>
+        <div class="date-block">
+          <span class="date"><%= article.dateCreate.date %></span>
+          <span class="time"><%= article.dateCreate.time %></span>
+        </div>
+      </div>
+      <div class="content"><%- article.content %></div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-row">
         <div class="footer-col">
           <h4>Info</h4>
           <ul class="links">
@@ -105,28 +145,43 @@
         <div class="footer-col">
           <h4>Cuisines</h4>
           <ul class="links">
-            <li><a href="/src/pages/food-ranking/index.html">Food Ranking</a></li>
-            <li><a href="/src/pages/food-articles/index.html">Food Articles</a></li>
-            <li><a href="/src/pages/cuisines-gallery/index.html">Cuisines Gallery</a></li>
+            <li>
+              <a href="/src/pages/food-ranking/index.html">Food Ranking</a>
+            </li>
+            <li>
+              <a href="/src/pages/food-articles/index.html">Food Articles</a>
+            </li>
+            <li>
+              <a href="/src/pages/cuisines-gallery/index.html"
+                >Cuisines Gallery</a
+              >
+            </li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Travel</h4>
           <ul class="links">
-            <li><a href="/src/pages/top-pick/index.html">Top Destination</a></li>
-            <li><a href="/src/pages/travel-articles/index.html">Travel Articles</a></li>
-            <li><a href="/src/pages/travel-gallery/index.html">Travel Gallery</a></li>
+            <li>
+              <a href="/src/pages/top-pick/index.html">Top Destination</a>
+            </li>
+            <li>
+              <a href="/src/pages/travel-articles/index.html"
+                >Travel Articles</a
+              >
+            </li>
+            <li>
+              <a href="/src/pages/travel-gallery/index.html">Travel Gallery</a>
+            </li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Newsletter</h4>
           <p>
-            Subscribe to our newsletter for a weekly dose
-            of news, updates, helpful tips, and
-            exclusive offers.
+            Subscribe to our newsletter for a weekly dose of news, updates,
+            helpful tips, and exclusive offers.
           </p>
           <form action="#">
-            <input type="text" placeholder="Your email" required>
+            <input type="text" placeholder="Your email" required />
             <button type="submit">SUBSCRIBE</button>
           </form>
           <div class="icons">
@@ -137,10 +192,15 @@
           </div>
         </div>
       </div>
-      <p class="copy-right-text">&copy; 2023 Khmer Chronicles - All Rights Reserved</p>
-</footer>
-<script src="https://kit.fontawesome.com/731249cdaa.js" crossorigin="anonymous"></script>
-<script src="/src/scripts/header.js"></script>
-<script src="/src/components/auth.js"></script>
-</body>
+      <p class="copy-right-text">
+        &copy; 2023 Khmer Chronicles - All Rights Reserved
+      </p>
+    </footer>
+    <script
+      src="https://kit.fontawesome.com/731249cdaa.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/src/scripts/header.js"></script>
+    <script src="/src/components/auth.js"></script>
+  </body>
 </html>

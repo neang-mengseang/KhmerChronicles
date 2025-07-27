@@ -53,9 +53,8 @@ async function fetchContentCounts() {
       
       const title = article.fields.title || "Untitled Article";
       const intro = article.fields.introduction || "No description available.";
-      const authorName = article.fields.author.name || "Unknown Author";
+      const authorName = article.fields.author.fields.username || "Unknown Author";
       const imageId = article.fields.image?.sys?.id; // Get image ID from the article
-      //const imgSrc = imageId ? await fetchImageUrl(imageId) : "https://via.placeholder.com/100";
       
       return `
         <a href="${contentType}/${generateSlug(article.fields.title)}">
