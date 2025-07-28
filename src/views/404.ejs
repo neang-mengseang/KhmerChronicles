@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>404 | Page Not Found - Khmer Chronicles</title>
+  <meta name="description" content="Sorry, the page you're looking for cannot be found." />
+  <link rel="icon" href="/src/assets/img/kc-icon.png" type="image/x-icon" />
+  <link rel="stylesheet" href="/src/styles/common.css" />
+  <link rel="stylesheet" href="/src/views/404.css" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="404 Not Found | Khmer Chronicles" />
+  <meta property="og:description" content="Oops! The page you were looking for doesn't exist." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/src/assets/img/404-og.jpg" />
+  <meta property="og:url" content="https://khmerchronicles.netlify.app/404" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="404 Not Found | Khmer Chronicles" />
+  <meta name="twitter:description" content="This page does not exist. Try going back or head home." />
+  <meta name="twitter:image" content="/src/assets/img/404-og.jpg" />
+</head>
+<body>
+  <section class="not-found-container">
+    <div class="error-box">
+      <h1 class="error-code">404</h1>
+      <p class="error-message">Oops! Page not found.</p>
+      <p class="error-description">The page you're looking for doesn't exist or has been moved.</p>
+      <div class="actions">
+        <a href="/" class="btn">Back to Home</a>
+        <a href="javascript:history.back()" class="btn secondary">Go Back</a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    body {
+      font-family: 'Merriweather', serif;
+      margin: 0;
+      background: #fafafa;
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .not-found-container {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .error-code {
+      font-size: 8rem;
+      margin: 0;
+      color: #d9534f;
+    }
+
+    .error-message {
+      font-size: 2rem;
+      margin: 0.5rem 0;
+    }
+
+    .error-description {
+      margin: 1rem 0;
+      font-size: 1rem;
+      color: #666;
+    }
+
+    .actions {
+      margin-top: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: #333;
+      color: #fff;
+      border-radius: 4px;
+      text-decoration: none;
+      margin-right: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #111;
+    }
+
+    .btn.secondary {
+      background: #ddd;
+      color: #333;
+    }
+
+    .btn.secondary:hover {
+      background: #ccc;
+    }
+  </style>
+</body>
+</html>

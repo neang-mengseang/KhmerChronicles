@@ -1,21 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <link href="img/favicon.ico" rel="icon" />
-    <link rel="icon" type="image/x-icon" href="/src/assets/img/kc-icon.png">
-    <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather&family=Playfair+Display:wght@600&display=swap"
-      rel="stylesheet"
-    />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Khmer Chronicles | Record Of Life</title>
-    <link rel="stylesheet" href="/src/views/article.css" />
-    <link rel="stylesheet" href="/src/styles/footer.css" />
-    <link rel="stylesheet" href="/src/styles/header.css" />
-  </head>
+  <title><%= article.title %> | Khmer Chronicles</title>
+  <meta name="description" content="<%= article.introduction || article.content.replace(/<[^>]+>/g, '').substring(0, 160) %>" />
+  <link rel="canonical" href="https://khmerchronicles.netlify.app/news/<%= article.slug %>" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/src/assets/img/kc-icon.png" />
+
+  <!-- Fonts & Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Playfair+Display:wght@600&display=swap" rel="stylesheet" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="<%= article.title %>" />
+  <meta property="og:description" content="<%= article.introduction || article.content.replace(/<[^>]+>/g, '').substring(0, 160) %>" />
+  <meta property="og:image" content="<%= article.imageUrl %>" />
+  <meta property="og:url" content="https://khmerchronicles.netlify.app/news/<%= article.slug %>" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Khmer Chronicles" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="<%= article.title %>" />
+  <meta name="twitter:description" content="<%= article.introduction || article.content.replace(/<[^>]+>/g, '').substring(0, 160) %>" />
+  <meta name="twitter:image" content="<%= article.imageUrl %>" />
+  <meta name="twitter:site" content="@KhmerChronicles" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "<%= article.title %>",
+      "image": ["<%= article.imageUrl %>"],
+      "author": {
+        "@type": "Person",
+        "name": "<%= article.author.name %>"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Khmer Chronicles",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://khmerchronicles.netlify.app/src/assets/img/kc-icon.png"
+        }
+      },
+      "url": "https://khmerchronicles.netlify.app/news/<%= article.slug %>",
+      "datePublished": "<%= article.dateCreate.full || new Date().toISOString() %>",
+      "description": "<%= article.introduction || article.content.replace(/<[^>]+>/g, '').substring(0, 160) %>"
+    }
+  </script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/src/views/article.css" />
+  <link rel="stylesheet" href="/src/styles/footer.css" />
+  <link rel="stylesheet" href="/src/styles/header.css" />
+
+  <!-- Netlify Identity Widget (Optional if using Auth) -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
+</head>
+
   <body>
     <header class="header">
         <div class="logo">
@@ -33,7 +82,7 @@
                   <h4>Cuisines</h4>
                   <ul>
                     <li><a href="/food-ranking/">Food Ranking</a></li>
-                    <li><a href="food-articles">Food Articles</a></li>
+                    <li><a href="/food-articles">Food Articles</a></li>
                     <li><a href="/cuisines-gallery">Cuisines Gallery</a></li>
 
                   </ul>

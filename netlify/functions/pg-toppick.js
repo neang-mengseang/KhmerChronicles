@@ -66,12 +66,20 @@ exports.handler = async (event) => {
 
     const data = await response.json();
 
-    if (data.items.length === 0) {
-      return {
-        statusCode: 404,
-        body: "Entry not found",
-      };
-    }
+  if (data.items.length === 0) {
+    const template404Path = path.join(__dirname, "../../src/views/404.ejs");
+    const html404 = await ejs.renderFile(template404Path, {
+      slug,
+      path: event.path,
+    });
+
+    return {
+      statusCode: 404,
+      headers: { "Content-Type": "text/html" },
+      body: html404,
+    };
+  }
+
 
     const assetMap = {};
     (data.includes?.Asset || []).forEach((asset) => {
@@ -148,7 +156,7 @@ exports.handler = async (event) => {
     const protocol = event.headers["x-forwarded-proto"] || "https"; // usually "https"
     const host = event.headers.host;
     const path = event.rawUrl || event.path || "";
-    const currentUrl = `${protocol}://${host}${event.rawUrl ? "" : event.path}`;
+    const currentUrl = event.rawUrl || `${protocol}://${host}${event.path}${event.queryStringParameters ? "?" + new URLSearchParams(event.queryStringParameters).toString() : ""}`;
 
 
     // Render the ejs template with the data

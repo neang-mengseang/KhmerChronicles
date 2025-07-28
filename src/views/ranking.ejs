@@ -4,29 +4,59 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="icon" type="image/x-icon" href="/src/assets/img/kc-icon.png">
+  <title><%= fields.title %> | Khmer Chronicles</title>
 
+  <link rel="canonical" href="https://khmerchronicles.netlify.app/top-pick/<%= fields.slug %>" />
+  <meta name="description" content="<%= stripHtml(fields.description).substring(0, 160) %>" />
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/src/assets/img/kc-icon.png" />
+
+  <!-- Open Graph -->
   <meta property="og:title" content="<%= fields.title %>" />
-  <meta property="og:description" content="<%= stripHtml(fields.description).substring(0, 150) %>" />
+  <meta property="og:description" content="<%= stripHtml(fields.description).substring(0, 160) %>" />
   <meta property="og:image" content="<%= fields.image %>" />
-  <meta property="og:url" content="https://yourdomain.com/top-pick/<%= fields.slug %>" />
-  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://khmerchronicles.netlify.app/top-pick/<%= fields.slug %>" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Khmer Chronicles" />
 
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="<%= fields.title %>" />
-  <meta name="twitter:description" content="<%= stripHtml(fields.description).substring(0, 150) %>" />
+  <meta name="twitter:description" content="<%= stripHtml(fields.description).substring(0, 160) %>" />
   <meta name="twitter:image" content="<%= fields.image %>" />
+  <meta name="twitter:site" content="@KhmerChronicles" />
 
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "<%= fields.title %>",
+      "image": ["<%= fields.image %>"],
+      "author": {
+        "@type": "Person",
+        "name": "<%= fields.author || 'Khmer Chronicles Team' %>"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Khmer Chronicles",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://khmerchronicles.netlify.app/src/assets/img/kc-icon.png"
+        }
+      },
+      "url": "https://khmerchronicles.netlify.app/top-pick/<%= fields.slug %>",
+      "datePublished": "<%= fields.datePublished || new Date().toISOString() %>",
+      "description": "<%= stripHtml(fields.description).substring(0, 160) %>"
+    }
+  </script>
 
-  <title><%= fields.title %></title>
-    <link rel="stylesheet" href="/styles/ranking.css" />
-    <link rel="stylesheet" href="/styles/common.css" />
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="/src/views/ranking.css">
-
-
+  <!-- Styles -->
+  <link rel="stylesheet" href="/src/styles/style.css" />
+  <link rel="stylesheet" href="/src/views/ranking.css" />
 </head>
+
 <body>
   <header>
     <button id="back-button" onclick="history.back()" aria-label="Go back">
