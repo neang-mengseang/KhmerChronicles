@@ -28,10 +28,11 @@
   force = true
 
 [[redirects]]
-  from = "/top-pick/*"
-  to = "/.netlify/functions/pg-toppick?type=travelArticles&slug=:splat"
+  from = "/top-pick/:slug"
+  to = "/.netlify/functions/pg-toppick?type=travelArticles&slug=:slug"
   status = 200
   force = true
+
 
 [[redirects]]
   from = "/travel-article/*"
