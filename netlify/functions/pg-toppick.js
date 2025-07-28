@@ -16,13 +16,41 @@ exports.handler = async (event) => {
   const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
   const urlBase = `https://cdn.contentful.com/spaces/${spaceId}/environments/master/entries`;
 
+
+  let type = event.queryStringParameters?.type;
+  let slug = event.queryStringParameters?.slug;
+
+  if (!type || !slug) {
+    const pathParts = event.path.split("/").filter(Boolean); // removes empty segments
+    const lastSegment = pathParts[pathParts.length - 1];
+
+    // Try to guess type based on path or default
+    if (pathParts[0]?.includes("food")) type = "foodArticle";
+    else if (pathParts[0]?.includes("top-pick")) type = "travelArticles";
+    else type = "travelArticles"; // fallback default
+
+    slug = lastSegment || "unknown";
+  }
+
+
   try {
-    const { slug } = event.queryStringParameters || {};
-    const contentType = "topPick";
+    let contentType = "topPick";
+    let slug = event.queryStringParameters?.slug;
+
+    if (!type || !slug) {
+      const pathParts = event.path.split("/").filter(Boolean); 
+      const lastSegment = pathParts[pathParts.length - 1];
+
+      if (pathParts[0]?.includes("top-pick")) contentType = "topPick";
+      else contentType = "travelArticles"; 
+
+      slug = lastSegment || "unknown";
+    }
+
     if (!slug) {
       return {
         statusCode: 400,
-        body: `Missing slug parameter in query string \n [ Event ]: ${JSON.stringify(event)}`,
+        body: `Missing slug parameter in query string`,
       };
     }
 

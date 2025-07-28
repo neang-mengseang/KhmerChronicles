@@ -21,8 +21,8 @@ function openModal(article) {
   document.getElementById("modal").style.display = "block";
   document.getElementById("modal-image").src = article.fields.image;
   document.getElementById("modal-title").innerText = article.fields.title;
-  document.getElementById("author").href = `/profile/${article.fields.author.name}`;
-  document.getElementById("author-username").innerText = article.fields.author.name;
+  document.getElementById("author").href = `/user/${article.fields.author.fields.username}`;
+  document.getElementById("author-username").innerText = article.fields.author.fields.usernamee;
   document.getElementById("author-image").src = article.fields.author.image;
   document.getElementById("modal-description").innerText =
     article.fields.description || "404 | No Description Provided";
