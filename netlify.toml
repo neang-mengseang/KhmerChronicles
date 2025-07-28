@@ -9,6 +9,56 @@
   ]
 
 [[redirects]]
+  from = "/robots.txt"
+  to = "/robots.txt"
+  status = 200
+
+[[redirects]]
+  from = "/news"
+  to = "/src/pages/news/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/food-ranking"
+  to = "/src/pages/food-ranking/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/food-articles"
+  to = "/src/pages/food-articles/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/cuisines-gallery"
+  to = "/src/pages/cuisines-gallery/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/top-pick"
+  to = "/src/pages/top-pick/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/travel-articles"
+  to = "/src/pages/travel-articles/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/travel-gallery"
+  to = "/src/pages/travel-gallery/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/about-us"
+  to = "/src/pages/about-us/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to = "/src/pages/contact/index.html"
+  status = 200
+
+[[redirects]]
   from = "/user/*"
   to = "/.netlify/functions/profile?username=:splat"
   status = 200
@@ -37,3 +87,4 @@
   to = "/.netlify/functions/article?type=travelArticles&slug=:splat"
   status = 200
   force = true
+

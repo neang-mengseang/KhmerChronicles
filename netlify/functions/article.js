@@ -25,26 +25,25 @@ exports.handler = async function (event) {
   if (!marked) {
     marked = (await import("marked")).marked;
   }
-console.log("==> Function { article.js } triggered!");
-    console.log("Query Params:", event.queryStringParameters);
-    console.log("Path:", event.path);
+  //console.log("==> Function { article.js } triggered!");
+  //console.log("Query Params:", event.queryStringParameters);
+  //console.log("Path:", event.path);
 
-    let type = event.queryStringParameters?.type;
-    let slug = event.queryStringParameters?.slug;
+  let type = event.queryStringParameters?.type;
+  let slug = event.queryStringParameters?.slug;
 
-    if (!type || !slug) {
-        const pathParts = event.path.split("/").filter(Boolean); // removes empty segments
-        type = pathParts[0] === "food-article" ? "foodArticle" : "travelArticles";
-        slug = pathParts.slice(1).join("/");
-    }
+  if (!type || !slug) {
+    const pathParts = event.path.split("/").filter(Boolean); 
+    type = pathParts[0] === "food-article" ? "foodArticle" : "travelArticles";
+    slug = pathParts.slice(1).join("/");
+  }
 
-    console.log("Resolved Type:", type);
-    console.log("Resolved Slug:", slug);
+  console.log("Resolved Type:", type);
+  console.log("Resolved Slug:", slug);
 
-    if (!type || !slug) {
+  if (!type || !slug) {
     return { statusCode: 400, body: "Missing type or slug" };
-    }
-
+  }
 
   const contentfulURL = `https://cdn.contentful.com/spaces/${spaceID}/entries?access_token=${accessToken}&content_type=${type}&include=3`;
 
