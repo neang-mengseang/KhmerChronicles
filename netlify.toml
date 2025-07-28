@@ -8,13 +8,11 @@
     "src/views/*"
   ]
 
-
 [[redirects]]
   from = "/user/*"
   to = "/.netlify/functions/profile?username=:splat"
   status = 200
   force = true
-
 
 [[redirects]]
   from = "/sitemap.xml"
