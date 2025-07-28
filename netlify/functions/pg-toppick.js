@@ -22,7 +22,7 @@ exports.handler = async (event) => {
     if (!slug) {
       return {
         statusCode: 400,
-        body: "Missing slug parameter",
+        body: `Missing slug parameter in query string \n [ Event ]: ${event}`,
       };
     }
 
