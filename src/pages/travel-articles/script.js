@@ -32,7 +32,7 @@ async function loadArticles() {
                 <h2 class="article-title">${article.fields.title}</h2>
                 <p class="article-author">By ${article.fields.author.fields.username} - ${article.fields.dateCreate}</p>
                 <p class="article-description">${article.fields.introduction}</p>
-                <a href="/travel-article/${generatedSlug}" class="read_more_btn">Read More</a>
+                <a href="/travel-articles/${generatedSlug}" class="read_more_btn">Read More</a>
               </div>
             `;
 
