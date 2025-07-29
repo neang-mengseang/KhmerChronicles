@@ -8,11 +8,7 @@
     "src/views/*"
   ]
 
-[[redirects]]
-  from = "/robots.txt"
-  to = "/robots.txt"
-  status = 200
-
+# --- Static Page Redirects ---
 [[redirects]]
   from = "/news"
   to = "/src/pages/news/index.html"
@@ -58,6 +54,26 @@
   to = "/src/pages/contact/index.html"
   status = 200
 
+# --- Dynamic Article Pages ---
+[[redirects]]
+  from = "/food-articles/:slug"
+  to = "/.netlify/functions/article?type=foodArticle&slug=:slug"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/top-pick/:slug"
+  to = "/.netlify/functions/pg-toppick?type=travelArticles&slug=:slug"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/travel-articles/:slug"
+  to = "/.netlify/functions/article?type=travelArticles&slug=:slug"
+  status = 200
+  force = true
+
+# --- Function-Based Routes ---
 [[redirects]]
   from = "/user/*"
   to = "/.netlify/functions/profile?username=:splat"
@@ -69,22 +85,8 @@
   to = "/.netlify/functions/generateSitemap"
   status = 200
 
+# --- Misc ---
 [[redirects]]
-  from = "/food-article/*"
-  to = "/.netlify/functions/article?type=foodArticle&slug=:splat"
+  from = "/robots.txt"
+  to = "/robots.txt"
   status = 200
-  force = true
-
-[[redirects]]
-  from = "/top-pick/:slug"
-  to = "/.netlify/functions/pg-toppick?type=travelArticles&slug=:slug"
-  status = 200
-  force = true
-
-
-[[redirects]]
-  from = "/travel-article/*"
-  to = "/.netlify/functions/article?type=travelArticles&slug=:splat"
-  status = 200
-  force = true
-
