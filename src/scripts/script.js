@@ -70,7 +70,7 @@ async function fetchContentCounts() {
     }
   
     if (data.foodArticle.length > 0) {
-      foodCard1.innerHTML = await createFoodCard(data.foodArticle[0], "food-article");
+      foodCard1.innerHTML = await createFoodCard(data.foodArticle[0], "food-articles");
     } else {
       foodCard1.innerHTML = "<p>No food articles available.</p>";
     }
