@@ -1,4 +1,4 @@
-const IS_DEV_MODE = true; // toggle dev mode
+const IS_DEV_MODE = false; // toggle dev mode
 let currentPage = 1;
 let totalPages = 1;
 const pageSize = 24;
