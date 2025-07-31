@@ -1,4 +1,5 @@
-let test = false;
+let test = false; // Set to true for testing with local data
+
 async function fetchContentCounts() {
   const contentTypes = encodeURIComponent("foodArticle,travelArticles");
 
@@ -52,7 +53,7 @@ async function fetchImageUrl(assetId) {
 }
 
 window.addEventListener("load", async () => {
-  const data = await (test ? fetchContentCounts() : fetchTest());
+  const data = await (test ?  fetchTest() : fetchContentCounts());
 
 
   if (
