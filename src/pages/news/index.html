@@ -45,7 +45,7 @@
           </div>
         </li>
         <li class="nav-accordion">
-            <button class="accordion-btn" onclick="toggleChange">Explore</button>
+            <button class="accordion-btn" onclick="toggleChange()">Explore</button>
             <div class="accordion-panel">
                 <a href="/food-ranking" class="nav-link">Food Ranking</a>
                 <a href="/food-articles" class="nav-link">Food Articles</a>
@@ -71,24 +71,78 @@
   </header>
   <main>
     <div class="container">
-      <h1>News Webpage</h1>
-      <h4>Search News</h4>
-      <div class="filter-bar">
-        <select id="sortByFilter">
-          <option value="relevancy">Relevancy</option>
-          <option value="popularity">Popularity</option>
-          <option value="publishedAt">Published At</option>
-      </select>
-          <input type="text" id="searchInput" placeholder="Search news...">
-          <button id="searchButton" onclick="fetchNews()">Search</button>
-      </div>
-      <div id="loadingSpinner" style="display:none;">
-        <div class="spinner"></div>
-      </div>
-      <ul class="news-list" id="newsList">
-      </ul>
-  </div>
-  </div>
+        <header class="title">
+            <h1>News Explorer</h1>
+            <p>Stay updated with the latest news from around the world</p>
+        </header>
+
+        <section class="search-section">
+            <form id="searchForm" class="search-form">
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search for news (e.g. technology, cambodia, business)"
+                    required
+                />
+                <div class="sortby-container">
+                  <select id="sortByFilter" name="sortBy">
+                    <option value="relevancy">Relevancy</option>
+                    <option value="popularity">Popularity</option>
+                    <option value="publishedAt">Published At</option>
+                  </select>
+                </div>
+                <button type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+                
+            </form>
+
+
+            <div class="topic-buttons">
+                <button class="topic-btn" data-topic="cambodia">Cambodia</button>
+                <button class="topic-btn" data-topic="Khmer">Khmer</button>
+                <button class="topic-btn" data-topic="breaking">Breaking News</button>
+                <button class="topic-btn" data-topic="technology">Technology</button>
+                <button class="topic-btn" data-topic="business">Business</button>
+                <button class="topic-btn" data-topic="health">Health</button>
+                <button class="topic-btn" data-topic="sports">Sports</button>
+                <button class="topic-btn" data-topic="entertainment">Entertainment</button>
+                <button class="topic-btn" data-topic="world">World</button>
+            </div>
+        </section>
+        <div class="pagination pagination-top">
+          <button id="prevBtnTop" class="pagination-btn">Prev</button>
+          <span id="pageIndicatorTop">Page 1</span>
+          <button id="nextBtnTop" class="pagination-btn">Next</button>
+        </div>
+
+        <div id="loadingIndicator" class="hidden loading">
+            <div class="spinner"></div>
+            <p>Fetching news articles...</p>
+        </div>
+
+        <div id="errorMessage" class="hidden error">
+            <i class="fas fa-exclamation-triangle"></i>
+            <h3>Something went wrong</h3>
+            <p id="errorText"></p>
+            <button onclick="fetchNews('breaking')">Try Breaking News</button>
+        </div>
+
+        <div id="noResults" class="hidden no-results">
+            <i class="fas fa-newspaper"></i>
+            <h3>No articles found</h3>
+            <p>Try searching for a different topic</p>
+        </div>
+
+        <div id="newsGrid" class="news-grid"></div>
+
+        <div class="pagination pagination-bottom">
+          <button id="prevBtnBottom" class="pagination-btn">Prev</button>
+          <span id="pageIndicatorBottom">Page 1</span>
+          <button id="nextBtnBottom" class="pagination-btn">Next</button>
+        </div>
+
+    </div>
   </main>
 
     <footer class="footer">

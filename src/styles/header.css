@@ -1,6 +1,6 @@
 /* Header Styles */
 :root{
-  --aqua-blue: rgb(38, 130, 192);
+  --aqua-blue: rgb(40, 122, 177);
 }
 
 .header {
@@ -25,6 +25,7 @@
   .hamburger-menu {
     display: none;
     cursor: pointer;
+    margin-left: 24px;
   }
   
   .bar1, .bar2, .bar3 {
@@ -33,6 +34,7 @@
     background-color: #030303;
     margin: 5px 0;
     transition: 0.4s;
+    border-radius: 3px;
   }
   
   .change .bar1 {
@@ -210,10 +212,8 @@
 
 .auth-container{
   margin: 0;
-  margin-right: 24px;
   display: flex;
   width: 90px;
-  justify-content: right;
 }
 
 #userMenu{z-index: 11;}

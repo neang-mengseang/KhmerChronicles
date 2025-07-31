@@ -20,6 +20,12 @@
   status = 200
 
 [[redirects]]
+  from = "/news/test"
+  to = "/src/pages/news/test.html"
+  status = 200
+
+
+[[redirects]]
   from = "/food-ranking"
   to = "/src/pages/food-ranking/index.html"
   status = 200

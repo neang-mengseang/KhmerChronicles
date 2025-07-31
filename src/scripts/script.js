@@ -1,4 +1,4 @@
-let test = false; // Set to true for testing with local data
+let test = true; // Set to true for testing with local data
 
 async function fetchContentCounts() {
   const contentTypes = encodeURIComponent("foodArticle,travelArticles");
@@ -21,20 +21,21 @@ async function fetchContentCounts() {
   }
 }
 
-async function fetchTest(){
-fetch('data.json')
-    .then(response => response.json())
-    .then(data => {
-      console.log('Test data fetched successfully:', data);
-      if (!data || !data.success) {
-        throw new Error("Invalid test data structure");
-      }
-      return data;
-    })
-    .catch(error => {
-      console.error('Error fetching test data:', error);
-      return { success: false, foodArticle: [], travelArticles: [] };
-    });
+async function fetchTest() {
+  try {
+    const response = await fetch('/src/scripts/data.json');
+    const data = await response.json();
+    console.log('Test data fetched successfully:', data);
+
+    if (!data || !data.success) {
+      throw new Error("Invalid test data structure");
+    }
+
+    return data;
+  } catch (error) {
+    console.error('Error fetching test data:', error);
+    return { success: false, foodArticle: [], travelArticles: [] };
+  }
 }
 
 
