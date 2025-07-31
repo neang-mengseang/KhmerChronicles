@@ -1,4 +1,4 @@
-let test = true;
+let test = false;
 async function fetchContentCounts() {
   const contentTypes = encodeURIComponent("foodArticle,travelArticles");
 
