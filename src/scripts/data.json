@@ -1,0 +1,1805 @@
+{
+    "success": true,
+    "foodArticle": [
+        {
+            "sys": {
+                "space": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "Space",
+                        "id": "ntvh3j97dkce"
+                    }
+                },
+                "id": "4NTUwXjFwHR4ZDiEngrGM",
+                "type": "Entry",
+                "createdAt": "2025-07-27T13:35:23.000Z",
+                "updatedAt": "2025-07-28T10:52:43.350Z",
+                "environment": {
+                    "sys": {
+                        "id": "master",
+                        "type": "Link",
+                        "linkType": "Environment"
+                    }
+                },
+                "publishedVersion": 11,
+                "revision": 2,
+                "contentType": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "ContentType",
+                        "id": "foodArticle"
+                    }
+                },
+                "locale": "en-US"
+            },
+            "fields": {
+                "title": "Amok Trey: Cambodia’s Iconic Steamed Fish Curry",
+                "dateCreate": "2025-07-27T09:30+07:00",
+                "introduction": "__Amok Trey__ — also known as Fish Amok — is one of Cambodia’s most beloved national dishes. With its creamy texture, fragrant aroma, and beautifully balanced flavors, Amok is more than just a meal — it's a symbol of Khmer identity and culinary heritage.\n",
+                "image": "https://images.ctfassets.net/ntvh3j97dkce/34wwlUlppNETzRYrk91SU8/e220046fc674a33087c6f825e9985894/2016_Phnom_Penh__Amok_trey__02_.webp",
+                "author": {
+                    "metadata": {
+                        "tags": [],
+                        "concepts": []
+                    },
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "ntvh3j97dkce"
+                            }
+                        },
+                        "id": "3TreNkKpU8e04rxlwxR8zD",
+                        "type": "Entry",
+                        "createdAt": "2025-02-20T14:06:53.235Z",
+                        "updatedAt": "2025-07-27T15:02:36.240Z",
+                        "environment": {
+                            "sys": {
+                                "id": "master",
+                                "type": "Link",
+                                "linkType": "Environment"
+                            }
+                        },
+                        "publishedVersion": 20,
+                        "revision": 8,
+                        "contentType": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "ContentType",
+                                "id": "user"
+                            }
+                        },
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "id": "08e086eb-717a-4c27-b0e7-62daf8e9882c",
+                        "username": "Xeleste",
+                        "role": "admin",
+                        "email": "mengseanggamming@gmail.com",
+                        "userImage": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Asset",
+                                "id": "65tDEG2irb3wJWE3RgICw8"
+                            }
+                        },
+                        "bio": "Hello World!"
+                    }
+                },
+                "content": "\n## What is Amok Trey?\n\nAmok Trey is a traditional Khmer dish made by steaming freshwater fish in a rich curry sauce of coconut milk and aromatic spices. The mixture is gently steamed in banana leaves until it reaches a custard-like consistency, often topped with slivers of kaffir lime leaves and served with jasmine rice.\n\nIt’s commonly made with fish like goby, catfish, or snakehead, though some modern variations may substitute chicken, tofu, or seafood.\n\n## Key Ingredients\n\nThe magic of Amok Trey lies in its harmony of ingredients:\n\n- **Freshwater fish** – Soft and flaky, ideal for absorbing the curry flavors.\n- **Kroeung** – A traditional Khmer spice paste made from lemongrass, galangal, turmeric, garlic, shallots, and kaffir lime zest.\n- **Coconut milk** – Adds richness and depth to the dish.\n- **Eggs** – Used to thicken the curry into a mousse-like texture.\n- **Banana leaves** – Used as natural steamers that add subtle flavor and aesthetic appeal.\n- **Kaffir lime leaves** – Finely shredded as a fragrant topping.\n\n## Traditional Preparation\n\n1. The fish is cut into bite-sized chunks and marinated in kroeung.\n2. Coconut milk is added to create a creamy base.\n3. Eggs are mixed in to give body and firmness when steamed.\n4. The mixture is poured into small banana leaf bowls.\n5. It is then gently steamed until cooked through and slightly firm.\n6. The final touch: shredded kaffir lime leaves and sometimes a swirl of coconut cream on top.\n\n## Cultural Significance\n\nAmok Trey is often served during festivals, weddings, and family gatherings. Its use of banana leaves and natural ingredients reflects Khmer values of sustainability and respect for nature. More than just a dish, it represents Cambodia’s agricultural roots and spiritual connection to food.\n\n## Where to Try It\n\n- **Fine dining restaurants** in Phnom Penh or Siem Reap often serve elegant versions of Amok.\n- **Local markets and street stalls** may offer simpler, homestyle versions.\n- **Cooking classes** across Cambodia also teach tourists how to prepare authentic Amok from scratch.\n\nFor a deeper dive, check out this authentic [Fish Amok recipe from Cambodian Cooking Class](https://cambodiarecipe.com/khmer-fish-amok-recipe/) or read about the dish’s cultural role on [Khmer Times](https://www.khmertimeskh.com/).\n\n## Final Thoughts\n\nAmok Trey is a perfect introduction to the flavors of Cambodia — subtle yet complex, comforting yet refined. If you ever have the chance to try it, don’t hesitate. It’s a taste of Khmer tradition wrapped in a banana leaf and steamed with care.\n\nWhether enjoyed by the riverside or in a modern kitchen, Amok Trey is proof that Cambodian food deserves its place on the global culinary map.",
+                "descriptionHtml": "<p>No description available</p>"
+            }
+        },
+        {
+            "sys": {
+                "space": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "Space",
+                        "id": "ntvh3j97dkce"
+                    }
+                },
+                "id": "1vKbG42QhfcLn4EsMts3ck",
+                "type": "Entry",
+                "createdAt": "2025-07-27T13:31:23.669Z",
+                "updatedAt": "2025-07-27T13:31:23.669Z",
+                "environment": {
+                    "sys": {
+                        "id": "master",
+                        "type": "Link",
+                        "linkType": "Environment"
+                    }
+                },
+                "publishedVersion": 6,
+                "revision": 1,
+                "contentType": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "ContentType",
+                        "id": "foodArticle"
+                    }
+                },
+                "locale": "en-US"
+            },
+            "fields": {
+                "title": "Discovering Khmer Food: A Journey Through Cambodia’s Culinary Heritage",
+                "dateCreate": "2025-07-27T08:30+07:00",
+                "introduction": "Khmer food, the traditional cuisine of Cambodia, is a flavorful reflection of its rich history, geography, and culture. Although less globally recognized than Thai or Vietnamese cuisine, Khmer dishes offer a unique and unforgettable experience — filled with balance, freshness, and depth.",
+                "image": "https://images.ctfassets.net/ntvh3j97dkce/5FL1Q6e48sRnmi8KrEFbUM/df6a3a4b3fbebd5bad3dee07f9adfbad/cambodia-food-03.webp",
+                "author": {
+                    "metadata": {
+                        "tags": [],
+                        "concepts": []
+                    },
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "ntvh3j97dkce"
+                            }
+                        },
+                        "id": "3TreNkKpU8e04rxlwxR8zD",
+                        "type": "Entry",
+                        "createdAt": "2025-02-20T14:06:53.235Z",
+                        "updatedAt": "2025-07-27T15:02:36.240Z",
+                        "environment": {
+                            "sys": {
+                                "id": "master",
+                                "type": "Link",
+                                "linkType": "Environment"
+                            }
+                        },
+                        "publishedVersion": 20,
+                        "revision": 8,
+                        "contentType": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "ContentType",
+                                "id": "user"
+                            }
+                        },
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "id": "08e086eb-717a-4c27-b0e7-62daf8e9882c",
+                        "username": "Xeleste",
+                        "role": "admin",
+                        "email": "mengseanggamming@gmail.com",
+                        "userImage": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Asset",
+                                "id": "65tDEG2irb3wJWE3RgICw8"
+                            }
+                        },
+                        "bio": "Hello World!"
+                    }
+                },
+                "content": "\n## The Foundation of Khmer Cuisine\n\nThe foundation of most Khmer meals is rice, accompanied by a variety of meats, vegetables, and herbs. Flavors are carefully balanced: sweet, sour, salty, and bitter often appear in the same dish.\n\nUnlike spicy-heavy Southeast Asian neighbors, Cambodian food tends to be more subtle, focusing on natural tastes with gentle use of spice.\n\n## Must-Try Traditional Dishes\n\nHere are some essential Khmer dishes that reveal the diversity of Cambodia’s culinary identity:\n\n- **Amok Trey** – A national dish made of fish steamed in a banana leaf with coconut milk and kroeung (a traditional herb paste).\n- **Bai Sach Chrouk** – Grilled pork served with broken rice, typically eaten for breakfast.\n- **Nom Banh Chok** – Known as “Khmer noodles,” this breakfast dish consists of rice noodles topped with a green fish gravy and fresh herbs.\n- **Lok Lak** – Stir-fried beef with onions, served with a tangy lime and black pepper sauce.\n\n## Ingredients That Define Khmer Food\n\n- **Kroeung (Herb Paste)** – A mixture of lemongrass, turmeric, galangal, garlic, and kaffir lime zest. It forms the base of many curries and soups.\n- **Prahok** – Fermented fish paste used as a seasoning or condiment. Strong and salty, it’s considered an acquired taste.\n- **Tamarind and Palm Sugar** – Used to create sweet-sour sauces and soups.\n- **River Fish and Shellfish** – Due to Cambodia’s many waterways, freshwater seafood is a staple in the diet.\n\n## The Role of Street Food\n\nStreet food is a vital part of daily life in Cambodia. It’s affordable, accessible, and incredibly diverse. From grilled skewers and fried insects to tropical fruit smoothies and noodle soups, every street corner is a flavor adventure.\n\nNotable spots include:\n- Phnom Penh’s night markets\n- Siem Reap’s Pub Street\n- Kampot’s riverside stalls\n\n## Final Thoughts\n\nKhmer cuisine is not just about eating — it’s about connecting with Cambodia’s land, people, and history. Whether you’re sampling a street-side snack or enjoying a home-cooked curry, each bite tells a story of resilience, tradition, and identity.\n\nSo next time you're in Cambodia — or even at a Khmer restaurant abroad — take the time to explore beyond the familiar. Khmer food is more than a meal. It’s an experience waiting to be savored.\n",
+                "descriptionHtml": "<p>No description available</p>"
+            }
+        },
+        {
+            "sys": {
+                "space": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "Space",
+                        "id": "ntvh3j97dkce"
+                    }
+                },
+                "id": "6KHo8h0oFdXI7MYlkPiWTs",
+                "type": "Entry",
+                "createdAt": "2025-02-17T11:19:47.172Z",
+                "updatedAt": "2025-02-20T14:21:09.131Z",
+                "environment": {
+                    "sys": {
+                        "id": "master",
+                        "type": "Link",
+                        "linkType": "Environment"
+                    }
+                },
+                "publishedVersion": 17,
+                "revision": 9,
+                "contentType": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "ContentType",
+                        "id": "foodArticle"
+                    }
+                },
+                "locale": "en-US"
+            },
+            "fields": {
+                "title": "The Best Steak Dinner Is One You Make at Home",
+                "dateCreate": "2025-02-17T11:19:45.968Z",
+                "image": "https://images.ctfassets.net/ntvh3j97dkce/4DClCkj2Y3PBtWpp3FHvdY/320094503d6dd589653e73dc6b67843b/aw-steak-au-poivre-wglz-superJumbo.webp",
+                "introduction": "Choose the right cut of meat and follow these easy tips to prepare steak au poivre for two.\n\n",
+                "author": {
+                    "metadata": {
+                        "tags": [],
+                        "concepts": []
+                    },
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "ntvh3j97dkce"
+                            }
+                        },
+                        "id": "3TreNkKpU8e04rxlwxR8zD",
+                        "type": "Entry",
+                        "createdAt": "2025-02-20T14:06:53.235Z",
+                        "updatedAt": "2025-07-27T15:02:36.240Z",
+                        "environment": {
+                            "sys": {
+                                "id": "master",
+                                "type": "Link",
+                                "linkType": "Environment"
+                            }
+                        },
+                        "publishedVersion": 20,
+                        "revision": 8,
+                        "contentType": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "ContentType",
+                                "id": "user"
+                            }
+                        },
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "id": "08e086eb-717a-4c27-b0e7-62daf8e9882c",
+                        "username": "Xeleste",
+                        "role": "admin",
+                        "email": "mengseanggamming@gmail.com",
+                        "userImage": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Asset",
+                                "id": "65tDEG2irb3wJWE3RgICw8"
+                            }
+                        },
+                        "bio": "Hello World!"
+                    }
+                },
+                "descriptionHtml": "<p>No description available</p>"
+            }
+        },
+        {
+            "sys": {
+                "space": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "Space",
+                        "id": "ntvh3j97dkce"
+                    }
+                },
+                "id": "3Y5OWConXgKl6QqQMnPfUJ",
+                "type": "Entry",
+                "createdAt": "2025-02-16T15:24:11.924Z",
+                "updatedAt": "2025-07-27T13:13:34.324Z",
+                "environment": {
+                    "sys": {
+                        "id": "master",
+                        "type": "Link",
+                        "linkType": "Environment"
+                    }
+                },
+                "publishedVersion": 33,
+                "revision": 14,
+                "contentType": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "ContentType",
+                        "id": "foodArticle"
+                    }
+                },
+                "locale": "en-US"
+            },
+            "fields": {
+                "title": "Food in Cambodia: All you need to know",
+                "dateCreate": "2025-02-16T15:23:44.528Z",
+                "introduction": "Cambodian food is generally not well known around the world, and even within the country. Most travelers may have heard about Beef Lok Lak and Amok, but that’s pretty much it. What is less known: Khmer food goes back further in time than Thai and Lao food. Let’s get into our time capsule and travel back to the year 810. It’s the early years  the reign of  King Jayavarman II., the founder of the Khmer empire and god-king. He was also Hindu, and influence from India is still visible in Khmer food. The way of cooking, both for the common people and the royals, paved the path for the cuisines in the whole region.",
+                "image": "https://images.ctfassets.net/ntvh3j97dkce/4iRhA07qHrEHtnHBGsBO4t/5148dd36a14feb75350dd40aaf569af7/Traditional-Cambodian-Dishes-To-Eat-Main.webp",
+                "author": {
+                    "metadata": {
+                        "tags": [],
+                        "concepts": []
+                    },
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "ntvh3j97dkce"
+                            }
+                        },
+                        "id": "3TreNkKpU8e04rxlwxR8zD",
+                        "type": "Entry",
+                        "createdAt": "2025-02-20T14:06:53.235Z",
+                        "updatedAt": "2025-07-27T15:02:36.240Z",
+                        "environment": {
+                            "sys": {
+                                "id": "master",
+                                "type": "Link",
+                                "linkType": "Environment"
+                            }
+                        },
+                        "publishedVersion": 20,
+                        "revision": 8,
+                        "contentType": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "ContentType",
+                                "id": "user"
+                            }
+                        },
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "id": "08e086eb-717a-4c27-b0e7-62daf8e9882c",
+                        "username": "Xeleste",
+                        "role": "admin",
+                        "email": "mengseanggamming@gmail.com",
+                        "userImage": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Asset",
+                                "id": "65tDEG2irb3wJWE3RgICw8"
+                            }
+                        },
+                        "bio": "Hello World!"
+                    }
+                },
+                "content": "# Food in Cambodia: All You Need to Know\n\nCambodian cuisine, also known as __Khmer cuisine__, offers a unique blend of flavors that reflect the country’s rich history and diverse cultural influences. From bustling street markets to elegant restaurants, food in Cambodia is a journey for the senses.\n\n## The Essence of Khmer Cuisine\n\nAt the heart of Cambodian food is a focus on fresh ingredients, balanced flavors, and simple yet vibrant preparations. Common ingredients include __rice__, __fresh herbs__, __fish__, __pork__, and __tropical fruits__. The cuisine emphasizes a harmony of __sweet__, __sour__, __salty__, and __bitter__ tastes in every dish.\n\n### Staple Foods\n\n- __Rice__: The backbone of almost every meal, whether as steamed rice, rice noodles, or sticky rice.\n- __Fish__: Often served fresh from the Mekong River and Tonle Sap Lake, prepared grilled, steamed, or in curries.\n- __Herbs and Spices__: Lemongrass, kaffir lime leaves, garlic, and galangal are essential to many dishes.\n- __Fresh Vegetables__: Including morning glory, eggplant, and various leafy greens.\n\n## Popular Cambodian Dishes\n\nHere are some iconic Cambodian dishes you should try:\n\n- __Amok Trey__: A fragrant steamed fish curry cooked in banana leaves with coconut milk, turmeric, and kroeung (a traditional Khmer spice paste).\n- __Nom Banh Chok__: The famous Cambodian rice noodle soup often eaten for breakfast, topped with a green fish gravy and fresh herbs.\n- __Lok Lak__: Stir-fried beef served with a peppery lime dipping sauce, often accompanied by rice and a fried egg.\n- __Bai Sach Chrouk__: Grilled pork with broken rice, a popular street breakfast dish.\n- __Samlor Korkor__: A hearty traditional Khmer stew with meat, eggplant, and local vegetables.\n\n## Eating Culture and Etiquette\n\nCambodians often eat family-style, sharing multiple dishes around a table. Meals are a social affair, with food bringing people together. When dining:\n\n- Use a spoon and fork; chopsticks are less common except for noodle soups.\n- It’s polite to wait for the eldest or the host to start before eating.\n- Try a little bit of everything offered; hospitality is a key part of Cambodian culture.\n\n## Street Food and Markets\n\nCambodia’s street food scene is vibrant and affordable. You’ll find vendors selling everything from skewered meats to fresh fruit shakes. Some must-visit markets and streets for food lovers include:\n\n- __Phnom Penh’s Central Market (Psar Thmei)__\n- __Siem Reap’s Old Market (Psar Chas)__\n- Night markets and food stalls in every town and city\n\n## Drinks to Try\n\n- __Teukolok__: A refreshing sugarcane juice often sold by street vendors.\n- __Cambodian coffee__: Rich and strong, typically served iced with sweetened condensed milk.\n- __Palm wine__: Traditional alcoholic drink made from fermented palm sap.\n\n## Final Thoughts\n\n__Cambodian food__ is a true reflection of its land and people—fresh, bold, and full of character. Whether you are sampling street food or enjoying a home-cooked meal, the flavors of Cambodia will leave a lasting impression.\n\n__Next time you visit Cambodia__, don’t just see the sights—__taste the culture__ with every bite!\n\n---\n\n*Explore the rich food heritage of Cambodia and savor the unforgettable tastes that await you.*\n",
+                "descriptionHtml": "<p>No description available</p>"
+            }
+        },
+        {
+            "sys": {
+                "space": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "Space",
+                        "id": "ntvh3j97dkce"
+                    }
+                },
+                "id": "1XVY0ajyG8cflAqQHqdCvO",
+                "type": "Entry",
+                "createdAt": "2025-01-30T14:47:10.135Z",
+                "updatedAt": "2025-02-20T14:21:28.532Z",
+                "environment": {
+                    "sys": {
+                        "id": "master",
+                        "type": "Link",
+                        "linkType": "Environment"
+                    }
+                },
+                "publishedVersion": 39,
+                "revision": 12,
+                "contentType": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "ContentType",
+                        "id": "foodArticle"
+                    }
+                },
+                "locale": "en-US"
+            },
+            "fields": {
+                "title": "How Food May Improve Your Mood",
+                "dateCreate": "2025-01-30T09:44+07:00",
+                "image": "https://images.ctfassets.net/ntvh3j97dkce/rg0vTGCwB37TymcihJMS3/0529411d9f5ed95b4b131d544ffa287d/06sci-well-food-mood-superJumbo.webp",
+                "introduction": "The sugar-laden, high-fat foods we often crave when we are stressed or depressed, as comforting as they are, may be the least likely to benefit our mental health",
+                "author": {
+                    "metadata": {
+                        "tags": [],
+                        "concepts": []
+                    },
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "ntvh3j97dkce"
+                            }
+                        },
+                        "id": "3TreNkKpU8e04rxlwxR8zD",
+                        "type": "Entry",
+                        "createdAt": "2025-02-20T14:06:53.235Z",
+                        "updatedAt": "2025-07-27T15:02:36.240Z",
+                        "environment": {
+                            "sys": {
+                                "id": "master",
+                                "type": "Link",
+                                "linkType": "Environment"
+                            }
+                        },
+                        "publishedVersion": 20,
+                        "revision": 8,
+                        "contentType": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "ContentType",
+                                "id": "user"
+                            }
+                        },
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "id": "08e086eb-717a-4c27-b0e7-62daf8e9882c",
+                        "username": "Xeleste",
+                        "role": "admin",
+                        "email": "mengseanggamming@gmail.com",
+                        "userImage": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Asset",
+                                "id": "65tDEG2irb3wJWE3RgICw8"
+                            }
+                        },
+                        "bio": "Hello World!"
+                    }
+                },
+                "descriptionHtml": "<p>No description available</p>"
+            }
+        }
+    ],
+    "travelArticles": [
+        {
+            "sys": {
+                "space": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "Space",
+                        "id": "ntvh3j97dkce"
+                    }
+                },
+                "id": "3tfihe3WegwGFUvlhwT7Ie",
+                "type": "Entry",
+                "createdAt": "2025-07-29T03:50:32.637Z",
+                "updatedAt": "2025-07-29T03:51:20.558Z",
+                "environment": {
+                    "sys": {
+                        "id": "master",
+                        "type": "Link",
+                        "linkType": "Environment"
+                    }
+                },
+                "publishedVersion": 11,
+                "revision": 3,
+                "contentType": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "ContentType",
+                        "id": "travelArticles"
+                    }
+                },
+                "locale": "en-US"
+            },
+            "fields": {
+                "title": "Exploring Kampot: Cambodia’s Tranquil Gem of Nature and Heritage",
+                "dateCreate": "2025-07-11T10:10+07:00",
+                "image": "https://images.ctfassets.net/ntvh3j97dkce/29r0UXKLLgLNIr4XmuQMdl/5d13724e4e0e9175e8169c75fb396ce1/image_2025-07-29_104943421.webp",
+                "introduction": "Nestled in southern Cambodia, *Kampot* is a peaceful riverside town known for its blend of colonial charm, natural beauty, and relaxed atmosphere. Unlike the bustling streets of Phnom Penh or the temple trails of Siem Reap, Kampot offers travelers a more laid-back experience with a distinct mix of culture, nature, and history.",
+                "author": {
+                    "metadata": {
+                        "tags": [],
+                        "concepts": []
+                    },
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "ntvh3j97dkce"
+                            }
+                        },
+                        "id": "4mBe9u36Hg4eCaVvVpDTv0",
+                        "type": "Entry",
+                        "createdAt": "2025-02-10T11:09:01.629Z",
+                        "updatedAt": "2025-02-17T10:54:24.378Z",
+                        "environment": {
+                            "sys": {
+                                "id": "master",
+                                "type": "Link",
+                                "linkType": "Environment"
+                            }
+                        },
+                        "publishedVersion": 7,
+                        "revision": 4,
+                        "contentType": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "ContentType",
+                                "id": "user"
+                            }
+                        },
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "id": "e54c2cdf-7b8a-44f5-a0fb-ca4245f28d08",
+                        "username": "Jujen",
+                        "role": "content_creator",
+                        "email": "ahju355@gmail.com",
+                        "userImage": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Asset",
+                                "id": "1AKMBC8L7NdIzr7OHRtTe2"
+                            }
+                        },
+                        "bio": "Hehehe"
+                    }
+                },
+                "content": "## __A Journey Through Kampot’s Colonial Past__\n\nWalking through Kampot's town center, you'll notice the remnants of its French colonial past. Faded yellow facades, rustic shutters, and tree-lined streets give the town a nostalgic feel. Don’t miss:\n\n- The Old French Bridge  \n- Kampot Provincial Museum  \n- Historic riverside architecture  \n\n## __Natural Wonders Around Every Corner__\n\nBeyond its charming streets, Kampot is surrounded by stunning natural landscapes. Whether you're an adventure-seeker or a calm observer, there’s something for everyone.\n\nTop attractions include:\n\n- __Bokor National Park__: A misty mountain retreat home to abandoned hill stations, cloud forests, and the eerie Bokor Palace Hotel.  \n- __Phnom Chhngok Cave Temple__: A hidden shrine inside a limestone cave — perfect for a spiritual and scenic detour.  \n- __Teuk Chhou Rapids__: Ideal for a picnic or a refreshing swim in natural waters.  \n\n## __The World-Famous Kampot Pepper__\n\nKampot is internationally known for its __pepper plantations__, which produce some of the finest peppercorns in the world. Take a guided tour through a local pepper farm and learn how this spice became a symbol of Cambodian pride. Sample:\n\n- Black, red, and white Kampot pepper  \n- Organic farm-to-table dishes  \n- Locally made pepper-infused products  \n\n## __Cruising the Kampot River at Sunset__\n\nOne of the best ways to end the day is by taking a sunset cruise along the Kampot River. Watch the skies turn shades of orange and purple as local fishermen glide by and bats emerge from the caves of Phnom Kbal Romeas.\n\n## __When to Visit__\n\nThe best time to visit Kampot is during the dry season, from __November to April__, when the weather is cooler and ideal for outdoor activities.\n\n## __Final Thoughts__\n\nWhether you're exploring colonial relics, hiking misty mountains, or simply enjoying a sunset with a cold drink, Kampot is a destination that invites you to slow down and connect with Cambodia’s cultural and natural beauty.",
+                "descriptionHtml": "<p>No description available</p>"
+            }
+        },
+        {
+            "sys": {
+                "space": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "Space",
+                        "id": "ntvh3j97dkce"
+                    }
+                },
+                "id": "3EDTL7sDn8qsZI4NXzIt8T",
+                "type": "Entry",
+                "createdAt": "2025-02-16T09:37:31.205Z",
+                "updatedAt": "2025-07-28T10:56:13.383Z",
+                "environment": {
+                    "sys": {
+                        "id": "master",
+                        "type": "Link",
+                        "linkType": "Environment"
+                    }
+                },
+                "publishedVersion": 15,
+                "revision": 7,
+                "contentType": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "ContentType",
+                        "id": "travelArticles"
+                    }
+                },
+                "locale": "en-US"
+            },
+            "fields": {
+                "title": "Kirirom in KomPong Speu",
+                "dateCreate": "2025-02-16T09:37:30.838Z",
+                "image": "https://images.ctfassets.net/ntvh3j97dkce/4Bn2qfBvjtZ9Sv0Z6nn2Ra/649fce4c03837fb692d0d8fe102a9d27/850kiriromnationalpark.webp",
+                "introduction": "__Kirirom National Park__, located in the beautiful province of __Kampong Speu__, is a peaceful retreat just a few hours away from Phnom Penh. Known for its fresh mountain air, cool pine forests, and scenic viewpoints, Kirirom is a must-visit destination for nature lovers and weekend adventurers alike.\n",
+                "author": {
+                    "metadata": {
+                        "tags": [],
+                        "concepts": []
+                    },
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "ntvh3j97dkce"
+                            }
+                        },
+                        "id": "4mBe9u36Hg4eCaVvVpDTv0",
+                        "type": "Entry",
+                        "createdAt": "2025-02-10T11:09:01.629Z",
+                        "updatedAt": "2025-02-17T10:54:24.378Z",
+                        "environment": {
+                            "sys": {
+                                "id": "master",
+                                "type": "Link",
+                                "linkType": "Environment"
+                            }
+                        },
+                        "publishedVersion": 7,
+                        "revision": 4,
+                        "contentType": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "ContentType",
+                                "id": "user"
+                            }
+                        },
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "id": "e54c2cdf-7b8a-44f5-a0fb-ca4245f28d08",
+                        "username": "Jujen",
+                        "role": "content_creator",
+                        "email": "ahju355@gmail.com",
+                        "userImage": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Asset",
+                                "id": "1AKMBC8L7NdIzr7OHRtTe2"
+                            }
+                        },
+                        "bio": "Hehehe"
+                    }
+                },
+                "content": "## What Makes Kirirom Special?\n\n__Kirirom__ — which means “Happy Mountain” in Khmer — is part of Cambodia’s Cardamom Mountain range. Unlike other parts of the country, Kirirom features a unique high-altitude climate that supports pine forests and cool breezes.\n\n- _Elevation_: Around 675 meters above sea level\n- _Ideal for_: Hiking, picnics, camping, and nature photography\n- _Notable wildlife_: Birds, butterflies, and occasionally monkeys\n\n## Things to Do in Kirirom\n\n- __Trekking & Hiking__: Several trails lead through pine forests, waterfalls, and quiet hilltops. Ideal for those seeking a peaceful walk in nature.\n- __Waterfalls__: Kirirom is home to small but scenic waterfalls. Bring a camera — the lush surroundings are picture-perfect.\n- __Camping__: Many local guesthouses and eco-lodges offer tents or wooden cabins. You can also bring your own tent for a night under the stars.\n- __Cycling__: The area’s quiet roads and cool air make it ideal for mountain biking.\n\n## Getting There\n\nKirirom is about _112 km_ from Phnom Penh. You can travel via National Road 4 and take a turnoff near Treng Trayueng town. The road up the mountain is well-paved, but it’s recommended to travel with a vehicle that can handle a few uphill sections.\n\n## Tips Before You Go\n\n- Bring warm clothes — it can get chilly, especially at night.\n- Mobile signal is weak in some parts; download maps or guides in advance.\n- Respect the environment: avoid littering and stay on marked trails.\n\n## A Perfect Weekend Escape\n\nWhether you're escaping the city for a quiet weekend or looking for a cool adventure, __Kirirom National Park__ offers a refreshing break from the heat and hustle. Its natural beauty and serene atmosphere make it a perfect spot to reconnect with nature.\n\n_Ready to breathe in fresh pine-scented air and explore hidden forest paths? Kirirom is waiting._",
+                "descriptionHtml": "<p>No description available</p>"
+            }
+        },
+        {
+            "sys": {
+                "space": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "Space",
+                        "id": "ntvh3j97dkce"
+                    }
+                },
+                "id": "531Dfjp2ToaJYBWyz6dOrh",
+                "type": "Entry",
+                "createdAt": "2025-02-16T09:35:00.233Z",
+                "updatedAt": "2025-07-27T13:52:39.115Z",
+                "environment": {
+                    "sys": {
+                        "id": "master",
+                        "type": "Link",
+                        "linkType": "Environment"
+                    }
+                },
+                "publishedVersion": 9,
+                "revision": 5,
+                "contentType": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "ContentType",
+                        "id": "travelArticles"
+                    }
+                },
+                "locale": "en-US"
+            },
+            "fields": {
+                "title": "Vel Veng ",
+                "dateCreate": "2025-02-16T09:34:59.858Z",
+                "image": "https://images.ctfassets.net/ntvh3j97dkce/76DoAR3vzbSl1vX2EnDOX1/36e50673e7d635db51061d02ac256f81/html.jpg",
+                "introduction": "Veal Veng district in Pursat province, once a bastion of the Khmer Rouge, is emerging as a premier eco-tourism destination near the Thai border. This remarkable transformation is drawing the attention of nature lovers and history enthusiasts alike.",
+                "author": {
+                    "metadata": {
+                        "tags": [],
+                        "concepts": []
+                    },
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "ntvh3j97dkce"
+                            }
+                        },
+                        "id": "4mBe9u36Hg4eCaVvVpDTv0",
+                        "type": "Entry",
+                        "createdAt": "2025-02-10T11:09:01.629Z",
+                        "updatedAt": "2025-02-17T10:54:24.378Z",
+                        "environment": {
+                            "sys": {
+                                "id": "master",
+                                "type": "Link",
+                                "linkType": "Environment"
+                            }
+                        },
+                        "publishedVersion": 7,
+                        "revision": 4,
+                        "contentType": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "ContentType",
+                                "id": "user"
+                            }
+                        },
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "id": "e54c2cdf-7b8a-44f5-a0fb-ca4245f28d08",
+                        "username": "Jujen",
+                        "role": "content_creator",
+                        "email": "ahju355@gmail.com",
+                        "userImage": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Asset",
+                                "id": "1AKMBC8L7NdIzr7OHRtTe2"
+                            }
+                        },
+                        "bio": "Hehehe"
+                    }
+                },
+                "content": "Veal Veng district in Pursat province, once a bastion of the Khmer Rouge, is emerging as a premier eco-tourism destination near the Thai border. This remarkable transformation is drawing the attention of nature lovers and history enthusiasts alike.\n\tDistrict governor Thean Leng recently shared insights into Veal Veng’s significant developments, particularly in infrastructure, during an interview with journalists. The visit, organized by the Club of Cambodian Journalists (CCJ), highlighted the district’s journey towards becoming an eco-friendly tourist hotspot.\n\tLeng emphasized the district’s dedication to “green development,” with a focus on tree planting and sustainable practices. Since the COVID-19 pandemic, Veal Veng has seen a surge in visitors, with thousands of vehicles now entering the district, eager to explore its natural beauty and rich history.\tVeal Veng district in Pursat province, once a bastion of the Khmer Rouge, is emerging as a premier eco-tourism destination near the Thai border. This remarkable transformation is drawing the attention of nature lovers and history enthusiasts alike.",
+                "descriptionHtml": "<p>No description available</p>"
+            }
+        },
+        {
+            "sys": {
+                "space": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "Space",
+                        "id": "ntvh3j97dkce"
+                    }
+                },
+                "id": "6qpNUD3YK94FETB5TwTNGu",
+                "type": "Entry",
+                "createdAt": "2025-02-16T09:32:31.406Z",
+                "updatedAt": "2025-07-29T03:56:52.412Z",
+                "environment": {
+                    "sys": {
+                        "id": "master",
+                        "type": "Link",
+                        "linkType": "Environment"
+                    }
+                },
+                "publishedVersion": 14,
+                "revision": 6,
+                "contentType": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "ContentType",
+                        "id": "travelArticles"
+                    }
+                },
+                "locale": "en-US"
+            },
+            "fields": {
+                "title": "Bokor Mountain: Cambodia’s Cloud-Covered Time Capsule",
+                "dateCreate": "2025-02-16T09:32:31.076Z",
+                "image": "https://images.ctfassets.net/ntvh3j97dkce/osbMSZoj7CxhfEKmbdqkx/8c1f868b9a31d79ae9a08436142abc40/files_news_26450_1466659992.webp",
+                "introduction": "Rising 1,000 meters above sea level, __Bokor Mountain__ (Phnom Bokor) is one of Cambodia’s most iconic highland destinations. Located just 40 km from the riverside town of Kampot, it combines cool mountain air, haunting ruins, lush forests, and sweeping coastal views. Whether you're a history buff, nature lover, or photographer, Bokor is a place where time seems to stand still.\n",
+                "author": {
+                    "metadata": {
+                        "tags": [],
+                        "concepts": []
+                    },
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "ntvh3j97dkce"
+                            }
+                        },
+                        "id": "4mBe9u36Hg4eCaVvVpDTv0",
+                        "type": "Entry",
+                        "createdAt": "2025-02-10T11:09:01.629Z",
+                        "updatedAt": "2025-02-17T10:54:24.378Z",
+                        "environment": {
+                            "sys": {
+                                "id": "master",
+                                "type": "Link",
+                                "linkType": "Environment"
+                            }
+                        },
+                        "publishedVersion": 7,
+                        "revision": 4,
+                        "contentType": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "ContentType",
+                                "id": "user"
+                            }
+                        },
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "id": "e54c2cdf-7b8a-44f5-a0fb-ca4245f28d08",
+                        "username": "Jujen",
+                        "role": "content_creator",
+                        "email": "ahju355@gmail.com",
+                        "userImage": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Asset",
+                                "id": "1AKMBC8L7NdIzr7OHRtTe2"
+                            }
+                        },
+                        "bio": "Hehehe"
+                    }
+                },
+                "content": "## __The Ghost Town in the Clouds__\n\nOriginally built as a French colonial retreat in the 1920s, Bokor Hill Station was designed to escape the heat of Phnom Penh. The area once included a grand hotel-casino, post office, church, and royal residence — many of which still stand today in haunting silence.\n\n__Don’t Miss:__\n\n- __Bokor Palace Hotel and Casino__: Abandoned and weathered by time, it offers eerie beauty and panoramic views of the Gulf of Thailand.  \n- __Old Catholic Church__: A red-brick structure from the 1920s that still holds its quiet, sacred aura.  \n- __Popokvil Waterfall__: A two-tiered waterfall that flows strongest during the rainy season.  \n\n## __Modern Meets Myth__\n![Lok Yeay Mao](//images.ctfassets.net/ntvh3j97dkce/SEXS4kKpzla2bYFLauYxK/3f146b8bc09c67163a6bd42343006c21/this-was-a-great-stop.webp)\n\nWhile much of Bokor retains its mystical ruins, the area has also seen modern development. Visitors will now find:\n\n- A newly constructed statue of __Lok Yeay Mao__, a local spiritual guardian  \n- __Thansur Sokha Hotel__, a luxury resort and casino  \n- Scenic roads with epic views and photo stops  \n\nDespite development, the vast national park still offers quiet spaces and raw nature.\n\n## __Wildlife and Nature__\n\nBokor Mountain is part of the __Preah Monivong Bokor National Park__, a protected area covering over 1,500 square kilometers. It’s home to:\n\n- *Cloud forests and misty trails*  \n- *Gibbons, hornbills, and slow lorises*  \n- *Rare orchids and carnivorous plants*  \n\nIf you're lucky, you may hear the calls of wild animals echoing through the trees.\n\n## __How to Get There__\n\nFrom Kampot, Bokor Mountain is about a 45-minute motorbike or car ride. The winding mountain road is smooth, scenic, and filled with sharp turns and viewpoints. It’s best to visit early in the morning to catch the sunrise — or late afternoon for cooler weather and golden light.\n\n## __Best Time to Visit__\n\n- __Dry season (November to April)__: Clear skies, cooler temperatures, and easier driving.  \n- __Rainy season (May to October)__: Lush greenery and flowing waterfalls, but also dense fog and slippery roads.  \n\n## __A Place of Reflection__\n\nBokor Mountain is more than just a tourist destination — it’s a place where Cambodia’s colonial past, spiritual roots, and natural treasures converge. Whether you're walking through the fog around ancient ruins or watching clouds roll in from the sea, Bokor reminds you that beauty and history often live side by side.\n\n__Plan your visit, bring a jacket, and let Bokor take you back in time.__",
+                "descriptionHtml": "<p>No description available</p>"
+            }
+        },
+        {
+            "sys": {
+                "space": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "Space",
+                        "id": "ntvh3j97dkce"
+                    }
+                },
+                "id": "l5wMH4NlT7flcVWclCzki",
+                "type": "Entry",
+                "createdAt": "2025-02-16T09:30:49.939Z",
+                "updatedAt": "2025-07-27T13:51:22.322Z",
+                "environment": {
+                    "sys": {
+                        "id": "master",
+                        "type": "Link",
+                        "linkType": "Environment"
+                    }
+                },
+                "publishedVersion": 9,
+                "revision": 5,
+                "contentType": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "ContentType",
+                        "id": "travelArticles"
+                    }
+                },
+                "locale": "en-US"
+            },
+            "fields": {
+                "title": "National museum in Battambang ",
+                "dateCreate": "2025-02-16T09:30:49.478Z",
+                "image": "https://images.ctfassets.net/ntvh3j97dkce/54eoZXIXV1lsupWJ2UjdCg/aaf9820bea4f19489aaf428f3ba9396f/html.jpg",
+                "introduction": "The Battambang Provincial Museum on the riverfront in the center of town houses a large collection of Angkorian and pre-Angkorian artifacts – statues, carvings, bits of ancient temples, pottery, etc. ",
+                "author": {
+                    "metadata": {
+                        "tags": [],
+                        "concepts": []
+                    },
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "ntvh3j97dkce"
+                            }
+                        },
+                        "id": "4mBe9u36Hg4eCaVvVpDTv0",
+                        "type": "Entry",
+                        "createdAt": "2025-02-10T11:09:01.629Z",
+                        "updatedAt": "2025-02-17T10:54:24.378Z",
+                        "environment": {
+                            "sys": {
+                                "id": "master",
+                                "type": "Link",
+                                "linkType": "Environment"
+                            }
+                        },
+                        "publishedVersion": 7,
+                        "revision": 4,
+                        "contentType": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "ContentType",
+                                "id": "user"
+                            }
+                        },
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "id": "e54c2cdf-7b8a-44f5-a0fb-ca4245f28d08",
+                        "username": "Jujen",
+                        "role": "content_creator",
+                        "email": "ahju355@gmail.com",
+                        "userImage": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Asset",
+                                "id": "1AKMBC8L7NdIzr7OHRtTe2"
+                            }
+                        },
+                        "bio": "Hehehe"
+                    }
+                },
+                "content": "The Battambang Provincial Museum on the riverfront in the center of town houses a large collection of Angkorian and pre-Angkorian artifacts – statues, carvings, bits of ancient temples, pottery, etc. These little provincial museums can be a real treat for the Angkor enthusiast, containing some rare and unique pieces, and this is one of the best of the provincial museums. Hours: 8:00AM-11:00AM / 2:00PM-5:00PM, make reservations for weekend visit and they will open the door for you. Friendly people always happy to see visitors. Guides available.",
+                "descriptionHtml": "<p>No description available</p>"
+            }
+        },
+        {
+            "sys": {
+                "space": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "Space",
+                        "id": "ntvh3j97dkce"
+                    }
+                },
+                "id": "4TKPP74AsjivmRYfa1kAJ5",
+                "type": "Entry",
+                "createdAt": "2025-02-16T09:21:43.973Z",
+                "updatedAt": "2025-07-27T13:51:55.880Z",
+                "environment": {
+                    "sys": {
+                        "id": "master",
+                        "type": "Link",
+                        "linkType": "Environment"
+                    }
+                },
+                "publishedVersion": 9,
+                "revision": 5,
+                "contentType": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "ContentType",
+                        "id": "travelArticles"
+                    }
+                },
+                "locale": "en-US"
+            },
+            "fields": {
+                "title": "Phnom yat",
+                "dateCreate": "2025-02-16T09:21:43.516Z",
+                "image": "https://images.ctfassets.net/ntvh3j97dkce/50r26It7TYlXiAH9ZnpOaI/5b67749c8fce1477c5dc0c4b7ac51fa9/html.png",
+                "introduction": "Phnom Yat is a cultural and historical site located in Pailin City. It is not a holy place where people come to worship, but also the heart of Pailin City. ",
+                "author": {
+                    "metadata": {
+                        "tags": [],
+                        "concepts": []
+                    },
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "ntvh3j97dkce"
+                            }
+                        },
+                        "id": "4mBe9u36Hg4eCaVvVpDTv0",
+                        "type": "Entry",
+                        "createdAt": "2025-02-10T11:09:01.629Z",
+                        "updatedAt": "2025-02-17T10:54:24.378Z",
+                        "environment": {
+                            "sys": {
+                                "id": "master",
+                                "type": "Link",
+                                "linkType": "Environment"
+                            }
+                        },
+                        "publishedVersion": 7,
+                        "revision": 4,
+                        "contentType": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "ContentType",
+                                "id": "user"
+                            }
+                        },
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "id": "e54c2cdf-7b8a-44f5-a0fb-ca4245f28d08",
+                        "username": "Jujen",
+                        "role": "content_creator",
+                        "email": "ahju355@gmail.com",
+                        "userImage": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Asset",
+                                "id": "1AKMBC8L7NdIzr7OHRtTe2"
+                            }
+                        },
+                        "bio": "Hehehe"
+                    }
+                },
+                "content": "__Phnom Yat__ is a cultural and historical site located in Pailin City. It is not a holy place where people come to worship, but also the heart of Pailin City. The mountain is 60 meters high, 700 meters long, 300 meters wide and covers 30, 000 square meters. The top is accessible on foot or by vehicle. A staircase of 242 steps, each step about 25 centimeters high, was completed on Oct 13, 1998.\n\tThe site includes an old pagoda similar to Kola pagoda. It was built on the hilltop by the Kola people in 1922. The are many ancient structures on Phnom Yat, including the big and small stupas and Asroms (the hermitage, a place for meditating). The area holds many superstitions for Pailin residents and some visitors.Although a wealth of gems already have been mined in Pailin, the hill is till believed to hold more. Many kiosks, or small cottages, are available for visitors to relax in on the mountaintop.",
+                "descriptionHtml": "<p>No description available</p>"
+            }
+        },
+        {
+            "sys": {
+                "space": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "Space",
+                        "id": "ntvh3j97dkce"
+                    }
+                },
+                "id": "3zBuId96Kh1uER1rRlIfsb",
+                "type": "Entry",
+                "createdAt": "2025-02-16T09:18:20.891Z",
+                "updatedAt": "2025-07-29T03:46:18.121Z",
+                "environment": {
+                    "sys": {
+                        "id": "master",
+                        "type": "Link",
+                        "linkType": "Environment"
+                    }
+                },
+                "publishedVersion": 14,
+                "revision": 7,
+                "contentType": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "ContentType",
+                        "id": "travelArticles"
+                    }
+                },
+                "locale": "en-US"
+            },
+            "fields": {
+                "title": "Sosoro museum of Cambodia",
+                "dateCreate": "2025-02-16T09:18:20.527Z",
+                "image": "https://images.ctfassets.net/ntvh3j97dkce/vteqkSN9nsQmoWklfvJbs/4964da0f765dde61e1113421684299fb/independence-era.webp",
+                "introduction": "SOSORO was developed to offer a unique perspective on Cambodian history as well as a better understanding of the constant interaction between money, the economy, and politics.",
+                "author": {
+                    "metadata": {
+                        "tags": [],
+                        "concepts": []
+                    },
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "ntvh3j97dkce"
+                            }
+                        },
+                        "id": "4mBe9u36Hg4eCaVvVpDTv0",
+                        "type": "Entry",
+                        "createdAt": "2025-02-10T11:09:01.629Z",
+                        "updatedAt": "2025-02-17T10:54:24.378Z",
+                        "environment": {
+                            "sys": {
+                                "id": "master",
+                                "type": "Link",
+                                "linkType": "Environment"
+                            }
+                        },
+                        "publishedVersion": 7,
+                        "revision": 4,
+                        "contentType": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "ContentType",
+                                "id": "user"
+                            }
+                        },
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "id": "e54c2cdf-7b8a-44f5-a0fb-ca4245f28d08",
+                        "username": "Jujen",
+                        "role": "content_creator",
+                        "email": "ahju355@gmail.com",
+                        "userImage": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Asset",
+                                "id": "1AKMBC8L7NdIzr7OHRtTe2"
+                            }
+                        },
+                        "bio": "Hehehe"
+                    }
+                },
+                "content": "\n__SOSORO__ was developed to offer a unique perspective on Cambodian history as well as a better understanding of the constant interaction between __money__, the __economy__, and __politics__.\n\nThe Cambodian Museum of Economy and Money is named after __King Isanavarman I__, the ruler of Chenla, where the region’s first monetary instruments are thought to have developed in the __7th century__. *Sarakmunti Sethakech Rupreyvatho Preah Sri Isanavarman* is the King’s full honorary name. From this comes the Khmer acronym __SOSORO__, and the institution is known as the __SOSORO Museum__.\n\nThe museum is developed in one of Phnom Penh’s most historic buildings — the former Town Hall — located near the __Cambodia Securities Exchange__ and other institutions related to the __National Bank of Cambodia__.\n\n__2,000 years of Cambodia’s financial history — from Funan to the present__\n\nThe *Preah Srey Içanavarman Museum of Economy and Money (SOSORO)*, located in the heart of the old colonial district of Phnom Penh, recounts nearly __2,000 years__ of Cambodia's history, covering:\n\n- The Funan era  \n- The Angkorian Empire  \n- The Cold War period  \n- Contemporary Cambodia  \n\nIt highlights the strong interconnection between __political changes__, __social transformations__, __geopolitics__, and __economic and monetary development__.\n\nEstablished and fully financed by the __National Bank of Cambodia__, the SOSORO Museum features a modern scenography that blends:\n\n- Ancient artifacts  \n- Interactive technologies (e.g. touch screens)  \n- Educational games  \n\nOpen to the public since __2019__, its permanent exhibition is designed to be accessible and engaging for __all age groups__.\n",
+                "descriptionHtml": "<p>No description available</p>"
+            }
+        },
+        {
+            "sys": {
+                "space": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "Space",
+                        "id": "ntvh3j97dkce"
+                    }
+                },
+                "id": "qh6i56tfqe11bGBe13w6w",
+                "type": "Entry",
+                "createdAt": "2025-02-16T09:16:29.381Z",
+                "updatedAt": "2025-07-27T13:51:35.602Z",
+                "environment": {
+                    "sys": {
+                        "id": "master",
+                        "type": "Link",
+                        "linkType": "Environment"
+                    }
+                },
+                "publishedVersion": 9,
+                "revision": 5,
+                "contentType": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "ContentType",
+                        "id": "travelArticles"
+                    }
+                },
+                "locale": "en-US"
+            },
+            "fields": {
+                "title": "Kok toul Sleng",
+                "dateCreate": "2025-02-16T09:16:29.038Z",
+                "image": "https://images.ctfassets.net/ntvh3j97dkce/6plebff5BSJ9Ew6fEVcnGW/11c1ffdc2e3e98bccdf65dd45e8ca89b/html.png",
+                "introduction": "The Tuol Sleng Genocide Museum, or simply Tuol Sleng, is a museum chronicling the Cambodian genocide. Located in Phnom Penh, the site is a former secondary school which was used as Security Prison 21 by the Khmer Rouge regime from 1975 until its fall in 1979.",
+                "author": {
+                    "metadata": {
+                        "tags": [],
+                        "concepts": []
+                    },
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "ntvh3j97dkce"
+                            }
+                        },
+                        "id": "4mBe9u36Hg4eCaVvVpDTv0",
+                        "type": "Entry",
+                        "createdAt": "2025-02-10T11:09:01.629Z",
+                        "updatedAt": "2025-02-17T10:54:24.378Z",
+                        "environment": {
+                            "sys": {
+                                "id": "master",
+                                "type": "Link",
+                                "linkType": "Environment"
+                            }
+                        },
+                        "publishedVersion": 7,
+                        "revision": 4,
+                        "contentType": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "ContentType",
+                                "id": "user"
+                            }
+                        },
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "id": "e54c2cdf-7b8a-44f5-a0fb-ca4245f28d08",
+                        "username": "Jujen",
+                        "role": "content_creator",
+                        "email": "ahju355@gmail.com",
+                        "userImage": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Asset",
+                                "id": "1AKMBC8L7NdIzr7OHRtTe2"
+                            }
+                        },
+                        "bio": "Hehehe"
+                    }
+                },
+                "content": "The Tuol Sleng Genocide Museum (Khmer: សារមន្ទីរឧក្រិដ្ឋកម្មប្រល័យពូជសាសន៍ទួលស្លែង, romanized: Saromontir Ukredth Kamm Braly Pouchsasa Tuol Sleng), or simply Tuol Sleng (Khmer: ទួលស្លែង, Tuŏl Slêng [tuəl slaeŋ]; lit. \"Hill of the Poisonous Trees\" or \"Strychnine Hill\"), is a museum chronicling the Cambodian genocide. Located in Phnom Penh, the site is a former secondary school which was used as Security Prison 21 (S-21; Khmer: មន្ទីរស-២១) by the Khmer Rouge regime from 1975 until its fall in 1979. From 1976 to 1979, an estimated 20,000 people were imprisoned at Tuol Sleng and it was one of between 150 and 196 torture and execution centers established by the Khmer Rouge and the secret police known as the Santebal (literally \"keeper of peace\"). On 26 July 2010, the Extraordinary Chambers in the Courts of Cambodia convicted the prison's chief, Kang Kek Iew, for crimes against humanity and grave breaches of the 1949 Geneva Conventions.He died on 2 September 2020 while serving a life sentence.",
+                "descriptionHtml": "<p>No description available</p>"
+            }
+        },
+        {
+            "sys": {
+                "space": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "Space",
+                        "id": "ntvh3j97dkce"
+                    }
+                },
+                "id": "3OtPSce8vZ6uzLcsro0GJF",
+                "type": "Entry",
+                "createdAt": "2025-02-16T09:13:12.294Z",
+                "updatedAt": "2025-07-27T13:52:34.570Z",
+                "environment": {
+                    "sys": {
+                        "id": "master",
+                        "type": "Link",
+                        "linkType": "Environment"
+                    }
+                },
+                "publishedVersion": 9,
+                "revision": 5,
+                "contentType": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "ContentType",
+                        "id": "travelArticles"
+                    }
+                },
+                "locale": "en-US"
+            },
+            "fields": {
+                "title": "Central Market in Cambodia",
+                "dateCreate": "2025-02-16T09:13:11.982Z",
+                "image": "https://images.ctfassets.net/ntvh3j97dkce/7MZ50KP5d7gLQKT3u92THH/4c5ead5a0a68b42f270dbf9b1a95667c/html.jpg",
+                "introduction": "The Central Market (Khmer: ផ្សារធំថ្មី, Phsar Thum Thmei; meaning \"New Grand Market\") is a market and an art deco landmark in Phnom Penh.",
+                "author": {
+                    "metadata": {
+                        "tags": [],
+                        "concepts": []
+                    },
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "ntvh3j97dkce"
+                            }
+                        },
+                        "id": "4mBe9u36Hg4eCaVvVpDTv0",
+                        "type": "Entry",
+                        "createdAt": "2025-02-10T11:09:01.629Z",
+                        "updatedAt": "2025-02-17T10:54:24.378Z",
+                        "environment": {
+                            "sys": {
+                                "id": "master",
+                                "type": "Link",
+                                "linkType": "Environment"
+                            }
+                        },
+                        "publishedVersion": 7,
+                        "revision": 4,
+                        "contentType": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "ContentType",
+                                "id": "user"
+                            }
+                        },
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "id": "e54c2cdf-7b8a-44f5-a0fb-ca4245f28d08",
+                        "username": "Jujen",
+                        "role": "content_creator",
+                        "email": "ahju355@gmail.com",
+                        "userImage": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Asset",
+                                "id": "1AKMBC8L7NdIzr7OHRtTe2"
+                            }
+                        },
+                        "bio": "Hehehe"
+                    }
+                },
+                "content": "The Central Market (Khmer: ផ្សារធំថ្មី, Phsar Thum Thmei; meaning \"New Grand Market\") is a market and an art deco landmark in Phnom Penh, the capital of Cambodia. The bright yellow building completed in 1937 has a 26-metre high central dome, with four tall arch-roofed arms branching out diagonally across the block, creating vast hallways housing countless stalls and a variety of goods. Initially designed by city architect Jean Desbois, construction works were supervised by French architect Louis Chauchon. When it first opened in 1937, it was said to be the biggest market in Asia;                   \n\ntoday it still operates as a market",
+                "descriptionHtml": "<p>No description available</p>"
+            }
+        },
+        {
+            "sys": {
+                "space": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "Space",
+                        "id": "ntvh3j97dkce"
+                    }
+                },
+                "id": "32dzM65vT2ZmBeeKIv13h4",
+                "type": "Entry",
+                "createdAt": "2025-02-16T08:59:37.480Z",
+                "updatedAt": "2025-07-27T13:52:52.127Z",
+                "environment": {
+                    "sys": {
+                        "id": "master",
+                        "type": "Link",
+                        "linkType": "Environment"
+                    }
+                },
+                "publishedVersion": 8,
+                "revision": 4,
+                "contentType": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "ContentType",
+                        "id": "travelArticles"
+                    }
+                },
+                "locale": "en-US"
+            },
+            "fields": {
+                "title": "National Museum Cambodia",
+                "dateCreate": "2025-02-16T08:59:37.112Z",
+                "image": "https://images.ctfassets.net/ntvh3j97dkce/6YaqZmD36XvI7w2b83DAd6/1fbdc6800746ebffef30fcc431efe1c2/html.jpg",
+                "introduction": "The museum houses one of the world’s largest collections of Khmer art, including sculptural, Khmer ceramics, bronzes, and ethnographic objects, its collection includes over 14000 items, from prehistoric times to periods before, during and after the Khmer Empire, which at its height stretched from Thailand, across present-day Cambodia, to southern Vietnam.",
+                "author": {
+                    "metadata": {
+                        "tags": [],
+                        "concepts": []
+                    },
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "ntvh3j97dkce"
+                            }
+                        },
+                        "id": "4mBe9u36Hg4eCaVvVpDTv0",
+                        "type": "Entry",
+                        "createdAt": "2025-02-10T11:09:01.629Z",
+                        "updatedAt": "2025-02-17T10:54:24.378Z",
+                        "environment": {
+                            "sys": {
+                                "id": "master",
+                                "type": "Link",
+                                "linkType": "Environment"
+                            }
+                        },
+                        "publishedVersion": 7,
+                        "revision": 4,
+                        "contentType": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "ContentType",
+                                "id": "user"
+                            }
+                        },
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "id": "e54c2cdf-7b8a-44f5-a0fb-ca4245f28d08",
+                        "username": "Jujen",
+                        "role": "content_creator",
+                        "email": "ahju355@gmail.com",
+                        "userImage": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Asset",
+                                "id": "1AKMBC8L7NdIzr7OHRtTe2"
+                            }
+                        },
+                        "bio": "Hehehe"
+                    }
+                },
+                "content": "The National Museum of Cambodia is located on street 10 in central Phnom penh, to the north of the Royal palace and on the west side of veal preah man square. The visitors’ entrance to the compound is at the corner of streets 13 and 178. The royal university of fine arts is located on the west side of the museum. The museum is under the authority of the Cambodia ministry of culture and fine arts. The museum buildings, inspired by khmer temple architecture, were constructed between 1917 and 1924, the museum was officially inaugurated in 1920, and it was renovated in 1968. The museum promotes awareness, understanding and appreciation of cambodia’s culture and heritage aiming to educate and inspire its visitors.",
+                "descriptionHtml": "<p>No description available</p>"
+            }
+        },
+        {
+            "sys": {
+                "space": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "Space",
+                        "id": "ntvh3j97dkce"
+                    }
+                },
+                "id": "XSF3xO6BHAubj1YQS2xgX",
+                "type": "Entry",
+                "createdAt": "2025-02-16T08:53:39.288Z",
+                "updatedAt": "2025-07-27T13:52:13.118Z",
+                "environment": {
+                    "sys": {
+                        "id": "master",
+                        "type": "Link",
+                        "linkType": "Environment"
+                    }
+                },
+                "publishedVersion": 9,
+                "revision": 5,
+                "contentType": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "ContentType",
+                        "id": "travelArticles"
+                    }
+                },
+                "locale": "en-US"
+            },
+            "fields": {
+                "title": "Royal palace of Cambodia",
+                "dateCreate": "2025-02-16T08:53:38.927Z",
+                "image": "https://images.ctfassets.net/ntvh3j97dkce/KKGihhOBFUA4bE2Yggp0o/82ac7f92ad2c3f22ef3c06efa8f5c7c5/html.png",
+                "introduction": "The Royal Palace of Cambodia is a complex of buildings which serves as the official royal residence of the King of Cambodia. Its full name in Khmer is the Preah Barom Reacheaveang Chaktomuk Serey Mongkol.",
+                "author": {
+                    "metadata": {
+                        "tags": [],
+                        "concepts": []
+                    },
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "ntvh3j97dkce"
+                            }
+                        },
+                        "id": "4mBe9u36Hg4eCaVvVpDTv0",
+                        "type": "Entry",
+                        "createdAt": "2025-02-10T11:09:01.629Z",
+                        "updatedAt": "2025-02-17T10:54:24.378Z",
+                        "environment": {
+                            "sys": {
+                                "id": "master",
+                                "type": "Link",
+                                "linkType": "Environment"
+                            }
+                        },
+                        "publishedVersion": 7,
+                        "revision": 4,
+                        "contentType": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "ContentType",
+                                "id": "user"
+                            }
+                        },
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "id": "e54c2cdf-7b8a-44f5-a0fb-ca4245f28d08",
+                        "username": "Jujen",
+                        "role": "content_creator",
+                        "email": "ahju355@gmail.com",
+                        "userImage": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Asset",
+                                "id": "1AKMBC8L7NdIzr7OHRtTe2"
+                            }
+                        },
+                        "bio": "Hehehe"
+                    }
+                },
+                "content": "The Royal palace of Cambodia (Khmer: ព្រះបរមរាជវាំង) is a complex of building which servers as the official royal residence of the king of Cambodia its full name in khmer is the Preah Barom Reacheaceang Chaktomuk Serey Monkul (Khmer: ព្រះបរមរាជវាំងចតុមុខសិរីមង្គល). The monarchs have occupied it since it was built in the 1860s, with a period of absence when the country came into turmoil during and after the reign of the Khmer Rouge.\nThe palace was coustructed by King Norodom between 1866 and 1870; this original palace was largely demolished and rebuilt between 1912 and 1932, it is situated at the Western bank of the confluence of the Tonle sap river and the Mekong River called Chaktomuk (an allusion to Brahma).",
+                "descriptionHtml": "<p>No description available</p>"
+            }
+        },
+        {
+            "sys": {
+                "space": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "Space",
+                        "id": "ntvh3j97dkce"
+                    }
+                },
+                "id": "2mjBh5VV1qa6OTOFMN9fRv",
+                "type": "Entry",
+                "createdAt": "2025-02-16T08:47:43.945Z",
+                "updatedAt": "2025-07-27T13:52:25.239Z",
+                "environment": {
+                    "sys": {
+                        "id": "master",
+                        "type": "Link",
+                        "linkType": "Environment"
+                    }
+                },
+                "publishedVersion": 9,
+                "revision": 5,
+                "contentType": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "ContentType",
+                        "id": "travelArticles"
+                    }
+                },
+                "locale": "en-US"
+            },
+            "fields": {
+                "title": "Kampot",
+                "dateCreate": "2025-02-16T08:47:43.570Z",
+                "image": "https://images.ctfassets.net/ntvh3j97dkce/7xjzhNX12SJ28Jf2OXkThl/feadeac896571884cc9258fcfeb0c902/html.jpg",
+                "introduction": "Kampot is a province of Cambodia, but on this website, we concentrate on the City of Kampot, the provincial capital and the surrounding areas….  The province is about 80KM wide and 100KM from top to bottom.",
+                "author": {
+                    "metadata": {
+                        "tags": [],
+                        "concepts": []
+                    },
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "ntvh3j97dkce"
+                            }
+                        },
+                        "id": "4mBe9u36Hg4eCaVvVpDTv0",
+                        "type": "Entry",
+                        "createdAt": "2025-02-10T11:09:01.629Z",
+                        "updatedAt": "2025-02-17T10:54:24.378Z",
+                        "environment": {
+                            "sys": {
+                                "id": "master",
+                                "type": "Link",
+                                "linkType": "Environment"
+                            }
+                        },
+                        "publishedVersion": 7,
+                        "revision": 4,
+                        "contentType": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "ContentType",
+                                "id": "user"
+                            }
+                        },
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "id": "e54c2cdf-7b8a-44f5-a0fb-ca4245f28d08",
+                        "username": "Jujen",
+                        "role": "content_creator",
+                        "email": "ahju355@gmail.com",
+                        "userImage": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Asset",
+                                "id": "1AKMBC8L7NdIzr7OHRtTe2"
+                            }
+                        },
+                        "bio": "Hehehe"
+                    }
+                },
+                "content": "__Kampot__ is a city on the Preaek Tuek Chhu River in southern Cambodia. It's known for its pepper plantations and salt fields. Many buildings date from the colonial period, including the Governor’s Mansion. The house is now the Kampot Museum, which has exhibits on the city’s history. To the west, Preah Monivong Bokor National Park has a cool climate with forests, waterfalls and wildlife including gibbons and big cats.",
+                "descriptionHtml": "<p>No description available</p>"
+            }
+        },
+        {
+            "sys": {
+                "space": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "Space",
+                        "id": "ntvh3j97dkce"
+                    }
+                },
+                "id": "5ZoOeBQ9S9WnUYThrAqano",
+                "type": "Entry",
+                "createdAt": "2025-02-16T08:19:53.363Z",
+                "updatedAt": "2025-07-27T13:52:05.558Z",
+                "environment": {
+                    "sys": {
+                        "id": "master",
+                        "type": "Link",
+                        "linkType": "Environment"
+                    }
+                },
+                "publishedVersion": 11,
+                "revision": 6,
+                "contentType": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "ContentType",
+                        "id": "travelArticles"
+                    }
+                },
+                "locale": "en-US"
+            },
+            "fields": {
+                "title": "Kep",
+                "dateCreate": "2025-02-16T08:19:53.014Z",
+                "image": "https://images.ctfassets.net/ntvh3j97dkce/56jh6CSVdxrfRpI6EN4yMi/01eb3911c7fc8f816b6ecd445a5f6391/html.png",
+                "introduction": "Kep is the capital of Kep Province in southern Cambodia. It lies near Kep National Park. The small city has a population of 35,990. The city is home to many abandoned villas left from by the French Colonial authorities and the elites of Cambodia during the 70s due to the Khmer Civil War and the Khmer Rouge.",
+                "author": {
+                    "metadata": {
+                        "tags": [],
+                        "concepts": []
+                    },
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "ntvh3j97dkce"
+                            }
+                        },
+                        "id": "4mBe9u36Hg4eCaVvVpDTv0",
+                        "type": "Entry",
+                        "createdAt": "2025-02-10T11:09:01.629Z",
+                        "updatedAt": "2025-02-17T10:54:24.378Z",
+                        "environment": {
+                            "sys": {
+                                "id": "master",
+                                "type": "Link",
+                                "linkType": "Environment"
+                            }
+                        },
+                        "publishedVersion": 7,
+                        "revision": 4,
+                        "contentType": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "ContentType",
+                                "id": "user"
+                            }
+                        },
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "id": "e54c2cdf-7b8a-44f5-a0fb-ca4245f28d08",
+                        "username": "Jujen",
+                        "role": "content_creator",
+                        "email": "ahju355@gmail.com",
+                        "userImage": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Asset",
+                                "id": "1AKMBC8L7NdIzr7OHRtTe2"
+                            }
+                        },
+                        "bio": "Hehehe"
+                    }
+                },
+                "content": "Kep Beach is a famous seaside resort with twelve months of sunshine. A single, kilometer long crescent of sand near the tip of the Kep peninsula. Visitors will find dining places and seafood vendors line the road behind the beach. Visitors can see attractive picturesque mountain views and winding lanes toward the beach. A sightseeing tour of the city is very popular with them. They can stroll down the sidewalk, sunbath, swim, and picnic there.",
+                "descriptionHtml": "<p>No description available</p>"
+            }
+        },
+        {
+            "sys": {
+                "space": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "Space",
+                        "id": "ntvh3j97dkce"
+                    }
+                },
+                "id": "7highy6jsqZrxewgDG0zG4",
+                "type": "Entry",
+                "createdAt": "2025-02-16T08:15:50.497Z",
+                "updatedAt": "2025-07-27T13:52:43.959Z",
+                "environment": {
+                    "sys": {
+                        "id": "master",
+                        "type": "Link",
+                        "linkType": "Environment"
+                    }
+                },
+                "publishedVersion": 11,
+                "revision": 6,
+                "contentType": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "ContentType",
+                        "id": "travelArticles"
+                    }
+                },
+                "locale": "en-US"
+            },
+            "fields": {
+                "title": "Saraeen Bay, Koh Rong Samloem, Cambodia",
+                "dateCreate": "2025-02-16T08:15:49.989Z",
+                "image": "https://images.ctfassets.net/ntvh3j97dkce/2QAQ6KCNe67WcHZUqShuYF/eed8f1bfd0edb73950273bc183127952/html.jpg",
+                "introduction": "Koh Rong Sanloem is an island off the coast of Sihanoukville, Cambodia, 4 km south of Koh Rong. It is around 9 km long, 4 km wide and 1 km wide at its narrowest point. Its distance from the local port of Sihanoukville is 25 km and 23 km from the Serendipity/Ochheuteal beach pier. The word \"Sanloem\"",
+                "author": {
+                    "metadata": {
+                        "tags": [],
+                        "concepts": []
+                    },
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "ntvh3j97dkce"
+                            }
+                        },
+                        "id": "4mBe9u36Hg4eCaVvVpDTv0",
+                        "type": "Entry",
+                        "createdAt": "2025-02-10T11:09:01.629Z",
+                        "updatedAt": "2025-02-17T10:54:24.378Z",
+                        "environment": {
+                            "sys": {
+                                "id": "master",
+                                "type": "Link",
+                                "linkType": "Environment"
+                            }
+                        },
+                        "publishedVersion": 7,
+                        "revision": 4,
+                        "contentType": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "ContentType",
+                                "id": "user"
+                            }
+                        },
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "id": "e54c2cdf-7b8a-44f5-a0fb-ca4245f28d08",
+                        "username": "Jujen",
+                        "role": "content_creator",
+                        "email": "ahju355@gmail.com",
+                        "userImage": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Asset",
+                                "id": "1AKMBC8L7NdIzr7OHRtTe2"
+                            }
+                        },
+                        "bio": "Hehehe"
+                    }
+                },
+                "content": "Often overshadowed by the many beautiful beaches of Thailand,\nCambodia\n’s shores receive only a small fraction of the tourists who visit its neighbor. If you’re looking for a place to rest and relax away from the crowds, the island of Koh Rong Samloem is an excellent choice. The island paradise is located about half an hour by boat from Sihanoukville on the mainland. Its largest beach, Saracen Bay, is a stretch of dazzling white sand and warm, shallow, and clear water, providing a serene setting for a few days at the beach.\nThere is a good selection of accommodations and restaurants running along the bay, each offering picture-postcard views of the sea. For those looking for some exercise, you can rent a kayak, or stand-up paddle board, or head to Lazy Beach on the other side of the island—about 30 minutes on foot—to go snorkeling or swimming.\n",
+                "descriptionHtml": "<p>No description available</p>"
+            }
+        },
+        {
+            "sys": {
+                "space": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "Space",
+                        "id": "ntvh3j97dkce"
+                    }
+                },
+                "id": "1Up3AS3kSimDD6w4TMsPYf",
+                "type": "Entry",
+                "createdAt": "2025-02-16T08:11:52.456Z",
+                "updatedAt": "2025-07-27T13:50:48.413Z",
+                "environment": {
+                    "sys": {
+                        "id": "master",
+                        "type": "Link",
+                        "linkType": "Environment"
+                    }
+                },
+                "publishedVersion": 11,
+                "revision": 6,
+                "contentType": {
+                    "sys": {
+                        "type": "Link",
+                        "linkType": "ContentType",
+                        "id": "travelArticles"
+                    }
+                },
+                "locale": "en-US"
+            },
+            "fields": {
+                "title": "Angkor Wat",
+                "dateCreate": "2025-02-16T08:11:52.098Z",
+                "image": "https://images.ctfassets.net/ntvh3j97dkce/3wYyharmAeGaGceyPfAxid/490033954921ff40eaf07220e32e5112/html.jpg",
+                "introduction": "Angkor Wat is one of the most famous temples in the world, and a UNESCO World Heritage Site. It's located in Siem Reap, Cambodia, and is a must-see for visitors to the country. ",
+                "author": {
+                    "metadata": {
+                        "tags": [],
+                        "concepts": []
+                    },
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "ntvh3j97dkce"
+                            }
+                        },
+                        "id": "4mBe9u36Hg4eCaVvVpDTv0",
+                        "type": "Entry",
+                        "createdAt": "2025-02-10T11:09:01.629Z",
+                        "updatedAt": "2025-02-17T10:54:24.378Z",
+                        "environment": {
+                            "sys": {
+                                "id": "master",
+                                "type": "Link",
+                                "linkType": "Environment"
+                            }
+                        },
+                        "publishedVersion": 7,
+                        "revision": 4,
+                        "contentType": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "ContentType",
+                                "id": "user"
+                            }
+                        },
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "id": "e54c2cdf-7b8a-44f5-a0fb-ca4245f28d08",
+                        "username": "Jujen",
+                        "role": "content_creator",
+                        "email": "ahju355@gmail.com",
+                        "userImage": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Asset",
+                                "id": "1AKMBC8L7NdIzr7OHRtTe2"
+                            }
+                        },
+                        "bio": "Hehehe"
+                    }
+                },
+                "content": "Angkor Wat\n,\ntemple\ncomplex at\nAngkor\n, near\nSiem Reap\n,\nCambodia\n, that was built in the 12th century by King\nSuryavarman II\n(reigned 1113–c. 1150) of the\nKhmer empire\n. The vast religious complex of Angkor Wat\ncomprises\nmore than a thousand buildings, and it is one of the great cultural wonders of the world. Angkor Wat is the world’s largest religious structure, covering some 400 acres (160 hectares), and marks the high point of\nKhmer\n\narchitecture\n. The city of Angkor served as the royal center from which a\ndynasty\nof\nKhmer kings\nruled one of the largest, most prosperous, and most sophisticated kingdoms in the\nhistory of Southeast Asia\n. From the end of the 9th century until early in the 13th century, numerous construction projects were undertaken, the most notable of which was Angkor Wat. It was built by Suryavarman II as a vast funerary temple within which his remains were to be deposited. Construction is believed to have spanned some three decades.\n",
+                "descriptionHtml": "<p>No description available</p>"
+            }
+        }
+    ]
+}

@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Viewer</title>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            background-color: #f3f4f6; /* Light gray background */
+            color: #1f2937; /* Dark text color */
+            min-height: 100vh;
+            overflow-x: hidden; /* Prevent horizontal scroll on body */
+        }
+
+        .container {
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #ffffff;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Softer, more pronounced shadow */
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            display: flex;
+            justify-content: center; /* Center the title */
+            align-items: center;
+        }
+
+        .header-title {
+            font-size: 2.5rem; /* Slightly larger title */
+            font-weight: 700;
+            color: #4338ca; /* Indigo color */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle text shadow */
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            padding-top: 2.5rem; /* More vertical padding */
+            padding-bottom: 2.5rem;
+        }
+
+        .category-section {
+            margin-bottom: 4rem; /* More space between sections */
+        }
+
+        .category-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 2rem; /* More space below title */
+            text-align: center;
+        }
+
+        /* Carousel Specific Styles */
+        .carousel-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            padding-bottom: 1.5rem; /* More padding for visual separation */
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 2rem;
+            overflow-x: scroll;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            cursor: grab;
+            padding-bottom: 1rem;
+            scroll-behavior: smooth;
+        }
+
+        .carousel-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .carousel-nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #4f46e5; /* Solid indigo */
+            color: #ffffff;
+            border: none;
+            border-radius: 50%; /* Perfect circle */
+            padding: 0.8rem 1.1rem; /* Adjusted padding for circle */
+            font-size: 1.8rem; /* Larger icon */
+            cursor: pointer;
+            z-index: 10;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Clearer shadow */
+            display: flex; /* For centering content */
+            align-items: center;
+            justify-content: center;
+            line-height: 1; /* Adjust line height for icon centering */
+        }
+
+        .carousel-nav-button:hover {
+            background-color: #4338ca; /* Darker indigo on hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* More pronounced shadow on hover */
+            transform: translateY(-50%) scale(1.05); /* Slight scale up on hover */
+        }
+
+        .carousel-nav-button.prev {
+            left: 0.5rem;
+        }
+
+        .carousel-nav-button.next {
+            right: 0.5rem;
+        }
+
+        /* Article Card Styles for Carousel */
+        .article-card {
+            flex: 0 0 auto;
+            width: calc((100% / 1) - 1rem);
+            background-color: #ffffff;
+            border-radius: 0.75rem; /* More rounded corners */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
+            overflow: hidden;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+            scroll-snap-align: start;
+        }
+
+        .article-card:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+            transform: translateY(-5px); /* Slight lift effect */
+        }
+
+        /* Responsive Card Widths for Carousel */
+        @media (min-width: 640px) {
+            .article-card {
+                width: calc((100% / 2) - 1rem);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .article-card {
+                width: calc((100% / 3) - 1.333rem);
+            }
+        }
+
+        .article-card-image {
+            width: 100%;
+            height: 12rem;
+            object-fit: cover;
+            object-position: center;
+            border-bottom: 1px solid #e5e7eb; /* Subtle separator */
+        }
+
+        .article-card-content {
+            padding: 1.25rem; /* More padding inside card */
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-card-title {
+            font-size: 1.375rem; /* Slightly larger title */
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.75rem;
+        }
+
+        .article-card-intro {
+            color: #4b5563;
+            font-size: 0.9375rem; /* Slightly larger intro text */
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            flex-grow: 1; /* Allows content to expand */
+        }
+
+        .article-card-author-info {
+            color: #6b7280;
+            font-size: 0.8rem; /* Slightly larger author info */
+            margin-top: auto; /* Pushes to bottom of card content */
+        }
+
+        /* Modal Specific Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(17, 24, 39, 0.85); /* Darker overlay */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem; /* More padding */
+            z-index: 50;
+            overflow-y: auto;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.4s ease; /* Slower, smoother transition */
+        }
+
+        .modal-overlay.visible {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            border-radius: 1rem; /* More rounded corners */
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+            max-width: 70rem; /* Wider modal */
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            padding: 2rem; /* More internal padding */
+        }
+
+        .close-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: #e5e7eb;
+            color: #374151;
+            border-radius: 9999px;
+            padding: 0.6rem; /* Slightly larger button */
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .close-button:hover {
+            background-color: #d1d5db;
+            transform: rotate(90deg); /* Rotate on hover */
+        }
+
+        .close-button:focus {
+            outline: 2px solid transparent;
+            outline-offset: 2px;
+            box-shadow: 0 0 0 2px rgba(156, 163, 175, 0.5);
+        }
+
+        .close-button svg {
+            height: 1.75rem; /* Larger icon */
+            width: 1.75rem;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .detail-title {
+            font-size: 2.5rem; /* Larger detail title */
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 1.25rem;
+        }
+
+        .detail-author-meta {
+            display: flex;
+            align-items: center;
+            color: #4b5563;
+            font-size: 0.9375rem; /* Slightly larger text */
+            margin-bottom: 1.75rem;
+        }
+
+        .detail-author-image {
+            width: 3rem; /* Larger author image */
+            height: 3rem;
+            border-radius: 9999px;
+            margin-right: 0.8rem;
+            object-fit: cover;
+            border: 2px solid #e0e7ff; /* Subtle border */
+        }
+
+        .detail-author-name {
+            font-weight: 600; /* Bolder name */
+        }
+
+        .detail-date {
+            font-size: 0.8rem;
+        }
+
+        .detail-image {
+            width: 100%;
+            height: 22rem; /* Taller image */
+            object-fit: cover;
+            object-position: center;
+            border-radius: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .detail-introduction {
+            font-size: 1.125rem;
+            color: #374151;
+            margin-bottom: 1.5rem;
+            line-height: 1.7; /* Improved line height */
+        }
+
+        /* Prose-like content rendering */
+        .prose h1 { font-size: 2.25rem; font-weight: 700; margin-bottom: 1rem; color: #1f2937; }
+        .prose h2 { font-size: 1.875rem; font-weight: 600; margin-bottom: 0.75rem; color: #1f2937; }
+        .prose h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; color: #1f2937; }
+        .prose p { margin-bottom: 1rem; line-height: 1.6; color: #374151; }
+        .prose ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 1rem; }
+        .prose ol { list-style-type: decimal; margin-left: 1.5rem; margin-bottom: 1rem; }
+        .prose li { margin-bottom: 0.5rem; color: #374151; }
+        .prose a { color: #3b82f6; text-decoration: underline; transition: color 0.2s ease; }
+        .prose a:hover { color: #2563eb; }
+        .prose strong { font-weight: 700; }
+        .prose em { font-style: italic; }
+        .prose {
+            max-width: 100%;
+            color: #1f2937;
+            line-height: 1.625;
+        }
+
+        .author-info-section {
+            margin-top: 2.5rem;
+            padding-top: 1.75rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .author-info-title {
+            font-size: 1.375rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        .author-info-content {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .author-detail-image {
+            width: 6rem; /* Larger image */
+            height: 6rem;
+            border-radius: 9999px;
+            margin-right: 1.25rem;
+            object-fit: cover;
+            border: 3px solid #e0e7ff; /* More prominent border */
+        }
+
+        .author-detail-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .author-detail-role,
+        .author-detail-email {
+            color: #4b5563;
+            font-size: 0.9375rem;
+        }
+
+        .author-detail-bio {
+            color: #374151;
+            margin-top: 0.75rem;
+            line-height: 1.6;
+        }
+
+        /* Utility classes for toggling visibility */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <header class="header">
+        <div class="container">
+            <h1 class="header-title">Article Viewer</h1>
+        </div>
+    </header>
+
+    <main class="container main-content">
+        <!-- Food Articles Carousel -->
+        <section class="category-section">
+            <h2 class="category-title">Delicious Food Articles</h2>
+            <div class="carousel-container">
+                <div id="foodCarouselTrack" class="carousel-track">
+                    <!-- Food article cards will be injected here by JavaScript -->
+                </div>
+                <button id="foodPrevBtn" class="carousel-nav-button prev">&#10094;</button>
+                <button id="foodNextBtn" class="carousel-nav-button next">&#10095;</button>
+            </div>
+        </section>
+
+        <!-- Travel Articles Carousel -->
+        <section class="category-section">
+            <h2 class="category-title">Exciting Travel Articles</h2>
+            <div class="carousel-container">
+                <div id="travelCarouselTrack" class="carousel-track">
+                    <!-- Travel article cards will be injected here by JavaScript -->
+                </div>
+                <button id="travelPrevBtn" class="carousel-nav-button prev">&#10094;</button>
+                <button id="travelNextBtn" class="carousel-nav-button next">&#10095;</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Article Detail Modal -->
+    <div id="articleDetailModal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="closeModalBtn" class="close-button">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <h1 id="detailTitle" class="detail-title"></h1>
+            <div class="detail-author-meta">
+                <img id="detailAuthorImage" alt="Author" class="detail-author-image" />
+                <div>
+                    <p id="detailAuthorName" class="detail-author-name"></p>
+                    <p id="detailDate" class="detail-date"></p>
+                </div>
+            </div>
+
+            <img id="detailImage" alt="Article Image" class="detail-image" />
+
+            <p id="detailIntroduction" class="detail-introduction"></p>
+
+            <div id="detailContent" class="prose"></div>
+
+            <div id="authorInfo" class="author-info-section hidden">
+                <h3 class="author-info-title">About the Author</h3>
+                <div class="author-info-content">
+                    <img id="authorDetailImage" alt="Author" class="author-detail-image" />
+                    <div>
+                        <p id="authorDetailName" class="author-detail-name"></p>
+                        <p id="authorDetailRole" class="author-detail-role"></p>
+                        <p id="authorDetailEmail" class="author-detail-email"></p>
+                        <p id="authorDetailBio" class="author-detail-bio"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let foodArticles = [];
+        let travelArticles = [];
+
+        const foodCarouselTrack = document.getElementById('foodCarouselTrack');
+        const travelCarouselTrack = document.getElementById('travelCarouselTrack');
+        const foodPrevBtn = document.getElementById('foodPrevBtn');
+        const foodNextBtn = document.getElementById('foodNextBtn');
+        const travelPrevBtn = document.getElementById('travelPrevBtn');
+        const travelNextBtn = document.getElementById('travelNextBtn');
+
+        const articleDetailModal = document.getElementById('articleDetailModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+
+        // Elements within the modal
+        const detailTitle = document.getElementById('detailTitle');
+        const detailAuthorImage = document.getElementById('detailAuthorImage');
+        const detailAuthorName = document.getElementById('detailAuthorName');
+        const detailDate = document.getElementById('detailDate');
+        const detailImage = document.getElementById('detailImage');
+        const detailIntroduction = document.getElementById('detailIntroduction');
+        const detailContent = document.getElementById('detailContent');
+        const authorInfo = document.getElementById('authorInfo');
+        const authorDetailImage = document.getElementById('authorDetailImage');
+        const authorDetailName = document.getElementById('authorDetailName');
+        const authorDetailRole = document.getElementById('authorDetailRole');
+        const authorDetailEmail = document.getElementById('authorDetailEmail');
+        const authorDetailBio = document.getElementById('authorDetailBio');
+
+        // Carousel drag variables
+        let isDragging = false;
+        let startX;
+        let scrollLeft;
+        let activeCarouselTrack = null; // To keep track of which carousel is being dragged
+
+        // Function to convert markdown-like text to HTML
+        function renderMarkdown(markdownText) {
+            if (!markdownText) return '';
+
+            let html = markdownText;
+
+            // Convert bold (**) or (__)
+            html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            html = html.replace(/__(.*?)__/g, '<strong>$1</strong>');
+
+            // Convert italics (*)
+            html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+
+            // Convert headings (##)
+            html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
+            html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>');
+
+            // Convert links [text](url)
+            html = html.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" style="color: #3b82f6; text-decoration: underline;">$1</a>');
+
+            // Convert newlines to paragraphs (handle multiple newlines for separate paragraphs)
+            html = html.split('\n').filter(p => p.trim() !== '').map(paragraph => `<p>${paragraph}</p>`).join('');
+
+            return html;
+        }
+
+        // Function to create an article card HTML element
+        function createArticleCard(article) {
+            const card = document.createElement('div');
+            card.className = 'article-card';
+            // Use a flag to prevent click event during drag
+            let isClick = true;
+            card.addEventListener('mousedown', () => { isClick = true; });
+            card.addEventListener('mousemove', () => { isClick = false; }); // If mouse moves, it's a drag
+            card.addEventListener('mouseup', () => {
+                if (isClick) {
+                    showArticleDetail(article);
+                }
+            });
+
+            const img = document.createElement('img');
+            img.src = article.fields.image;
+            img.alt = article.fields.title;
+            img.className = 'article-card-image';
+            img.onerror = (e) => {
+                e.target.onerror = null;
+                e.target.src = `https://placehold.co/600x400/CCCCCC/FFFFFF?text=No+Image`;
+            };
+
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'article-card-content';
+
+            const title = document.createElement('h3');
+            title.className = 'article-card-title';
+            title.textContent = article.fields.title;
+
+            const introduction = document.createElement('p');
+            introduction.className = 'article-card-intro';
+            introduction.textContent = article.fields.introduction;
+
+            const authorInfoDiv = document.createElement('div');
+            authorInfoDiv.className = 'article-card-author-info';
+            const authorName = article.fields.author?.fields?.username || 'Unknown Author';
+            const date = new Date(article.fields.dateCreate).toLocaleDateString();
+            authorInfoDiv.textContent = `By ${authorName} on ${date}`;
+
+            contentDiv.appendChild(title);
+            contentDiv.appendChild(introduction);
+            contentDiv.appendChild(authorInfoDiv);
+            card.appendChild(img);
+            card.appendChild(contentDiv);
+
+            return card;
+        }
+
+        // Function to render articles into a specific carousel track
+        function renderArticlesIntoTrack(articles, trackElement) {
+            trackElement.innerHTML = ''; // Clear existing articles
+            articles.forEach(article => {
+                trackElement.appendChild(createArticleCard(article));
+            });
+            trackElement.scrollLeft = 0; // Reset scroll position
+        }
+
+        // Function to show article detail modal
+        function showArticleDetail(article) {
+            detailTitle.textContent = article.fields.title;
+
+            // Author Image
+            const authorImgId = article.fields.author?.fields?.userImage?.sys?.id;
+            detailAuthorImage.src = authorImgId ? `https://images.ctfassets.net/ntvh3j97dkce/${authorImgId}` : `https://placehold.co/40x40/CCCCCC/FFFFFF?text=Author`;
+            detailAuthorImage.onerror = (e) => {
+                e.target.onerror = null;
+                e.target.src = `https://placehold.co/40x40/CCCCCC/FFFFFF?text=Author`;
+            };
+            detailAuthorImage.alt = article.fields.author?.fields?.username || 'Author';
+
+            detailAuthorName.textContent = article.fields.author?.fields?.username || 'Unknown Author';
+            detailDate.textContent = new Date(article.fields.dateCreate).toLocaleDateString();
+
+            // Article Image
+            detailImage.src = article.fields.image;
+            detailImage.alt = article.fields.title;
+            detailImage.onerror = (e) => {
+                e.target.onerror = null;
+                e.target.src = `https://placehold.co/800x400/CCCCCC/FFFFFF?text=No+Image`;
+            };
+
+            detailIntroduction.innerHTML = renderMarkdown(article.fields.introduction);
+
+            // Prioritize descriptionHtml if it exists and is not just a placeholder
+            if (article.fields.descriptionHtml && article.fields.descriptionHtml !== "<p>No description available</p>") {
+                detailContent.innerHTML = article.fields.descriptionHtml;
+            } else {
+                detailContent.innerHTML = renderMarkdown(article.fields.content);
+            }
+
+            // Author Info Section
+            if (article.fields.author) {
+                authorInfo.classList.remove('hidden');
+                const authorDetailImgId = article.fields.author.fields.userImage?.sys?.id;
+                authorDetailImage.src = authorDetailImgId ? `https://images.ctfassets.net/ntvh3j97dkce/${authorDetailImgId}` : `https://placehold.co/80x80/CCCCCC/FFFFFF?text=Author`;
+                authorDetailImage.onerror = (e) => {
+                    e.target.onerror = null;
+                    e.target.src = `https://placehold.co/80x80/CCCCCC/FFFFFF?text=Author`;
+                };
+                authorDetailImage.alt = article.fields.author.fields.username;
+                authorDetailName.textContent = article.fields.author.fields.username;
+                authorDetailRole.textContent = article.fields.author.fields.role;
+                authorDetailEmail.textContent = article.fields.author.fields.email;
+                authorDetailBio.textContent = article.fields.author.fields.bio;
+            } else {
+                authorInfo.classList.add('hidden');
+            }
+
+            articleDetailModal.classList.add('visible'); // Show modal
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+        }
+
+        // Function to hide article detail modal
+        function hideArticleDetail() {
+            articleDetailModal.classList.remove('visible'); // Hide modal
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        // Function to scroll carousel
+        function scrollCarousel(trackElement, direction) {
+            const card = trackElement.querySelector('.article-card');
+            if (!card) return; // Exit if no cards are present
+
+            const cardWidth = card.offsetWidth;
+            const gap = parseFloat(getComputedStyle(trackElement).gap);
+            const scrollAmount = (cardWidth + gap) * (direction === 'next' ? 1 : -1);
+            trackElement.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+
+        // Carousel Drag Event Handlers
+        function setupDrag(trackElement) {
+            trackElement.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                activeCarouselTrack = trackElement;
+                trackElement.classList.add('dragging');
+                startX = e.pageX - trackElement.offsetLeft;
+                scrollLeft = trackElement.scrollLeft;
+                e.preventDefault(); // Prevent default drag for images/links within the carousel
+            });
+
+            trackElement.addEventListener('mouseleave', () => {
+                if (activeCarouselTrack === trackElement) {
+                    isDragging = false;
+                    trackElement.classList.remove('dragging');
+                    activeCarouselTrack = null;
+                }
+            });
+
+            trackElement.addEventListener('mouseup', () => {
+                if (activeCarouselTrack === trackElement) {
+                    isDragging = false;
+                    trackElement.classList.remove('dragging');
+                    activeCarouselTrack = null;
+                }
+            });
+
+            trackElement.addEventListener('mousemove', (e) => {
+                if (!isDragging || activeCarouselTrack !== trackElement) return;
+                e.preventDefault();
+                const x = e.pageX - trackElement.offsetLeft;
+                const walk = (x - startX) * 2; // Multiplier for faster scroll
+                trackElement.scrollLeft = scrollLeft - walk;
+            });
+        }
+
+        // Apply drag functionality to both carousels
+        setupDrag(foodCarouselTrack);
+        setupDrag(travelCarouselTrack);
+
+        // Event Listeners for navigation buttons
+        foodPrevBtn.addEventListener('click', () => scrollCarousel(foodCarouselTrack, 'prev'));
+        foodNextBtn.addEventListener('click', () => scrollCarousel(foodCarouselTrack, 'next'));
+        travelPrevBtn.addEventListener('click', () => scrollCarousel(travelCarouselTrack, 'prev'));
+        travelNextBtn.addEventListener('click', () => scrollCarousel(travelCarouselTrack, 'next'));
+
+        closeModalBtn.addEventListener('click', hideArticleDetail);
+
+        // Fetch data on page load
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const data = fetch('data.json');
+                const parsedData = JSON.parse(data); // Parse the JSON string
+
+                if (parsedData.success) {
+                    foodArticles = parsedData.foodArticle;
+                    travelArticles = parsedData.travelArticles;
+                    renderArticlesIntoTrack(foodArticles, foodCarouselTrack);
+                    renderArticlesIntoTrack(travelArticles, travelCarouselTrack);
+                } else {
+                    console.error('Data fetch failed:', parsedData);
+                    foodCarouselTrack.innerHTML = '<p style="color: red; text-align: center;">Failed to load food articles. Please ensure data.json is available.</p>';
+                    travelCarouselTrack.innerHTML = '<p style="color: red; text-align: center;">Failed to load travel articles. Please ensure data.json is available.</p>';
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                foodCarouselTrack.innerHTML = '<p style="color: red; text-align: center;">Failed to load food articles. Please ensure data.json is available.</p>';
+                travelCarouselTrack.innerHTML = '<p style="color: red; text-align: center;">Failed to load travel articles. Please ensure data.json is available.</p>';
+            }
+        });
+    </script>
+</body>
+</html>

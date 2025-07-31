@@ -10,6 +10,11 @@
 
 # --- Static Page Redirects ---
 [[redirects]]
+  from = "/test"
+  to = "/test.html"
+  status = 200
+
+[[redirects]]
   from = "/news"
   to = "/src/pages/news/index.html"
   status = 200

@@ -9,17 +9,20 @@ exports.handler = async (event) => {
   const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
   const url = `https://cdn.contentful.com/spaces/${spaceId}/environments/master/entries`;
 
-  try {
-    const { contentType } = event.queryStringParameters || {};
-    if (!contentType) {
+  const { contentType, limit } = event.queryStringParameters || {};
+  if (!contentType) {
       return {
         statusCode: 400,
         body: JSON.stringify({ error: "Missing content type" }),
       };
-    }
+  }
+
+  try {
 
     const contentTypes = contentType.split(",").map((type) => type.trim());
+    const maxItems = parseInt(limit);
     let result = {};
+    
 
     // Helper to convert markdown image URLs starting with // to https:// URLs
     function fixImageUrls(html) {
@@ -93,7 +96,18 @@ exports.handler = async (event) => {
         entryMap[entry.sys.id] = entry;
       });
 
-      result[type] = data.items.map((item) => {
+      // Sort items by fields.dateCreate (newest first)
+      const sortedItems = data.items.sort((a, b) => {
+        const dateA = new Date(a.fields.dateCreate);
+        const dateB = new Date(b.fields.dateCreate);
+        return dateB - dateA;
+      });
+
+      // Limit if maxItems is defined
+      const limitedItems = !isNaN(maxItems) ? sortedItems.slice(0, maxItems) : sortedItems;
+
+      // Now process the limited/sorted items
+      result[type] = limitedItems.map((item) => {
         const fields = { ...item.fields };
 
         if (fields.image?.sys?.id) {
@@ -105,10 +119,7 @@ exports.handler = async (event) => {
         }
 
         if (typeof fields.description === "string") {
-          // Use marked to convert markdown fully (headers, lists, images, etc.)
-          let html = marked(fields.description);
-          // Fix image URLs starting with //
-          html = fixImageUrls(html);
+          let html = fixImageUrls(marked(fields.description));
           fields.descriptionHtml = html;
         } else if (fields.description?.nodeType === "document") {
           try {
@@ -128,6 +139,7 @@ exports.handler = async (event) => {
           fields,
         };
       });
+
     });
 
     await Promise.all(fetchPromises);
