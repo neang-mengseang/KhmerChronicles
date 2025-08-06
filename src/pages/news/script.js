@@ -1,144 +1,141 @@
-const IS_DEV_MODE = false; // toggle dev mode
+const IS_DEV_MODE = true;
+const pageSize = 24;
 let currentPage = 1;
 let totalPages = 1;
-const pageSize = 24;
+
+// DOM references
+const searchForm = document.getElementById('searchForm');
+const searchInput = document.getElementById('searchInput');
+const topicButtons = document.querySelectorAll('.topic-btn');
+const sortByFilter = document.getElementById('sortByFilter');
+const loadingIndicator = document.getElementById('loadingIndicator');
+const newsGrid = document.getElementById('newsGrid');
+const errorMessage = document.getElementById('errorMessage');
+const errorText = document.getElementById('errorText');
+const noResults = document.getElementById('noResults');
 
 document.addEventListener('DOMContentLoaded', () => {
-  const searchForm = document.getElementById('searchForm');
-  const topicButtons = document.querySelectorAll('.topic-btn');
-  const sortByFilter = document.getElementById('sortByFilter');
+  fetchNews("breaking");
 
-  // Initial fetch
-  fetchNews('breaking');
-
-  searchForm.addEventListener('submit', (e) => {
+  searchForm?.addEventListener('submit', (e) => {
     e.preventDefault();
-    const query = document.getElementById('searchInput').value.trim();
+    const query = getSearchQuery();
     if (query) fetchNews(query);
   });
 
-  topicButtons.forEach(button => {
+  topicButtons?.forEach(button => {
     button.addEventListener('click', () => {
       const topic = button.dataset.topic;
-      document.getElementById('searchInput').value = topic === 'breaking' ? '' : topic;
+      searchInput.value = topic === 'breaking' ? '' : topic;
       fetchNews(topic);
     });
   });
 
-  sortByFilter.addEventListener('change', () => {
-    const query = document.getElementById('searchInput').value.trim() || "cambodia";
-    fetchNews(query, sortByFilter.value, 1);
+  sortByFilter?.addEventListener('change', () => {
+    fetchNews(getSearchQuery() || "cambodia", sortByFilter.value, 1);
   });
 
-  // Pagination buttons
-  ["Top", "Bottom"].forEach(pos => {
-    const nextBtn = document.getElementById(`nextBtn${pos}`);
-    const prevBtn = document.getElementById(`prevBtn${pos}`);
-
-    if (nextBtn) {
-      nextBtn.addEventListener("click", () => {
-        if (currentPage < totalPages) {
-          const query = document.getElementById('searchInput').value.trim() || "cambodia";
-          fetchNews(query, sortByFilter.value, currentPage + 1);
-
-          // Scroll to top on bottom pagination
-          if (pos === "Bottom") {
-            window.scrollTo({ top: 0, behavior: "smooth" });
+  // Pagination handlers
+  ["Top", "Bottom"].forEach(position => {
+    ["next", "prev"].forEach(direction => {
+      const button = document.getElementById(`${direction}Btn${position}`);
+      if (button) {
+        button.addEventListener("click", () => {
+          const nextPage = direction === "next" ? currentPage + 1 : currentPage - 1;
+          if (nextPage >= 1 && nextPage <= totalPages) {
+            fetchNews(getSearchQuery() || "cambodia", sortByFilter.value, nextPage);
+            if (position === "Bottom") {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
           }
-        }
-      });
-    }
-
-    if (prevBtn) {
-      prevBtn.addEventListener("click", () => {
-        if (currentPage > 1) {
-          const query = document.getElementById('searchInput').value.trim() || "cambodia";
-          fetchNews(query, sortByFilter.value, currentPage - 1);
-
-          if (pos === "Bottom") {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          }
-        }
-      });
-    }
+        });
+      }
+    });
   });
 });
 
-async function fetchNews(query, sortBy = "relevancy", page = 1) {
-  const loadingIndicator = document.getElementById('loadingIndicator');
-  const newsGrid = document.getElementById('newsGrid');
-  const errorMessage = document.getElementById('errorMessage');
-  const errorText = document.getElementById('errorText');
-  const noResults = document.getElementById('noResults');
+function getSearchQuery() {
+  return searchInput?.value.trim();
+}
 
-  loadingIndicator.classList.remove('hidden');
+async function fetchNews(query, sortBy = "relevancy", page = 1) {
+  if (!newsGrid) return;
+
+  // Reset UI
+  loadingIndicator?.classList.remove('hidden');
+  errorMessage?.classList.add('hidden');
+  noResults?.classList.add('hidden');
   newsGrid.innerHTML = '';
-  errorMessage.classList.add('hidden');
-  noResults.classList.add('hidden');
 
   try {
     let data;
-
     if (IS_DEV_MODE) {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-
+      await delay(1000);
       const response = await fetch('/src/pages/news/data.json');
       data = await response.json();
-
     } else {
-      let url = `/.netlify/functions/fetchNews?sortBy=${sortBy}&page=${page}&pageSize=${pageSize}`;
-      if (query && query !== 'breaking') {
-        url += `&q=${encodeURIComponent(query)}`;
-      }
+      let url = buildNewsUrl(query, sortBy, page);
       const response = await fetch(url);
-      if (!response.ok) throw new Error(`Request failed with status ${response.status}`);
+      if (!response.ok) throw new Error(`Request failed: ${response.status}`);
       data = await response.json();
     }
 
-    if (data.status === "ok") {
-      console.log('News data fetched successfully');
+    if (data?.status === "ok" && data.articles?.length) {
+      displayNews(data.articles);
+      currentPage = page;
+      totalPages = Math.ceil(data.totalResults / pageSize);
+    } else {
+      noResults?.classList.remove('hidden');
+      currentPage = totalPages = 1;
     }
 
-    if (data.articles && data.articles.length > 0) {
-      loadingIndicator.classList.add('hidden');
-      displayNews(data.articles);
-      totalPages = Math.ceil(data.totalResults / pageSize);
-      currentPage = page;
-      updatePaginationUI();
-    } else {
-      loadingIndicator.classList.add('hidden');
-      noResults.classList.remove('hidden');
-      totalPages = 1;
-      currentPage = 1;
-      updatePaginationUI();
-    }
-  } catch (error) {
-    if (errorText) errorText.textContent = error.message || 'Failed to fetch news.';
-    if (errorMessage) errorMessage.classList.remove('hidden');
+    updatePaginationUI();
+
+  } catch (err) {
+    errorText.textContent = err.message || "Something went wrong.";
+    errorMessage?.classList.remove('hidden');
   } finally {
-    loadingIndicator.classList.add('hidden');
+    loadingIndicator?.classList.add('hidden');
   }
 }
 
+function buildNewsUrl(query, sortBy, page) {
+  const baseUrl = '/.netlify/functions/fetchNews';
+  const params = new URLSearchParams({
+    sortBy,
+    page,
+    pageSize
+  });
+
+  if (query && query !== 'breaking') {
+    params.append('q', query);
+  }
+
+  return `${baseUrl}?${params.toString()}`;
+}
+
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function updatePaginationUI() {
-  const pageIndicatorTop = document.getElementById("pageIndicatorTop");
-  const pageIndicatorBottom = document.getElementById("pageIndicatorBottom");
-  const prevBtnTop = document.getElementById("prevBtnTop");
-  const nextBtnTop = document.getElementById("nextBtnTop");
-  const prevBtnBottom = document.getElementById("prevBtnBottom");
-  const nextBtnBottom = document.getElementById("nextBtnBottom");
+  const indicators = [
+    { indicator: "pageIndicatorTop", prev: "prevBtnTop", next: "nextBtnTop" },
+    { indicator: "pageIndicatorBottom", prev: "prevBtnBottom", next: "nextBtnBottom" },
+  ];
 
-  if (pageIndicatorTop) pageIndicatorTop.textContent = `Page ${currentPage} of ${totalPages}`;
-  if (pageIndicatorBottom) pageIndicatorBottom.textContent = `Page ${currentPage} of ${totalPages}`;
+  indicators.forEach(({ indicator, prev, next }) => {
+    const ind = document.getElementById(indicator);
+    const prevBtn = document.getElementById(prev);
+    const nextBtn = document.getElementById(next);
 
-  if (prevBtnTop) prevBtnTop.disabled = currentPage <= 1;
-  if (nextBtnTop) nextBtnTop.disabled = currentPage >= totalPages;
-  if (prevBtnBottom) prevBtnBottom.disabled = currentPage <= 1;
-  if (nextBtnBottom) nextBtnBottom.disabled = currentPage >= totalPages;
+    if (ind) ind.textContent = `Page ${currentPage} of ${totalPages}`;
+    if (prevBtn) prevBtn.disabled = currentPage <= 1;
+    if (nextBtn) nextBtn.disabled = currentPage >= totalPages;
+  });
 }
 
 function displayNews(articles) {
-  const newsGrid = document.getElementById('newsGrid');
   newsGrid.innerHTML = '';
 
   articles.forEach(article => {
@@ -151,8 +148,9 @@ function displayNews(articles) {
 
     card.innerHTML = `
       <div class="${imageUrl ? '' : 'placeholder-img'}">
-        ${imageUrl ? `<img src="${imageUrl}" alt="${article.title}" loading="lazy">`
-                  : '<i class="fas fa-image"></i>'}
+        ${imageUrl 
+          ? `<img src="${imageUrl}" alt="${article.title}" loading="lazy">`
+          : '<i class="fas fa-image"></i>'}
       </div>
       <div class="content">
         <div class="meta">
